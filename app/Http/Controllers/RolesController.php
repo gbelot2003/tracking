@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\View;
 
 class RolesController extends Controller {
 
-
+	/**
+	 * Agregando middleware para proteccion de roles
+	 *
+	 * Logica de permisos aun no implementada
+	 */
 	public function __construct()
 	{
 		$this->middleware('auth');
