@@ -63,6 +63,7 @@
 	</div>
 
 	<div class="row">
+		@foreach($user as $user)
 		<div class="col-md-12">
 			<div class="panel panel-default">
 				<div class="panel-heading"><h2>Usuarios relacionados</h2></div>
@@ -73,7 +74,7 @@
 
 					<div class="list-group-item">
 						<div class="row-content">
-							<h4 class="list-group-item-heading">Tile with another avatar</h4>
+							<h4 class="list-group-item-heading">{{ $user->name }}</h4>
 							<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
 						</div>
 					</div>
@@ -82,5 +83,6 @@
 
 			</div>
 		</div>
+		@endforeach
 	</div>
 @stop

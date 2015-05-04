@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\RolesFormRequest;
 use App\Http\Controllers\Controller;
 use Bican\Roles\Models\Role;
+use App\User;
 use Illuminate\Support\Facades\View;
 
 class RolesController extends Controller {
@@ -60,8 +61,8 @@ class RolesController extends Controller {
 	public function show($id)
 	{
 		$roles = Role::findOrFail($id);
-
-		return View('roles.show', compact('roles'));
+		$user = User::find($id)->getRoles()->get();
+		return View('roles.show', compact('roles', 'user'));
 	}
 
 	/**
