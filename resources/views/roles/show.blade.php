@@ -62,4 +62,25 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>Usuarios relacionados</h2></div>
+			</div>
+			<div class="panel-body">
+
+				<div class="list-group">
+
+					<div class="list-group-item">
+						<div class="row-content">
+							<h4 class="list-group-item-heading">Tile with another avatar</h4>
+							<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
+						</div>
+					</div>
+					<div class="list-group-separator"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
 @stop
