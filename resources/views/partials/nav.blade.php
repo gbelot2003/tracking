@@ -22,6 +22,7 @@
 				@else
 					<li><a href="{{ url('/auth/register') }}">Register</a></li>
 					<li><a href="{{ url('roles') }}">Roles</a></li>
+					<li><a href="{{ url('user') }}">Usuarios</a></li>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
