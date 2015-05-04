@@ -1,1 +1,1 @@
-$.material.init()
+$.material.init();
