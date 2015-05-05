@@ -36,7 +36,7 @@
 							<td>{{ $user->email }}</td>
 							<td>
 								@foreach($user->roles as $rol)
-									{{ $rol->name }}
+									<a href="{{ action('RolesController@show', $rol->id) }}">{{ $rol->name }}</a>
 								@endforeach
 							</td>
 						</tr>

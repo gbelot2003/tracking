@@ -61,7 +61,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		$user = User::findorFail($id);
+		$user 	= User::findorFail($id);
 		return View('users.show', compact('user'));
 	}
 
@@ -74,7 +74,8 @@ class UserController extends Controller {
 	public function edit($id)
 	{
 		$user = User::findorFail($id);
-		return View('users.edit', compact('user'));
+		$roles 	= Role::Lists('name');
+		return View('users.edit', compact('user', 'roles'));
 	}
 
 	/**
@@ -85,7 +86,7 @@ class UserController extends Controller {
 	 */
 	public function update(UsuariosFormRequest $request, $id)
 	{
-		$user = User::findorFail($id);
+		$user 	= User::findorFail($id);
 		$user->update($request->all());
 		return redirect('users');
 	}

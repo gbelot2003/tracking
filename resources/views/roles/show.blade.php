@@ -63,26 +63,26 @@
 	</div>
 
 	<div class="row">
-		@foreach($user as $user)
-		<div class="col-md-12">
-			<div class="panel panel-default">
-				<div class="panel-heading"><h2>Usuarios relacionados</h2></div>
-			</div>
-			<div class="panel-body">
 
-				<div class="list-group">
-
-					<div class="list-group-item">
-						<div class="row-content">
-							<h4 class="list-group-item-heading">{{ $user->name }}</h4>
-							<p class="list-group-item-text">Maecenas sed diam eget risus varius blandit.</p>
-						</div>
-					</div>
-					<div class="list-group-separator"></div>
+			<div class="col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-heading"><h2>Usuarios relacionados</h2></div>
 				</div>
 
+				<div class="panel-body">
+					@foreach($user as $user)
+					<div class="list-group">
+						<div class="list-group-item">
+							<div class="row-content">
+								<h4 class="list-group-item-heading"><a href="{{ action('UserController@show', $user->id) }}">{{ $user->name }}</a></h4>
+								<p class="list-group-item-text">Permisos relacionados</p>
+							</div>
+						</div>
+						<div class="list-group-separator"></div>
+					</div>
+					@endforeach
+				</div>
 			</div>
-		</div>
-		@endforeach
 	</div>
+
 @stop

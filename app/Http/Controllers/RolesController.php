@@ -61,7 +61,7 @@ class RolesController extends Controller {
 	public function show($id)
 	{
 		$roles = Role::findOrFail($id);
-		$user = User::find($id)->getRoles()->get();
+		$user = $roles->users()->get();
 		return View('roles.show', compact('roles', 'user'));
 	}
 
