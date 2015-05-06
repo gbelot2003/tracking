@@ -27,6 +27,7 @@
 
 	<!-- Scripts -->
 	<script src="{{ elixir("js/app.js") }}"></script>
+	<script>@yield('post-script')</script>
 </body>
 </html>
 @else
