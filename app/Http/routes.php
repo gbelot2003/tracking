@@ -19,6 +19,8 @@ Route::resource('roles', 'RolesController');
 
 Route::resource('user', 'UserController');
 
+Route::resource('permisos', 'PermissionsController');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

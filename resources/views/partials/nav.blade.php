@@ -26,6 +26,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="{{ url('user') }}">Usuarios</a></li>
 							<li><a href="{{ url('roles') }}">Roles</a></li>
+							<li><a href="{{ url('permisos') }}">Permisos</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">

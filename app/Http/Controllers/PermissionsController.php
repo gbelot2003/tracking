@@ -4,15 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 
-class UserController extends Controller {
+class PermissionsController extends Controller {
 
-
-	public function __contruct()
-	{
-		$this->pageTitle = 'Configuración de Usuarios';
-	}
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -20,7 +14,7 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		return View('user.index');
+		//
 	}
 
 	/**

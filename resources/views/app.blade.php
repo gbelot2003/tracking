@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>@yield('page-title', 'Sistema de Track')</title>
 
 	<link rel="stylesheet" href="{{ elixir("css/app.css") }}">
 
@@ -16,7 +16,12 @@
 <body>
 	@include('partials.nav')
 	<div class="container">
-		@yield('content')
+		<div class="row">
+			<div class="col-md-12">
+				<h2 class="page-title">@yield('title', 'Sistema de Track')</h2>
+				@yield('content')
+			</div>
+		</div>
 	</div>
 
 	<!-- Scripts -->
