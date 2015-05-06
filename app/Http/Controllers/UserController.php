@@ -1,12 +1,13 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Requests\Request;
 use App\Http\Requests\UsuariosFormRequest;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
+use App\Http\Controllers\Controller;
 use Bican\Roles\Models\Role;
+use App\User;
+use Illuminate\Support\Facades\View;
+
 
 
 class UserController extends Controller {
@@ -49,7 +50,7 @@ class UserController extends Controller {
 	 */
 	public function store(UsuariosFormRequest $request)
 	{
-		User::create($request::all());
+		$user = User::create($request::all());
 		return redirect('users');
 	}
 
@@ -74,7 +75,7 @@ class UserController extends Controller {
 	public function edit($id)
 	{
 		$user = User::findorFail($id);
-		$roles 	= Role::Lists('name');
+		$roles 	= Role::Lists('name', 'id');
 		return View('users.edit', compact('user', 'roles'));
 	}
 
@@ -84,10 +85,12 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(UsuariosFormRequest $request, $id)
+	public function update($id)
 	{
 		$user 	= User::findorFail($id);
+		dd(Request::All());
 		$user->update($request->all());
+		//$user->attachRole($request->input('role_list'));
 		return redirect('users');
 	}
 

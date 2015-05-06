@@ -37,4 +37,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->roles();
 	}
+
+	/**
+	 * Salida de lista de roles
+	 * @return Array
+	 */
+	public function getRoleListAttribute()
+	{
+		return $this->roles->lists('id');
+	}
 }

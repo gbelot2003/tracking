@@ -29,9 +29,8 @@ class UsuariosFormRequest extends Request {
 		];
 
 		$edit = [
-			'name' 		=> 'requiered|min:5',
-			'email' 	=> 'requiered|email',
-			'password'	=> 'required|min:6'
+			'name' 		=> 'requiered',
+			'email' 	=> 'requiered',
 		];
 
 		if($this->method == 'PUT' || $this->method == 'PATCH'){

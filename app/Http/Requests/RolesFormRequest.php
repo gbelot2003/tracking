@@ -21,7 +21,6 @@ class RolesFormRequest extends Request {
 	 */
 	public function rules()
 	{
-
 		$create = [
 			'name' 			=> 'required|unique:roles',
 			'slug' 			=> 'required|unique:roles',

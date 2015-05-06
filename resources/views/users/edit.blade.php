@@ -43,17 +43,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-6 col-sm-12">
-							<div class="form-group">
-								<ul class="list-inline">
-									@foreach($user->roles as $role)
-										<li><a href="{{ action('RolesController@show', $role->id) }}">{{ $role->name }}</a></li>
-									@endforeach
-								</ul>
 
-							</div>
-						</div>
+					<div class="form-group">
+						{!! Form::submit('Editar', ['class' => 'btn btn-primary']) !!}
 					</div>
 					{!! Form::close() !!}
 				</div>
