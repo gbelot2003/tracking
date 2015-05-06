@@ -33,7 +33,7 @@ class UsuariosFormRequest extends Request {
 			'email' 	=> 'requiered',
 		];
 
-		if($this->method == 'PUT' || $this->method == 'PATCH'){
+		if($this->method == 'PUT'){
 			return $edit;
 		} else {
 			return $create;

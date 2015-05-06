@@ -23,16 +23,14 @@ class RolesFormRequest extends Request {
 	{
 		$create = [
 			'name' 			=> 'required|unique:roles',
-			'slug' 			=> 'required|unique:roles',
-			'description'	=> 'string',
-			'level' 		=> 'required|integer|max:6'
+			'disply_name' 	=> 'required',
+			'description'	=> 'string'
 		];
 
 		$edit = [
 			'name' 			=> 'required',
-			'slug' 			=> 'required',
-			'description'	=> 'string',
-			'level' 		=> 'required|integer|max:6'
+			'disply_name' 	=> 'required',
+			'description'	=> 'string'
 		];
 
 		if($this->method == 'PUT'){
