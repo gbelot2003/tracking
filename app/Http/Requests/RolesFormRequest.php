@@ -23,13 +23,13 @@ class RolesFormRequest extends Request {
 	{
 		$create = [
 			'name' 			=> 'required|unique:roles',
-			'disply_name' 	=> 'required',
+			'display_name' 	=> 'required',
 			'description'	=> 'string'
 		];
 
 		$edit = [
 			'name' 			=> 'required',
-			'disply_name' 	=> 'required',
+			'display_name' 	=> 'required',
 			'description'	=> 'string'
 		];
 
