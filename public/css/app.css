@@ -9453,5 +9453,11 @@ legend {
 .checkbox-material span.check {
   display: none; }
 
+.content {
+  background: whitesmoke;
+  display: inline-block;
+  clear: both;
+  padding: 26px 5px; }
+
 
 /*# sourceMappingURL=app.css.map */
