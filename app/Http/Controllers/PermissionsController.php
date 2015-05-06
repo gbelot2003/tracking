@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Permission;
 use Illuminate\Http\Request;
 
 class PermissionsController extends Controller {
@@ -14,7 +15,8 @@ class PermissionsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$perms = Permission::all();
+		return View('permisos.index',compact('perms'));
 	}
 
 	/**

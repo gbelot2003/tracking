@@ -19,17 +19,45 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h2 class="page-title">@yield('title', 'Sistema de Track')</h2>
-				@yield('content')
+				<div class="row">
+
+					@if($__env->yieldContent('link-button'))
+
+						<div class="col-md-10">
+							<h2 class="page-title">@yield('title', 'Sistema de Track')</h2>
+						</div>
+
+						<div class="col-md-2">@yield('link-button')</div>
+
+					@else
+
+						<div class="col-md-12">
+							<h2 class="page-title">@yield('title', 'Sistema de Track')</h2>
+						</div>
+
+					@endif
+
+				</div>
+
+				<div class="breadcrumbs">
+					@yield('breadcrumbs')
+				</div>
+				<div class="content">
+					@yield('content')
+				</div>
+
 			</div>
 		</div>
 	</div>
 
 	<!-- Scripts -->
 	<script src="{{ elixir("js/app.js") }}"></script>
-	<script>@yield('post-script')</script>
+	@yield('post-script')
 </body>
 </html>
 @else
 	@yield('content')
 @endif
+
+
+

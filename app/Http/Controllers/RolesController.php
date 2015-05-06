@@ -3,8 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\RolesFormRequest;
+use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 
 class RolesController extends Controller {
@@ -27,7 +31,9 @@ class RolesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+
+		$perms = Permission::Lists('name', 'id');
+		return View('roles.create', compact('perms'));
 	}
 
 	/**
@@ -35,9 +41,13 @@ class RolesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(RolesFormRequest $request)
 	{
-		//
+
+		$roles = Role::create($request->all());
+		$roles->attachPermissions($request->input('perms_lists'));
+		flash('El nuevo rol a sido salvado');
+		return redirect('roles')->with('flash_message');
 	}
 
 	/**
@@ -48,18 +58,21 @@ class RolesController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return View('roles.show');
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param RolesFormRequest $request
+	 * @param  int $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		//
+		$roles = Role::find($id);
+		$perms = Permission::Lists('name', 'id');
+		return View('roles.edit', compact('roles', 'perms'));
 	}
 
 	/**
@@ -68,9 +81,13 @@ class RolesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(RolesFormRequest $request, $id)
 	{
-		//
+		$roles = Role::findOrFail($id);
+		$roles->update($request->all());
+		$roles->perms()->sync($request->input('perms_lists'));
+		//flash('La información del rol a sido actualizada');
+		return redirect('roles');
 	}
 
 	/**

@@ -11,4 +11,8 @@ class Role extends EntrustRole {
 	 */
 	protected $fillable = ['name', 'display_name', 'description'];
 
+	public function getPermsListsAttribute()
+	{
+		return $this->perms->lists('id');
+	}
 }
