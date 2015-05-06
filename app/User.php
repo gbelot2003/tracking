@@ -5,12 +5,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Bican\Roles\Contracts\HasRoleAndPermissionContract;
-use Bican\Roles\Traits\HasRoleAndPermission;
+use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword, HasRoleAndPermission;
+	use Authenticatable, CanResetPassword, EntrustUserTrait;
 
 	/**
 	 * The database table used by the model.
@@ -33,17 +32,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
-	public function getRoles()
-	{
-		return $this->roles();
-	}
-
-	/**
-	 * Salida de lista de roles
-	 * @return Array
-	 */
-	public function getRoleListAttribute()
-	{
-		return $this->roles->lists('id');
-	}
 }
