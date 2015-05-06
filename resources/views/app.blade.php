@@ -1,3 +1,4 @@
+@if(!Request::ajax())
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,3 +29,6 @@
 	<script src="{{ elixir("js/app.js") }}"></script>
 </body>
 </html>
+@else
+	@yield('content')
+@endif
