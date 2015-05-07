@@ -72,7 +72,8 @@ class RolesController extends Controller {
 	{
 		$roles = Role::find($id);
 		$perms = Permission::Lists('name', 'id');
-		return View('roles.edit', compact('roles', 'perms'));
+		$users = $roles->users;
+		return View('roles.edit', compact('roles', 'perms', 'users'));
 	}
 
 	/**

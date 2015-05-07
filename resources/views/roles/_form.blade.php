@@ -19,11 +19,35 @@
 			<span class="text-red small">Todos los campos aceptan 255 caracteres</span>
 		</div>
 	</div>
+	@if(isset($users))
 	<div class="col-md-12">
-		<div class="form-group">
-			{!! Form::label('Permissions', 'Permisos para Rol') !!}
-			{!! Form::select('perms_lists[]', $perms, null, ['class' => 'select form-control', 'id' => 'perm-select', 'multiple']) !!}
+		<div class="row">
+			<div class="col-md-6">
+				<h4>Usurarios relacionados a este rol</h4>
+				<table class="table table-striped table-hover ">
+					<thead>
+						<th>Nombre</th>
+						<th>Email</th>
+					</thead>
+					<tbody>
+					@foreach($users as $user)
+						<tr>
+							<td>{{ $user->name }}</td>
+							<td>{{ $user->email }}</td>
+						</tr>
+					@endforeach
+					</tbody>
+				</table>
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::label('Permissions', 'Permisos para Rol') !!}
+					{!! Form::select('perms_lists[]', $perms, null, ['class' => 'select form-control', 'id' => 'perm-select', 'multiple']) !!}
+				</div>
+			</div>
 		</div>
+	@endif
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary">{{ $submitButtonText }}</button>
 		</div>
