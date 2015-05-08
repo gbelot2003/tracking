@@ -9453,9 +9453,9 @@ legend {
 .checkbox-material span.check {
   display: none; }
 
-.content {
+#content {
   background: whitesmoke;
-  display: inline-block;
+  display: block;
   clear: both;
   padding: 26px 5px; }
 
