@@ -4,6 +4,9 @@
 Edición de {{ $roles->display_name }}
 @stop
 
+@section('link-button')
+	{!! Form::open(array('method' => 'DELETE', 'action' => array('RolesController@destroy', $roles->id))) !!}
+@stop
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">

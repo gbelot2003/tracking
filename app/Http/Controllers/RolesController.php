@@ -9,6 +9,7 @@ use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class RolesController extends Controller {
@@ -34,6 +35,7 @@ class RolesController extends Controller {
 
 		$perms = Permission::Lists('name', 'id');
 		return View('roles.create', compact('perms'));
+
 	}
 
 	/**
@@ -45,9 +47,8 @@ class RolesController extends Controller {
 	{
 
 		$roles = Role::create($request->all());
-		$roles->attachPermissions($request->input('perms_lists'));
-		flash('El nuevo rol a sido salvado');
-		return redirect('roles')->with('flash_message');
+		Session::flash('flash_message', 'El Rol a sido creado');
+		return redirect('roles');
 	}
 
 	/**
@@ -87,7 +88,7 @@ class RolesController extends Controller {
 		$roles = Role::findOrFail($id);
 		$roles->update($request->all());
 		$roles->perms()->sync($request->input('perms_lists'));
-		//flash('La información del rol a sido actualizada');
+		Session::flash('flash_message', 'El Rol a sido editado correctamente');
 		return redirect('roles');
 	}
 

@@ -14,6 +14,8 @@
 @stop
 
 @section('content')
+	@include('partials.flash')
+
 	<table class="table table-hover table-bordered">
 		<thead>
 			<th>Nombre</th>
