@@ -75,6 +75,7 @@ class PermissionsController extends Controller {
 	public function update(PermissionsFormRequest $request, $id)
 	{
 		$perm = Permission::findOrFail($id);
+		dd($request->all());
 		$perm->update($request->all());
 		Session::flash('flash_message', 'El Permiso a sido editado correctamente');
 		return redirect('permisos');

@@ -4,10 +4,6 @@
 Edición de {{ $roles->display_name }}
 @stop
 
-@section('link-button')
-	{!! Form::open(array('method' => 'DELETE', 'action' => array('RolesController@destroy', $roles->id))) !!}
-@stop
-
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
@@ -27,6 +23,7 @@ Edición de {{ $roles->display_name }}
 @section('content')
 	<div class="col-md-12">
 		@include('errors.form-error')
+
 		{!! Form::model($roles, ['method' => 'PUT', 'action' => ['RolesController@update', $roles->id]]) !!}
 			@include('roles._form', ['submitButtonText' => 'Editar'])
 		{!! Form::close() !!}
