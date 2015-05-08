@@ -17,9 +17,11 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('roles', 'RolesController');
 
-Route::resource('user', 'UserController');
-Entrust::routeNeedsPermission('user', ['user', 'user/*'], Redirect::to('/home'));
 Route::resource('permisos', 'PermissionsController');
+
+Route::resource('user', 'UserController');
+Entrust::routeNeedsRole('user', 'owner', Redirect::to('/home'));
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
