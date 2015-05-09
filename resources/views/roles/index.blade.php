@@ -39,7 +39,7 @@
 					<td>
 						<ul class="list-inline">
 							@foreach($rol->perms as $perms)
-								<li><a href="{{ action('PermissionsController@show', $perms->id) }}">{{ $perms->display_name }}</a></li>
+								<li><a href="{{ action('PermissionsController@edit', $perms->id) }}">{{ $perms->display_name }}</a></li>
 							@endforeach
 						</ul>
 					</td>
