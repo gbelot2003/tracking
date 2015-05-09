@@ -9,7 +9,7 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('roles') }}">Administración de Usuarios</a></li>
+		<li><a href="{{ url('user') }}">Administración de Usuarios</a></li>
 	</ol>
 @stop
 
@@ -34,8 +34,6 @@
 								<a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->name }}</a>
 							</li>
 						</ul>
-
-
 						@endforeach
 					</td>
 				</tr>
