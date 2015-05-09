@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -20,7 +21,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		return View('user.index');
+		$users = User::all();
+		return View('user.index', compact('users'));
 	}
 
 	/**
