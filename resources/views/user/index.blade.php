@@ -25,11 +25,17 @@
 		<tbody>
 			@foreach($users as $user)
 				<tr>
-					<td><a href="{{ $user->id }}">{{ $user->name }}</a></td>
+					<td><a href="{{ action('UserController@edit', $user->id) }}">{{ $user->name }}</a></td>
 					<td>{{ $user->email }}</td>
 					<td>
 						@foreach($user->roles as $rol)
-							{{ $rol->name }}
+						<ul class="list-inline">
+							<li>
+								<a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->name }}</a>
+							</li>
+						</ul>
+
+
 						@endforeach
 					</td>
 				</tr>
