@@ -31,7 +31,7 @@
 						@foreach($user->roles as $rol)
 						<ul class="list-inline">
 							<li>
-								<a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->name }}</a>
+								<a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->display_name }}</a>
 							</li>
 						</ul>
 						@endforeach

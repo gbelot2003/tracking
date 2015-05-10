@@ -32,7 +32,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View('user.create');
 	}
 
 	/**
@@ -53,7 +53,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+
 	}
 
 	/**
@@ -64,7 +64,8 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		return View('user.edit', compact('user'));
 	}
 
 	/**

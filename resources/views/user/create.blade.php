@@ -1,22 +1,19 @@
 @extends('app')
 
-@section('title')
-	Edición de {{ $user->name }}
-@stop
+@section('title', 'Creación de nuevo usuario')
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('user') }}">Administración de usuarios</a></li>
-		<li><a href="#">Edición de {{ $user->name }}</a></li>
+		<li><a href="#">Creación de nuevo usuario</a></li>
 	</ol>
 @stop
-
 @section('content')
 	<div class="col-md-12">
 		@include('errors.form-error')
-		{!! Form::model($user, ['method' => 'PUT', 'action' => ['UserController@update', $user->id]]) !!}
-		@include('user._form', ['submitButtonText' => 'Editar'])
+		{!! Form::open(['url' => 'user']) !!}
+		@include('user._form', ['submitButtonText' => 'crear'])
 		{!! Form::close() !!}
 	</div>
 @stop
