@@ -32,4 +32,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	/**
+	 * Debolver listado de roles por usuario
+	 * @return mixed
+	 */
+	public function getRolesListsAttribute()
+	{
+		return $this->roles->lists('id');
+	}
+
 }

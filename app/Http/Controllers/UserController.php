@@ -1,13 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\UserFormRequest;
 use App\Http\Controllers\Controller;
-
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
 class UserController extends Controller {
+
+	/**** Recordatorio importante ******/
+    /**  Hay que crear un metodo en el cual
+	/**  se crea automaticamente un password
+	 y este se envia directamente al correo
+	 del usuario que se esta creando   **/
 
 
 	public function __contruct()
@@ -32,7 +39,8 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		return View('user.create');
+		$roles = Role::Lists('display_name', 'id');
+		return View('user.create', compact('roles'));
 	}
 
 	/**
@@ -40,9 +48,14 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(UserFormRequest $userFormData)
 	{
-		//
+
+		$userFormData['password'] = bcrypt($userFormData['password']);
+		$user = User::create($userFormData->all());
+		$user->roles()->attach($userFormData->input('roles_lists')); // id only
+		Session::flash('flash_message', 'El usuario a sido creado');
+		return redirect('user');
 	}
 
 	/**
@@ -65,7 +78,8 @@ class UserController extends Controller {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
-		return View('user.edit', compact('user'));
+		$roles = Role::Lists('display_name', 'id');
+		return View('user.edit', compact('user', 'roles'));
 	}
 
 	/**
@@ -74,9 +88,13 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(UserFormRequest $userFormData, $id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$user->update($userFormData->all());
+		$user->roles()->sync($userFormData->input('roles_lists'));
+		Session::flash('flash_message', 'El usuario a sido editado correctamente');
+		return redirect('user');
 	}
 
 	/**

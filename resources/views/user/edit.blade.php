@@ -20,3 +20,11 @@
 		{!! Form::close() !!}
 	</div>
 @stop
+
+@section('post-script')
+	<script>
+		$('#rol-select').select2({
+			placeholder: 'Escoge un permiso'
+		});
+	</script>
+@stop
