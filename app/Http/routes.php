@@ -27,6 +27,8 @@ Route::resource('user', 'UserController');
 Entrust::routeNeedsRole('user', 'owner', Redirect::to('/home'));
 Entrust::routeNeedsRole('user/*', 'owner', Redirect::to('/home'));
 
+Route::get('listado/usuarios', 'ListadosController@usuarios');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
