@@ -91,7 +91,14 @@ class UserController extends Controller {
 	public function update(UserFormRequest $userFormData, $id)
 	{
 		$user = User::findOrFail($id);
-		$user->update($userFormData->all());
+
+		if(isset($userFormData['password'])):
+			$userFormData['password'] = bcrypt($userFormData->input('password'));
+		else:
+			$userFormData['password'] = $user->password;
+		endif;
+
+		$user->update($userFormData->input());
 		$user->roles()->sync($userFormData->input('roles_lists'));
 		Session::flash('flash_message', 'El usuario a sido editado correctamente');
 		return redirect('user');
