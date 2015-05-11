@@ -17,12 +17,15 @@ Route::get('home', 'HomeController@index');
 
 Route::resource('roles', 'RolesController');
 Entrust::routeNeedsRole('roles', 'owner', Redirect::to('/home'));
+Entrust::routeNeedsRole('roles/*', 'owner', Redirect::to('/home'));
 
 Route::resource('permisos', 'PermissionsController');
 Entrust::routeNeedsRole('permisos', 'owner', Redirect::to('/home'));
+Entrust::routeNeedsRole('permisos/*', 'owner', Redirect::to('/home'));
 
 Route::resource('user', 'UserController');
 Entrust::routeNeedsRole('user', 'owner', Redirect::to('/home'));
+Entrust::routeNeedsRole('user/*', 'owner', Redirect::to('/home'));
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
