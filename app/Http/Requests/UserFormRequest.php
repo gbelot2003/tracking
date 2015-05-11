@@ -21,11 +21,22 @@ class UserFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+		$create = [
 			'email' => 'required|email',
 			'password' => 'required|confirmed',
 			'name' => 'required'
 		];
+
+		$edit = [
+			'email' => 'required|email',
+			'name' => 'required'
+		];
+
+		if($this->method == 'PUT'){
+			return $edit;
+		} else {
+			return $create;
+		}
 	}
 
 }
