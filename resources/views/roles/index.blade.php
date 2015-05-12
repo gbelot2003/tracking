@@ -24,7 +24,6 @@
 			<th>Permisos relacionados</th>
 		</thead>
 		<tbody>
-
 			@foreach($roles as $rol)
 				<tr>
 					<td><a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->display_name }}</a></td>
@@ -32,7 +31,7 @@
 					<td>
 						<ul class="list-inline">
 							@foreach($rol->users as $user)
-								<li><a href="">{{ $user->name }}</a></li>
+								<li><a href="{{ action('UserController@edit', $user->id) }}">{{ $user->name }}</a></li>
 							@endforeach
 						</ul>
 					</td>
