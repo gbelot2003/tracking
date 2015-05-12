@@ -21,6 +21,7 @@
 
 				@else
 					<!--<li><a href="{{ url('/auth/register') }}">Register</a></li>-->
+					<li><a href="{{ url('/clientes') }}">Clientes</a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios y Permisos <span class="caret"></span></a>
 						<ul class="dropdown-menu">
