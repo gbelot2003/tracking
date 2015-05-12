@@ -10,7 +10,7 @@ class ClientesController extends Controller {
 
 	public function index()
 	{
-		$clientes = User::where();
+		$clientes = User::all();
 		return View('clientes.index');
 	}
 
