@@ -16,28 +16,24 @@
 @section('content')
 	@include('partials.flash')
 
-	<table class="table table-hover table-bordered">
+	<table id="users-table" class="table table-condensed">
 		<thead>
 		<th>Nombre</th>
 		<th>email</th>
-		<th>Rol asignado</th>
+		<th>Roles</th>
 		</thead>
-		<tbody>
-			@foreach($users as $user)
-				<tr>
-					<td><a href="{{ action('UserController@edit', $user->id) }}">{{ $user->name }}</a></td>
-					<td>{{ $user->email }}</td>
-					<td>
-						@foreach($user->roles as $rol)
-						<ul class="list-inline">
-							<li>
-								<a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->display_name }}</a>
-							</li>
-						</ul>
-						@endforeach
-					</td>
-				</tr>
-			@endforeach
-		</tbody>
 	</table>
+@stop
+
+@section('post-script')
+	<script>
+		$(function() {
+			$('#users-table').DataTable({
+
+				processing: true,
+				serverSide: true,
+				ajax: '{{ url("listados/usuarios-data") }}'
+			});
+		});
+	</script>
 @stop

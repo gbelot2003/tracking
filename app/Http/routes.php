@@ -27,6 +27,11 @@ Route::resource('user', 'UserController');
 Entrust::routeNeedsRole('user', 'owner', Redirect::to('/home'));
 Entrust::routeNeedsRole('user/*', 'owner', Redirect::to('/home'));
 
+Route::get('test', function(){
+	$users = App\User::all();
+	return ['users' => $users];
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

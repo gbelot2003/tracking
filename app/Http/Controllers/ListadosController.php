@@ -20,8 +20,18 @@ class ListadosController extends Controller {
 	//Diferentes listado con json respond
 	public function getUsuariosData()
 	{
-		$users = User::select(['id', 'name', 'email']);
-		return Datatables::of($users)->make();
+		$users = User::Select(['users.id', 'users.name', 'users.email', 'roles.name as rolname'])
+						->Join('role_user', 'users.id', '=', 'role_user.user_id')
+						->Join('roles', 'role_user.role_id', '=', 'roles.id');
+		return Datatables::of($users)
+			->removeColumn('id')
+			->removeColumn('name')
+			->removeColumn('email')
+			->removeColumn('rolname')
+			->addColumn('Nombre','<a href="{{ action(\'UserController@edit\', $id) }}">{{ $name }}</a>')
+			->addColumn('E-Mail','{{ $email }}')
+			->addColumn('Roles', '{{ $rolname }}')
+			->make();
 	}
 
 }
