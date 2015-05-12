@@ -1,19 +1,27 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\User;
+use Datatables;
 use Illuminate\Http\Request;
 
 class ListadosController extends Controller {
 
-	//Diferentes listado con json respond
-	public function usuarios()
+	public function __construct()
 	{
-		$user 	= User::all();
-		$count 	= $user->count();
-		return [ 'registers' => $count, 'data' => $user];
+		view()->share('controller', 'ListadosController.php');
+	}
+
+	public function getUsuarios()
+	{
+		return View('listados.usuarios');
+	}
+
+	//Diferentes listado con json respond
+	public function getUsuariosData()
+	{
+		$users = User::select(['id', 'name', 'email']);
+		return Datatables::of($users)->make();
 	}
 
 }

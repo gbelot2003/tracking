@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "40750c85c75eb548ceffca2189c2159a",
+    "hash": "c7e9cebe408626082710b9fdf3e2034a",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1795,6 +1795,59 @@
                 "environment"
             ],
             "time": "2014-12-05 15:19:21"
+        },
+        {
+            "name": "yajra/laravel-datatables-oracle",
+            "version": "v5.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yajra/laravel-datatables.git",
+                "reference": "3964c4de76b7fd84ca346b6f9afbb69aefdf7e1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/3964c4de76b7fd84ca346b6f9afbb69aefdf7e1f",
+                "reference": "3964c4de76b7fd84ca346b6f9afbb69aefdf7e1f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0",
+                "illuminate/filesystem": "~5.0",
+                "illuminate/http": "~5.0",
+                "illuminate/support": "~5.0",
+                "illuminate/view": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "yajra\\Datatables": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arjay Angeles",
+                    "email": "aqangeles@gmail.com"
+                }
+            ],
+            "description": "Server-side handler of DataTables jQuery Plugin for Laravel 4|5",
+            "keywords": [
+                "datatable",
+                "datatables",
+                "datatables jquery plugin",
+                "laravel",
+                "laravel4",
+                "laravel5"
+            ],
+            "time": "2015-05-09 02:26:56"
         },
         {
             "name": "zizaco/entrust",
