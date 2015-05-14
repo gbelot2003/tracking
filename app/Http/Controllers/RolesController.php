@@ -14,6 +14,12 @@ use Illuminate\Html\FormFacade;
 
 class RolesController extends Controller {
 
+
+	public function __contruct()
+	{
+		$this->middleware('owner');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\View;
 
 class PermissionsController extends Controller {
 
+
+	public function __contruct()
+	{
+		$this->middleware('owner');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

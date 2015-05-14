@@ -19,6 +19,7 @@ class UserController extends Controller {
 
 	public function __contruct()
 	{
+		$this->middleware('owner');
 		$this->pageTitle = 'Configuración de Usuarios';
 	}
 	/**
