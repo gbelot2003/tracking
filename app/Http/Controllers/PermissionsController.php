@@ -40,7 +40,7 @@ class PermissionsController extends Controller {
 	public function store(PermissionsFormRequest $request)
 	{
 		$perm = Permission::create($request->all());
-		return redirect('permiso');
+		return redirect('permisos');
 	}
 
 	/**
