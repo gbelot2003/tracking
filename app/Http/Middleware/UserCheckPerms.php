@@ -13,8 +13,10 @@ class UserCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(!$request->user()->hasRole('owner') || !$request->user()->can('user')){
-			return redirect('home');
+		if(!$request->user()->hasRole('owner')){
+			if(!$request->user()->can('user')){
+				return redirect('home');
+			}
 		}
 		return $next($request);
 	}

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionsTable extends Migration {
+class CreateUserStatus extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,9 @@ class CreatePermissionsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('permissions', function(Blueprint $table)
-		{
+		Schema::create('userstatus', function(Blueprint $table){
 			$table->increments('id');
-			$table->timestamps();
+			$table->string('name', 60);
 		});
 	}
 
@@ -26,7 +25,7 @@ class CreatePermissionsTable extends Migration {
 	 */
 	public function down()
 	{
-		//Schema::drop('permissions');
+		Schema::drop('userstatus');
 	}
 
 }
