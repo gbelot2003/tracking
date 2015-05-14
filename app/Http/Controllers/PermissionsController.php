@@ -12,9 +12,10 @@ use Illuminate\Support\Facades\View;
 class PermissionsController extends Controller {
 
 
-	public function __contruct()
+	public function __construct()
 	{
-		$this->middleware('owner');
+		$this->middleware('auth');
+		$this->middleware('PermissionCheckPerms');
 	}
 
 	/**

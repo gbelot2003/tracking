@@ -17,9 +17,10 @@ class UserController extends Controller {
 	 del usuario que se esta creando   **/
 
 
-	public function __contruct()
+	public function __construct()
 	{
-		$this->middleware('owner');
+		$this->middleware('auth');
+		$this->middleware('UserCheckPerms');
 		$this->pageTitle = 'Configuración de Usuarios';
 	}
 	/**

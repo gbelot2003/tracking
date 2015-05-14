@@ -2,7 +2,7 @@
 
 use Closure;
 
-class Demo {
+class HomeRolesCheck {
 
 	/**
 	 * Handle an incoming request.
@@ -13,12 +13,11 @@ class Demo {
 	 */
 	public function handle($request, Closure $next)
 	{
-
 		if($request->user()->hasRole('owner')){
-			return $next($request);
+			return redirect('user');
 		}
 
-		return redirect('home');
+		return $next($request);
 	}
 
 }
