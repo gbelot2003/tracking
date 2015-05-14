@@ -9,7 +9,7 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('premisos') }}">Administración de Permisos</a></li>
+		<li><a href="{{ url('permisos') }}">Administración de Permisos</a></li>
 	</ol>
 @stop
 
@@ -17,7 +17,7 @@
 
 	@include('partials.flash')
 
-<table class="table table-hover table-bordered">
+<table id="perms-table" class="table table-hover table-bordered">
 		<thead>
 		<th>Nombre</th>
 		<th>Descripción</th>
@@ -39,4 +39,12 @@
 		@endforeach
 		</tbody>
 	</table>
+@stop
+
+@section('post-script')
+	<script>
+		$(function() {
+			$('#perms-table').DataTable();
+		});
+	</script>
 @stop

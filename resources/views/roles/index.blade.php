@@ -16,7 +16,7 @@
 @section('content')
 	@include('partials.flash')
 
-	<table class="table table-hover table-bordered">
+	<table id="rols-table" class="table table-hover table-bordered">
 		<thead>
 			<th>Nombre</th>
 			<th>Descripción</th>
@@ -46,4 +46,12 @@
 			@endforeach
 		</tbody>
 	</table>
+@stop
+
+@section('post-script')
+	<script>
+		$(function() {
+			$('#rols-table').DataTable();
+		});
+	</script>
 @stop
