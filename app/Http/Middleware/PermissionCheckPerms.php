@@ -14,7 +14,9 @@ class PermissionCheckPerms {
 	public function handle($request, Closure $next)
 	{
 		if(!$request->user()->hasRole('owner')){
-			return redirect('home');
+			if (!$request->user()->can('rol-full')){
+				return redirect('home');
+			}
 		}
 		return $next($request);
 	}
