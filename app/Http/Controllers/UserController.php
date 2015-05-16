@@ -11,11 +11,6 @@ use Illuminate\Support\Facades\View;
 class UserController extends Controller {
 
 	/**** Recordatorio importante ******/
-    /**  Hay que crear un metodo en el cual
-	/**  se crea automaticamente un password
-	 y este se envia directamente al correo
-	 del usuario que se esta creando   **/
-
 
 	public function __construct()
 	{
