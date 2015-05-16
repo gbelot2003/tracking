@@ -29,7 +29,6 @@
 	<script>
 		$(function() {
 			$('#users-table').DataTable({
-
 				processing: true,
 				serverSide: true,
 				ajax: '{{ url("listados/usuarios-data") }}'
