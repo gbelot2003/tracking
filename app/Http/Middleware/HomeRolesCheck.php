@@ -17,6 +17,10 @@ class HomeRolesCheck {
 			return redirect('user');
 		}
 
+		if($request->user()->hasRole('cliente')){
+			return redirect('mis-paquetes');
+		}
+
 		return $next($request);
 	}
 

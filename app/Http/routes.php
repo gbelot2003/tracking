@@ -23,6 +23,8 @@ Route::resource('user', 'UserController');
 
 Route::get('clientes', 'ClientesController@index');
 
+route::get('mis-paquetes', 'PaquetesController@paquetes');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
