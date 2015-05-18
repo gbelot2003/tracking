@@ -28,9 +28,9 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#!">Configuraciones Generales<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Agencias y establecimientos</a></li>
-							<li><a href="#">Secciones administrativas</a></li>
-							<li><a href="#">Cargos de personal</a></li>
+							<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
+							<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
+							<li><a href="{{ url('cargos') }}">Cargos de personal</a></li>
 							<li><a href="#">Control de Personal</a></li>
 						</ul>
 					</li>
