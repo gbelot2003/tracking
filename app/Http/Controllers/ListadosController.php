@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Municipio;
 use App\Role;
 use App\User;
 use Datatables;
@@ -18,6 +19,16 @@ class ListadosController extends Controller {
 		return View('listados.usuarios');
 	}
 
+	/**
+	 * @param $depto
+	 * @return mixed
+	 */
+	public function getMunicipios($depto)
+	{
+		$ndep = (int) $depto;
+		return Municipio::select('id', 'municipio')
+			->where('departamento_id', '=', $ndep)->get();
+	}
 	//Diferentes listado con json respond
 	public function getUsuariosData()
 	{
