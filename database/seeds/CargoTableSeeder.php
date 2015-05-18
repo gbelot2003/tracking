@@ -66,6 +66,11 @@ class CargoTableSeeder extends Seeder{
 		Cargo::create([
 			'name' => 'Conserje'
 		]);
+
+		Cargo::create([
+			'name' => 'Representante de Sección'
+		]);
+
 	}
 
 }
