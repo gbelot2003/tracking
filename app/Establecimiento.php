@@ -32,5 +32,21 @@ class Establecimiento extends Model {
 		return $this->belongsTo('App\Departamento');
 	}
 
+	/**
+	 * Listado de departamentos para lists
+	 * @return array
+	 */
+	public function getDepartamentoListsAttribute()
+	{
+		return $this->perms->lists('id');
+	}
 
+	/**
+	 * Listado de Municipios para lists
+	 * @return array
+	 */
+	public function getMunicipioListsAttribute()
+	{
+		return $this->perms->lists('id');
+	}
 }
