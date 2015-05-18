@@ -15,7 +15,9 @@ class CreateSujetosTable extends Migration {
 		Schema::create('sujetos', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('establecimientos_id')->unsigned();
 			$table->integer('seccions_id')->unsigned();
+			$table->integer('cargos_id')->unsigned();
 			$table->string('name');
 		});
 	}
