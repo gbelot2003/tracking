@@ -14,6 +14,18 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		$this->call('DepartamentoTableSeeder');
+		$this->command->info('Departamentos table seeded!');
+
+		$this->call('MunicipioTableSeeder');
+		$this->command->info('Municipios table seeded!');
+
+		$this->call('EstablecimientoTableSeeder');
+		$this->command->info('Establecimientos table seeded!');
+
+		$this->call('SeccionTableSeeder');
+		$this->command->info('Seccions table seeded!');
+
 		$this->call('RoleTableSeeder');
 		$this->command->info('Roles table seeded!');
 
@@ -23,8 +35,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->command->info('Users table seeded!');
 
-		$this->call('DepartmentTableSeeder');
-		$this->command->info('Departments table seeded!');
 	}
 
 }
