@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder{
         DB::table('users')->delete();
 
         User::create([
-			'userstatuses_id' => 1,
+			'userstatus_id' => 1,
 			'name' => 'gbelot2003',
             'first_name' => 'Gerardo A',
 			'last_name' => 'Belot',
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder{
         ]);
 
 		User::create([
-			'userstatuses_id' => 1,
+			'userstatus_id' => 1,
 			'name' => 'amelara',
 			'first_name' => 'Antonio H',
 			'last_name' => 'Melara Fortin',

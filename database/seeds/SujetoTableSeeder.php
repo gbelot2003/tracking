@@ -16,23 +16,23 @@ class SujetoTableSeeder extends Seeder{
 		DB::table('sujetos')->delete();
 
 		Sujeto::create([
-			'establecimientos_id' => 2,
-			'seccions_id' => '1',
-			'cargos_id' => '6',
+			'establecimiento_id' => 2,
+			'seccion_id' => '1',
+			'cargo_id' => '6',
 			'name' => 'Antonio Melara'
 		]);
 
 		Sujeto::create([
 			'establecimientos_id' => 3,
-			'seccions_id' => 8,
-			'cargos_id' => 6,
+			'seccion_id' => 8,
+			'cargo_id' => 6,
 			'name' => 'Luis Bustillo'
 		]);
 
 		Sujeto::create([
 			'establecimientos_id' => 5,
-			'seccions_id' => 12,
-			'cargos_id' => 6,
+			'seccion_id' => 12,
+			'cargo_id' => 6,
 			'name' => 'Dennis Milla'
 		]);
 	}
