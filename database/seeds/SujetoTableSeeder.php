@@ -23,7 +23,7 @@ class SujetoTableSeeder extends Seeder{
 		]);
 
 		Sujeto::create([
-			'establecimientos_id' => 3,
+			'establecimiento_id' => 3,
 			'seccion_id' => 8,
 			'cargo_id' => 6,
 			'name' => 'Luis Bustillo'
