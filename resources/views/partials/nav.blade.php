@@ -25,15 +25,15 @@
 						<li><a href="{{ url('/clientes') }}">Clientes</a></li>
 					@endif
 
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#!">Configuraciones Generales<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Agencias y establecimientos</a></li>
-								<li><a href="#">Secciones administrativas</a></li>
-								<li><a href="#">Cargos de personal</a></li>
-								<li><a href="#">Control de Personal</a></li>
-							</ul>
-						</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#!">Configuraciones Generales<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Agencias y establecimientos</a></li>
+							<li><a href="#">Secciones administrativas</a></li>
+							<li><a href="#">Cargos de personal</a></li>
+							<li><a href="#">Control de Personal</a></li>
+						</ul>
+					</li>
 
 					@if(Auth::user()->hasRole(['owner']))
 						<li class="dropdown">
@@ -45,6 +45,7 @@
 							</ul>
 						</li>
 					@endif
+
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
