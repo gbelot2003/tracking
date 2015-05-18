@@ -21,6 +21,12 @@ Route::resource('permisos', 'PermissionsController');
 
 Route::resource('user', 'UserController');
 
+Route::resource('secciones', 'SeccionesController');
+
+Route::resource('cargos', 'CargosController');
+
+Route::resource('establecimientos', 'EstablecimientosController');
+
 Route::get('clientes', 'ClientesController@index');
 
 route::get('mis-paquetes', 'PaquetesController@paquetes');
