@@ -20,7 +20,17 @@ class Establecimiento extends Model {
 	 */
 	public function municipio()
 	{
-		return $this->belongsTo('Ap\Municipio');
+		return $this->belongsTo('App\Municipio');
 	}
+
+	/**
+	 * Un establecimiento pertenece a un departamento politico
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function departamento()
+	{
+		return $this->belongsTo('App\Departamento');
+	}
+
 
 }

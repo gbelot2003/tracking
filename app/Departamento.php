@@ -24,4 +24,14 @@ class Departamento extends Model {
 		return $this->hasMany('App\Municipio');
 	}
 
+	/**
+	 * Un departamento tiene muchas sucursales
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function establecimientos()
+	{
+		return $this->hasMany('App\Establecimiento');
+	}
+
 }
