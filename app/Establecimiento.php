@@ -14,4 +14,13 @@ class Establecimiento extends Model {
 	 */
 	public $timestamps = false;
 
+	/**
+	 * Un establecimiento pertenece a un municipio
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function municipio()
+	{
+		return $this->belongsTo('Ap\Municipio');
+	}
+
 }

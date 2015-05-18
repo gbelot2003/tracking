@@ -13,4 +13,13 @@ class Seccion extends Model {
 	 * @var bool
 	 */
 	public $timestamps = false;
+
+	/**
+	 * Una seccion puede tener varios sujetos.
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function sujeto()
+	{
+		return $this->hasMany('App\Sujeto');
+	}
 }

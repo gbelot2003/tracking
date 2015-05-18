@@ -23,4 +23,13 @@ class Municipio extends Model {
 	{
 		return $this->belongsTo('App\Departamento');
 	}
+
+	/**
+	 * Un municipio puede tener varios establecimientos
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function establecimientos()
+	{
+		return $this->hasMany('App\Establecimiento');
+	}
 }

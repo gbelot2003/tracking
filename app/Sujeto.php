@@ -14,4 +14,22 @@ class Sujeto extends Model {
 	 */
 	public $timestamps = false;
 
+	/**
+	 * Un sujeto puede pertenece a una sección
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function seccion()
+	{
+		return $this->belongsTo('App\Seccion');
+	}
+
+	/**
+	 * Un sujeto tiene un cargo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function cargo()
+	{
+		return $this->belongsTo('App\Cargo');
+	}
+
 }

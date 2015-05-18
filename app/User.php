@@ -41,4 +41,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->roles->lists('id');
 	}
 
+	/**
+	 * Estado del usuario en cuestion
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * Solo deberian cambiarlo Administradores Generales del sistema
+	 */
+	public function estado()
+	{
+		return $this->belongsTo('App\Userstatus');
+	}
+
 }
