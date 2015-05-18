@@ -26,6 +26,12 @@ class RoleTableSeeder extends Seeder{
 		]);
 
 		Role::create([
+			'name' => 'centro-acopio',
+			'display_name' => 'Usuario Centro de acopio',
+			'description' => 'Regulador en centro de acopio',
+		]);
+
+		Role::create([
 			'name' => 'currier',
 			'display_name' => 'Currier de Mensageria',
 			'description' => 'Rol administrador, acceso a formularios de envio y distribución',

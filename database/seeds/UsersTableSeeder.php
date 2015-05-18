@@ -31,13 +31,23 @@ class UsersTableSeeder extends Seeder{
 			'password' => Hash::make('Luna0102'),
 		]);
 
+		User::create([
+			'userstatus_id' => 1,
+			'name' => 'jmelendez',
+			'first_name' => 'Julio',
+			'last_name' => 'Melendez Caceres',
+			'email' => 'jmelendez@hotmail.com',
+			'password' => Hash::make('Luna0102'),
+		]);
+
 		$user = User::find(1);
 		$user->attachRole(1);
 
 		$user = User::find(2);
-		$user->attachRole(4);
+		$user->attachRole(5);
 
-
+		$user = User::find(3);
+		$user->attachRole(3);
 
 	}
 }
