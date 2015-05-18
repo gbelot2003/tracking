@@ -8,22 +8,26 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-
+/** Hay que modificar el seeder */
 class UsersTableSeeder extends Seeder{
     public function run(){
         DB::table('users')->delete();
 
         User::create([
-            'name' => 'gbelot2003',
-            'userstatuses_id' => 1,
+			'userstatuses_id' => 1,
+			'name' => 'gbelot2003',
+            'first_name' => 'Gerardo A',
+			'last_name' => 'Belot',
 			'email' => 'gbelot2003@hotmail.com',
             'password' => Hash::make('Luna0102'),
         ]);
 
 		User::create([
-			'name' => 'Departamento de Compras, Ficohsa Central',
 			'userstatuses_id' => 1,
-			'email' => 'melara@hotmail.com',
+			'name' => 'amelara',
+			'first_name' => 'Antonio H',
+			'last_name' => 'Melara Fortin',
+			'email' => 'amelara@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
 
