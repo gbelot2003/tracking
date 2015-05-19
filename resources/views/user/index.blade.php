@@ -31,6 +31,7 @@
 			$('#users-table').DataTable({
 				processing: true,
 				serverSide: true,
+				"pagingType": "full_numbers",
 				ajax: '{{ url("listados/usuarios-data") }}'
 			});
 		});
