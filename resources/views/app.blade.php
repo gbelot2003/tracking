@@ -23,11 +23,11 @@
 
 					@if($__env->yieldContent('link-button'))
 
-						<div class="col-md-10">
+						<div class="col-md-9">
 							<h2 class="page-title">@yield('title', 'Sistema de Track')</h2>
 						</div>
 
-						<div class="col-md-2">@yield('link-button')</div>
+						<div class="col-md-3">@yield('link-button')</div>
 
 					@else
 
