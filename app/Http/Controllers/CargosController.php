@@ -1,9 +1,10 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Cargo;
 use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
+use App\Http\Requests\CargosFormRequest;
+use Illuminate\Support\Facades\View;
+use Requests;
 
 class CargosController extends Controller {
 
@@ -14,7 +15,8 @@ class CargosController extends Controller {
 	 */
 	public function index()
 	{
-		return View('cargos.index');
+		$cargos = Cargo::all();
+		return View('cargos.index', compact('cargos'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class CargosController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View('cargos.create');
 	}
 
 	/**
@@ -32,9 +34,11 @@ class CargosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CargosFormRequest $request)
 	{
-		//
+		$cargo = Cargo::create($request->all());
+		Session::flash('flash_message', 'El cargo a sido creado');
+		return redirect('cargos');
 	}
 
 	/**
@@ -56,7 +60,8 @@ class CargosController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$cargo = Cargo::findOrFail($id);
+		return View('cargos.edit', compact('cargo'));
 	}
 
 	/**
@@ -65,9 +70,12 @@ class CargosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(CargosFormRequest $request, $id)
 	{
-		//
+		$cargo = Cargo::findOrFail($id);
+		$cargo->update($request->all());
+		Session::flash('flash_message', 'La sección a sido editada');
+		return redirect('secciones');
 	}
 
 	/**

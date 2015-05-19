@@ -14,4 +14,10 @@ class Cargo extends Model {
 	 */
 	public $timestamps = false;
 
+	/**
+	 * Mass Assigment protection
+	 * @var array
+	 */
+	protected $fillable = ['name'];
+
 }
