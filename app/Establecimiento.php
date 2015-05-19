@@ -15,6 +15,12 @@ class Establecimiento extends Model {
 	public $timestamps = false;
 
 	/**
+	 * Mass assingment protection
+	 * @var array
+	 */
+	protected $fillable = ['name', 'departamento_id', 'municipio_id'];
+
+	/**
 	 * Un establecimiento pertenece a un municipio
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
