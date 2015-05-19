@@ -44,18 +44,6 @@ class SeccionTableSeeder extends Seeder {
 		]);
 
 		Seccion::create([
-			'name' => 'Sección Administrativa'
-		]);
-
-		Seccion::create([
-			'name' => 'Sección Administrativa'
-		]);
-
-		Seccion::create([
-			'name' => 'Sección Administrativa'
-		]);
-
-		Seccion::create([
 			'name' => 'Gerencia'
 		]);
 
