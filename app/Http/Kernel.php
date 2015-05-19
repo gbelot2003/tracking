@@ -29,7 +29,7 @@ class Kernel extends HttpKernel {
 		'guest' 						=> 'App\Http\Middleware\RedirectIfAuthenticated',
 		'CargosCheckPerms' 				=> 'App\Http\Middleware\CargosCheckPerms',
 		'EstablecimientosCheckPerms'	=> 'App\Http\Middleware\EstablecimientosCheckPerms',
-		'SeccionesCheckPerms'			=> 'App\Http\Middleware\SeccionesCheckPerms',
+		'SeccionsCheckPerms'			=> 'App\Http\Middleware\SeccionsCheckPerms',
 		'UserCheckPerms' 				=> 'App\Http\Middleware\UserCheckPerms',
 		'RoleCheckPerms' 				=> 'App\Http\Middleware\RoleCheckPerms',
 		'PermissionCheckPerms'			=> 'App\Http\Middleware\PermissionCheckPerms',
