@@ -15,6 +15,12 @@ class Seccion extends Model {
 	public $timestamps = false;
 
 	/**
+	 * Proteccion para MassAssigments
+	 * @var array
+	 */
+	protected $fillable = ['name'];
+
+	/**
 	 * Una seccion puede tener varios sujetos.
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
