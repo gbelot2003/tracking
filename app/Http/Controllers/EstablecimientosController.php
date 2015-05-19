@@ -12,6 +12,13 @@ use Illuminate\Support\Facades\View;
 
 class EstablecimientosController extends Controller {
 
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('EstablecimientosCheckPerms');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

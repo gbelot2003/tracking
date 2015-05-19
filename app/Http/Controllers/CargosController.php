@@ -8,6 +8,12 @@ use Requests;
 
 class CargosController extends Controller {
 
+	
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('CargosCheckPerms');
+	}
 	/**
 	 * Display a listing of the resource.
 	 *

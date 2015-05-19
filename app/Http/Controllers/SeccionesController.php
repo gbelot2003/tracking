@@ -12,6 +12,12 @@ use Validator;
 
 class SeccionesController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('SeccionesCheckPerms');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
