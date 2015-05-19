@@ -23,7 +23,7 @@
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
 
-						<li><a href="{{ url('/clientes') }}">Clientes</a></li>
+						<li><a href="{{ url('/registros') }}">Registros</a></li>
 
 					@endif
 
