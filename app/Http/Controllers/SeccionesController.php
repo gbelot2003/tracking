@@ -1,9 +1,14 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
+use App\Http\Requests\SeccionesFormRequest;
+use Illuminate\Support\Facades\Session;
+use Requests;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\RedirectResponse;
+use App\Seccion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use Validator;
 
 class SeccionesController extends Controller {
 
@@ -14,7 +19,8 @@ class SeccionesController extends Controller {
 	 */
 	public function index()
 	{
-		return View('secciones.index');
+		$seccion = Seccion::all();
+		return View('secciones.index', compact('seccion'));
 	}
 
 	/**
@@ -24,7 +30,7 @@ class SeccionesController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View('secciones.create');
 	}
 
 	/**
@@ -32,9 +38,11 @@ class SeccionesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(SeccionesFormRequest $request)
 	{
-		//
+		$seccion = Seccion::create($request->all());
+		Session::flash('flash_message', 'La sección a sido creado');
+		return redirect('secciones');
 	}
 
 	/**
@@ -56,7 +64,8 @@ class SeccionesController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$seccion = Seccion::findOrFail($id);
+		return View('secciones.edit', compact('seccion'));
 	}
 
 	/**
@@ -65,9 +74,12 @@ class SeccionesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(SeccionesFormRequest $request, $id)
 	{
-		//
+		$seccion = Seccion::findOrFail($id);
+		$seccion->update($request->all());
+		Session::flash('flash_message', 'La sección a sido editada');
+		return redirect('secciones');
 	}
 
 	/**
