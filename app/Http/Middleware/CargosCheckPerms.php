@@ -13,6 +13,9 @@ class CargosCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])) {
+			return redirect('home');
+		}
 		return $next($request);
 	}
 
