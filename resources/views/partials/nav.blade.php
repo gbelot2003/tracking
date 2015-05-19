@@ -21,27 +21,48 @@
 
 				@else
 
-					@if(Auth::user()->hasRole(['supervisor, currier']))
+					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
+
 						<li><a href="{{ url('/clientes') }}">Clientes</a></li>
+
 					@endif
+
 
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#!">Configuraciones Generales<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
-							<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
-							<li><a href="{{ url('cargos') }}">Cargos de personal</a></li>
-							<li><a href="#">Control de Personal</a></li>
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
+
+								<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
+								<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
+								<li><a href="{{ url('cargos') }}">Cargos de personal</a></li>
+
+							@endif
+
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
+
+									<li><a href="{{ url('personal') }}">Control de Personal</a></li>
+
+								@endif
+
 						</ul>
 					</li>
 
-					@if(Auth::user()->hasRole(['owner']))
+
+					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 						<li class="dropdown">
 							<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Usuarios y Permisos <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="{{ url('user') }}">Usuarios</a></li>
-								<li><a href="{{ url('roles') }}">Roles</a></li>
-								<li><a href="{{ url('permisos') }}">Permisos</a></li>
+
+								@if(Auth::user()->hasRole(['owner', 'admin']))
+
+									<li><a href="{{ url('permisos') }}">Permisos</a></li>
+									<li><a href="{{ url('roles') }}">Roles</a></li>
+
+								@endif
+
+									<li><a href="{{ url('user') }}">Usuarios</a></li>
+
 							</ul>
 						</li>
 					@endif
