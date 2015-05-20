@@ -23,6 +23,7 @@
 			<th>Establecimento</th>
 			<th>Sección</th>
 			<th>Cargo</th>
+			<th>Operaciones</th>
 		</thead>
 		<tbody>
 
@@ -34,7 +35,17 @@
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable({
-				"pageLength": 10
+				processing: true,
+				serverSide: true,
+				ajax: '{{ URL::to("listados/personal") }}',
+				columns: [
+					{data: 'last_name', name: 'traders.last_name'},
+					{data: 'first_name', name: 'traders.first_name'},
+					{data: 'name', name: 'establecimientos.name'},
+					{data: 'seccion', name: 'seccions.name'},
+					{data: 'cargo', name: 'cargos.name'},
+					{data: 'Operaciones', name: 'acciones', searchable: false},
+				]
 			});
 		});
 	</script>

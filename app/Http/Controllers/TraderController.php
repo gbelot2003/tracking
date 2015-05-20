@@ -59,7 +59,8 @@ class TraderController extends Controller {
 	 */
 	public function show($id)
 	{
-		return View('trader.show');
+		$trader = Trader::findOrFail($id);
+		return View('trader.show', compact('trader'));
 	}
 
 	/**
