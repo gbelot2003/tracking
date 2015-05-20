@@ -27,14 +27,7 @@ Route::resource('establecimientos', 'EstablecimientosController');
  * y el front-end y ademas por la similitud con usuarios, TraderController
  * se designara como personal en las rutas y titulos **/
 
-Route::get('personal', 'TraderController@index');
-
-Route::get('personal/create', 'TraderController@create');
-
-Route::get('personal/{$id}/edit', 'TraderController@edit');
-
-Route::get('personal/show/{$id}', 'TraderController@show');
-
+Route::resource('personal', 'TraderController');
 
 Route::get('clientes', 'ClientesController@index');
 
