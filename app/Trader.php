@@ -31,9 +31,9 @@ class Trader extends Model {
 	 * Un trader pertenece a un establecimiento
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function establecimento()
+	public function establecimiento()
 	{
-		return $this->belongsTo('App\Establecimento');
+		return $this->belongsTo('App\Establecimiento');
 	}
 
 	/**

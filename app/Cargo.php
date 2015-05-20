@@ -26,6 +26,6 @@ class Cargo extends Model {
 	 */
 	public function trader()
 	{
-		return $this->hasMany('App\Trader');
+		return $this->hasOne('App\Trader');
 	}
 }

@@ -44,7 +44,7 @@ class Establecimiento extends Model {
 	 */
 	public function traders()
 	{
-		return $this->hasMany('App\Trader');
+		return $this->hasOne('App\Trader');
 	}
 
 	/**
