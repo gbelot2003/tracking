@@ -3,9 +3,16 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Trader;
 use Illuminate\Http\Request;
 
 class TraderController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('TraderCheckPerms');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +21,8 @@ class TraderController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$trader = Trader::all();
+		return View('trader.index');
 	}
 
 	/**
