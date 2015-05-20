@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SujetoTableSeeder');
 		$this->command->info('Sujetos table seeded!');
 
+		$this->call('TraderTableSeeder');
+		$this->command->info('Sujetos table seeded!');
+
 		$this->call('RoleTableSeeder');
 		$this->command->info('Roles table seeded!');
 
