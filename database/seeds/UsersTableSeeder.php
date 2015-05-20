@@ -40,14 +40,49 @@ class UsersTableSeeder extends Seeder{
 			'password' => Hash::make('Luna0102'),
 		]);
 
+		User::create([
+			'userstatus_id' => 1,
+			'name' => 'fmaradiaga',
+			'first_name' => 'Fernando',
+			'last_name' => 'Maradiaga',
+			'email' => 'fmaradiaga@hotmail.com',
+			'password' => Hash::make('Luna0102'),
+		]);
+
+		User::create([
+			'userstatus_id' => 1,
+			'name' => 'lsoliz',
+			'first_name' => 'Luis A',
+			'last_name' => 'Soliz Mendieta',
+			'email' => 'lsoliz@hotmail.com',
+			'password' => Hash::make('Luna0102'),
+		]);
+
+		User::create([
+			'userstatus_id' => 1,
+			'name' => 'jmartinez',
+			'first_name' => 'Juan A',
+			'last_name' => 'Martinez Molina',
+			'email' => 'jmartinez@hotmail.com',
+			'password' => Hash::make('Luna0102'),
+		]);
+
 		$user = User::find(1);
 		$user->attachRole(1);
 
 		$user = User::find(2);
-		$user->attachRole(5);
+		$user->attachRole(2);
 
 		$user = User::find(3);
 		$user->attachRole(3);
 
+		$user = User::find(4);
+		$user->attachRole(4);
+
+		$user = User::find(5);
+		$user->attachRole(5);
+
+		$user = User::find(6);
+		$user->attachRole(5);
 	}
 }
