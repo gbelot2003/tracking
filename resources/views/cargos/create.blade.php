@@ -13,7 +13,7 @@
 @section('content')
 	<div class="col-md-12">
 		@include('errors.form-error')
-		{!! Form::open(['action' => ['SeccionesController@store']]) !!}
+		{!! Form::open(['action' => ['CargosController@store']]) !!}
 			@include('cargos._form', ['submitButtonText' => 'Crear Cargo'])
 		{!! Form::close() !!}
 	</div>
