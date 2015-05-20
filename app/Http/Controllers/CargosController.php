@@ -4,6 +4,7 @@ use App\Cargo;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CargosFormRequest;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Session;
 use Requests;
 
 class CargosController extends Controller {
