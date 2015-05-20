@@ -13,6 +13,9 @@ class TraderCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier'])) {
+			return redirect('home');
+		}
 		return $next($request);
 	}
 

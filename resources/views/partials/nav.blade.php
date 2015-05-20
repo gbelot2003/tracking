@@ -39,7 +39,7 @@
 
 							@endif
 
-							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 
 									<li><a href="{{ url('personal') }}">Control de Personal</a></li>
 
