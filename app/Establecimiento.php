@@ -39,6 +39,15 @@ class Establecimiento extends Model {
 	}
 
 	/**
+	 * Un establecimento puede tener varios traders
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function traders()
+	{
+		return $this->hasMany('App\Trader');
+	}
+
+	/**
 	 * Listado de departamentos para lists
 	 * @return array
 	 */

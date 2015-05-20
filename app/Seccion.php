@@ -21,11 +21,11 @@ class Seccion extends Model {
 	protected $fillable = ['name'];
 
 	/**
-	 * Una seccion puede tener varios sujetos.
+	 * Una seccion puede tener varios traders
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function sujeto()
+	public function traders()
 	{
-		return $this->hasMany('App\Sujeto');
+		return $this->hasMany('App\Trader');
 	}
 }

@@ -20,4 +20,12 @@ class Cargo extends Model {
 	 */
 	protected $fillable = ['name'];
 
+	/**
+	 * Un cargo puede tener varios traders
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function trader()
+	{
+		return $this->hasMany('App\Trader');
+	}
 }

@@ -51,4 +51,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsTo('App\Userstatus');
 	}
 
+	/**
+	 * Un usuario puede tener varios usuarios traders
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function traders()
+	{
+		return $this->hasMany('App\Trader');
+	}
 }
