@@ -15,7 +15,13 @@ class CreateTradersTable extends Migration {
 		Schema::create('traders', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->timestamps();
+			$table->integer('establecimiento_id')->unsigned();
+			$table->integer('seccion_id')->unsigned();
+			$table->integer('cargo_id')->unsigned();
+			$table->string('first_name');
+			$table->string('last_name');
+			$table->integer('user_id')->unsigned()->nullable(); //registro de usuario relacionado a los traders
+			$table->timestamps(); // Fechas de creaccion y edición
 		});
 	}
 
