@@ -1,8 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Cargo;
+use App\Establecimiento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Seccion;
 use App\Trader;
 use Illuminate\Http\Request;
 
@@ -21,8 +24,7 @@ class TraderController extends Controller {
 	 */
 	public function index()
 	{
-		$trader = Trader::all();
-		return View('trader.index');
+		return View('trader.index', compact('traders'));
 	}
 
 	/**
@@ -32,7 +34,11 @@ class TraderController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		$establecimentos = Establecimiento::lists('name', 'id');
+		$secciones = Seccion::lists('name', 'id');
+		$cargo = Cargo::lists('name', 'id');
+
+		return View('trader.create');
 	}
 
 	/**
@@ -53,7 +59,7 @@ class TraderController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return View('trader.show');
 	}
 
 	/**
@@ -64,8 +70,9 @@ class TraderController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		return View('trader.edit');
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
