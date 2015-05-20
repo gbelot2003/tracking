@@ -35,7 +35,7 @@
 
 								<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
 								<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
-								<li><a href="{{ url('cargos') }}">Cargos de personal</a></li>
+								<li><a href="{{ url('cargos') }}">Control Cargos</a></li>
 
 							@endif
 
