@@ -5,6 +5,8 @@ use App\Establecimiento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\TradersFormRequest;
+use Illuminate\Support\Facades\Session;
 use App\Seccion;
 use App\Trader;
 use App\User;
@@ -35,9 +37,9 @@ class TraderController extends Controller {
 	 */
 	public function create()
 	{
-		$establecimiento = Establecimiento::lists('name', 'id');
-		$secciones = Seccion::lists('name', 'id');
-		$cargo = Cargo::lists('name', 'id');
+		$establecimiento = Establecimiento::Lists('name', 'id');
+		$secciones = Seccion::Lists('name', 'id');
+		$cargo = Cargo::Lists('name', 'id');
 
 		return View('trader.create', compact('establecimiento', 'secciones', 'cargo'));
 	}
@@ -47,9 +49,11 @@ class TraderController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(TradersFormRequest $request)
 	{
-		return redirect('personal');
+		$trader = Trader::create($request->all());
+		Session::flash('flash_message', 'El nuevo registro a sido creado');
+		return redirect()->route('personal.show', $trader->id);
 	}
 
 	/**
@@ -72,10 +76,10 @@ class TraderController extends Controller {
 	 */
 	public function edit($id)
 	{
+		$trader = Trader::findOrFail($id);
 		$establecimiento = Establecimiento::lists('name', 'id');
 		$secciones = Seccion::lists('name', 'id');
 		$cargo = Cargo::lists('name', 'id');
-		$trader = Trader::findOrFail($id);
 		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo'));
 	}
 
@@ -86,9 +90,12 @@ class TraderController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(TradersFormRequest $request, $id)
 	{
-		//
+		$trader = Trader::findOrFail($id);
+		$trader->update($request->all());
+		Session::flash('flash_message', 'El nuevo a sido editado');
+		return redirect()->route('personal.show', $trader->id);
 	}
 
 	/**
