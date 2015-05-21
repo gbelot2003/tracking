@@ -21,9 +21,16 @@ class TradersFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			//
+		$rules = [
+			'establecimiento_id'	=>	'required|integer',
+			'seccion_id' 			=>	'required|integer',
+			'cargo_id'				=>	'required|integer',
+			'first_name'			=> 	'String|integer',
+			'last_name'				=>  'String|integet',
+			'user_id'				=> 	'integer'
 		];
+
+		return $rules;
 	}
 
 }
