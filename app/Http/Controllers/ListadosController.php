@@ -32,7 +32,7 @@ class ListadosController extends Controller {
 			->removeColumn('name')
 			->removeColumn('email')
 			->removeColumn('rolname')
-			->addColumn('Nombre','<a href="{{ action(\'UserController@edit\', $id) }}">{{ $name }}</a>')
+			->addColumn('Nombre','<a href="{{ action(\'UserController@show\', $id) }}">{{ $name }}</a>')
 			->addColumn('E-Mail','{{ $email }}')
 			->addColumn('Roles', '{{ $rolname }}')
 			->make();
