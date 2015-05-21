@@ -15,6 +15,11 @@ class CreateEncomiendasTable extends Migration {
 		Schema::create('encomiendas', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('seder_id')->unsigned();
+			$table->integer('destinatari_id')->unsigned();
+			$table->integer('estadopaquete_id')->unsigned();
+			$table->integer('user_id')->unsigned();
+			$table->text('descripcion');
 			$table->timestamps();
 		});
 	}
