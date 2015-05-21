@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Seccion;
 use App\Trader;
+use App\User;
 use Illuminate\Http\Request;
 
 class TraderController extends Controller {
@@ -34,11 +35,11 @@ class TraderController extends Controller {
 	 */
 	public function create()
 	{
-		$establecimentos = Establecimiento::lists('name', 'id');
+		$establecimiento = Establecimiento::lists('name', 'id');
 		$secciones = Seccion::lists('name', 'id');
 		$cargo = Cargo::lists('name', 'id');
 
-		return View('trader.create');
+		return View('trader.create', compact('establecimiento', 'secciones', 'cargo'));
 	}
 
 	/**
@@ -48,7 +49,7 @@ class TraderController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		return redirect('personal');
 	}
 
 	/**
@@ -71,7 +72,11 @@ class TraderController extends Controller {
 	 */
 	public function edit($id)
 	{
-		return View('trader.edit');
+		$establecimiento = Establecimiento::lists('name', 'id');
+		$secciones = Seccion::lists('name', 'id');
+		$cargo = Cargo::lists('name', 'id');
+		$trader = Trader::findOrFail($id);
+		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo'));
 	}
 
 

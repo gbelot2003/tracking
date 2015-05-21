@@ -15,7 +15,7 @@
 
 @section('content')
 	@include('partials.flash')
-	<table id="table" class="table table-bordered">
+	<table id="table" class="table table-bordered table-responsive">
 		<caption>Personal que puede enviar o recibir correspondencia</caption>
 		<thead>
 			<th>Apellidos</th>
