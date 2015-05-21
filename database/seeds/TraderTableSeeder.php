@@ -62,5 +62,37 @@ class TraderTableSeeder extends Seeder{
 			'first_name' 			=> 'Jose Manuel',
 			'last_name' 			=> 'Altruza'
 		]);
+
+		Trader::create([
+			'establecimiento_id'	=> 6,
+			'seccion_id'		 	=> 1,
+			'cargo_id'			 	=> 5,
+			'first_name' 			=> 'Frank Antonio',
+			'last_name' 			=> 'Melara Bustillo'
+		]);
+
+		Trader::create([
+			'establecimiento_id'	=> 3,
+			'seccion_id'		 	=> 3,
+			'cargo_id'			 	=> 14,
+			'first_name' 			=> 'Jose Luis',
+			'last_name' 			=> 'Obiedo Hernadez'
+		]);
+
+		Trader::create([
+			'establecimiento_id'	=> 6,
+			'seccion_id'		 	=> 3,
+			'cargo_id'			 	=> 5,
+			'first_name' 			=> 'Hector Roberto',
+			'last_name' 			=> 'Madrid Guido'
+		]);
+
+		Trader::create([
+			'establecimiento_id'	=> 1,
+			'seccion_id'		 	=> 6,
+			'cargo_id'			 	=> 15,
+			'first_name' 			=> 'Luis Eduardo',
+			'last_name' 			=> 'Majano Hernadez'
+		]);
 	}
 }
