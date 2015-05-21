@@ -23,21 +23,25 @@
 	<div class="col-md-4">
 		<!-- establecimiento Form Input -->
 		<div class="form-group">
-			{!! Form::select('$establecimiento_lists[]', $establecimiento, null, ['class' => 'select form-control', 'id' => 'establecimiento-select']) !!}
+			{!! Form::label('establecimientos', "Agencia o Edificio de trabajo:") !!}
+			{!! Form::select('establecimiento_id', $establecimiento, null, ['class' => 'select form-control', 'id' => 'establecimiento-select']) !!}
 		</div>
 	</div>
 
 	<div class="col-md-4">
 		<!-- secciones Form Input -->
 		<div class="form-group">
-			{!! Form::select('$secciones_lists[]', $secciones, null, ['class' => 'select form-control', 'id' => 'secciones-select']) !!}
+			{!! Form::label('seccion', "Departamento o Sección:") !!}
+			{!! Form::select('seccion_id', $secciones, null, ['class' => 'select form-control', 'id' => 'secciones-select']) !!}
 		</div>
 	</div>
 
 	<div class="col-md-4">
 		<!-- cargo Form Input -->
 		<div class="form-group">
-			{!! Form::select('$cargo_lists[]', $cargo, null, ['class' => 'select form-control', 'id' => 'cargo-select']) !!}
+			{!! Form::label('cargo', "Cargo que desenpeña:") !!}
+
+			{!! Form::select('cargo_id', $cargo, null, ['class' => 'select form-control', 'id' => 'cargo-select']) !!}
 		</div>
 	</div>
 
