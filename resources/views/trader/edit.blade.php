@@ -17,7 +17,7 @@
 @section('content')
 	@include('partials.flash')
 	<div class="col-md-12">
-		{!! Form::model( $trader,  ['method' => 'PUT', 'action' => ['TraderController@store', $trader->id]]) !!}
+		{!! Form::model( $trader,  ['method' => 'PUT', 'action' => ['TraderController@update', $trader->id]]) !!}
 		@include('trader._form', ['submitButtonText' => 'Editar'])
 		{!! Form::close() !!}
 	</div>
