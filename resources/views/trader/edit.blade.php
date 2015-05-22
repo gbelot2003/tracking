@@ -16,6 +16,7 @@
 
 @section('content')
 	@include('partials.flash')
+	@include('errors.form-error')
 	<div class="col-md-12">
 		{!! Form::model( $trader,  ['method' => 'PUT', 'action' => ['TraderController@update', $trader->id]]) !!}
 		@include('trader._form', ['submitButtonText' => 'Editar'])
