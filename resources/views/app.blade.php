@@ -42,7 +42,7 @@
 				<div class="breadcrumbs">
 					@yield('breadcrumbs')
 				</div>
-				<div id="content">
+				<div id="content" class="container">
 					<div class="warp">
 						@yield('content')
 					</div>
