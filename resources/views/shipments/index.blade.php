@@ -9,15 +9,15 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('secciones') }}">Administración de secciones administrativas</a></li>
+		<li><a href="{{ url('shipments') }}">Administración de paquetes y encomiendas</a></li>
 	</ol>
 @stop
 
 @section('content')
 	@include('partials.flash')
-	<table class="table">
+	<table class="table table-hover">
 		<thead>
-			<th>No</th>
+			<th>No.</th>
 			<th>Remitente</th>
 			<th>Destinatario</th>
 			<th>Descripción</th>
@@ -31,7 +31,9 @@
 						<b>{{ $paquete->senders->establecimiento->name }}</b>,
 					</div>
 					<div class="col-md-12">
-						{{$paquete->senders->first_name}}, {{ $paquete->senders->last_name }}
+						<a href="{{ action('TraderController@show', $paquete->senders->id) }}">
+							{{$paquete->senders->first_name}}, {{ $paquete->senders->last_name }}
+						</a>
 					</div>
 					<div class="col-md-12">
 						<b>{{ $paquete->senders->cargo->name }}</b>
@@ -45,7 +47,9 @@
 						<b>{{ $paquete->recivers->establecimiento->name }}</b>,
 					</div>
 					<div class="col-md-12">
-						{{ $paquete->recivers->first_name }}, {{ $paquete->recivers->last_name }}
+						<a href="{{ action('TraderController@show', $paquete->recivers->id) }}">
+							{{ $paquete->recivers->first_name }}, {{ $paquete->recivers->last_name }}
+						</a>
 					</div>
 					<div class="col-md-12">
 						<b>{{ $paquete->recivers->cargo->name }}</b>
