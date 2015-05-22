@@ -14,7 +14,7 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
-
+			@include('shipments._form')
 		{!! Form::close() !!}
 	</div>
 @stop
