@@ -23,7 +23,7 @@
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
 
-						<li><a href="{{ url('/shipments') }}">Paquetes y encomiendas</a></li>
+						<li><a href="{{ url('/shipments') }}">Listado de encomiendas</a></li>
 
 					@endif
 
