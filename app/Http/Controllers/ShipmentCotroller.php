@@ -27,7 +27,7 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View('shipments.create');
 	}
 
 	/**
@@ -48,7 +48,8 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$paquete = Shipment::findOrFail($id);
+		return View('shipments.show', compact('paquete'));
 	}
 
 	/**
@@ -59,7 +60,8 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$paquete = Shipment::findOrFail($id);
+		return View('shipments.edit', compact('paquete'));
 	}
 
 	/**
