@@ -18,6 +18,12 @@ class Trader extends Model {
 	 */
 	protected $fillable = ['establecimiento_id', 'seccion_id', 'cargo_id', 'first_name', 'last_name', 'user_id'];
 
+
+	public function getFullNameAttribute()
+	{
+		return $this->attributes['first_name'] . ' ' . $this->attributes['last_name'];
+	}
+
 	/**
 	 * Un trader puede tener a un usuario relacionado
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
