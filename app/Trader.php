@@ -54,7 +54,21 @@ class Trader extends Model {
 		return $this->belongsTo('App\Cargo');
 	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function sender()
+	{
+		return $this->hasMany('App\Shipment', 'sender_id', 'id');
+	}
 
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function reciver()
+	{
+		return $this->hasMany('App\Shipment', 'reciber_id', 'id');
+	}
 
 
 }
