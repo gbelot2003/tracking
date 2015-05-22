@@ -25,7 +25,9 @@
 		<tbody>
 		@foreach($paquetes as $paquete)
 			<tr>
-				<td>{{ $paquete->id }}</td>
+				<td>
+					<a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->id }}</a>
+				</td>
 				<td>
 					<div class="col-md-12">
 						<b>{{ $paquete->senders->establecimiento->name }}</b>,
