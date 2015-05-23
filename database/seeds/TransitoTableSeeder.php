@@ -16,6 +16,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 1,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -23,6 +24,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 2,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -30,6 +32,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 3,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -37,6 +40,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 4,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -44,6 +48,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 5,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -51,6 +56,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 6,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -58,6 +64,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 7,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -65,6 +72,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 8,
 			'estado_id' 	=> 1,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
@@ -72,6 +80,7 @@ class TransitoTableSeeder extends Seeder
 		Transito::create([
 			'shipment_id' 	=> 8,
 			'estado_id' 	=> 2,
+			'seccion' 		=> 1,
 			'user_id' 		=> 1,
 			'details' 		=> 'Sin detalles'
 		]);
