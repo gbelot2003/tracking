@@ -25,12 +25,6 @@ class CreateTransitosTable extends Migration {
 				->onDelete('cascade');
 		});
 
-		Schema::create('estados', function(Blueprint $table){
-			$table->increments('id');
-			$table->string('name');
-			$table->string('description');
-		});
-
 	}
 
 	/**
@@ -41,7 +35,6 @@ class CreateTransitosTable extends Migration {
 	public function down()
 	{
 		Schema::drop('transitos');
-		Schema::drop('estados');
 	}
 
 }
