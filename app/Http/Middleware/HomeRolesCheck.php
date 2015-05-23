@@ -14,7 +14,7 @@ class HomeRolesCheck {
 	public function handle($request, Closure $next)
 	{
 		if($request->user()->hasRole('owner')){
-			return redirect('user');
+			return redirect('shipments');
 		}
 
 		if($request->user()->hasRole('cliente')){
