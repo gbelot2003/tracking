@@ -15,4 +15,13 @@ class Estado extends Model {
 	 * @var bool
 	 */
 	public $timestamps = false;
+
+	/**
+	 * Un estado tiene varios trancitos
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function transitos()
+	{
+		return $this->hasMany('App\Transito');
+	}
 }
