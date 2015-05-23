@@ -4,6 +4,7 @@
 	<th>Remitente</th>
 	<th>Destinatario</th>
 	<th>Descripción</th>
+	<th>Estado</th>
 	</thead>
 	<tbody>
 	@foreach($paquetes as $paquete)
@@ -45,6 +46,11 @@
 
 			</td>
 			<td>{{ $paquete->description }}</td>
+			<td>
+				@foreach($paquete->transitos as $transito)
+					{{ $transito->first()->estados->name }}
+				@endforeach
+			</td>
 		</tr>
 	@endforeach
 	</tbody>
