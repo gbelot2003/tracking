@@ -12,7 +12,7 @@ class CreateEstadosMigration extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('estados', function(Blueprint $table)
+		Schema::create('estados', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
@@ -28,10 +28,7 @@ class CreateEstadosMigration extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('estados', function(Blueprint $table)
-		{
-			Schema::drop('estados');
-		});
+		Schema::drop('estados');
 	}
 
 }
