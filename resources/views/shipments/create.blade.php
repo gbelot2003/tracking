@@ -12,6 +12,7 @@
 
 @section('content')
 	<div class="col-md-12">
+		@include('partials.flash')
 		@include('errors.form-error')
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
 			@include('shipments._form',['submitButtonText' => 'Registrar'])
