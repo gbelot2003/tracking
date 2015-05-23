@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\Shipment;
 use App\Trader;
+use App\Transito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
@@ -18,7 +19,8 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function index()
 	{
-		$paquetes = Shipment::orderBy('created_at', 'desc')->get();
+		//$paquetes = Shipment::orderBy('created_at', 'desc')->get();
+		$paquetes = Shipment::with('transitos.estados')->take(200)->get();
 		return View('shipments.index', compact('paquetes'));
 	}
 
