@@ -39,7 +39,7 @@ class Shipment extends Model {
 	 */
 	public function transitos()
 	{
-		return $this->hasMany('App\Trancito');
+		return $this->hasMany('App\Transito');
 	}
 
 }
