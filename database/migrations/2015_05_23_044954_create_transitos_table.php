@@ -18,7 +18,7 @@ class CreateTransitosTable extends Migration {
 			$table->increments('id');
 			$table->integer('shipment_id')->unsigned();
 			$table->integer('estado_id')->unsigned();
-			$table->integet('seccion_id')->unsigned();
+			$table->integer('seccion_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->text('details')->nullable();
 			$table->timestamps();
