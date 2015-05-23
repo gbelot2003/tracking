@@ -90,9 +90,13 @@ class ShipmentCotroller extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		$paquete = Shipment::findOrFail($id);
+		$paquete->update($request->all());
+		Session::flash('flash_message', 'El registro a sido editado');
+		return redirect()->route('shipments.show', $paquete->id);
+
 	}
 
 	/**
