@@ -22,6 +22,6 @@ class Estado extends Model {
 	 */
 	public function transitos()
 	{
-		return $this->hasMany('App\Transito');
+		return $this->hasOne('App\Transito');
 	}
 }
