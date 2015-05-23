@@ -11,7 +11,7 @@ class TransitoTableSeeder extends Seeder
 {
     public function run()
     {
-		DB::table('estados')->delete();
+		DB::table('transitos')->delete();
 
 		Transito::create([
 			'shipment_id' 	=> 1,
