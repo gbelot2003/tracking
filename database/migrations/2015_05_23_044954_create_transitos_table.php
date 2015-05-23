@@ -28,6 +28,7 @@ class CreateTransitosTable extends Migration {
 		Schema::create('estados', function(Blueprint $table){
 			$table->increments('id');
 			$table->string('name');
+			$table->string('definition');
 		});
 
 	}
