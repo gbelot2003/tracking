@@ -20,7 +20,7 @@ class EstadoTableSeeder extends Seeder
 
 		Estado::create([
 			'name' 			=> 'En Transito, en buen estado',
-			'descripcion'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
+			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
 		]);
 
 		Estado::create([
