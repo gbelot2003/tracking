@@ -14,6 +14,9 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		$this->call('EstadoTableSeeder');
+		$this->command->info('Estados table seeded!');
+
 		$this->call('DepartamentoTableSeeder');
 		$this->command->info('Departamentos table seeded!');
 
@@ -46,9 +49,6 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('ShipmentTableSeeder');
 		$this->command->info('Shipments table seeded!');
-
-		$this->call('EstadoTableSeeder');
-		$this->command->info('Estados table seeded!');
 
 		$this->call('TransitoTableSeeder');
 		$this->command->info('Transitos table seeded!');
