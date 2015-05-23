@@ -3,7 +3,9 @@
 @section('title')
 	Ficha de encomienda No. {{ $paquete->id }}
 @stop
-
+@section('link-button')
+	<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar Registro</a>
+@stop
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">
