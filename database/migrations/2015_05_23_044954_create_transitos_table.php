@@ -17,7 +17,7 @@ class CreateTransitosTable extends Migration {
 			$table->increments('id');
 			$table->integer('shipment_id')->unsigned();
 			$table->integer('estado_id')->unsigned();
-			$table->text('details');
+			$table->text('details')->nullable();
 			$table->timestamps();
 			$table->foreign('shipment_id')
 				->reference('id')
@@ -28,7 +28,7 @@ class CreateTransitosTable extends Migration {
 		Schema::create('estados', function(Blueprint $table){
 			$table->increments('id');
 			$table->string('name');
-			$table->string('definition');
+			$table->string('description');
 		});
 
 	}
