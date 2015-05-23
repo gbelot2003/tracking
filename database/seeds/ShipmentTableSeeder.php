@@ -47,5 +47,25 @@ class ShipmentTableSeeder extends Seeder
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
 
 		]);
+
+		Shipment::create([
+			"sender_id" 		=> 6,
+			"reciber_id"		=> 4,
+			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
+		]);
+
+		Shipment::create([
+			"sender_id" 		=> 2,
+			"reciber_id"		=> 5,
+			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
+
+		]);
+
+		Shipment::create([
+			"sender_id" 		=> 8,
+			"reciber_id"		=> 9,
+			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
+
+		]);
 	}
 }
