@@ -21,7 +21,8 @@
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable({
-				"pageLength": 10
+				"pageLength": 5,
+				"order": [[ 0, "desc" ]]
 			});
 		});
 	</script>
