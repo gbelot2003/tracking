@@ -20,7 +20,7 @@ class CreateTransitosTable extends Migration {
 			$table->text('details')->nullable();
 			$table->timestamps();
 			$table->foreign('shipment_id')
-				->reference('id')
+				->references('id')
 				->on('shipments')
 				->onDelete('cascade');
 		});
