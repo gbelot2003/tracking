@@ -24,7 +24,7 @@ class Transito extends Model {
 	 */
 	public function encargo()
 	{
-		return $this->belongsTo('App\Shipment');
+		return $this->belongsTo('App\Shipment', 'shipment_id');
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Transito extends Model {
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('App\User', 'user_id');
 	}
 
 	/**
