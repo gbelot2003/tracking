@@ -27,13 +27,15 @@
 					<p>{{ $paquete->description }}</p>
 				</div>
 			</div>
-			<div class="col-md-6">
-				@include('shipments._sender')
-			</div>
 
 			<div class="col-md-6">
 				@include('shipments._reciver')
 			</div>
+
+			<div class="col-md-6">
+				@include('shipments._sender')
+			</div>
+
 		</div>
 	</div>
 @stop
