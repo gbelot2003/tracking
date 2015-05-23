@@ -17,7 +17,7 @@ class CreateTransitosTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('descripcion');
+			$table->string('description');
 		});
 
 		Schema::create('transitos', function(Blueprint $table)
