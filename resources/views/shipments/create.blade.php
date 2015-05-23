@@ -14,7 +14,13 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
-			@include('shipments._form')
+			@include('shipments._form',['submitButtonText' => 'Registrar'])
 		{!! Form::close() !!}
 	</div>
+@stop
+@section('post-script')
+	<script>
+		$('#sender-select').select2();
+		$('#reciver-select').select2();
+	</script>
 @stop
