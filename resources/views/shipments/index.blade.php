@@ -17,3 +17,13 @@
 	@include('partials.flash')
 	@include('shipments._indexTable')
 @stop
+@section('post-script')
+	<script>
+		$(document).ready(function(){
+			$('#table').DataTable({
+				"pageLength": 10
+			});
+		});
+	</script>
+
+@stop

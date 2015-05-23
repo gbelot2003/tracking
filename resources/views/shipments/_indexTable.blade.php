@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table id="table" class="table table-hover">
 	<thead>
 	<th>No.</th>
 	<th>Remitente</th>
