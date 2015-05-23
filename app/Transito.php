@@ -42,6 +42,6 @@ class Transito extends Model {
 	 */
 	public function estados()
 	{
-		return $this->belongsTo('App\Estado');
+		return $this->belongsTo('App\Estado', 'estado_id');
 	}
 }
