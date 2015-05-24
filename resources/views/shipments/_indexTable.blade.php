@@ -47,8 +47,8 @@
 			</td>
 			<td>{{ $paquete->description }}</td>
 			<td>
-				@foreach($paquete->transitos as $transito)
-					{{ $transito->first()->estados->name }}
+				@foreach($paquete->transitos->slice(0, 1) as $transito)
+					{{ $transito->estados->name }}
 				@endforeach
 			</td>
 		</tr>
