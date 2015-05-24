@@ -16,16 +16,6 @@
 
 @section('content')
 	@include('partials.flash')
-	<style>
-		.sect{
-			height: 8rem;
-		}
-
-		.warp{
-			padding: 5px
-		}
-	</style>
-
 	<div class="row">
 		<div class="col-md-7">
 			<h3>Datos de Especificos</h3>

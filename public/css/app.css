@@ -9823,5 +9823,11 @@ table.dataTable, table.dataTable th, table.dataTable td {
   clear: both;
   padding: 26px 5px; }
 
+.sect {
+  height: 8rem; }
+
+.warp {
+  padding: 5px; }
+
 
 /*# sourceMappingURL=app.css.map */
