@@ -19,8 +19,10 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function index()
 	{
-		//$paquetes = Shipment::orderBy('created_at', 'desc')->get();
-		$paquetes = Shipment::with('transitos.estados')->take(200)->get();
+		//$variable = Variable::orderBy('created_at', 'desc')->get();
+
+		$paquetes = Shipment::orderBy('id', '=', 'Desc')->test()->get();
+
 		return View('shipments.index', compact('paquetes'));
 	}
 
@@ -66,6 +68,9 @@ class ShipmentCotroller extends Controller {
 	public function show($id)
 	{
 		$paquete = Shipment::findOrFail($id);
+		$paquete->with(['transitos' => function($q){
+			$q->orderBy('id', 'desc')->get();
+		}]);
 		return View('shipments.show', compact('paquete'));
 	}
 
