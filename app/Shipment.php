@@ -42,4 +42,14 @@ class Shipment extends Model {
 		return $this->hasMany('App\Transito');
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function scopeTest($query)
+	{
+		return $query->with(['transitos' => function($q){
+			$q->orderBy('id', 'desc')->latest()->get();
+		}]);
+	}
+
 }
