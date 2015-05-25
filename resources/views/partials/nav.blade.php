@@ -43,9 +43,9 @@
 
 									<li><a href="{{ url('personal') }}">Control de Personal</a></li>
 							@endif
-
+							@if(Auth::user()->hasRole(['cliente']))
 								<li><a href="{{ url('mis-paquetes') }}">Mis Paquetes</a></li>
-
+							@endif
 
 						</ul>
 					</li>
