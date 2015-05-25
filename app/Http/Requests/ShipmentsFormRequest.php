@@ -22,7 +22,7 @@ class ShipmentsFormRequest extends Request {
 	public function rules()
 	{
 		$rules = [
-			'code' => 'required|Integer|unique',
+			'code' => 'required|Integer|unique:shipments',
 			'sender_id' => 'required|Integer',
 			'reciber_id' => 'required|Integer',
 			'description' => 'String'
