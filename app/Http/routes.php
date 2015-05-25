@@ -33,7 +33,7 @@ Route::resource('shipments', 'ShipmentCotroller');
 
 Route::get('clientes', 'ClientesController@index');
 
-route::get('mis-paquetes', 'PaquetesController@paquetes');
+route::get('mis-paquetes', 'PaquetesController@index');
 
 Route::get('/', 'WelcomeController@index');
 
