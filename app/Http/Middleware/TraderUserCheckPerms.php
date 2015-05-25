@@ -31,16 +31,28 @@ class TraderUserCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
+		// llamamos argumento de request
 		$idTrader = $request->segments()[1];
+
+		//Llamamos la tabla con la relación
 		$trader = Trader::find($idTrader);
+
+		//Buscamos los registros relacionados
 		$users = $trader->user;
-		$ulis = array();
+
+		// Agregamos los registros relacionados en un array
+		$ulis = [];
 		foreach($users as $user):
 			$ulis[] = $user->id;
 		endforeach;
 
-		if(!in_array($this->auth->id(), $ulis)){
-			return redirect('home');
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])) {		// usamos in_array para revisar si algun registro
+			// coinside, si es si -> seguimos si no, redireccion
+			// a donde comenzo el check o homepage
+			if (!in_array($this->auth->id(), $ulis))
+			{
+				return redirect()->back();
+			}
 		}
 
 		return $next($request);
