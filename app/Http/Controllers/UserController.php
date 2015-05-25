@@ -3,6 +3,7 @@
 use App\Http\Requests\UserFormRequest;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Trader;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -76,7 +77,9 @@ class UserController extends Controller {
 	{
 		$user = User::findOrFail($id);
 		$roles = Role::Lists('display_name', 'id');
-		return View('user.edit', compact('user', 'roles'));
+		$trader_list = Trader::all();
+		$trader = $trader_list->lists('full_name', 'id');
+		return View('user.edit', compact('user', 'roles', 'trader'));
 	}
 
 	/**
