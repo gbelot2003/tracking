@@ -63,6 +63,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function getTradersListAttribute()
 	{
+		// Llamamos un listado de registros relacionados
 		return $this->traders->lists('id');
 	}
 }
