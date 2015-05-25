@@ -17,62 +17,27 @@
 @stop
 @section('content')
 	@include('partials.flash')
-	<style>
-		.sect{
-			height: 8rem;
-		}
-
-		.warp{
-			padding: 5px
-		}
-	</style>
 	<div class="row">
-		<div class="col-md-12">
-			<h3>Datos de Especificos</h3>
-			<div class="row">
-				<div class="col-md-3 ">
-					<b>Apellido(s):</b>
-					<div class="warp shadow-z-2">
-						<div class="row">
-							<div class="col-md-12">
-								{{ $user->last_name }}
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ">
-					<b>Nombre(s):</b>
-					<div class="warp shadow-z-2">
-						<div class="row">
-							<div class="col-md-12">
-								{{ $user->first_name }}
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ">
-					<b>Email:</b>
-					<div class="warp shadow-z-2">
-						<div class="row">
-							<div class="col-md-12">
-								{{ $user->email }}
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 ">
-					<b>Rol:</b>
-					<div class="warp shadow-z-2">
-						<div class="row">
-							<div class="col-md-12">
-								@foreach($user->roles as $rol)
-									{{ $rol->display_name }}
-								@endforeach
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<th>Apellido(s):</th>
+					<th>Nombre(s):</th>
+					<th>Email:</th>
+					<th>Rol:</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{ $user->last_name }}</td>
+						<td>{{ $user->first_name }}</td>
+						<td>{{ $user->email }}</td>
+						<td>
+							@foreach($user->roles as $rol)
+								{{ $rol->display_name }}
+							@endforeach
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-	</div>
 @stop
