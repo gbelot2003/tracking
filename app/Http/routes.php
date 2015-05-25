@@ -43,4 +43,5 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 	'listados' => 'ListadosController',
+	'transitos' => 'TransitosController'
 ]);
