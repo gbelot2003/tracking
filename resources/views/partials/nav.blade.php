@@ -21,7 +21,7 @@
 
 				@else
 
-					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
+					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 
 						<li><a href="{{ url('/shipments') }}">Listado de encomiendas</a></li>
 
