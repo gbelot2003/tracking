@@ -41,7 +41,15 @@
 		</div>
 	</div>
 	<div class="col-md-12">
-		<h3>Transitos</h3>
+		<div class="row">
+			<div class="col-md-9">
+				<h3>Transitos</h3>
+			</div>
+			<div class="col-md-3">
+				<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create' ,$paquete->id) }}">Nuevo Transito</a>
+			</div>
+		</div>
+
 		<table class="table table-hover table-border">
 			<caption>Estados de transito de esta encomienda</caption>
 			<thead>
