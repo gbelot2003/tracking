@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\ShipmentsFormRequest;
 use App\Shipment;
 use App\Trader;
 use App\Transito;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
@@ -52,9 +51,16 @@ class ShipmentCotroller extends Controller {
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(ShipmentsFormRequest $request)
 	{
 		$shipments = Shipment::create($request->all());
+
+		$transito = Transito::create([
+			'shipment_id'	=> $shipments->id,
+			'estado_id'	 	=> 1,
+			'user_id'	 	=> Auth::id(),
+			'details'		=> 'Sin detalles'
+		]);
 		Session::flash('flash_message', 'El nuevo registro a sido creado');
 		return redirect()->route('shipments.show', $shipments->id);
 	}
@@ -97,7 +103,7 @@ class ShipmentCotroller extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Request $request, $id)
+	public function update(ShipmentsFormRequest $request, $id)
 	{
 		$paquete = Shipment::findOrFail($id);
 		$paquete->update($request->all());
