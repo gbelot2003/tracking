@@ -46,7 +46,7 @@
 				<h3>Transitos</h3>
 			</div>
 			<div class="col-md-3">
-				<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create' ,$paquete->id) }}">Nuevo Transito</a>
+				<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@getCreate' ,$paquete->id) }}">Nuevo Transito</a>
 			</div>
 		</div>
 
