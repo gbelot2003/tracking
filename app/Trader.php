@@ -30,7 +30,7 @@ class Trader extends Model {
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\User');
+		return $this->belongsToMany('App\User');
 	}
 
 	/**
@@ -75,6 +75,5 @@ class Trader extends Model {
 	{
 		return $this->hasMany('App\Shipment', 'reciber_id', 'id');
 	}
-
 
 }

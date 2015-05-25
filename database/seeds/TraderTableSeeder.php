@@ -19,7 +19,6 @@ class TraderTableSeeder extends Seeder{
 			'cargo_id'			 	=> 2,
 			'first_name' 			=> 'Luis',
 			'last_name' 			=> 'Soliz',
-			'user_id' 				=> 5
 		]);
 
 		Trader::create([
@@ -52,7 +51,6 @@ class TraderTableSeeder extends Seeder{
 			'cargo_id'			 	=> 4,
 			'first_name' 			=> 'Juan A',
 			'last_name' 			=> 'Martinez Molina',
-			'user_id'				=> 4
 		]);
 
 		Trader::create([
