@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-	Ficha de encomienda No. {{ $paquete->id }}
+	Ficha de encomienda No. {{ $paquete->code }}
 @stop
 @section('link-button')
 	<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar Registro</a>
