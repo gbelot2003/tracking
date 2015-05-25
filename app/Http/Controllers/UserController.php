@@ -37,7 +37,9 @@ class UserController extends Controller {
 	public function create()
 	{
 		$roles = Role::Lists('display_name', 'id');
-		return View('user.create', compact('roles'));
+		$trader_list = Trader::all();
+		$trader = $trader_list->lists('full_name', 'id');
+		return View('user.create', compact('roles', 'trader'));
 	}
 
 	/**
@@ -100,6 +102,9 @@ class UserController extends Controller {
 
 		$user->update($userFormData->input());
 		$user->roles()->sync($userFormData->input('roles_lists'));
+		$traders = $userFormData->input('traders_list');
+		$user->traders()->sync($traders);
+
 		Session::flash('flash_message', 'El usuario a sido editado correctamente');
 		return redirect('user');
 	}
