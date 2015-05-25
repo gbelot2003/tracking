@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\TradersFormRequest;
+use App\Shipment;
 use Illuminate\Support\Facades\Session;
 use App\Seccion;
 use App\Trader;
@@ -65,7 +66,9 @@ class TraderController extends Controller {
 	public function show($id)
 	{
 		$trader = Trader::findOrFail($id);
-		return View('trader.show', compact('trader'));
+		$sender = Shipment::where('sender_id', '=', $id)->test()->get();
+		$reciber = Shipment::where('reciber_id', '=', $id)->test()->get();
+		return View('trader.show', compact('trader', 'sender', 'reciber'));
 	}
 
 	/**
