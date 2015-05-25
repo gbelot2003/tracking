@@ -10,7 +10,7 @@
 	@foreach($paquetes as $paquete)
 		<tr>
 			<td>
-				<a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->id }}</a>
+				<a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->code }}</a>
 			</td>
 			<td>
 				<div class="col-md-12">
