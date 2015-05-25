@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\TradersFormRequest;
 use App\Shipment;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Seccion;
 use App\Trader;
@@ -18,7 +19,8 @@ class TraderController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('TraderCheckPerms');
+		$this->middleware('TraderCheckPerms', ['except' => ['show']]);
+		$this->middleware('TraderUserCheckPerms', ['only' => ['show']]);
 	}
 
 	/**
@@ -65,10 +67,12 @@ class TraderController extends Controller {
 	 */
 	public function show($id)
 	{
+
 		$trader = Trader::findOrFail($id);
 		$sender = Shipment::where('sender_id', '=', $id)->test()->get();
 		$reciber = Shipment::where('reciber_id', '=', $id)->test()->get();
-		return View('trader.show', compact('trader', 'sender', 'reciber'));
+		$users = $trader->user;
+		return View('trader.show', compact('trader', 'sender', 'reciber', 'users'));
 	}
 
 	/**
