@@ -4,7 +4,9 @@
 	Ficha de encomienda No. {{ $paquete->code }}
 @stop
 @section('link-button')
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 	<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar Registro</a>
+	@endif
 @stop
 
 @section('breadcrumbs')
