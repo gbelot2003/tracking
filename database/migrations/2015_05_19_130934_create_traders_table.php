@@ -29,7 +29,6 @@ class CreateTradersTable extends Migration {
 			$table->foreign('trader_id')->references('id')->on('traders')->onDelete('cascade');
 			$table->integer('user_id')->unsigned()->index();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-			$table->timestamps();
 		});
 	}
 
@@ -40,8 +39,8 @@ class CreateTradersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('traders');
 		Schema::drop('trader_user');
+		Schema::drop('traders');
 	}
 
 }
