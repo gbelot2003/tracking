@@ -57,6 +57,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function traders()
 	{
-		return $this->hasMany('App\Trader');
+		return $this->belongsToMany('App\Trader');
 	}
 }
