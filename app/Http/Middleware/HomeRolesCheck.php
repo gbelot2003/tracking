@@ -13,7 +13,7 @@ class HomeRolesCheck {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if($request->user()->hasRole('owner')){
+		if($request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier'])){
 			return redirect('shipments');
 		}
 
