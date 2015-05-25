@@ -3,7 +3,9 @@
 @section('title', 'Registro')
 
 @section('link-button')
-	<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TraderController@edit' ,$trader->id) }}">Editar Registro</a>
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
+		<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TraderController@edit' ,$trader->id) }}">Editar Registro</a>
+	@endif
 @stop
 
 @section('breadcrumbs')
