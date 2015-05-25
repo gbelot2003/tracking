@@ -17,8 +17,12 @@
 @section('content')
 	@include('partials.flash')
 	<div class="row">
-		@include('trader._informacion_individual')
 
-		@include('trader._ultimas_encomiendas')
+		<div class="col-md-6">
+			@include('trader._informacion_individual')
+		</div>
+		<div class="col-md-6">
+			@include('trader._ultimas_encomiendas')
+		</div>
 	</div>
 @stop
