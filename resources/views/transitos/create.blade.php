@@ -35,7 +35,7 @@
 		<!-- Detail Form Input -->
 		<div class="form-group">
 			{!! Form::label('detail', "Detalles y notas:") !!}
-			{!! Form::textarea("detail", null, ['class' => 'form-control']) !!}
+			{!! Form::textarea("details", null, ['class' => 'form-control']) !!}
 		</div>
 		<div class="col-md-4">
 			<div class="form-group">
