@@ -70,4 +70,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		// Llamamos un listado de registros relacionados
 		return $this->traders->lists('id');
 	}
+
+	public function transitos()
+	{
+		return $this->hasMany('App\Transito');
+	}
 }
