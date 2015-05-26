@@ -39,9 +39,12 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('transitos/create/{id}', 'TransitosController@create');
+
+Route::post('transitos/store', 'TransitosController@store');
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 	'listados' => 'ListadosController',
-	'transitos' => 'TransitosController'
 ]);
