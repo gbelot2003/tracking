@@ -3,9 +3,19 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Shipment;
+use App\Trader;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaquetesController extends Controller {
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('PaquetesCheckPerms');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -14,75 +24,13 @@ class PaquetesController extends Controller {
 	 */
 	public function index()
 	{
-		return('paquetes.index');
+		$user = User::find(Auth::id());
+		$clientes = $user->traders;
+		return View('paquetes.paquetes', compact('clientes'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function relacionados()
 	{
-		//
-	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
-	public function paquetes()
-	{
-		return View('paquetes.paquetes');
 	}
 }
