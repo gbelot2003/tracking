@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\View;
 
 class PermissionsController extends Controller {
 
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('PermissionCheckPerms');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -40,7 +47,7 @@ class PermissionsController extends Controller {
 	public function store(PermissionsFormRequest $request)
 	{
 		$perm = Permission::create($request->all());
-		return redirect('permiso');
+		return redirect('permisos');
 	}
 
 	/**

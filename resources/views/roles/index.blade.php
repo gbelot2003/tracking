@@ -16,7 +16,7 @@
 @section('content')
 	@include('partials.flash')
 
-	<table class="table table-hover table-bordered">
+	<table id="rols-table" class="table table-hover table-bordered">
 		<thead>
 			<th>Nombre</th>
 			<th>Descripción</th>
@@ -24,7 +24,6 @@
 			<th>Permisos relacionados</th>
 		</thead>
 		<tbody>
-
 			@foreach($roles as $rol)
 				<tr>
 					<td><a href="{{ action('RolesController@edit', $rol->id) }}">{{ $rol->display_name }}</a></td>
@@ -32,7 +31,7 @@
 					<td>
 						<ul class="list-inline">
 							@foreach($rol->users as $user)
-								<li><a href="">{{ $user->name }}</a></li>
+								<li><a href="{{ action('UserController@edit', $user->id) }}">{{ $user->name }}</a></li>
 							@endforeach
 						</ul>
 					</td>
@@ -47,4 +46,12 @@
 			@endforeach
 		</tbody>
 	</table>
+@stop
+
+@section('post-script')
+	<script>
+		$(function() {
+			$('#rols-table').DataTable();
+		});
+	</script>
 @stop

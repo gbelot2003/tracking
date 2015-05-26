@@ -3,6 +3,7 @@
 use App\Http\Requests\UserFormRequest;
 use App\Http\Controllers\Controller;
 use App\Role;
+use App\Trader;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -11,14 +12,11 @@ use Illuminate\Support\Facades\View;
 class UserController extends Controller {
 
 	/**** Recordatorio importante ******/
-    /**  Hay que crear un metodo en el cual
-	/**  se crea automaticamente un password
-	 y este se envia directamente al correo
-	 del usuario que se esta creando   **/
 
-
-	public function __contruct()
+	public function __construct()
 	{
+		$this->middleware('auth');
+		$this->middleware('UserCheckPerms');
 		$this->pageTitle = 'Configuración de Usuarios';
 	}
 	/**
@@ -28,7 +26,6 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		$users = User::all();
 		return View('user.index', compact('users'));
 	}
 
@@ -40,7 +37,9 @@ class UserController extends Controller {
 	public function create()
 	{
 		$roles = Role::Lists('display_name', 'id');
-		return View('user.create', compact('roles'));
+		$trader_list = Trader::all();
+		$trader = $trader_list->lists('full_name', 'id');
+		return View('user.create', compact('roles', 'trader'));
 	}
 
 	/**
@@ -66,7 +65,8 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-
+		$user = User::findOrFail($id);
+		return View('user.show', compact('user'));
 	}
 
 	/**
@@ -79,7 +79,9 @@ class UserController extends Controller {
 	{
 		$user = User::findOrFail($id);
 		$roles = Role::Lists('display_name', 'id');
-		return View('user.edit', compact('user', 'roles'));
+		$trader_list = Trader::all();
+		$trader = $trader_list->lists('full_name', 'id');
+		return View('user.edit', compact('user', 'roles', 'trader'));
 	}
 
 	/**
@@ -100,6 +102,9 @@ class UserController extends Controller {
 
 		$user->update($userFormData->input());
 		$user->roles()->sync($userFormData->input('roles_lists'));
+		$traders = $userFormData->input('traders_list');
+		$user->traders()->sync($traders);
+
 		Session::flash('flash_message', 'El usuario a sido editado correctamente');
 		return redirect('user');
 	}

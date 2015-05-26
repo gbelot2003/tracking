@@ -23,7 +23,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['name', 'userstatuses_id', 'employee_name', 'email', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -33,7 +33,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 	/**
-	 * Debolver listado de roles por usuario
+	 * Devolver listado de roles por usuario
 	 * @return mixed
 	 */
 	public function getRolesListsAttribute()
@@ -41,4 +41,38 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->roles->lists('id');
 	}
 
+	/**
+	 * Estado del usuario en cuestion
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * Solo deberian cambiarlo Administradores Generales del sistema
+	 */
+	public function estado()
+	{
+		return $this->belongsTo('App\Userstatus');
+	}
+
+	/**
+	 * Un usuario puede tener varios usuarios traders
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function traders()
+	{
+		return $this->belongsToMany('App\Trader');
+	}
+
+	public function shipments()
+	{
+		return $this->hasMany('App\Shipment');
+	}
+
+	public function getTradersListAttribute()
+	{
+		// Llamamos un listado de registros relacionados
+		return $this->traders->lists('id');
+	}
+
+	public function transitos()
+	{
+		return $this->hasMany('App\Transito');
+	}
 }

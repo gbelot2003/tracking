@@ -24,9 +24,20 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'App\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+		'auth' 							=> 'App\Http\Middleware\Authenticate',
+		'auth.basic' 					=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
+		'guest' 						=> 'App\Http\Middleware\RedirectIfAuthenticated',
+		'CargosCheckPerms' 				=> 'App\Http\Middleware\CargosCheckPerms',
+		'EstablecimientosCheckPerms'	=> 'App\Http\Middleware\EstablecimientosCheckPerms',
+		'SeccionsCheckPerms'			=> 'App\Http\Middleware\SeccionsCheckPerms',
+		'UserCheckPerms' 				=> 'App\Http\Middleware\UserCheckPerms',
+		'RoleCheckPerms' 				=> 'App\Http\Middleware\RoleCheckPerms',
+		'PermissionCheckPerms'			=> 'App\Http\Middleware\PermissionCheckPerms',
+		'TraderCheckPerms'				=> 'App\Http\Middleware\TraderCheckPerms',
+		'TraderUserCheckPerms'			=> 'App\Http\Middleware\TraderUserCheckPerms',
+		'PaquetesCheckPerms'			=> 'App\Http\Middleware\PaquetesCheckPerms',
+		'ShipmentsCheckPerms'			=> 'App\Http\Middleware\ShipmentsCheckPerms',
+		'homecheck'						=> 'App\Http\Middleware\HomeRolesCheck',
 	];
 
 }

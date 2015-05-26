@@ -30,6 +30,14 @@
 			{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select']) !!}
 		</div>
 	</div>
+
+	<div class="col-md-12">
+		<!-- sender Form Input -->
+		<div class="form-group">
+			{!! Form::select('traders_list[]', $trader, null, ['class' => 'select form-control', 'id' => 'trader-select', 'multiple']) !!}
+		</div>
+	</div>
+
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">{{ $submitButtonText }}</button>
 	</div>

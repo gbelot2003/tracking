@@ -14,6 +14,13 @@ use Illuminate\Html\FormFacade;
 
 class RolesController extends Controller {
 
+
+	public function __construct()
+	{
+		$this->middleware('auth');
+		$this->middleware('RoleCheckPerms');
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

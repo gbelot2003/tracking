@@ -11,20 +11,40 @@
 |
 */
 
+Route::resource('roles', 'RolesController');
+
+Route::resource('permisos', 'PermissionsController');
+
+Route::resource('user', 'UserController');
+
+Route::resource('secciones', 'SeccionesController');
+
+Route::resource('cargos', 'CargosController');
+
+Route::resource('establecimientos', 'EstablecimientosController');
+
+/** IMPORTANTE, para fines practicos y de menos confución en el codigo
+ * y el front-end y ademas por la similitud con usuarios, TraderController
+ * se designara como personal en las rutas y titulos **/
+
+Route::resource('personal', 'TraderController');
+
+Route::resource('shipments', 'ShipmentCotroller');
+
+Route::get('clientes', 'ClientesController@index');
+
+route::get('mis-paquetes', 'PaquetesController@index');
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
-Route::resource('roles', 'RolesController');
-Entrust::routeNeedsRole('roles', 'owner', Redirect::to('/home'));
+Route::get('transitos/create/{id}', 'TransitosController@create');
 
-Route::resource('permisos', 'PermissionsController');
-Entrust::routeNeedsRole('permisos', 'owner', Redirect::to('/home'));
-
-Route::resource('user', 'UserController');
-Entrust::routeNeedsRole('user', 'owner', Redirect::to('/home'));
+Route::post('transitos/store', 'TransitosController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
+	'listados' => 'ListadosController',
 ]);

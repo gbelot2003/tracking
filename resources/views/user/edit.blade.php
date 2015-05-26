@@ -8,6 +8,7 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('user') }}">Administración de usuarios</a></li>
+		<li><a href="{{ action('UserController@show', $user->id) }}">{{ $user->name }}</a></li>
 		<li><a href="#">Edición de {{ $user->name }}</a></li>
 	</ol>
 @stop
@@ -26,5 +27,7 @@
 		$('#rol-select').select2({
 			placeholder: 'Escoge un permiso'
 		});
+
+		$('#trader-select').select2();
 	</script>
 @stop
