@@ -1,18 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title">Numero de Código</h3>
-			</div>
-			<div class="panel-body">
-				<!-- Codigo Form Input -->
-				<div class="form-group">
-					{!! Form::label('codigo', "Código:") !!}
-					{!! Form::text("code", null, ['class' => 'form-control']) !!}
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<div class="col-md-6">
 		<div class="panel panel-info">
 			<div class="panel-heading">
@@ -21,6 +8,7 @@
 			<div class="panel-body">
 				<!-- sender Form Input -->
 				<div class="form-group">
+					{!! Form::hidden("code", $randnum) !!}
 					{!! Form::select('reciber_id', $reciver, null, ['class' => 'select form-control', 'id' => 'reciver-select']) !!}
 				</div>
 			</div>
