@@ -19,21 +19,5 @@
 @stop
 
 @section('post-script')
-	<script>
-		jQuery(document).ready(function(){
-			var mid = $("#dept-select option:selected").val();
-			$('#municipios').load("/querys/municipios/" + mid, function(){
-				$('#munic-select').select2();
-			});
-
-			$('#dept-select').on('change', function(){
-				var mid = $("#dept-select option:selected").val();
-				$('#municipios').load("/querys/municipios/" + mid, function(){
-					$('#munic-select').select2();
-				});
-			});
-		});
-
-		$('#dept-select').select2();
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop
