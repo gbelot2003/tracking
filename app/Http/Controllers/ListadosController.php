@@ -46,11 +46,9 @@ class ListadosController extends Controller {
 				'traders.last_name',
 				'traders.first_name',
 				'establecimientos.name',
-				'seccions.name as seccion',
-				'cargos.name as cargo'
+				'seccions.name as seccion'
 			])	->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
-				->join('seccions', 'seccion_id', '=', 'seccions.id')
-				->join('cargos', 'cargo_id', '=', 'cargos.id');
+				->join('seccions', 'seccion_id', '=', 'seccions.id');
 
 		return Datatables::of($traders)
 			->removeColumn('id')
