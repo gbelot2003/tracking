@@ -22,7 +22,9 @@ class EstablecimientosFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required'
+			'name' 				=> 'required|unique:establecimientos',
+			'departamento_id' 	=> 'required',
+			'municipio_id'		=> 'required'
 		];
 	}
 
