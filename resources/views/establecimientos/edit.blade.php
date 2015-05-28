@@ -20,8 +20,20 @@
 
 @section('post-script')
 	<script>
-		$('#dept-select, #munic-select').select2({
-			placeholder: 'Escoge un permiso'
+		jQuery(document).ready(function(){
+			var mid = $("#dept-select option:selected").val();
+			$('#municipios').load("/querys/municipios/" + mid, function(){
+				$('#munic-select').select2();
+			});
+
+			$('#dept-select').on('change', function(){
+				var mid = $("#dept-select option:selected").val();
+				$('#municipios').load("/querys/municipios/" + mid, function(){
+					$('#munic-select').select2();
+				});
+			});
 		});
+
+		$('#dept-select').select2();
 	</script>
 @stop
