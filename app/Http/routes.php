@@ -45,6 +45,7 @@ Route::post('transitos/store', 'TransitosController@store');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-	'listados' => 'ListadosController',
+	'password' 	=> 'Auth\PasswordController',
+	'listados' 	=> 'ListadosController',
+	'querys'	=> 'QueryController'
 ]);
