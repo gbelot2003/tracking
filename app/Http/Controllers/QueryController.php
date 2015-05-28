@@ -10,8 +10,8 @@ class QueryController extends Controller {
 
 	public function getMunicipios($id)
 	{
-		$municipios = Municipio::where('departamento_id', '=', $id)->get();
-		return $municipios;
+		$municipios = Municipio::where('departamento_id', '=', $id)->Lists('municipio', 'id');
+		return View('querys.municipios', compact('municipios'));
 	}
 
 }
