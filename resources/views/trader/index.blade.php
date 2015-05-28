@@ -22,7 +22,6 @@
 			<th>Nombres</th>
 			<th>Establecimento</th>
 			<th>Sección</th>
-			<th>Cargo</th>
 			<th>Operaciones</th>
 		</thead>
 		<tbody>
@@ -43,7 +42,6 @@
 					{data: 'first_name', name: 'traders.first_name'},
 					{data: 'name', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},
-					{data: 'cargo', name: 'cargos.name'},
 					{data: 'Operaciones', name: 'acciones', searchable: false},
 				]
 			});
