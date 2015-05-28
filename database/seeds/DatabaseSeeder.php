@@ -29,9 +29,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SeccionTableSeeder');
 		$this->command->info('Seccions table seeded!');
 
-		$this->call('CargoTableSeeder');
-		$this->command->info('Cargos table seeded!');
-
 		$this->call('SujetoTableSeeder');
 		$this->command->info('Sujetos table seeded!');
 
