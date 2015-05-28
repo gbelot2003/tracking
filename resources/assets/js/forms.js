@@ -17,21 +17,6 @@
             placeholder: 'Escoge una Sección'
         });
 
-        $(document).ready(function(){
-            $('#table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{{ URL::to("listados/personal") }}',
-                columns: [
-                    {data: 'last_name', name: 'traders.last_name'},
-                    {data: 'first_name', name: 'traders.first_name'},
-                    {data: 'name', name: 'establecimientos.name'},
-                    {data: 'seccion', name: 'seccions.name'},
-                    {data: 'Operaciones', name: 'acciones', searchable: false},
-                ]
-            });
-        });
-
         /** Shipments.show form script **/
         $('form[data-ask-submit]').on('click', function(e){
             e.preventDefault();
