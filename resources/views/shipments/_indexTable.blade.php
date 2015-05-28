@@ -23,9 +23,6 @@
 						</a>
 					</div>
 					<div class="col-md-12">
-						<b>{{ $paquete->senders->cargo->name }}</b>
-					</div>
-					<div class="col-md-12">
 						<b>{{ $paquete->senders->seccion->name }}</b>
 					</div>
 				</td>
