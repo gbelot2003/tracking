@@ -1,5 +1,37 @@
 (function(){
     jQuery(document).ready(function(){
+
+        $('#sender-select').select2({
+            placeholder: "Select a state"
+        });
+        $('#reciver-select').select2({
+            placeholder: "Select a state"
+        });
+        $('#establecimiento-select').select2({
+            placeholder: 'Escoge una Sucursal'
+        });
+        $('#secciones-select').select2({
+            placeholder: 'Escoge una Sección'
+        });
+        $('#cargo-select').select2({
+            placeholder: 'Escoge una Sección'
+        });
+
+        $(document).ready(function(){
+            $('#table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ URL::to("listados/personal") }}',
+                columns: [
+                    {data: 'last_name', name: 'traders.last_name'},
+                    {data: 'first_name', name: 'traders.first_name'},
+                    {data: 'name', name: 'establecimientos.name'},
+                    {data: 'seccion', name: 'seccions.name'},
+                    {data: 'Operaciones', name: 'acciones', searchable: false},
+                ]
+            });
+        });
+
         /** Shipments.show form script **/
         $('form[data-ask-submit]').on('click', function(e){
             e.preventDefault();
