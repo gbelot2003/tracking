@@ -1,7 +1,7 @@
 <div class="row">
 
 	<div class="col-md-6">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Destinatario</h3>
 			</div>
@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="col-md-6">
-		<div class="panel panel-primary">
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">Remitente</h3>
 			</div>
