@@ -52,15 +52,6 @@ class Trader extends Model {
 	}
 
 	/**
-	 * Un trader tiene un cargo asignado
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function cargo()
-	{
-		return $this->belongsTo('App\Cargo');
-	}
-
-	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function sender()
