@@ -24,7 +24,6 @@ class TradersFormRequest extends Request {
 		$edit 	= [
 			'establecimiento_id'	=>	'required|Integer',
 			'seccion_id' 			=>	'required|Integer',
-			'cargo_id'				=>	'required|Integer',
 			'first_name'			=> 	"required|String|unique_with:traders,last_name, id",
 			'last_name'				=>  'required|String',
 			'user_id'				=> 	'integer'
@@ -33,7 +32,6 @@ class TradersFormRequest extends Request {
 		$create = [
 			'establecimiento_id'	=>	'required|Integer',
 			'seccion_id' 			=>	'required|Integer',
-			'cargo_id'				=>	'required|Integer',
 			'first_name'			=> 	"required|String|unique_with:traders,first_name,last_name",
 			'last_name'				=>  'required|String',
 			'user_id'				=> 	'integer'
