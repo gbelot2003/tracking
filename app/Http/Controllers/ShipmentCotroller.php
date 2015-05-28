@@ -99,12 +99,13 @@ class ShipmentCotroller extends Controller {
 	public function edit($id)
 	{
 		$paquete = Shipment::findOrFail($id);
+		$randnum = $paquete->code;
 		$sender_list 		= Trader::all();
 		$sender 			= $sender_list->lists('full_name', 'id');
 
 		$reciver_list 		= Trader::all();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
-		return View('shipments.edit', compact('paquete', 'sender', 'reciver'));
+		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum'));
 	}
 
 	/**
