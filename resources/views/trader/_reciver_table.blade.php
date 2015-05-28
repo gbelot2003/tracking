@@ -11,7 +11,6 @@
 			<td><b>{{ $paquete->code }}</b></td>
 			<td>
 				<div class="info-row">{{ $paquete->senders->first_name }}, {{ $paquete->senders->last_name }}</div>
-				<div class="info-row"><span class="info-row">{{ $paquete->senders->cargo->name }}</span></div>
 				<div class="info-row"><span class="info-row">{{ $paquete->senders->seccion->name }}</span></div>
 			</td>
 			<td>{{ $paquete->created_at }}</td>
