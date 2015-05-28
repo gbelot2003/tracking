@@ -19,6 +19,7 @@ elixir(function(mix) {
     mix.copy('bower_components/bootstrap-material-design/dist/js/material.min.js', 'resources/assets/js/material.min.js');
     mix.copy('bower_components/bootstrap-material-design/dist/js/ripples.min.js', 'resources/assets/js/ripples.min.js');
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js', 'select2.full.min.js', 'init.js', 'flexigrid.js' , 'jquery.dataTables.js'], 'public/js/app.js')
+    mix.scripts(['forms.js'], 'public/js/forms.js');
 });
 
 elixir(function(mix) {
