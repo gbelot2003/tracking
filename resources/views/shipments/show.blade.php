@@ -42,18 +42,21 @@
 	</div>
 	<div class="col-md-12">
 		<div class="row">
-			<div class="col-md-7">
+			<div class="col-md-3">
 				<h3>Transitos</h3>
 			</div>
-			<div class="col-md-5">
-				{!! Form::open(['action' => ['TransitosController@store']]) !!}
+			<div class="col-md-2">
+				{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline']) !!}
 					{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
 					{!! Form::hidden('estado_id', 2) !!}
 					{!! Form::hidden('shipment_id', $paquete->id) !!}
 					{!! Form::hidden('details', "Todo Correcto") !!}
-					<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Transito observaciones</a>
 				{!! Form::close() !!}
 			</div>
+			<div class="col-md-3">
+				<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Transito observaciones</a>
+			</div>
+
 		</div>
 
 		<table class="table table-hover table-border">
