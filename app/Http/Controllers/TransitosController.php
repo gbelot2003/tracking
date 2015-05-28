@@ -3,6 +3,7 @@
 use App\Estado;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TransitosFormRequest;
 use App\Shipment;
 use App\Transito;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class TransitosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(TransitosFormRequest $request)
 	{
 		if(!$request->get('images')){
 			Auth::User()->transitos()->save(New Transito($request->all()));
