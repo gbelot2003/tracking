@@ -17,7 +17,6 @@ class CreateSujetosTable extends Migration {
 			$table->increments('id');
 			$table->integer('establecimiento_id')->unsigned();
 			$table->integer('seccion_id')->unsigned();
-			$table->integer('cargo_id')->unsigned();
 			$table->string('name');
 		});
 	}
