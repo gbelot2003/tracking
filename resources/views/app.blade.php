@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>@yield('page-title', 'Sistema de Track')</title>
 
-	<link rel="stylesheet" href="{{ elixir("css/app.css") }}">
+	<link rel="stylesheet" href="{{ URL::asset("css/app.css") }}">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -54,7 +54,7 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="{{ elixir("js/app.js") }}"></script>
+	<script src="{{ URL::asset("js/app.js") }}"></script>
 	@yield('post-script')
 </body>
 </html>
