@@ -16,7 +16,31 @@ class SeccionTableSeeder extends Seeder {
 		DB::table('seccions')->delete();
 
 		Seccion::create([
-			'name' => 'Oficina de Personal'
+			'name' => 'Presidencia'
+		]);
+
+		Seccion::create([
+			'name' => 'Vice Presidencia'
+		]);
+
+		Seccion::create([
+			'name' => 'Dirección'
+		]);
+
+		Seccion::create([
+			'name' => 'Sub Dirección'
+		]);
+
+		Seccion::create([
+			'name' => 'Gerencia'
+		]);
+
+		Seccion::create([
+			'name' => 'Sub Gerencia'
+		]);
+
+		Seccion::create([
+			'name' => 'Personal'
 		]);
 
 		Seccion::create([
@@ -28,14 +52,6 @@ class SeccionTableSeeder extends Seeder {
 		]);
 
 		Seccion::create([
-			'name' => 'Presidencia'
-		]);
-
-		Seccion::create([
-			'name' => 'Sub Dirección'
-		]);
-
-		Seccion::create([
 			'name' => 'Oficina de Negocios'
 		]);
 
@@ -44,19 +60,15 @@ class SeccionTableSeeder extends Seeder {
 		]);
 
 		Seccion::create([
-			'name' => 'Gerencia'
+			'name' => 'Compras'
 		]);
 
 		Seccion::create([
-			'name' => 'Oficina de Negocios'
+			'name' => 'Contabilídad'
 		]);
 
 		Seccion::create([
-			'name' => 'Gerencia'
-		]);
-
-		Seccion::create([
-			'name' => 'Oficina de Negocios'
+			'name' => 'Sección de Caja'
 		]);
 
 	}
