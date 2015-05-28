@@ -15,14 +15,14 @@ class ShipmentTableSeeder extends Seeder
 		DB::table('shipments')->delete();
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 1,
 			"reciber_id"		=> 4,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 3,
 			"reciber_id"		=> 8,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
@@ -30,7 +30,7 @@ class ShipmentTableSeeder extends Seeder
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 4,
 			"reciber_id"		=> 9,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
@@ -38,7 +38,7 @@ class ShipmentTableSeeder extends Seeder
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 8,
 			"reciber_id"		=> 10,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
@@ -46,7 +46,7 @@ class ShipmentTableSeeder extends Seeder
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 6,
 			"reciber_id"		=> 8,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
@@ -54,14 +54,14 @@ class ShipmentTableSeeder extends Seeder
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 6,
 			"reciber_id"		=> 4,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
 		]);
 
 		Shipment::create([
-			'code'				=> rand(1500456, 3500456),
+			'code'				=> rand(10000000, 90000000),
 			"sender_id" 		=> 2,
 			"reciber_id"		=> 5,
 			"description"		=> "Sit ut porttitor risus ultricies urna sed? Sagittis, ultricies, ultrices cursus integer massa in rhoncus dolor porta rhoncus cum, integer turpis, enim lectus! Natoque non augue dignissim amet eros mattis. Sed, dictumst placerat, et et?"
