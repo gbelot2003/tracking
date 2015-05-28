@@ -47,7 +47,10 @@ class ShipmentCotroller extends Controller {
 		$reciver_list 		= Trader::all();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 
-		return View('shipments.create', compact('sender', 'reciver'));
+		// Vamos a generar un numero random por ahora
+		$randnum = rand(100000000, 900000000);
+
+		return View('shipments.create', compact('sender', 'reciver', 'randnum'));
 	}
 
 	/**
@@ -58,6 +61,8 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function store(ShipmentsFormRequest $request)
 	{
+
+
 		$shipments = Shipment::create($request->all());
 
 		$transito = Transito::create([
