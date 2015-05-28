@@ -6,7 +6,7 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('shipments') }}">Administración de encomiendas</a></li>
-		<li><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">Encomienda No. {{ $paquete->code }}</a></li>
+		<li><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->code }}</a></li>
 		<li><a href="#!">Editando registro encomienda</a></li>
 	</ol>
 @stop
