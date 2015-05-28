@@ -3,7 +3,7 @@
 		<h3>Transitos</h3>
 	</div>
 	<div class="col-md-2">
-		{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline']) !!}
+		{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'id' => 'askBefore']) !!}
 		{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
 		{!! Form::hidden('estado_id', 2) !!}
 		{!! Form::hidden('shipment_id', $paquete->id) !!}
