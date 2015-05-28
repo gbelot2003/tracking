@@ -28,20 +28,11 @@
 		</div>
 	</div>
 
-	<div class="col-md-4">
+	<div class="col-md-8">
 		<!-- secciones Form Input -->
 		<div class="form-group">
 			{!! Form::label('seccion', "Departamento o Sección:") !!}
 			{!! Form::select('seccion_id', $secciones, null, ['class' => 'select form-control', 'id' => 'secciones-select']) !!}
-		</div>
-	</div>
-
-	<div class="col-md-4">
-		<!-- cargo Form Input -->
-		<div class="form-group">
-			{!! Form::label('cargo', "Cargo que desenpeña:") !!}
-
-			{!! Form::select('cargo_id', $cargo, null, ['class' => 'select form-control', 'id' => 'cargo-select']) !!}
 		</div>
 	</div>
 
