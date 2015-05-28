@@ -60,19 +60,40 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsToMany('App\Trader');
 	}
 
+	/**
+	 * Un usuarios puede crear varias encomiendas
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function shipments()
 	{
 		return $this->hasMany('App\Shipment');
 	}
 
+	/**
+	 * Obtener listado de traders relacionados
+	 * @return mixed
+	 */
 	public function getTradersListAttribute()
 	{
 		// Llamamos un listado de registros relacionados
 		return $this->traders->lists('id');
 	}
 
+	/**
+	 * Un usuario puede registrar varios transitos
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function transitos()
 	{
 		return $this->hasMany('App\Transito');
+	}
+
+	/**
+	 * Un usuario puede estar asignado a una sección en particular (Edificio)
+	 * @return \Illuminate\Database\Eloquent\Relations\hasOne
+	 */
+	public function seccion()
+	{
+		return $this->hasOne('App\Seccion', 'seccion_id', 'id');
 	}
 }
