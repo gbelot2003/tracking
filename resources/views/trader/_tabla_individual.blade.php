@@ -15,13 +15,11 @@
 		<thead>
 		<th>Edificio/Sucursal</th>
 		<th>Sección/Departamento</th>
-		<th>Cargo</th>
 		</thead>
 		<tbody>
 		<tr>
 			<td><h4>{{ $trader->establecimiento->name }}</h4></td>
 			<td><h4>{{ $trader->seccion->name }}</h4></td>
-			<td><h4>{{ $trader->cargo->name }}</h4></td>
 		</tr>
 		</tbody>
 	</table>
