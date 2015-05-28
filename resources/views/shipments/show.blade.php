@@ -44,3 +44,6 @@
 		@include('shipments._rel_transitos')
 	</div>
 @stop
+@section('post-script')
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
+@stop
