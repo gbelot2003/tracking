@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CargosFormRequest extends Request {
+class TransitosFormRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,7 +22,10 @@ class CargosFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required'
+			'shipment_id' => 'integer|required',
+			'estado_id' => 'integer|required',
+			'user_id' => 'integer|required',
+			'details' => 'required',
 		];
 	}
 
