@@ -35,8 +35,6 @@
 
 								<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
 								<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
-								<li><a href="{{ url('cargos') }}">Control Cargos</a></li>
-
 							@endif
 
 							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
