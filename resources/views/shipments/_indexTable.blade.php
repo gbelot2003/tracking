@@ -36,9 +36,6 @@
 						</a>
 					</div>
 					<div class="col-md-12">
-						<b>{{ $paquete->recivers->cargo->name }}</b>
-					</div>
-					<div class="col-md-12">
 						<b>{{ $paquete->recivers->seccion->name }}</b>
 					</div>
 
