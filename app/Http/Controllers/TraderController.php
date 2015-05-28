@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Cargo;
 use App\Establecimiento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -42,7 +41,6 @@ class TraderController extends Controller {
 	{
 		$establecimiento = Establecimiento::Lists('name', 'id');
 		$secciones = Seccion::Lists('name', 'id');
-		$cargo = Cargo::Lists('name', 'id');
 
 		return View('trader.create', compact('establecimiento', 'secciones', 'cargo'));
 	}
@@ -86,7 +84,6 @@ class TraderController extends Controller {
 		$trader = Trader::findOrFail($id);
 		$establecimiento = Establecimiento::lists('name', 'id');
 		$secciones = Seccion::lists('name', 'id');
-		$cargo = Cargo::lists('name', 'id');
 		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo'));
 	}
 
