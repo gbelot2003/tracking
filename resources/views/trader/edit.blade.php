@@ -25,15 +25,5 @@
 @stop
 
 @section('post-script')
-	<script>
-		$('#establecimiento-select').select2({
-			placeholder: 'Escoge una Sucursal'
-		});
-		$('#secciones-select').select2({
-			placeholder: 'Escoge una Sección'
-		});
-		$('#cargo-select').select2({
-			placeholder: 'Escoge una Sección'
-		});
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop

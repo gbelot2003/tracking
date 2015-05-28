@@ -14,14 +14,16 @@
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')
+		<div class="options">
+			<ul class="list-inline">
+				<li><a href="#!" class="inline" id="perfil">Crear nuevo perfil</a></li>
+			</ul>
+		</div>
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
 			@include('shipments._form',['submitButtonText' => 'Registrar'])
 		{!! Form::close() !!}
 	</div>
 @stop
 @section('post-script')
-	<script>
-		$('#sender-select').select2();
-		$('#reciver-select').select2();
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop

@@ -31,21 +31,5 @@
 @stop
 
 @section('post-script')
-	<script>
-		$(document).ready(function(){
-			$('#table').DataTable({
-				processing: true,
-				serverSide: true,
-				ajax: '{{ URL::to("listados/personal") }}',
-				columns: [
-					{data: 'last_name', name: 'traders.last_name'},
-					{data: 'first_name', name: 'traders.first_name'},
-					{data: 'name', name: 'establecimientos.name'},
-					{data: 'seccion', name: 'seccions.name'},
-					{data: 'Operaciones', name: 'acciones', searchable: false},
-				]
-			});
-		});
-	</script>
-
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop
