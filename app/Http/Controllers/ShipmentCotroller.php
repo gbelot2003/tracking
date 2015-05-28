@@ -23,7 +23,6 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function index()
 	{
-		//$variable = Variable::orderBy('created_at', 'desc')->get();
 
 		$paquetes = Shipment::orderBy('id', '=', 'Desc')->test()->get();
 
