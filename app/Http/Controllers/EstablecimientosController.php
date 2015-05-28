@@ -50,8 +50,6 @@ class EstablecimientosController extends Controller {
 	 */
 	public function store(EstablecimientosFormRequest $request)
 	{
-		$request['departamento_id'] = $request->input('departamentos_lists');
-		$request['municipio_id'] = $request->input('municipios_lists');
 		$establecimientos = Establecimiento::create($request->all());
 		Session::flash('flash_message', 'El establecimiento a sido agregado');
 		return redirect('establecimientos');
