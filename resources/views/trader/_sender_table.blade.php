@@ -8,7 +8,7 @@
 	<tbody>
 	@foreach($sender as $paquete)
 		<tr>
-			<td><b>{{ $paquete->code }}</b></td>
+			<td><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}"><b>{{ $paquete->code }}</b></a></td>
 			<td>
 				<div class="info-row">{{ $paquete->recivers->first_name }}, {{ $paquete->recivers->last_name }}</div>
 				<div class="info-row"><span class="info-row">{{ $paquete->recivers->seccion->name }}</span></div>
