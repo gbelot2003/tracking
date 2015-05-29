@@ -1,5 +1,5 @@
 @extends('app')
-
+@if(!Request::ajax())
 @section('title', 'Ingresar Registro')
 
 @section('breadcrumbs')
@@ -22,4 +22,12 @@
 @section('post-script')
 	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop
+@else
+	@section('content')
+		<h4 class="modal-title">Creación de registro de personal</h4>
+		{!! Form::open(['action' => ['TraderController@store']]) !!}
+			@include('trader._form', ['submitButtonText' => 'crear'])
+		{!! Form::close() !!}
+	@stop
+@endif
 
