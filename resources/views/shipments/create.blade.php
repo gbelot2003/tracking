@@ -21,7 +21,7 @@
 			</ul>
 		</div>
 		<div id="create-form" class="col-md-12">
-
+			<div id="#loading"></div>
 		</div>
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
 			@include('shipments._form',['submitButtonText' => 'Registrar'])
