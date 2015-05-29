@@ -20,7 +20,7 @@
 </div>
 
 <div class="row">
-	<div class="col-md-4">
+	<div class="col-md-5">
 		<!-- establecimiento Form Input -->
 		<div class="form-group">
 			{!! Form::label('establecimientos', "Agencia o Edificio de trabajo:") !!}
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-8">
+	<div class="col-md-7">
 		<!-- secciones Form Input -->
 		<div class="form-group">
 			{!! Form::label('seccion', "Departamento o Sección:") !!}
