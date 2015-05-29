@@ -38,8 +38,8 @@
             $('#cerrar-perfil').show(function(){
                 $(this).on('click', function(){
                     $('#cerrar-perfil').hide();
-                    $('#create-form').hide();
-                    $('#perfil').show();
+                    $('#create-form').slideUp();
+                    $('#perfil').show('slow');
                 });
             });
             $('#create-form').load('/personal/create', function(){
