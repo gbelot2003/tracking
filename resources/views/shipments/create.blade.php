@@ -16,13 +16,15 @@
 		@include('errors.form-error')
 		<div class="options">
 			<ul class="list-inline">
-				<li><a href="#!" class="inline btn btn-info" id="perfil">Crear nuevo perfil</a></li>
+				<li><a href="#!" class="inline btn" id="perfil">Crear nuevo perfil</a></li>
 				<li><a href="#!" class="inline btn" id="cerrar-perfil">Cerrar formulario</a></li>
 			</ul>
 		</div>
+
 		<div id="create-form" class="col-md-12">
 			<div id="#loading"></div>
 		</div>
+		<hr />
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
 			@include('shipments._form',['submitButtonText' => 'Registrar'])
 		{!! Form::close() !!}

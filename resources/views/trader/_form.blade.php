@@ -33,6 +33,7 @@
 		<div class="form-group">
 			{!! Form::label('seccion', "Departamento o Sección:") !!}
 			{!! Form::select('seccion_id', $secciones, null, ['class' => 'select form-control', 'id' => 'secciones-select']) !!}
+			{!! Form::hidden('main_form', '1', ['id' => 'main_form']) !!}
 		</div>
 	</div>
 
