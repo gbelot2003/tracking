@@ -19,6 +19,9 @@
 				<li><a href="#!" class="inline" id="perfil">Crear nuevo perfil</a></li>
 			</ul>
 		</div>
+		<div id="create-form" class="col-md-12">
+
+		</div>
 		{!! Form::open(['action' => ['ShipmentCotroller@store']]) !!}
 			@include('shipments._form',['submitButtonText' => 'Registrar'])
 		{!! Form::close() !!}
