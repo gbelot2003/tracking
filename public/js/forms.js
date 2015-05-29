@@ -38,7 +38,7 @@
                 }
             });
         });
-        /***otro script*/
+        /***crear perfil en shipments.create */
         $('#cerrar-perfil').hide();
         $('#perfil').on('click', function(e){
             e.preventDefault();
@@ -53,6 +53,7 @@
             });
             $('#create-form').load('/personal/create', function(){
                 $(this).slideDown().css({'background' : '#EEEEEE', 'margin-bottom':'3rem'});
+                $('#main_form').val(2)
                 $('#establecimiento-select').select2({ placeholder: 'Escoge una Sucursal' });
                 $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
             });
