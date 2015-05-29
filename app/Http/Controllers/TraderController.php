@@ -54,6 +54,11 @@ class TraderController extends Controller {
 	{
 		$trader = Trader::create($request->all());
 		Session::flash('flash_message', 'El nuevo registro a sido creado');
+
+		if($request->input('main_form') != 1){
+			return redirect()->back();
+		}
+
 		return redirect()->route('personal.show', $trader->id);
 	}
 
