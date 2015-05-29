@@ -1,4 +1,12 @@
 (function(){
+    $.ajaxSetup({global:true});
+    $(document).ajaxStart(function(e) {
+        $("#loading").show();
+    });
+
+    $(document).ajaxStop(function(e) {
+        $("#loading").hide();
+    });
     jQuery(document).ready(function(){
         $('#sender-select').select2({ placeholder: "Select a state" });
         $('#reciver-select').select2({ placeholder: "Select a state" });
@@ -36,7 +44,8 @@
             e.preventDefault();
             $(this).hide();
             $('#cerrar-perfil').show(function(){
-                $(this).on('click', function(){
+                $(this).on('click', function(e){
+                    e.preventDefault();
                     $('#cerrar-perfil').hide();
                     $('#create-form').slideUp();
                     $('#perfil').show('slow');
