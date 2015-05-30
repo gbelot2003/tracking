@@ -12,9 +12,16 @@ class Userstatus extends Model {
 	protected $table = 'userstatuses';
 
 	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
+	 * @var bool
 	 */
-	protected $fillable = ['name'];
+	public $timestamps = false;
+
+	/**
+	 * Un status tiene varios usuarios
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function users()
+	{
+		return $this->hasMany('App\User');
+	}
 }
