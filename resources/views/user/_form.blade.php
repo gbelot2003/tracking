@@ -23,7 +23,7 @@
 			{!! Form::password("password_confirmation", ['class' => 'form-control floating-label', 'placeholder' => 'Re-password']) !!}
 		</div>
 	</div>
-
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 	<div class="col-md-12">
 		<!-- Repassword Form Input -->
 		<div class="form-group">
@@ -37,7 +37,7 @@
 			{!! Form::select('traders_list[]', $trader, null, ['class' => 'select form-control', 'id' => 'trader-select', 'multiple']) !!}
 		</div>
 	</div>
-
+	@endif
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">{{ $submitButtonText }}</button>
 	</div>
