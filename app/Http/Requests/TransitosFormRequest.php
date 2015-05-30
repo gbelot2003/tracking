@@ -24,7 +24,6 @@ class TransitosFormRequest extends Request {
 		return [
 			'shipment_id' => 'integer|required',
 			'estado_id' => 'integer|required',
-			'user_id' => 'integer|required',
 			'details' => 'required',
 		];
 	}
