@@ -13,6 +13,9 @@ class PaquetesCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
+		if(!$request->user()->hasRole(['cliente'])) {
+			return redirect()->back();
+		}
 		return $next($request);
 	}
 
