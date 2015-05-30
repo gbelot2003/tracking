@@ -16,6 +16,7 @@ class EstablecimientosTableSeeder extends Seeder {
 		\DB::table('establecimientos')->insert(array (
 			0 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN EL CENTRO TGU',
@@ -24,6 +25,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			1 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN PLAZA SAN CARLOS BLVD. MZN. TGU',
@@ -32,6 +34,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			2 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN-ATB JUAN PABLO II TGU',
@@ -39,6 +42,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			3 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN KENNEDY TGU',
@@ -47,6 +51,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			4 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN LA MERCED TGU',
@@ -55,6 +60,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			5 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN-ATB BLVD. MORAZÁN TGU',
@@ -62,6 +68,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			6 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN MALL MULTIPLAZA TGU',
@@ -70,6 +77,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			7 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN SEARS TGU',
@@ -78,6 +86,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			8 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN LA GRANJA TGU',
@@ -86,6 +95,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			9 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN BCIE TGU',
@@ -94,6 +104,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			10 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN MALL LAS CASCADAS TGU',
@@ -101,6 +112,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			11 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN UNITEC TGU',
@@ -108,6 +120,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			12 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN SANTA MONICA SUYAPA TGU',
@@ -116,6 +129,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			13 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN L.C. LA CONCORDIA TGU',
@@ -124,6 +138,7 @@ class EstablecimientosTableSeeder extends Seeder {
 			),
 			14 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN PRONTO PARQUE EMPRESARIAL TGU',
@@ -134,6 +149,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			15 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN INJUPEMP TGU',
@@ -142,6 +158,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			16 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT CENTRO TGU',
@@ -152,6 +169,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			17 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT CITY MALL TGU',
@@ -160,6 +178,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			18 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT MALL LAS CASCADAS TGU',
@@ -168,6 +187,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			19 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT METROMALL TGU',
@@ -176,6 +196,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			20 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT MULTIPLAZA TGU',
@@ -184,6 +205,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			21 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT PAYAQUI TGU',
@@ -192,6 +214,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			22 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT PLAZA CRIOLLA TGU',
@@ -200,6 +223,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			23 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN CT PLAZA MIRAFLORES TGU',
@@ -208,6 +232,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			25 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN-ATB BLVD. MORAZÁN TGU',
@@ -215,6 +240,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			26 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN AMDC TGU',
@@ -223,6 +249,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			27 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN HIPERPAIZ TGU',
@@ -231,6 +258,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			28 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. LA HACIENDA TGU',
@@ -239,6 +267,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			29 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. KENNEDY TGU',
@@ -247,6 +276,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			30 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. BLVD. SUYAPA TGU',
@@ -255,6 +285,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			31 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. LA GRANJA TGU',
@@ -263,6 +294,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			32 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. 21 DE OCTUBRE TGU',
@@ -271,6 +303,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			33 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. VILLAS DEL SOL TGU',
@@ -279,6 +312,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			34 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN UNILEVER TGU',
@@ -287,6 +321,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			35 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN WACKENHUT TGU',
@@ -295,6 +330,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			36 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN ALCON TGU',
@@ -303,6 +339,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			37 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PROVAL TGU',
@@ -311,6 +348,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			38 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN CORPORACION DINANT TGU',
@@ -318,6 +356,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			39 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN EMB. LA REYNA TGU',
@@ -325,6 +364,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			40 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN DIUNSA SUPERSTORE TGU',
@@ -332,6 +372,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			41 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN CENTRO DE TARJETAS TGU',
@@ -339,6 +380,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			42 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN L.C. ANILLO SUR TGU',
@@ -346,6 +388,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			43 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO PRESIDENCIAL TGU',
@@ -353,6 +396,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			44 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO MIRAFLORES TGU',
@@ -360,6 +404,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			45 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN MUNICIPALIDAD SPS',
@@ -367,6 +412,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			46 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO FLORENCIA TGU',
@@ -374,6 +420,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			47 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN ALIMENTOS MARAVILLA COM',
@@ -381,6 +428,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			48 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN CASA PRESIDENCIAL TGU',
@@ -388,6 +436,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			49 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO LA HACIENDA TGU ',
@@ -395,6 +444,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			50 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO EMISORAS UNIDAS TGU ',
@@ -402,6 +452,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			51 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO BLVD. MORAZAN TGU ',
@@ -409,6 +460,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			52 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO MANCHEN TGU ',
@@ -416,6 +468,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			53 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'VTN PRONTO TEPEYAC TGU ',
@@ -423,6 +476,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			54 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'AGN PRINCIPAL CBA',
@@ -430,6 +484,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			55 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'AGN MEGAPLAZA CBA',
@@ -437,6 +492,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			57 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'VTN ALCON LA CEIBA CBA',
@@ -444,6 +500,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			58 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'VTN. ALCALDÍA LA CEIBA CBA',
@@ -451,6 +508,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			59 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'AGN CHOLOMA CHM',
@@ -458,6 +516,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			60 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'AGN CHOLOMA MALL AMERICAS CHM',
@@ -465,6 +524,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			61 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'AGN CHOLOMA CHM',
@@ -472,6 +532,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			63 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN JASPER SPS',
@@ -479,6 +540,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			64 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'VTN FOTL RLA MANUFACTURING CHM',
@@ -486,6 +548,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			65 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'VTN ZIP HONDURAS SPS',
@@ -493,6 +556,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			66 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 64,
 				'name' => 'VTN. INHDELVA CHM',
@@ -500,6 +564,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			67 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 110,
 				'name' => 'VTN ZIP CHOLOMA CHM',
@@ -507,6 +572,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			68 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'AGN COMAYAGUA COM',
@@ -514,6 +580,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			69 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'AGN COMAYAGUA MALL PREMIER COM',
@@ -521,6 +588,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			70 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'AGN COMAYAGUA COM',
@@ -528,6 +596,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			71 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'AGN COMAYAGUA MALL PREMIER COM',
@@ -535,6 +604,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			72 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'VTN L.C. COMAYAGUA COM',
@@ -542,6 +612,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			73 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'VTN UNILEVER COMAYAGUA COM',
@@ -549,6 +620,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			74 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 19,
 				'name' => 'VTN EMB. LA REYNA COMAYAGUA COM',
@@ -556,6 +628,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			75 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 7,
 				'municipio_id' => 93,
 				'name' => 'AGN DANLI DNL',
@@ -563,6 +636,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			76 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 7,
 				'municipio_id' => 93,
 				'name' => 'VTN EMB. LA REYNA DANLI DNL',
@@ -570,6 +644,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			77 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 7,
 				'municipio_id' => 93,
 				'name' => 'VTN L.C. DANLI DNL',
@@ -577,6 +652,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			78 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'AGN PLAZA TORONJAL CBA',
@@ -584,6 +660,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			79 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'AGN LC CEIBA CBA',
@@ -591,6 +668,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			80 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 15,
 				'municipio_id' => 228,
 				'name' => 'AGN JUTICALPA JTC',
@@ -598,6 +676,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			81 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 15,
 				'municipio_id' => 228,
 				'name' => 'AGN L.C. JUTICALPA JTC',
@@ -605,6 +684,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			82 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 15,
 				'municipio_id' => 228,
 				'name' => 'VTN ALCALDIA JUTICALPA JTC',
@@ -612,6 +692,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			83 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 15,
 				'municipio_id' => 228,
 				'name' => 'VTN EMB. LA REYNA JUTICALPA JTC',
@@ -619,6 +700,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			84 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 74,
 				'name' => 'AGN LA LIMA LIM',
@@ -626,6 +708,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			85 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 18,
 				'municipio_id' => 290,
 				'name' => 'AGN EL PROGRESO PRG',
@@ -633,6 +716,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			86 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 18,
 				'municipio_id' => 290,
 				'name' => 'AGN L.C. EL PROGRESO ',
@@ -640,6 +724,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			87 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 18,
 				'municipio_id' => 290,
 				'name' => 'AGN CT MEGAPLAZA PGR',
@@ -647,6 +732,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			88 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 18,
 				'municipio_id' => 290,
 				'name' => 'VTN FOTL TELA TLA',
@@ -654,6 +740,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			89 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 68,
 				'name' => 'AGN PUERTO CORTES PCR',
@@ -661,6 +748,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			90 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 68,
 				'name' => 'AGN PLAZA HONDUREÑA PCR',
@@ -668,6 +756,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			91 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 68,
 				'name' => 'AGN PUERTO CORTES PCR',
@@ -675,6 +764,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			92 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 59,
 				'name' => 'AGN PRINCIPAL SPS',
@@ -682,6 +772,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			93 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 11,
 				'municipio_id' => 161,
 				'name' => 'AGN FRENCH HARBOUR ROA',
@@ -689,6 +780,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			94 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 11,
 				'municipio_id' => 161,
 				'name' => 'VTN ROATAN ROA',
@@ -696,6 +788,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			95 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN DIUNSA SPS',
@@ -703,6 +796,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			96 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 4,
 				'municipio_id' => 40,
 				'name' => 'AGN SANTA ROSA DE COPAN SRC',
@@ -710,6 +804,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			97 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN TERCERA AVENIDA SPS',
@@ -717,6 +812,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			98 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 4,
 				'municipio_id' => 40,
 				'name' => 'AGN UNIPLAZA SANTA ROSA SRC',
@@ -724,6 +820,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			99 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN SIETE CALLE SPS',
@@ -731,6 +828,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			100 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN SIETE CALLE SPS',
@@ -738,6 +836,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			101 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN EL CENTRO SPS',
@@ -745,6 +844,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			102 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB SALIDA CORTES SPS',
@@ -752,6 +852,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			103 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB LOS ALAMOS SPS',
@@ -759,6 +860,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			104 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
 				'name' => 'Cualquuer Nombre',
@@ -766,6 +868,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			105 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 36,
 				'name' => 'AGN SIGUATEPEQUE SGA',
@@ -774,6 +877,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			106 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 3,
 				'municipio_id' => 36,
 				'name' => 'AGN LC SIGUATEPEQUE SGA',
@@ -782,6 +886,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			107 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN MALL MULTIPLAZA SPS',
@@ -789,6 +894,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			108 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB SATELITE SPS',
@@ -796,6 +902,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			109 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN PRINCIPAL TGU',
@@ -804,6 +911,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			110 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN GALERIAS DEL VALLE SPS',
@@ -811,6 +919,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			111 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CITY MALL SPS',
@@ -818,6 +927,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			112 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CENTRAL METROPOLITANA SPS',
@@ -825,6 +935,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			113 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN PLAZA PEDREGAL SPS',
@@ -832,6 +943,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			114 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN LC PRADO ALTO SPS',
@@ -839,6 +951,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			115 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN UNITEC TGU',
@@ -847,6 +960,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			116 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN ALTARA SPS',
@@ -854,6 +968,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			117 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT CIRCUNVALACION SPS',
@@ -861,6 +976,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			118 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT CITY MALL SPS',
@@ -868,6 +984,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			119 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT MEGAPLAZA SPS',
@@ -875,6 +992,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			120 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT MULTIPLAZA SPS',
@@ -882,6 +1000,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			121 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT SANTA MONICA SPS',
@@ -889,6 +1008,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			122 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'ATB PAZ BARAHONA SPS',
@@ -896,6 +1016,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			123 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'ATB EN PRINCIPAL SPS',
@@ -903,6 +1024,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			124 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB SALIDA CORTES SPS',
@@ -910,6 +1032,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			125 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB LOS ALAMOS SPS',
@@ -917,6 +1040,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			126 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN CT CIRCUNVALACION SPS',
@@ -924,6 +1048,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			127 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN-ATB SATELITE SPS',
@@ -931,6 +1056,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			128 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN AGUAS DE SAN PEDRO SPS',
@@ -938,6 +1064,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			129 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN ALCON SPS',
@@ -945,6 +1072,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			130 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN FRUIT OF THE LOOM SPS',
@@ -952,6 +1080,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			131 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN PROVAL SPS',
@@ -959,6 +1088,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			132 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN PRONORSA SPS',
@@ -966,6 +1096,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			133 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN DELICIA SPS',
@@ -973,6 +1104,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			134 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN WACKENHUT SPS',
@@ -980,6 +1112,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			135 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN CORPORACION DINANT SPS',
@@ -987,6 +1120,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			136 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN DIUNSA SUPERSTORE SPS',
@@ -994,6 +1128,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			137 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN LC LOS ALAMOS SPS',
@@ -1001,6 +1136,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			138 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN. AGUAS SAN PEDRO PZA CRISTA SPS',
@@ -1008,6 +1144,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			139 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN PLAZA 105 SPS',
@@ -1015,6 +1152,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			140 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 73,
 				'name' => 'AGN ZIP BUENA VISTA SPS',
@@ -1022,6 +1160,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			141 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 73,
 				'name' => 'AGN VILLANUEVA',
@@ -1029,6 +1168,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			142 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 73,
 				'name' => 'VTN MANUF. VILLANUEVA VLL',
@@ -1036,6 +1176,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			143 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN ZIP VILLANUEVA VLL',
@@ -1043,6 +1184,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			144 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN ZIP VILLANUEVA VLL',
@@ -1050,6 +1192,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			145 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'AGN TELA TLA',
@@ -1057,6 +1200,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			146 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 63,
 				'name' => 'VTN ALCALDIA TELA TLA',
@@ -1064,6 +1208,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			147 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'AGN PRINCIPAL TGU',
@@ -1071,6 +1216,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			148 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 6,
 				'municipio_id' => 75,
 				'name' => 'AGN L.C. CHOLUTECA CHT',
@@ -1078,6 +1224,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			149 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 6,
 				'municipio_id' => 75,
 				'name' => 'AGN UNIMALL CHT',
@@ -1085,6 +1232,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			150 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 6,
 				'municipio_id' => 75,
 				'name' => 'VTN ALCALDIA CHOLUTECA CHT',
@@ -1092,6 +1240,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			151 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 6,
 				'municipio_id' => 75,
 				'name' => 'VTN EMB. LA REYNA CHOLUTECA CHT',
@@ -1099,6 +1248,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			152 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 5,
 				'municipio_id' => 268,
 				'name' => 'VTN LEAR SPS',
@@ -1106,6 +1256,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 			),
 			153 => 
 			array (
+				'testablecimiento_id' => 1,
 				'departamento_id' => 17,
 				'municipio_id' => 286,
 				'name' => 'VTN EMB. LA REYNA SAN LORENZO SLO',
