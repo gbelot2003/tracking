@@ -46,7 +46,8 @@ class TraderUserCheckPerms {
 			$ulis[] = $user->id;
 		endforeach;
 
-		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])) {		// usamos in_array para revisar si algun registro
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier'])) {
+			// usamos in_array para revisar si algun registro
 			// coinside, si es si -> seguimos si no, redireccion
 			// a donde comenzo el check o homepage
 			if (!in_array($this->auth->id(), $ulis))
