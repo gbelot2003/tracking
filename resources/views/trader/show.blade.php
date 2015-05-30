@@ -6,6 +6,9 @@
 	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 		<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TraderController@edit' ,$trader->id) }}">Editar Registro</a>
 	@endif
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'cliente']))
+	<a class="btn btn-primary" href="{{ action('ShipmentCotroller@create') }}">Nuevo Paquete</a>
+	@endif
 @stop
 
 @section('breadcrumbs')
