@@ -3,7 +3,7 @@
 @section('title', 'Administración de Mis Paquetes')
 
 @section('link-button')
-	<a class="btn btn-primary" href="#!">Nuevo Paquete</a>
+	<a class="btn btn-primary" href="{{ action('ShipmentCotroller@create') }}">Nuevo Paquete</a>
 @stop
 
 @section('breadcrumbs')
