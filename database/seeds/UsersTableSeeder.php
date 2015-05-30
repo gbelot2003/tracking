@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'gbelot2003',
             'first_name' => 'Gerardo A',
 			'last_name' => 'Belot',
+			'area_id'	=> 1,
 			'email' => 'gbelot2003@hotmail.com',
             'password' => Hash::make('Luna0102'),
         ]);
@@ -27,6 +28,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'amelara',
 			'first_name' => 'Antonio H',
 			'last_name' => 'Melara Fortin',
+			'area_id'	=> 1,
 			'email' => 'amelara@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
@@ -36,6 +38,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'jmelendez',
 			'first_name' => 'Julio',
 			'last_name' => 'Melendez Caceres',
+			'area_id'	=> 1,
 			'email' => 'jmelendez@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
@@ -45,6 +48,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'fmaradiaga',
 			'first_name' => 'Fernando',
 			'last_name' => 'Maradiaga',
+			'area_id'	=> 1,
 			'email' => 'fmaradiaga@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
@@ -54,6 +58,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'lsoliz',
 			'first_name' => 'Luis A',
 			'last_name' => 'Soliz Mendieta',
+			'area_id'	=> 1,
 			'email' => 'lsoliz@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
@@ -63,6 +68,7 @@ class UsersTableSeeder extends Seeder{
 			'name' => 'jmartinez',
 			'first_name' => 'Juan A',
 			'last_name' => 'Martinez Molina',
+			'area_id'	=> 1,
 			'email' => 'jmartinez@hotmail.com',
 			'password' => Hash::make('Luna0102'),
 		]);
