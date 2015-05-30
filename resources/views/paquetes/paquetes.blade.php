@@ -19,15 +19,13 @@
 			<th>Nombre</th>
 			<th>Establecimiento</th>
 			<th>Sección</th>
-			<th>Cargo</th>
 		</thead>
 		<tbody>
 			@foreach($clientes as $cliente)
 				<tr>
 					<td><a href="{{ action('TraderController@show', $cliente->id)  }}">{{ $cliente->first_name }} {{ $cliente->last_name }}</a></td>
-					<td>{{ $cliente->establecimiento->name}}</td>
-					<td>{{ $cliente->seccion->name}}</td>
-					<td>{{ $cliente->cargo->name}}</td>
+					<td></td>
+					<td></td>
 				</tr>
 			@endforeach
 		</tbody>
