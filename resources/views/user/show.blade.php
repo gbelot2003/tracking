@@ -24,7 +24,7 @@
 		</div>
 
 		<div class="col-md-12">
-
+			@include('user._perfiles_relacionados')
 		</div>
 	</div>
 @stop
