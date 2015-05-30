@@ -41,9 +41,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleTableSeeder');
 		$this->command->info('Roles table seeded!');
 
-		$this->call('UserstatusTableSeeder');
-		$this->command->info('Userstatus table seeded!');
-
 		$this->call('UsersTableSeeder');
 		$this->command->info('Users table seeded!');
 
