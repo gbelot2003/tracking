@@ -7,7 +7,7 @@ class Area extends Model {
 	/**
 	 * @var string
 	 */
-	protected $table = 'Areas';
+	protected $table = 'areas';
 
 	/**
 	 * @var bool
