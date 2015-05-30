@@ -96,4 +96,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->hasOne('App\Seccion', 'seccion_id', 'id');
 	}
+
+	/**
+	 * Un usuario esta en una area
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function area()
+	{
+		return $this->hasOne('App\Area', 'area_id', 'id');
+	}
 }
