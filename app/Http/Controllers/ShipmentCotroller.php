@@ -15,7 +15,8 @@ class ShipmentCotroller extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('ShipmentsCheckPerms'); //configurar permisos de este middle !!! OJO
+		$this->middleware('ShipmentsCheckPerms', ['except' => ['show']]);
+		$this->middleware('ShipmentsUserCheckPerms', ['only' => ['show']]);
 	}
 	/**
 	 * Display a listing of the resource.
