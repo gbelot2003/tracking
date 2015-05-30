@@ -29,6 +29,8 @@ Route::resource('personal', 'TraderController');
 
 Route::resource('shipments', 'ShipmentCotroller');
 
+Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
+
 Route::get('clientes', 'ClientesController@index');
 
 route::get('mis-paquetes', 'PaquetesController@index');

@@ -6,6 +6,7 @@ use App\Http\Requests\ShipmentsFormRequest;
 use App\Shipment;
 use App\Trader;
 use App\Transito;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
@@ -15,8 +16,9 @@ class ShipmentCotroller extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('ShipmentsCheckPerms', ['except' => ['show']]);
+		$this->middleware('ShipmentsCheckPerms', ['except' => ['show', 'create', 'store']]);
 		$this->middleware('ShipmentsUserCheckPerms', ['only' => ['show']]);
+		$this->id = Auth::id();
 	}
 	/**
 	 * Display a listing of the resource.
@@ -36,13 +38,15 @@ class ShipmentCotroller extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($fid)
 	{
-		/**
-		 * Definir una busqueda especifica en el formulario, para las personas a las que se
-		 * se les enviara algun paquete o contenido
-		 */
-		$sender_list 		= Trader::all();
+		$user = User::findorFail($this->id);
+		if($fid > 0){
+			$sender_list 		= Trader::where('id', '=', $fid)->get();
+		} elseif($fid == 0) {
+			$sender_list 		= Trader::all();
+		}
+
 		$sender 			= $sender_list->lists('full_name', 'id');
 
 		$reciver_list 		= Trader::all();
@@ -64,7 +68,6 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function store(ShipmentsFormRequest $request)
 	{
-		//dd($request->all());
 		$shipments = Shipment::create($request->all());
 
 		$transito = Transito::create([
@@ -138,4 +141,28 @@ class ShipmentCotroller extends Controller {
 		//
 	}
 
+
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function fcreate($fid)
+	{
+		$user = User::findorFail($this->id);
+		$trader = $user->traders;
+		dd($fid);
+		$sender_list 		= Trader::all();
+		$sender 			= $sender_list->lists('full_name', 'id');
+
+		$reciver_list 		= Trader::all();
+		$reciver 			= $reciver_list->lists('full_name', 'id');
+
+		$estado = Estado::lists('name', 'id');
+
+		// Vamos a generar un numero random por ahora
+		$randnum = rand(100000000, 900000000);
+
+		return View('shipments.create', compact('sender', 'reciver', 'randnum', 'estado'));
+	}
 }

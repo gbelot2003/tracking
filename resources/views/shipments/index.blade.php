@@ -3,7 +3,7 @@
 @section('title', 'Administración de Encomiendas')
 
 @section('link-button')
-	<a id="virtual-form" class="btn btn-primary" href="{{ action('ShipmentCotroller@create') }}">Nueva encomienda</a>
+	<a id="virtual-form" class="btn btn-primary" href="{{ action('ShipmentCotroller@create', 0) }}">Nueva encomienda</a>
 @stop
 
 @section('breadcrumbs')
