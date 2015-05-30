@@ -25,18 +25,40 @@
 	</div>
 	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 	<div class="col-md-12">
-		<!-- Repassword Form Input -->
-		<div class="form-group">
-			{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select']) !!}
+		<div class="row">
+			<div class="col-md-6">
+				<!-- Repassword Form Input -->
+				<div class="form-group">
+					<label for="roles_list">Rol de Usuario</label>
+					{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select']) !!}
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!-- Repassword Form Input -->
+				<div class="form-group">
+					<label for="roles_list">Área Géografica</label>
+					{!! Form::select('area_id', $area, null, ['class' => 'select form-control', 'id' => 'area-select']) !!}
+				</div>
+			</div>
+			<div class="col-md-3">
+				<!-- Repassword Form Input -->
+				<div class="form-group">
+					<label for="roles_list">Estado del Usuario</label>
+					{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
+				</div>
+			</div>
 		</div>
 	</div>
+		@if($barra == 1)
+			<div class="col-md-12">
+				<!-- sender Form Input -->
+				<div class="form-group">
+				<label for="roles_list">Perfiles relacionados</label>
+				{!! Form::select('traders_list[]', $trader, null, ['class' => 'select form-control', 'id' => 'trader-select', 'multiple']) !!}
 
-	<div class="col-md-12">
-		<!-- sender Form Input -->
-		<div class="form-group">
-			{!! Form::select('traders_list[]', $trader, null, ['class' => 'select form-control', 'id' => 'trader-select', 'multiple']) !!}
+			</div>
 		</div>
-	</div>
+		@endif
 	@endif
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">{{ $submitButtonText }}</button>

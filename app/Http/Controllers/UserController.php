@@ -1,13 +1,18 @@
 <?php namespace App\Http\Controllers;
 
+use App\Area;
+use App\Estado;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Controllers\Controller;
 use App\Role;
 use App\Trader;
 use App\User;
+use App\Userstatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller {
 
@@ -18,7 +23,7 @@ class UserController extends Controller {
 		$this->middleware('auth');
 		$this->middleware('UserCheckPerms', ['except' => ['edit', 'update']]);
 		$this->middleware('UserUserCheckPerms', ['only' => ['edit', 'update']]);
-		$this->pageTitle = 'Configuración de Usuarios';
+		$this->id = Auth::id();
 	}
 	/**
 	 * Display a listing of the resource.
@@ -40,7 +45,10 @@ class UserController extends Controller {
 		$roles = Role::Lists('display_name', 'id');
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
-		return View('user.create', compact('roles', 'trader'));
+		$estado = Userstatus::lists('name', 'id');
+		$area = Area::lists('areas', 'id');
+
+		return View('user.create', compact('roles', 'trader', 'estado', 'area'));
 	}
 
 	/**
@@ -79,10 +87,19 @@ class UserController extends Controller {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
+		if($user->hasRole(['cliente'])){
+			$barra = 1;
+		}
+		else {
+			$barra = 2;
+		}
+
 		$roles = Role::Lists('display_name', 'id');
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
-		return View('user.edit', compact('user', 'roles', 'trader'));
+		$estado = Userstatus::lists('name', 'id');
+		$area = Area::lists('areas', 'id');
+		return View('user.edit', compact('user', 'roles', 'trader', 'area', 'estado', 'barra'));
 	}
 
 	/**
@@ -95,16 +112,24 @@ class UserController extends Controller {
 	{
 		$user = User::findOrFail($id);
 
-		if(isset($userFormData['password'])):
+		if($userFormData->input('password')):
 			$userFormData['password'] = bcrypt($userFormData->input('password'));
+			unset($userFormData['password_confirmation']);
 		else:
-			$userFormData['password'] = $user->password;
+			unset($userFormData['password']);
+			unset($userFormData['password_confirmation']);
 		endif;
+		$user->update($userFormData->all());
 
-		$user->update($userFormData->input());
-		$user->roles()->sync($userFormData->input('roles_lists'));
-		$traders = $userFormData->input('traders_list');
-		$user->traders()->sync($traders);
+		if($userFormData->input('roles_lists')){
+			$user->roles()->sync($userFormData->input('roles_lists'));
+		}
+
+
+		if($userFormData->input('traders_list')){
+			$traders = $userFormData->input('traders_list');
+			$user->traders()->sync($traders);
+		}
 
 		Session::flash('flash_message', 'El usuario a sido editado correctamente');
 		return redirect('user');
