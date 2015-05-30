@@ -68,7 +68,35 @@ class SeccionTableSeeder extends Seeder {
 		]);
 
 		Seccion::create([
+			'name' => 'Asesoria Legal'
+		]);
+
+		Seccion::create([
 			'name' => 'Sección de Caja'
+		]);
+
+		Seccion::create([
+			'name' => 'Sección de Informatica'
+		]);
+
+		Seccion::create([
+			'name' => 'Seguridad'
+		]);
+
+		Seccion::create([
+			'name' => 'Fideicomisos'
+		]);
+
+		Seccion::create([
+			'name' => 'Aseo y mensajeria'
+		]);
+
+		Seccion::create([
+			'name' => 'Recuperaciones'
+		]);
+
+		Seccion::create([
+			'name' => 'Comisión de Prestamos'
 		]);
 
 	}
