@@ -251,4 +251,10 @@ e.$validators.maxlength=function(a,c){return 0>f||e.$isEmpty(c)||c.length<=f}}}}
 //# sourceMappingURL=angular.min.js.map
 
 /** Angular init app **/
+
+var app = angular.module('todoApp', [], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('<%');
+    $interpolateProvider.endSymbol('%>');
+});
+
 //# sourceMappingURL=angular.js.map
