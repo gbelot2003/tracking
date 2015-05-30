@@ -47,8 +47,9 @@ class UserController extends Controller {
 		$trader = $trader_list->lists('full_name', 'id');
 		$estado = Userstatus::lists('name', 'id');
 		$area = Area::lists('areas', 'id');
+		$barra = 2;
 
-		return View('user.create', compact('roles', 'trader', 'estado', 'area'));
+		return View('user.create', compact('roles', 'trader', 'estado', 'area', 'barra'));
 	}
 
 	/**
@@ -119,6 +120,7 @@ class UserController extends Controller {
 			unset($userFormData['password']);
 			unset($userFormData['password_confirmation']);
 		endif;
+		dd($userFormData->all());
 		$user->update($userFormData->all());
 
 		if($userFormData->input('roles_lists')){
