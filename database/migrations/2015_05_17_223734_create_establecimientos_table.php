@@ -20,6 +20,11 @@ class CreateEstablecimientosTable extends Migration {
 			$table->string('name');
 			$table->text('address')->nullable();
 		});
+
+		Schema::create('testablecimientos', function(Blueprint $table){
+			$table->increments('id');
+			$table->string('name');
+		});
 	}
 
 	/**
