@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'Administración de encomiendas')
+@section('title', 'Administración de Encomiendas')
 
 @section('link-button')
 	<a id="virtual-form" class="btn btn-primary" href="{{ action('ShipmentCotroller@create') }}">Nueva encomienda</a>
@@ -9,7 +9,7 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('shipments') }}">Administración de encomiendas</a></li>
+		<li><a href="{{ url('shipments') }}">Administración de Encomiendas</a></li>
 	</ol>
 @stop
 

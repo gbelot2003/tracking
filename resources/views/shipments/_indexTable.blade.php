@@ -1,7 +1,7 @@
 <div class="table-responsive">
 	<table id="table" class="table table-hover">
 		<thead>
-		<th>No.</th>
+		<th>No. Guia</th>
 		<th>Remitente</th>
 		<th>Destinatario</th>
 		<th>Descripción</th>

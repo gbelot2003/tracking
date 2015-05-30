@@ -12,7 +12,7 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('shipments') }}">Listado de encomiendas</a></li>
+		<li><a href="{{ url('shipments') }}">Administración de Encomiendas</a></li>
 		<li><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->code }}</a></li>
 	</ol>
 @stop
