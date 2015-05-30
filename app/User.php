@@ -106,13 +106,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->belongsTo('App\Area', 'area_id', 'id');
 	}
-
-	/**
-	 * Un usuario le pertenece un cargo
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function cargo()
-	{
-		return $this->belongsTo('App\Cargo', 'cargo_id', 'id');
-	}
 }
