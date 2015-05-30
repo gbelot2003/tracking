@@ -23,7 +23,7 @@
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 
-						<li><a href="{{ url('/shipments') }}">Listado de encomiendas</a></li>
+						<li><a href="{{ url('/shipments') }}">Administración de Encomiendas</a></li>
 
 					@endif
 
@@ -33,8 +33,8 @@
 						<ul class="dropdown-menu" role="menu">
 							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 
-								<li><a href="{{ url('establecimientos') }}">Agencias y establecimientos</a></li>
-								<li><a href="{{ url('secciones') }}">Secciones administrativas</a></li>
+								<li><a href="{{ url('establecimientos') }}">Agencias y Establecimientos</a></li>
+								<li><a href="{{ url('secciones') }}">Secciones Administrativas</a></li>
 							@endif
 
 							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
