@@ -27,7 +27,6 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 
@@ -35,6 +34,9 @@
 		<!-- Description Form Input -->
 		<div class="form-group">
 			{!! Form::textarea("description", null, ['class' => 'form-control floating-label', 'placeholder' => 'Descripción']) !!}
+		</div>
+		<div class="form-group">
+			{!! Form::select('estado_id', $estado, 2, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
 		</div>
 		<div class="form-group">
 			{!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
