@@ -16,7 +16,8 @@ class UserController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('UserCheckPerms');
+		$this->middleware('UserCheckPerms', ['except' => ['edit', 'update']]);
+		$this->middleware('UserUserCheckPerms', ['only' => ['edit', 'update']]);
 		$this->pageTitle = 'Configuración de Usuarios';
 	}
 	/**
