@@ -7,7 +7,7 @@ class Testablecimiento extends Model {
 	/**
 	 * @var string
 	 */
-	protected $table = 'Areas';
+	protected $table = 'testablecimientos';
 
 	/**
 	 * @var bool

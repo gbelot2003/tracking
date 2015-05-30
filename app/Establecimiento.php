@@ -64,4 +64,9 @@ class Establecimiento extends Model {
 	{
 		return $this->perms->lists('id');
 	}
+
+	public function testablecimiento()
+	{
+		return $this->belongsTo('App\Testablecimiento');
+	}
 }

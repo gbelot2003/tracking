@@ -23,6 +23,7 @@
 			<th>Departamento</th>
 			<th>Municipio</th>
 			<th>Dirección</th>
+			<th>Tipo Establecimiento</th>
 		</thead>
 		<tbody>
 		@foreach($establecimientos as $data)
@@ -32,6 +33,7 @@
 				<td>{{ $data->departamento->departamento }}</td>
 				<td>{{ $data->municipio->municipio }}</td>
 				<td>{{ $data->address }}</td>
+				<td>{{ $data->testablecimiento->name }}</td>
 			</tr>
 		@endforeach
 		</tbody>
