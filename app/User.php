@@ -23,7 +23,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'userstatuses_id', 'employee_name', 'email', 'password'];
+	protected $fillable = ['userstatuses_id', 'name',  'first_name',  'last_name',
+							'area_id', 'cargo_id', 'email', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -104,5 +105,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function area()
 	{
 		return $this->belongsTo('App\Area', 'area_id', 'id');
+	}
+
+	/**
+	 * Un usuario le pertenece un cargo
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function cargo()
+	{
+		return $this->belongsTo('App\Cargo', 'cargo_id', 'id');
 	}
 }

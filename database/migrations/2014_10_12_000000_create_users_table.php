@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
 			$table->integer('area_id')->unsigned();
-			$table->integer('seccion_id')->unsigned();
+			$table->integer('cargo_id')->unsigned();
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->rememberToken();
