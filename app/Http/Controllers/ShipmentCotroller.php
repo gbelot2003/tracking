@@ -106,7 +106,9 @@ class ShipmentCotroller extends Controller {
 
 		$reciver_list 		= Trader::all();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
-		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum'));
+		$estado = Estado::lists('name', 'id');
+
+		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum', 'estado'));
 	}
 
 	/**
