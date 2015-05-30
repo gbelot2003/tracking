@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('MunicipioTableSeeder');
 		$this->command->info('Municipios table seeded!');
 
+		$this->call('TestablecimientosTableSeeder');
+		$this->command->info('Testablecimientos table seeded!');
+
 		$this->call('EstablecimientosTableSeeder');
 		$this->command->info('Establecimientos table seeded!');
 
@@ -49,7 +52,6 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('TransitoTableSeeder');
 		$this->command->info('Transitos table seeded!');
-
 
 	}
 
