@@ -17,6 +17,7 @@
     "bootstrap-sass": "~3.3.4",
     "arrive": "~2.1.0",
     "select2-dist": "~4.0.0",
-    "fvn-jquery-datatables": "*"
+    "fvn-jquery-datatables": "*",
+    "angular": "1.3.15"
   }
 }
