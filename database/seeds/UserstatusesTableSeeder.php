@@ -1,27 +1,30 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ajax
- * Date: 02-16-15
- * Time: 02:01 AM
- */
+
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
-use App\Userstatus;
 
-class UserstatusTableSeeder extends Seeder{
-	public function run(){
-		DB::table('userstatuses')->delete();
+class UserstatusesTableSeeder extends Seeder {
 
-		Userstatus::create([
-			'name' => 'Activo',
-		]);
-
-
-		Userstatus::create([
-			'name' => 'Desactivado',
-		]);
-
-
+	/**
+	 * Auto generated seed file
+	 *
+	 * @return void
+	 */
+	public function run()
+	{
+		\DB::table('userstatuses')->delete();
+        
+		\DB::table('userstatuses')->insert(array (
+			0 => 
+			array (
+				'id' => 1,
+				'name' => 'activo',
+			),
+			1 => 
+			array (
+				'id' => 2,
+				'name' => 'suspendido',
+			),
+		));
 	}
+
 }
