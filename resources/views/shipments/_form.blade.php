@@ -35,9 +35,14 @@
 		<div class="form-group">
 			{!! Form::textarea("description", null, ['class' => 'form-control floating-label', 'placeholder' => 'Descripción']) !!}
 		</div>
+		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 		<div class="form-group">
 			{!! Form::select('estado_id', $estado, 2, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
 		</div>
+		@endif
+		@if(Auth::user()->hasRole(['cliente']))
+			{!! Form::hidden('estado_id', 1) !!}
+		@endif
 		<div class="form-group">
 			{!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
 		</div>
