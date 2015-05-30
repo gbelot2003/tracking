@@ -19,8 +19,6 @@ Route::resource('user', 'UserController');
 
 Route::resource('secciones', 'SeccionesController');
 
-Route::resource('cargos', 'CargosController');
-
 Route::resource('establecimientos', 'EstablecimientosController');
 
 /** IMPORTANTE, para fines practicos y de menos confución en el codigo
