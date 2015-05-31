@@ -1268,6 +1268,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'departamento_id' => 8,
 				'municipio_id' => 110,
 				'name' => 'Centro de Acopio',
+				'address' => ''
 			),
 		));
 	}
