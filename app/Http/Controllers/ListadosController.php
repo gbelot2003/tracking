@@ -24,7 +24,7 @@ class ListadosController extends Controller {
 	 */
 	public function getUsuariosData()
 	{
-		$users = User::Select(['users.id', 'users.name', 'users.email', 'roles.name as rolname'])
+		$users = User::Select(['users.id', 'users.name', 'users.email', 'user.area_id', 'roles.name as rolname'])
 						->Join('role_user', 'users.id', '=', 'role_user.user_id')
 						->Join('roles', 'role_user.role_id', '=', 'roles.id');
 		return Datatables::of($users)
