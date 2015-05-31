@@ -49,7 +49,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function estado()
 	{
-		return $this->belongsTo('App\Userstatus');
+		return $this->belongsTo('App\Userstatus', 'userstatus_id', 'id');
 	}
 
 	/**

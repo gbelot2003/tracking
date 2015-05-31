@@ -33,7 +33,7 @@ class UserController extends Controller {
 	public function index()
 	{
 		if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])){
-			$users = User::where('area_id', '=', Auth::user()->area_id)->get();
+			$users = User::whereAreaIdAndUserstatusId(Auth::user()->area_id, 1)->get();
 		} else  {
 			$users = User::all();
 		}
