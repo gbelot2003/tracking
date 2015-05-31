@@ -32,7 +32,6 @@
 @stop
 
 @section('post-script')
-	@if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente']))
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable({
@@ -50,6 +49,4 @@
 			});
 		});
 	</script>
-	@endif
-
 @stop
