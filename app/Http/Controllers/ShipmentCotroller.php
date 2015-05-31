@@ -40,16 +40,26 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function create($fid)
 	{
-		$user = User::findorFail($this->id);
-		if($fid > 0){
-			$sender_list 		= Trader::where('id', '=', $fid)->get();
-		} elseif($fid == 0) {
-			$sender_list 		= Trader::all();
+		/** Reconociemos si la entrada viene de perfil o de formulario de shipments */
+		if($fid != 0){
+			/** is biene de perfil, obtenemos el objeto trader **/
+			$trader = Trader::find($fid);
+			if($trader->estado->id != 1){
+				/** Si el metodo estado->id no es 1 redireccionamos atras **/
+				return redirect()->back();
+			}
 		}
 
+		$user = User::findorFail($this->id);
+
+		if($fid != 0){
+			$sender_list 		= Trader::where('id', '=', $fid)->get();
+		} elseif($fid == 0) {
+			$sender_list 		= Trader::where('userstatus_id', '=', 1)->get();
+		}
 		$sender 			= $sender_list->lists('full_name', 'id');
 
-		$reciver_list 		= Trader::all();
+		$reciver_list 		= Trader::where('userstatus_id', '=', 1)->get();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 
 		$estado = Estado::lists('name', 'id');

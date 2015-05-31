@@ -28,7 +28,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-7">
+	<div class="col-md-4">
 		<!-- secciones Form Input -->
 		<div class="form-group">
 			{!! Form::label('seccion', "Departamento o Sección:") !!}
@@ -36,6 +36,16 @@
 			{!! Form::hidden('main_form', '1', ['id' => 'main_form']) !!}
 		</div>
 	</div>
+
+	<div class="col-md-3">
+		<!-- establecimiento Form Input -->
+		<div class="form-group">
+			{!! Form::label('establecimientos', "Agencia o Edificio de trabajo:") !!}
+			{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'status-select']) !!}
+		</div>
+	</div>
+
+
 
 </div>
 <div class="form-group">

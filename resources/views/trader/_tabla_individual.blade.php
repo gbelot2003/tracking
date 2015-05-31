@@ -15,11 +15,13 @@
 		<thead>
 		<th>Edificio/Sucursal</th>
 		<th>Sección/Departamento</th>
+		<th>Estado</th>
 		</thead>
 		<tbody>
 		<tr>
 			<td><h4>{{ $trader->establecimiento->name }}</h4></td>
 			<td><h4>{{ $trader->seccion->name }}</h4></td>
+			<td><h4>{{ $trader->estado->name }}</h4></td>
 		</tr>
 		</tbody>
 	</table>

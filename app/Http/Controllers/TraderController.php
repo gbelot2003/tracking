@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\TradersFormRequest;
 use App\Shipment;
+use App\Userstatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Seccion;
@@ -41,8 +42,9 @@ class TraderController extends Controller {
 	{
 		$establecimiento = Establecimiento::Lists('name', 'id');
 		$secciones = Seccion::Lists('name', 'id');
+		$estado = Userstatus::lists('name', 'id');
 
-		return View('trader.create', compact('establecimiento', 'secciones', 'cargo'));
+		return View('trader.create', compact('establecimiento', 'secciones', 'cargo', 'estado'));
 	}
 
 	/**
@@ -72,6 +74,15 @@ class TraderController extends Controller {
 	{
 
 		$trader = Trader::findOrFail($id);
+		if(Auth::user()->hasRole(['centro-acopio', 'currier', 'cliente'])){
+			if($trader->estado->id != 1){
+				return redirect()->back()->with('flash_message', 'ATENCIÓN!!! Este perfil a sido desactivado o suspendido, habla con tu supervisor o administrador para
+												obtener mas información!!!!');
+			}
+		}
+
+
+
 		$sender = Shipment::where('sender_id', '=', $id)->test()->get();
 		$reciber = Shipment::where('reciber_id', '=', $id)->test()->get();
 		$users = $trader->user;
@@ -89,7 +100,8 @@ class TraderController extends Controller {
 		$trader = Trader::findOrFail($id);
 		$establecimiento = Establecimiento::lists('name', 'id');
 		$secciones = Seccion::lists('name', 'id');
-		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo'));
+		$estado = Userstatus::lists('name', 'id');
+		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo', 'estado'));
 	}
 
 

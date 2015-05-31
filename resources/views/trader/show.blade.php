@@ -3,12 +3,16 @@
 @section('title', 'Registro')
 
 @section('link-button')
-	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
-		<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TraderController@edit' ,$trader->id) }}">Editar Registro</a>
-	@endif
-	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'cliente']))
-	<a class="btn btn-primary" href="{{ action('ShipmentCotroller@create', $trader->id) }}">Nuevo Paquete</a>
-	@endif
+	<div class="form-group">
+		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
+			<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TraderController@edit' ,$trader->id) }}">Editar Registro</a>
+		@endif
+		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'cliente']))
+			@if($trader->estado->id == 1)
+				<a class="btn btn-primary" href="{{ action('ShipmentCotroller@create', $trader->id) }}">Nuevo Paquete</a>
+			@endif
+		@endif
+	</div>
 @stop
 
 @section('breadcrumbs')
