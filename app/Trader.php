@@ -16,7 +16,7 @@ class Trader extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['establecimiento_id', 'seccion_id', 'cargo_id', 'first_name', 'last_name', 'user_id'];
+	protected $fillable = ['establecimiento_id', 'seccion_id', 'cargo_id', 'first_name', 'last_name', 'user_id', 'userstatus_id'];
 
 
 	public function getFullNameAttribute()
@@ -65,6 +65,16 @@ class Trader extends Model {
 	public function reciver()
 	{
 		return $this->hasMany('App\Shipment', 'reciber_id', 'id');
+	}
+
+	/**
+	 * Estado del perfil en cuestion
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * Solo deberian cambiarlo Administradores Generales del sistema
+	 */
+	public function estado()
+	{
+		return $this->belongsTo('App\Userstatus', 'userstatus_id', 'id');
 	}
 
 }

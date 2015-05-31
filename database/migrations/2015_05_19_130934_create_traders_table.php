@@ -19,6 +19,8 @@ class CreateTradersTable extends Migration {
 			$table->integer('seccion_id')->unsigned();
 			$table->string('first_name');
 			$table->string('last_name');
+			$table->integer('userstatus_id');
+
 			$table->timestamps(); // Fechas de creaccion y edición
 		});
 
