@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title')
-	Ficha de encomienda No. {{ $paquete->code }}
+	Guia No. {{ $paquete->code }}
 @stop
 @section('link-button')
 	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
