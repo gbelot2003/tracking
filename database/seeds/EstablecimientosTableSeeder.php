@@ -1267,9 +1267,33 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'testablecimiento_id' => 2,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
-				'name' => 'Centro de Acopio',
+				'name' => 'Centro de Acopio Edificio Plaza Victoria',
 				'address' => ''
 			),
+			155 =>
+				array(
+					'testablecimiento_id' => 2,
+					'departamento_id' => 8,
+					'municipio_id' => 110,
+					'name' => 'Currier Edificio Plaza Victoria',
+					'address' => ''
+				),
+			156 =>
+				array(
+					'testablecimiento_id' => 2,
+					'departamento_id' => 8,
+					'municipio_id' => 110,
+					'name' => 'Centro de Acopio Edificio Tepeyac',
+					'address' => ''
+				),
+			157 =>
+				array(
+					'testablecimiento_id' => 2,
+					'departamento_id' => 8,
+					'municipio_id' => 110,
+					'name' => 'Currier Edificio Tepeyac',
+					'address' => ''
+				),
 		));
 	}
 
