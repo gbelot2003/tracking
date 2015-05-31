@@ -1262,6 +1262,13 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'name' => 'VTN EMB. LA REYNA SAN LORENZO SLO',
 				'address' => 'Embotelladora La Reyna, Carretera Panamericana Km 103, Tres cuadras y media de gasolinera PUMA, desvío Coyolito Barrio Alto Verde, San Lorenzo Valle ',
 			),
+			154 =>
+			array(
+				'testablecimiento_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Centro de Acopio',
+			),
 		));
 	}
 
