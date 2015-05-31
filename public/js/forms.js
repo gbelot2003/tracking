@@ -14,6 +14,7 @@
         $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
         $('#cargo-select').select2({ placeholder: 'Escoge una Sección' });
         $('#dept-select').select2();
+        $('#tipo-select').select2();
         /** establecimientos.create/edit form script **/
         var mid = $("#dept-select option:selected").val();
         $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });

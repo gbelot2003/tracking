@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\EstablecimientosFormRequest;
 use App\Municipio;
+use App\Testablecimiento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
@@ -26,7 +28,11 @@ class EstablecimientosController extends Controller {
 	 */
 	public function index()
 	{
-		$establecimientos = Establecimiento::all();
+		if(Auth::user()->hasRole(['centro-acopio', 'currier', 'cliente'])){
+			$establecimientos = Establecimiento::where('testablecimiento_id', '=', 1)->get();
+		} else {
+			$establecimientos = Establecimiento::all();
+		}
 		return View('establecimientos.index', compact('establecimientos'));
 	}
 
@@ -39,7 +45,8 @@ class EstablecimientosController extends Controller {
 	{
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		return View('establecimientos.create', compact('departamentos', 'municipios'));
+		$tipo =	Testablecimiento::lists('name', 'id');
+		return View('establecimientos.create', compact('departamentos', 'municipios', 'tipo'));
 	}
 
 	/**
@@ -77,7 +84,8 @@ class EstablecimientosController extends Controller {
 		$establecimiento = Establecimiento::findOrFail($id);
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		return View('establecimientos.edit', compact('establecimiento', 'departamentos', 'municipios'));
+		$tipo =	Testablecimiento::lists('name', 'id');
+		return View('establecimientos.edit', compact('establecimiento', 'departamentos', 'municipios', 'tipo'));
 	}
 
 	/**

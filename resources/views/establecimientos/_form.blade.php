@@ -7,7 +7,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-6 col-sm-12">
+	<div class="col-md-5 col-sm-12">
 		<!-- Name Departamento Input -->
 		<div class="form-group">
 			{!! Form::label('departamentos', 'Departamento') !!}
@@ -15,7 +15,16 @@
 		</div>
 	</div>
 
-	<div id="municipios" class="col-md-6 col-sm-12"></div>
+	<div id="municipios" class="col-md-5 col-sm-12"></div>
+
+	<div class="col-md-2 col-sm-12">
+		<!-- Name Departamento Input -->
+		<div class="form-group">
+			{!! Form::label('testablecimiento_id', 'Tipo') !!}
+			{!! Form::select("testablecimiento_id", $tipo, 1 ,['class' => 'select form-control', 'id' => 'tipo-select']) !!}
+		</div>
+	</div>
+
 
 	<div class="col-md-12">
 		<!-- Name Form Input -->
