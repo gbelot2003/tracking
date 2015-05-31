@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder {
 
@@ -27,7 +28,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-30 20:38:57',
 				'updated_at' => '2015-05-30 20:38:57',
 			),
-			6 => 
+			1 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Harold Rivera',
@@ -40,7 +41,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-30 20:46:30',
 				'updated_at' => '2015-05-31 02:08:36',
 			),
-			7 => 
+			2 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jose Marcelino Cruz Sanchez',
@@ -53,7 +54,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 03:14:52',
 				'updated_at' => '2015-05-31 03:14:52',
 			),
-			8 => 
+			3 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Karen Janeth Carbajal Almendares',
@@ -66,7 +67,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 03:56:01',
 				'updated_at' => '2015-05-31 03:56:01',
 			),
-			9 => 
+			4 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Mahelyn Alejandra Funez Espinoza',
@@ -79,7 +80,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 03:56:52',
 				'updated_at' => '2015-05-31 03:56:52',
 			),
-			10 => 
+			5 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Nelson Oreste Canales Silva',
@@ -92,7 +93,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 03:57:56',
 				'updated_at' => '2015-05-31 03:57:56',
 			),
-			11 => 
+			6 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Olvin Rene Amaya Ortez',
@@ -105,7 +106,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 03:59:25',
 				'updated_at' => '2015-05-31 03:59:25',
 			),
-			12 => 
+			7 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Paola Maria Raudales Casco',
@@ -118,7 +119,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:00:32',
 				'updated_at' => '2015-05-31 04:00:32',
 			),
-			13 => 
+			8 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Luis Joel Sanchez Rodezno',
@@ -131,7 +132,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:10:38',
 				'updated_at' => '2015-05-31 04:10:38',
 			),
-			14 => 
+			9 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Victor Hugo Portillo Amador',
@@ -144,7 +145,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:11:36',
 				'updated_at' => '2015-05-31 04:11:36',
 			),
-			15 => 
+			10 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Oscar Rene Herrera Gonzalez',
@@ -157,7 +158,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:12:17',
 				'updated_at' => '2015-05-31 04:12:17',
 			),
-			16 => 
+			11 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jimmy Jovel Caceres Inestroza',
@@ -170,7 +171,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:13:10',
 				'updated_at' => '2015-05-31 04:13:10',
 			),
-			17 => 
+			12 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Franklin Enrique Salinas Guillen',
@@ -183,7 +184,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 04:14:14',
 				'updated_at' => '2015-05-31 04:14:14',
 			),
-			18 => 
+			13 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Flavio Geovanny Solorzano Fortin',
@@ -196,7 +197,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:43:59',
 				'updated_at' => '2015-05-31 05:43:59',
 			),
-			19 => 
+			14 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Daniel Abraham Ramos Avila',
@@ -209,7 +210,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:45:19',
 				'updated_at' => '2015-05-31 05:45:19',
 			),
-			20 => 
+			15 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Byan Eduardo Matute Arias',
@@ -222,7 +223,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:46:23',
 				'updated_at' => '2015-05-31 05:46:23',
 			),
-			21 => 
+			16 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jorge Fransua Padilla Aleman',
@@ -235,7 +236,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:47:13',
 				'updated_at' => '2015-05-31 05:47:13',
 			),
-			22 => 
+			17 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Ivys Josue Hernandez Flores',
@@ -248,7 +249,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:48:04',
 				'updated_at' => '2015-05-31 05:48:04',
 			),
-			23 => 
+			18 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Osmin David Ortiz Perez',
@@ -261,7 +262,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:48:44',
 				'updated_at' => '2015-05-31 05:48:44',
 			),
-			24 => 
+			19 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Walter Javier Cruz Aguilar',
@@ -274,7 +275,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:49:33',
 				'updated_at' => '2015-05-31 05:49:33',
 			),
-			25 => 
+			20 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Allan Gerardo Bustillo Quezada',
@@ -287,7 +288,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:53:03',
 				'updated_at' => '2015-05-31 05:53:03',
 			),
-			26 => 
+			21 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jose Manuel Osorto Castellanos',
@@ -300,7 +301,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:53:57',
 				'updated_at' => '2015-05-31 05:53:57',
 			),
-			27 => 
+			22 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Ulices Noe Ordoñez Izaguirre',
@@ -313,7 +314,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:54:40',
 				'updated_at' => '2015-05-31 05:54:40',
 			),
-			28 => 
+			23 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Luis Alexis Andino Castro',
@@ -326,7 +327,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:55:25',
 				'updated_at' => '2015-05-31 05:55:25',
 			),
-			29 => 
+			24 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Pedro Antonio Cruz Dominguez',
@@ -339,7 +340,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:56:17',
 				'updated_at' => '2015-05-31 05:56:17',
 			),
-			30 => 
+			25 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jose Jeremias Mejia Duarte',
@@ -352,7 +353,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:56:55',
 				'updated_at' => '2015-05-31 05:56:55',
 			),
-			31 => 
+			26 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Enrique Fernando De Leon Martinez',
@@ -365,7 +366,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 05:57:44',
 				'updated_at' => '2015-05-31 05:58:12',
 			),
-			32 => 
+			27 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Rosales Colman',
@@ -378,7 +379,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:00:21',
 				'updated_at' => '2015-05-31 06:00:21',
 			),
-			33 => 
+			28 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Sayd Rene Reyes Agurcia',
@@ -391,7 +392,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:01:05',
 				'updated_at' => '2015-05-31 06:01:05',
 			),
-			34 => 
+			29 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Jeahns Ruocbell Sevilla Moncada',
@@ -404,7 +405,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:01:49',
 				'updated_at' => '2015-05-31 06:01:49',
 			),
-			35 => 
+			30 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Dorian Danery Matute Gonzales',
@@ -417,7 +418,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:02:49',
 				'updated_at' => '2015-05-31 06:02:49',
 			),
-			36 => 
+			31 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Allan Josue Espinoza Avila',
@@ -430,7 +431,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:03:40',
 				'updated_at' => '2015-05-31 06:03:40',
 			),
-			37 => 
+			32 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Osorto  caballero',
@@ -443,7 +444,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:04:18',
 				'updated_at' => '2015-05-31 06:04:18',
 			),
-			38 => 
+			33 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Selvin Samir Lagos Caballero',
@@ -456,7 +457,7 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-05-31 06:05:04',
 				'updated_at' => '2015-05-31 06:05:04',
 			),
-			39 => 
+			34 =>
 			array (
 				'userstatus_id' => 1,
 				'name' => 'Yeimy Carolina Chavarria Urquia',
@@ -470,6 +471,44 @@ class UsersTableSeeder extends Seeder {
 				'updated_at' => '2015-05-31 06:05:44',
 			),
 		));
+
+		$user = User::find(1); $user->attachRole(1);
+		$user = User::find(2); $user->attachRole(1);
+		$user = User::find(3); $user->attachRole(4);
+		$user = User::find(4); $user->attachRole(4);
+		$user = User::find(5); $user->attachRole(4);
+		$user = User::find(6); $user->attachRole(4);
+		$user = User::find(7); $user->attachRole(4);
+		$user = User::find(8); $user->attachRole(4);
+		$user = User::find(9); $user->attachRole(4);
+		$user = User::find(10); $user->attachRole(4);
+
+		$user = User::find(11); $user->attachRole(4);
+		$user = User::find(12); $user->attachRole(4);
+		$user = User::find(13); $user->attachRole(4);
+		$user = User::find(14); $user->attachRole(4);
+		$user = User::find(15); $user->attachRole(4);
+		$user = User::find(16); $user->attachRole(4);
+		$user = User::find(17); $user->attachRole(4);
+		$user = User::find(18); $user->attachRole(4);
+		$user = User::find(19); $user->attachRole(4);
+		$user = User::find(20); $user->attachRole(4);
+
+		$user = User::find(21); $user->attachRole(4);
+		$user = User::find(22); $user->attachRole(4);
+		$user = User::find(23); $user->attachRole(4);
+		$user = User::find(24); $user->attachRole(4);
+		$user = User::find(25); $user->attachRole(4);
+		$user = User::find(26); $user->attachRole(4);
+		$user = User::find(27); $user->attachRole(4);
+		$user = User::find(28); $user->attachRole(4);
+		$user = User::find(29); $user->attachRole(4);
+		$user = User::find(30); $user->attachRole(4);
+
+		$user = User::find(31); $user->attachRole(4);
+		$user = User::find(32); $user->attachRole(4);
+		$user = User::find(33); $user->attachRole(4);
+
 	}
 
 }
