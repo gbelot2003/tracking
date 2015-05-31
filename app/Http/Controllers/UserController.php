@@ -32,6 +32,12 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
+		if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])){
+			$users = User::where('area_id', '=', Auth::user()->area_id)->get();
+		} else  {
+			$users = User::all();
+		}
+
 		return View('user.index', compact('users'));
 	}
 
@@ -120,7 +126,7 @@ class UserController extends Controller {
 			unset($userFormData['password']);
 			unset($userFormData['password_confirmation']);
 		endif;
-		dd($userFormData->all());
+
 		$user->update($userFormData->all());
 
 		if($userFormData->input('roles_lists')){
