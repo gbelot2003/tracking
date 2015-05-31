@@ -48,7 +48,12 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		$roles = Role::Lists('display_name', 'id');
+		if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])){
+			$roles = Role::where('id', '>', 2)->lists('display_name', 'id');
+		} else {
+			$roles = Role::Lists('display_name', 'id');
+		}
+
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
 		$estado = Userstatus::lists('name', 'id');
@@ -101,7 +106,11 @@ class UserController extends Controller {
 			$barra = 2;
 		}
 
-		$roles = Role::Lists('display_name', 'id');
+		if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente'])){
+			$roles = Role::where('id', '>', 2)->lists('display_name', 'id');
+		} else {
+			$roles = Role::Lists('display_name', 'id');
+		}
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
 		$estado = Userstatus::lists('name', 'id');
