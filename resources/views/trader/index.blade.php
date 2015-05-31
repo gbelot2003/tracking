@@ -22,6 +22,7 @@
 			<th>Nombres</th>
 			<th>Establecimento</th>
 			<th>Sección</th>
+			<th>Estado</th>
 			<th>Operaciones</th>
 		</thead>
 		<tbody>
@@ -31,6 +32,7 @@
 @stop
 
 @section('post-script')
+	@if(Auth::user()->hasRole(['admin', 'supervisor', 'centro-acopio', 'currier', 'cliente']))
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable({
@@ -42,9 +44,12 @@
 					{data: 'first_name', name: 'traders.first_name'},
 					{data: 'name', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},
+					{data: 'estado', name: 'userstatuses.name'},
 					{data: 'Operaciones', name: 'acciones', searchable: false},
 				]
 			});
 		});
 	</script>
+	@endif
+
 @stop

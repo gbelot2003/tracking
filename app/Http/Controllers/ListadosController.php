@@ -40,15 +40,19 @@ class ListadosController extends Controller {
 
 	public function getPersonal()
 	{
-		$traders = Trader::Select(
-			[
-				'traders.id',
-				'traders.last_name',
-				'traders.first_name',
-				'establecimientos.name',
-				'seccions.name as seccion'
-			])	->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
-				->join('seccions', 'seccion_id', '=', 'seccions.id');
+
+			$traders = Trader::Select(
+				[
+					'traders.id',
+					'traders.last_name',
+					'traders.first_name',
+					'establecimientos.name',
+					'seccions.name as seccion',
+					'userstatuses.name as estado'
+				])->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
+				->join('seccions', 'seccion_id', '=', 'seccions.id')
+				->Join('userstatuses', 'userstatus_id', '=', 'userstatuses.id');
+
 
 		return Datatables::of($traders)
 			->removeColumn('id')
