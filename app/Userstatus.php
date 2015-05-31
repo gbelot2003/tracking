@@ -18,10 +18,10 @@ class Userstatus extends Model {
 
 	/**
 	 * Un status tiene varios usuarios
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 * @return \Illuminate\Database\Eloquent\Relations\hasOne
 	 */
 	public function users()
 	{
-		return $this->hasMany('App\User');
+		return $this->hasOne('App\User');
 	}
 }
