@@ -40,7 +40,7 @@ class TraderController extends Controller {
 	 */
 	public function create()
 	{
-		$establecimiento = Establecimiento::Lists('name', 'id');
+		$establecimiento = Establecimiento::where('testablecimiento_id', '=', 1)->Lists('name', 'id');
 		$secciones = Seccion::Lists('name', 'id');
 		$estado = Userstatus::lists('name', 'id');
 
@@ -98,7 +98,7 @@ class TraderController extends Controller {
 	public function edit($id)
 	{
 		$trader = Trader::findOrFail($id);
-		$establecimiento = Establecimiento::lists('name', 'id');
+		$establecimiento = Establecimiento::where('testablecimiento_id', '=', 1)->Lists('name', 'id');
 		$secciones = Seccion::lists('name', 'id');
 		$estado = Userstatus::lists('name', 'id');
 		return View('trader.edit', compact('trader', 'establecimiento', 'secciones', 'cargo', 'estado'));
