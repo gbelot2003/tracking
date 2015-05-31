@@ -21,19 +21,29 @@
 		<th>Nombre</th>
 		<th>email</th>
 		<th>Roles</th>
+		<th>Area</th>
 		</thead>
+		<tbody>
+		@foreach($users as $user)
+			<tr>
+				<td><a href="{{ action('UserController@show', $user->id) }}">{{ $user->name }}</a></td>
+				<td>{{ $user->email }}</td>
+				<td>
+					@foreach($user->roles as $role)
+						{{ $role->name }}
+					@endforeach
+				</td>
+				<td>{{ $user->area->areas }}</td>
+			</tr>
+		@endforeach
+		</tbody>
 	</table>
 @stop
 
 @section('post-script')
 	<script>
 		$(function() {
-			$('#users-table').DataTable({
-				processing: true,
-				serverSide: true,
-				"pagingType": "full_numbers",
-				ajax: '{{ url("listados/usuarios-data") }}'
-			});
+			$('#users-table').DataTable();
 		});
 	</script>
 @stop
