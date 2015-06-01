@@ -40,19 +40,13 @@
 		<div class="col-md-4">
 			<div class="form-group">
 				{!! Form::label('image', "Firma:") !!}
-				{!! Form::file('image[]', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="form-group">
-				{!! Form::label("Nombre:") !!}
-				{!! Form::file('image[]', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
+				{!! Form::file('firma', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="form-group">
 				{!! Form::label('image', "Fotografía:") !!}
-				{!! Form::file('image[]', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
+				{!! Form::file('foto', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
 			</div>
 		</div>
 	</div>

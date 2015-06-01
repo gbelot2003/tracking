@@ -23,6 +23,8 @@
 	<th>Estado</th>
 	<th>Usuario</th>
 	<th>Detalles</th>
+	<th>Firma</th>
+	<th>Imagen</th>
 	<th>Hora</th>
 	</thead>
 	<tbody>
@@ -32,6 +34,20 @@
 			<td>{{ $transito->user->name }}</td>
 			<td>{{ $transito->details }}</td>
 			<td>{{ $transito->created_at }}</td>
+			<td>
+			@if(!$transito->firma)
+			----
+			@else
+				<a href="{{ asset('images/transitos/firmas/'. $transito->firma) }}">Firma</a>
+			@endif
+			</td>
+			<td>
+			@if(!$transito->firma)
+				----
+			@else
+				<a href="{{ asset('images/transitos/fotos/'. $transito->foto) }}">Foto</a>
+			@endif
+			</td>
 		</tr>
 	@endforeach
 	</tbody>
