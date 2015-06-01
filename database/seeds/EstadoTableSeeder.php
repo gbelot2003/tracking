@@ -23,6 +23,12 @@ class EstadoTableSeeder extends Seeder
 			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
 		]);
 
+
+		Estado::create([
+			'name' 			=> 'En Transito, Centro de acopio',
+			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
+		]);
+
 		Estado::create([
 			'name'			=>  'En transito, presenta daños ligeros',
 			'description'	=>	'La encomienda presenta algun tipo de daños'
