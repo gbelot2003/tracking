@@ -15,4 +15,13 @@ class Empresa extends Model {
 	 * @var bool
 	 */
 	public $timestamps = false;
+
+	/**
+	 * Cada usuario tiene una empresa asignada
+	 * @return \Illuminate\Database\Eloquent\Relations\hasMany
+	 */
+	public function user()
+	{
+		return $this->hasMany('App\User');
+	}
 }
