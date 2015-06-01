@@ -21,9 +21,7 @@
 
 	{!! Form::open(['action' => ['TransitosController@store'], 'files' => 'true']) !!}
 	<div class="col-md-12">
-		<div class="form-group" style="float: right">
-			{!! Form::submit('enviar', ['class' => 'btn btn-primary']) !!}
-		</div>
+
 	</div>
 	<div class="col-md-12">
 		{!! Form::hidden('shipment_id', $paquete->id) !!}
@@ -49,6 +47,12 @@
 				{!! Form::file('foto', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
 			</div>
 		</div>
+		<div class="col-md-12">
+			<div class="form-group" style="float: right">
+				{!! Form::submit('enviar', ['class' => 'btn btn-primary']) !!}
+			</div>
+		</div>
+
 	</div>
 	{!! Form::close() !!}
 
