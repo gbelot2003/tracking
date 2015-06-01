@@ -7,7 +7,7 @@
 			</div>
 			<div class="panel-body">
 				<div class="form-group">
-					{!! Form::text("code", $code,  ['class' => 'select form-control']) !!}
+				
 				</div>
 				<!-- sender Form Input -->
 				<div class="form-group">
