@@ -3,9 +3,9 @@
 use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model {
-
+	
 	/**
-	 * @var string
+	 *   @var string
 	 */
 	protected $table = 'areas';
 
