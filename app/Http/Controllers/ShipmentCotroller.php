@@ -61,7 +61,7 @@ class ShipmentCotroller extends Controller {
 
 		$reciver_list 		= Trader::where('userstatus_id', '=', 1)->get();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
-
+		 		
 		$estado = Estado::lists('name', 'id');
 
 		// Vamos a generar un numero random por ahora
