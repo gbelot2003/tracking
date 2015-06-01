@@ -24,7 +24,7 @@ class TransitosFormRequest extends Request {
 		return [
 			'shipment_id' => 'integer|required',
 			'estado_id' => 'integer|required',
-			'details' => 'required',
+			'details' => 'string',
 			'firma'   => 'mimes:jpeg,bmp,png,jpg',
 			'foto'   => 'mimes:jpeg,bmp,png,jpg'
 		];
