@@ -6,9 +6,12 @@
 				<h3 class="panel-title">Destinatario</h3>
 			</div>
 			<div class="panel-body">
+				<div class="form-group">
+					{!! Form::text("code",  ['class' => 'select form-control']) !!}
+				</div>
 				<!-- sender Form Input -->
 				<div class="form-group">
-					{!! Form::hidden("code", $randnum) !!}
+				
 					{!! Form::select('reciber_id', $reciver, null, ['class' => 'select form-control', 'id' => 'reciver-select']) !!}
 				</div>
 			</div>
