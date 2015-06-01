@@ -63,5 +63,10 @@ class EstadoTableSeeder extends Seeder
 			'name'			=> 'Entraga Finalizada con observaciones',
 			'description'	=>	'La encomienda a sido entregada y hay observaciones en su entrega'
 		]);
+
+		Estado::create([
+			'name'			=> 'Procesando',
+			'description'	=>	'Hay varias encomiendas en este punto, se esta creando un listado total especifico'
+		]);
     }
 }
