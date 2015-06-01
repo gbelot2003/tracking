@@ -111,10 +111,13 @@ class UserController extends Controller {
 		} else {
 			$roles = Role::Lists('display_name', 'id');
 		}
+
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
+
 		$estado = Userstatus::lists('name', 'id');
 		$area = Area::lists('areas', 'id');
+
 		return View('user.edit', compact('user', 'roles', 'trader', 'area', 'estado', 'barra'));
 	}
 
