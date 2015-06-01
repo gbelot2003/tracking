@@ -20,6 +20,8 @@ class CreateTransitosTable extends Migration {
 			$table->integer('estado_id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->text('details')->nullable();
+			$table->string('sing_path')->nullable();
+			$table->string('picture_path')->nullable();
 			$table->timestamps();
 			$table->foreign('shipment_id')
 				->references('id')
