@@ -8,6 +8,8 @@
         $("#loading").hide();
     });
     jQuery(document).ready(function(){
+        $('a#firma').colorbox();
+        $('a#foto').colorbox();
         $('#sender-select').select2({ placeholder: "Select a state" });
         $('#reciver-select').select2({ placeholder: "Select a state" });
         $('#establecimiento-select').select2({ placeholder: 'Escoge una Sucursal' });

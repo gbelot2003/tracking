@@ -33,7 +33,6 @@
 			<td>{{ $transito->estados->name }}</td>
 			<td>{{ $transito->user->name }}</td>
 			<td>{{ $transito->details }}</td>
-			<td>{{ $transito->created_at }}</td>
 			<td>
 				@if(!$transito->firma)
 					----
@@ -45,18 +44,11 @@
 				@if(!$transito->foto)
 					----
 				@else
-					<a id="foto" href="{{ asset('images/transitos/firmas/'. $transito->foto) }}">Foto</a>
+					<a id="foto" href="{{ asset('images/transitos/fotos/'. $transito->foto) }}">Foto</a>
 				@endif
 			</td>
+			<td>{{ $transito->created_at }}</td>
 		</tr>
 	@endforeach
 	</tbody>
 </table>
-@section('post-script')
-	<script>
-		jQuery(document).ready(function(){
-			$('a#firma').colorbox();
-			$('a#foto').colorbox();
-		});
-	</script>
-@stop
