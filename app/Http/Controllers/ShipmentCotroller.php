@@ -65,9 +65,9 @@ class ShipmentCotroller extends Controller {
 		$estado = Estado::lists('name', 'id');
 
 		// Vamos a generar un numero random por ahora
-		$randnum = rand(100000000, 900000000);
+		//$randnum = rand(100000000, 900000000);
 
-		return View('shipments.create', compact('sender', 'reciver', 'randnum', 'estado'));
+		return View('shipments.create', compact('sender', 'reciver', 'estado'));
 	}
 
 	/**
