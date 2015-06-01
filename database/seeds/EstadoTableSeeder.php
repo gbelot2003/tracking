@@ -23,10 +23,19 @@ class EstadoTableSeeder extends Seeder
 			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
 		]);
 
-
 		Estado::create([
 			'name' 			=> 'En Transito, Centro de acopio',
-			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
+			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito'
+		]);
+
+		Estado::create([
+			'name'			=> 'Procesando',
+			'description'	=>	'Hay varias encomiendas en este punto, se esta creando un listado total especifico'
+		]);
+
+		Estado::create([
+			'name' 			=> 'En Transito, en movimiento',
+			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito'
 		]);
 
 		Estado::create([
@@ -62,11 +71,6 @@ class EstadoTableSeeder extends Seeder
 		Estado::create([
 			'name'			=> 'Entraga Finalizada con observaciones',
 			'description'	=>	'La encomienda a sido entregada y hay observaciones en su entrega'
-		]);
-
-		Estado::create([
-			'name'			=> 'Procesando',
-			'description'	=>	'Hay varias encomiendas en este punto, se esta creando un listado total especifico'
 		]);
     }
 }
