@@ -24,7 +24,7 @@
 	<th>Usuario</th>
 	<th>Detalles</th>
 	<th>Firma</th>
-	<th>Imagen</th>
+	<th>Foto</th>
 	<th>Hora</th>
 	</thead>
 	<tbody>
@@ -35,20 +35,28 @@
 			<td>{{ $transito->details }}</td>
 			<td>{{ $transito->created_at }}</td>
 			<td>
-			@if(!$transito->firma)
-			----
-			@else
-				<a href="{{ asset('images/transitos/firmas/'. $transito->firma) }}">Firma</a>
-			@endif
+				@if(!$transito->firma)
+					----
+				@else
+					<a id="firma" href="{{ asset('images/transitos/firmas/'. $transito->firma) }}">Firma</a>
+				@endif
 			</td>
 			<td>
-			@if(!$transito->firma)
-				----
-			@else
-				<a href="{{ asset('images/transitos/fotos/'. $transito->foto) }}">Foto</a>
-			@endif
+				@if(!$transito->foto)
+					----
+				@else
+					<a id="foto" href="{{ asset('images/transitos/firmas/'. $transito->foto) }}">Foto</a>
+				@endif
 			</td>
 		</tr>
 	@endforeach
 	</tbody>
 </table>
+@section('post-script')
+	<script>
+		jQuery(document).ready(function(){
+			$('a#firma').colorbox();
+			$('a#foto').colorbox();
+		});
+	</script>
+@stop

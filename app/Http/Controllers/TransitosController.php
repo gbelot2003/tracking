@@ -41,12 +41,32 @@ class TransitosController extends Controller {
 	 */
 	public function store(TransitosFormRequest $request)
 	{
-		if(!$request->get('images')){
-			Auth::User()->transitos()->save(New Transito($request->all()));
-			Session::flash('flash_message', 'El registro a sido editado');
-			return redirect()->route('shipments.show',$request->input('shipment_id'));
+		$firma_name = null;
+		$foto_name = null;
+
+		$date = date('Y-m-d h:m');
+		if($request->hasFile('firma')){
+			$firma = $request->input('shipment_id') . '.' . $request->file('firma')->getClientOriginalExtension();
+			$firma_name = "firma-" . $date .'--'. $firma;
+			$request->file('firma')->move(base_path() . '/public/images/transitos/firmas/', $firma_name);
 		}
-		dd($request->all());
+
+		if($request->hasFile('foto')){
+			$foto = $request->input('shipment_id') . '.' . $request->file('foto')->getClientOriginalExtension();
+			$foto_name = "foto-" . $date .'-'. $foto;
+			$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
+		}
+		Auth::User()->transitos()->save(New Transito([
+			'shipment_id' => $request->input('shipment_id'),
+			'estado_id' => $request->input('estado_id'),
+			'details' => $request->input('details'),
+			'firma' => $firma_name,
+			'foto' => $foto_name
+		]));
+
+		Session::flash('flash_message', 'El registro a sido editado');
+		return redirect()->route('shipments.show',$request->input('shipment_id'));
+
 
 
 	}

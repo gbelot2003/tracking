@@ -37,15 +37,15 @@
 			{!! Form::label('detail', "Detalles y notas:") !!}
 			{!! Form::textarea("details", null, ['class' => 'form-control']) !!}
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<div class="form-group">
-				{!! Form::label('image', "Firma:") !!}
+				{!! Form::label('firma', "Firma:") !!}
 				{!! Form::file('firma', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<div class="form-group">
-				{!! Form::label('image', "Fotografía:") !!}
+				{!! Form::label('foto', "Fotografía:") !!}
 				{!! Form::file('foto', ['multiple'=> 'true'], ['class' => 'form_contro']) !!}
 			</div>
 		</div>

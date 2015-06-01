@@ -16,7 +16,7 @@ class Transito extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['shipment_id', 'estado_id', 'seccion_id', 'user_id', 'details'];
+	protected $fillable = ['shipment_id', 'estado_id', 'seccion_id', 'user_id', 'details', 'firma', 'foto'];
 
 	/**
 	 * Un trancito pretences a un Encargo
