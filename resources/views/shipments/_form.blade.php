@@ -1,14 +1,26 @@
 <div class="row">
-
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Destinatario</h3>
 			</div>
 			<div class="panel-body">
+			
+				<!-- code Form Input -->
 				<div class="form-group">
 					{!! Form::text("code", null,  ['class' => 'select form-control']) !!}
 				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Destinatario</h3>
+			</div>
+			<div class="panel-body">
+			
 				<!-- sender Form Input -->
 				<div class="form-group">
 				
