@@ -51,7 +51,7 @@
 				<!-- Repassword Form Input -->
 				<div class="form-group">
 					<label for="empresa">Empresa que labora</label>
-					{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
+					{!! Form::select('empresa_id', $empresa, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
 				</div>
 			</div>
 		</div>
