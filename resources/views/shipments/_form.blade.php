@@ -23,7 +23,7 @@
 				<div class="col-md-6">
 					<!-- sender Form Input -->
 					<div class="form-group">
-						{!! Form::select('establecimiento', $establecimiento, "Selecciona la agencia", ['class' => 'select form-control', 'id' => 'location-select']) !!}
+						{!! Form::select('reciber_seccion', $establecimiento, null, ['class' => 'select form-control', 'id' => 'location-select']) !!}
 					</div>
 				</div>
 				<div id="trader-content" class="col-md-6">

@@ -19,8 +19,8 @@
 	{!! Form::close() !!}
 @stop
 @section('post-script')
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 	<script>
-		$('#sender-select').select2();
-		$('#reciver-select').select2();
+		$('#sender-select').select2({ placeholder: "Select a state" });
 	</script>
 @stop

@@ -50,12 +50,11 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->command->info('Users table seeded!');
 
-		$this->call('ShipmentTableSeeder');
-		$this->command->info('Shipments table seeded!');
+		$this->call('ShipmentsTableSeeder');
+		$this->command->info('Shipmentes table seeded!');
 
-		$this->call('TransitoTableSeeder');
+		$this->call('TransitosTableSeeder');
 		$this->command->info('Transitos table seeded!');
-
 	}
 
 }
