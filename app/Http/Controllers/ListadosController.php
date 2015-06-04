@@ -58,10 +58,7 @@ class ListadosController extends Controller {
 				->Join('userstatuses', 'userstatus_id', '=', 'userstatuses.id');
 
 
-		return Datatables::of($traders)
-			->removeColumn('id')
-			->addColumn('Operaciones', '<a href="{{ action(\'TraderController@show\', $id) }}">Detallar información</a>')
-			->make(true);
+		return Datatables::of($traders)->make(true);
 
 	}
 

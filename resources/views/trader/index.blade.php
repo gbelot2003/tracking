@@ -20,10 +20,10 @@
 		<thead>
 			<th>Apellidos</th>
 			<th>Nombres</th>
+			<th>Nombre Completo</th>
 			<th>Establecimento</th>
 			<th>Sección</th>
 			<th>Estado</th>
-			<th>Operaciones</th>
 		</thead>
 		<tbody>
 
@@ -39,12 +39,14 @@
 				serverSide: true,
 				ajax: '{{ URL::to("listados/personal") }}',
 				columns: [
-					{data: 'last_name', name: 'traders.last_name'},
-					{data: 'first_name', name: 'traders.first_name'},
+					{data: 'last_name', name: 'traders.last_name', "visible": false},
+					{data: 'first_name', name: 'traders.first_name', "visible": false},
+					{data: null, name: 'nombre_completo', "searchable": false, render: function( data, type, full, meta){
+						return "<a href='' >" + full.first_name + " " + full.last_name + "</a>"
+					}},
 					{data: 'name', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},
-					{data: 'estado', name: 'userstatuses.name'},
-					{data: 'Operaciones', name: 'acciones', searchable: false},
+					{data: 'estado', name: 'userstatuses.name'}
 				]
 			});
 		});
