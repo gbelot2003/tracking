@@ -28,7 +28,7 @@ class ShipmentCotroller extends Controller {
 	public function index()
 	{
 
-		return View('shipments.index', compact('paquetes'));
+		return View('shipments.index');
 	}
 
 	/**
