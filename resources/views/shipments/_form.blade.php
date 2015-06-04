@@ -17,13 +17,12 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Destinatario</h3>
+				<h3 class="panel-title">Destinatario (A quien va dirigido el paquete)</h3>
 			</div>
 			<div class="panel-body">
 			
 				<!-- sender Form Input -->
 				<div class="form-group">
-				
 					{!! Form::select('reciber_id', $reciver, null, ['class' => 'select form-control', 'id' => 'reciver-select']) !!}
 				</div>
 			</div>
@@ -33,7 +32,7 @@
 	<div class="col-md-6">
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h3 class="panel-title">Remitente</h3>
+				<h3 class="panel-title">Remitente (Quien envia el paquete)</h3>
 			</div>
 			<div class="panel-body">
 				<!-- sender Form Input -->
