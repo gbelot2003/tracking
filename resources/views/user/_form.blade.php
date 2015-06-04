@@ -26,24 +26,31 @@
 	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 	<div class="col-md-12">
 		<div class="row">
-			<div class="col-md-6">
-				<!-- Repassword Form Input -->
+			<div class="col-md-4">
+				<!-- Rol Form Input -->
 				<div class="form-group">
 					<label for="roles_list">Rol de Usuario</label>
 					{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select']) !!}
 				</div>
 			</div>
 			<div class="col-md-3">
-				<!-- Repassword Form Input -->
+				<!-- Area géografica Form Input -->
 				<div class="form-group">
 					<label for="roles_list">Área Géografica</label>
 					{!! Form::select('area_id', $area, null, ['class' => 'select form-control', 'id' => 'area-select']) !!}
 				</div>
 			</div>
 			<div class="col-md-3">
-				<!-- Repassword Form Input -->
+				<!-- userstatus Form Input -->
 				<div class="form-group">
 					<label for="roles_list">Estado del Usuario</label>
+					{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
+				</div>
+			</div>
+			<div class="col-md-2">
+				<!-- Repassword Form Input -->
+				<div class="form-group">
+					<label for="empresa">Empresa que labora</label>
 					{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
 				</div>
 			</div>
