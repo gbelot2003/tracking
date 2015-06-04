@@ -79,6 +79,10 @@ class ListadosController extends Controller {
 
 	public function getShipments()
 	{
+		/**
+		 * Query de busqueda de eccomiendas principa
+		 * recuperacion via ajax
+		 * @var $traders */
 		$traders = Shipment::select([
 									'shipments.id',
 									'shipments.code',
