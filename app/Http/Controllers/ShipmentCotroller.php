@@ -28,8 +28,6 @@ class ShipmentCotroller extends Controller {
 	public function index()
 	{
 
-		$paquetes = Shipment::orderBy('id', '=', 'Desc')->test()->get();
-
 		return View('shipments.index', compact('paquetes'));
 	}
 

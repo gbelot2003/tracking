@@ -3,13 +3,17 @@
 use App\Http\Requests;
 use App\Municipio;
 use App\Role;
+use App\Shipment;
 use App\Trader;
+use App\Transito;
 use App\User;
 use App\Establecimiento;
 use App\Seccion;
 use App\Cargo;
 use Datatables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ListadosController extends Controller {
 
@@ -71,5 +75,41 @@ class ListadosController extends Controller {
 		$ndep = (int) $depto;
 		return Municipio::select('id', 'municipio')
 			->where('departamento_id', '=', $ndep)->get();
+	}
+
+	public function getShipments()
+	{
+		$traders = Shipment::select([
+									'shipments.id',
+									'shipments.code',
+									'sender.id as sid',
+									'sender.last_name as sender_last',
+									'sender.first_name as sender_first',
+									'aestab.name as sender_agen',
+									'aseccion.name as sender_section',
+									'reciber.id as rid',
+									'reciber.last_name as reciber_last',
+									'reciber.first_name as reciber_first',
+									'bestab.name as reciber_agen',
+									'bseccion.name as reciber_section',
+									'shipments.description as description',
+									])
+									->distinct()
+									->Join('traders as sender', 'sender_id', '=', 'sender.id')
+									->Join('traders as reciber', 'reciber_id', '=', 'reciber.id')
+									->Join('establecimientos as aestab', 'sender.establecimiento_id', '=', 'aestab.id')
+									->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
+									->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
+									->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
+									->orderBy('shipments.id', '=', 'ASC')
+									->get();
+		return Datatables::of($traders)
+			->make(true);
+	}
+
+	public function getShipmentstate($shipments)
+	{
+		$transitos = Transito::where('shipment_id', '=', $shipments)->get();
+		return View('listados.shipmentstate', compact('transitos'));
 	}
 }
