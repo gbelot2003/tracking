@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Establecimiento;
 use App\Estado;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShipmentsFormRequest;
@@ -61,11 +62,11 @@ class ShipmentCotroller extends Controller {
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 		 		
 		$estado = Estado::lists('name', 'id');
-
+		$establecimiento = Establecimiento::lists('name', 'id');
 		// Vamos a generar un numero random por ahora
 		//$randnum = rand(100000000, 900000000);
 
-		return View('shipments.create', compact('sender', 'reciver', 'estado'));
+		return View('shipments.create', compact('sender', 'reciver', 'estado', 'establecimiento'));
 	}
 
 	/**
@@ -119,8 +120,9 @@ class ShipmentCotroller extends Controller {
 		$reciver_list 		= Trader::all();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 		$estado = Estado::lists('name', 'id');
+		$establecimiento = Establecimiento::lists('name', 'id');
 
-		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum', 'estado'));
+		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum', 'estado', 'establecimiento'));
 	}
 
 	/**

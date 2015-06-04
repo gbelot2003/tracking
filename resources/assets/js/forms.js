@@ -22,6 +22,15 @@
             var mid = $("#dept-select option:selected").val();
                 $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });
             });
+        /** shipments.create/edit form script **/
+        $("#location-select").select2();
+        var establecimiento =$("#location-select option:selected").val();
+        $('#trader-content').load('/querys/traderlocation/' + establecimiento, function(){$('#reciver-select').select2(); });
+        $("#location-select").on('change', function () {
+            var establecimiento =$("#location-select option:selected").val();
+            $('#trader-content').load('/querys/traderlocation/' + establecimiento, function(){$('#reciver-select').select2(); });
+        });
+
         /** Shipments.show form script **/
         $('form[data-ask-submit]').on('click', function(e){
             e.preventDefault();

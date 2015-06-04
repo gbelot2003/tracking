@@ -10,8 +10,6 @@
     jQuery(document).ready(function(){
         $('a#firma').colorbox();
         $('a#foto').colorbox();
-        $('#sender-select').select2({ placeholder: "Select a state" });
-        $('#reciver-select').select2({ placeholder: "Select a state" });
         $('#establecimiento-select').select2({ placeholder: 'Escoge una Sucursal' });
         $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
         $('#cargo-select').select2({ placeholder: 'Escoge una Sección' });
@@ -24,6 +22,15 @@
             var mid = $("#dept-select option:selected").val();
                 $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });
             });
+        /** shipments.create/edit form script **/
+        $("#location-select").select2();
+        var establecimiento =$("#location-select option:selected").val();
+        $('#trader-content').load('/querys/traderlocation/' + establecimiento, function(){$('#reciver-select').select2(); });
+        $("#location-select").on('change', function () {
+            var establecimiento =$("#location-select option:selected").val();
+            $('#trader-content').load('/querys/traderlocation/' + establecimiento, function(){$('#reciver-select').select2(); });
+        });
+
         /** Shipments.show form script **/
         $('form[data-ask-submit]').on('click', function(e){
             e.preventDefault();

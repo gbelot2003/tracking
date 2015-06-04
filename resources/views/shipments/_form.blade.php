@@ -17,13 +17,17 @@
 	<div class="col-md-6">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">Destinatario (A quien va dirigido el paquete)</h3>
+				<h3 class="panel-title">Destinatario (A quien se dirige el paquete)</h3>
 			</div>
 			<div class="panel-body">
-			
-				<!-- sender Form Input -->
-				<div class="form-group">
-					{!! Form::select('reciber_id', $reciver, null, ['class' => 'select form-control', 'id' => 'reciver-select']) !!}
+				<div class="col-md-6">
+					<!-- sender Form Input -->
+					<div class="form-group">
+						{!! Form::select('establecimiento', $establecimiento, "Selecciona la agencia", ['class' => 'select form-control', 'id' => 'location-select']) !!}
+					</div>
+				</div>
+				<div id="trader-content" class="col-md-6">
+
 				</div>
 			</div>
 		</div>
