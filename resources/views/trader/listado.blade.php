@@ -1,36 +1,31 @@
 @extends('app')
 
-@section('title', 'Administración de Personal')
-
-@section('link-button')
-	<a id="virtual-form" class="btn btn-primary" href="{{ action('TraderController@create') }}">Nuevo Registro</a>
-@stop
+@section('title', 'Listado de Remitentes')
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('personal') }}">Administración de Personal</a></li>
+		<li><a href="{{ url('personal') }}">Listado de Remitentes</a></li>
 	</ol>
 @stop
 
 @section('content')
 	@include('partials.flash')
 	<table id="table" class="table table-bordered table-responsive">
-		<caption>Personal que puede enviar o recibir correspondencia</caption>
+		<caption>Busqua el nombre del usuario remitender de la encomienda y has <b>click</b> para enlasar el formulario</caption>
 		<thead>
-			<th>Apellidos</th>
-			<th>Nombres</th>
-			<th>Nombre Completo</th>
-			<th>Establecimento</th>
-			<th>Sección</th>
-			<th>Estado</th>
+		<th>Apellidos</th>
+		<th>Nombres</th>
+		<th>Nombre Completo</th>
+		<th>Establecimento</th>
+		<th>Sección</th>
+		<th>Estado</th>
 		</thead>
 		<tbody>
 
 		</tbody>
 	</table>
 @stop
-
 @section('post-script')
 	<script>
 		$(document).ready(function(){
@@ -42,7 +37,7 @@
 					{data: 'last_name', name: 'traders.last_name', "visible": false},
 					{data: 'first_name', name: 'traders.first_name', "visible": false},
 					{data: null, name: 'nombre_completo', "searchable": false, render: function( data, type, full, meta){
-						return "<a href='personal/"+ full.id +"' >" + full.first_name + " " + full.last_name + "</a>"
+						return "<a href='/shipments/create/"+ full.id +"' >" + full.first_name + " " + full.last_name + "</a>"
 					}},
 					{data: 'name', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},

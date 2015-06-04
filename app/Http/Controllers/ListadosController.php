@@ -113,4 +113,9 @@ class ListadosController extends Controller {
 		$transitos = Transito::where('shipment_id', '=', $shipments)->get();
 		return View('listados.shipmentstate', compact('transitos'));
 	}
+
+	public function getListadosPersonas()
+	{
+		return View('trader.listado');
+	}
 }
