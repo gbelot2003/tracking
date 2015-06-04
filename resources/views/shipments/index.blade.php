@@ -3,7 +3,7 @@
 @section('title', 'Administración de Encomiendas')
 
 @section('link-button')
-	<a id="virtual-form" class="btn btn-primary" href="{{ action('ShipmentCotroller@create', 0) }}">Nueva encomienda</a>
+	<a id="virtual-form" class="btn btn-primary" href="{{ action('ListadosController@getListadosPersonas') }}">Nueva encomienda</a>
 @stop
 
 @section('breadcrumbs')
@@ -33,8 +33,6 @@
 	<script>
 		(function(){
 			$(document).ready(function(){
-
-
 				var table = $('#shipmentsTable').DataTable({
 					"pageLength": 5,
 					"order": [[ 0, "desc" ]],
@@ -91,12 +89,10 @@
 					"language": {
 						"lengthMenu": "Mostrar _MENU_ registros por página",
 						"zeroRecords": "Registro no encotrado - lo sentimos",
-						"info": "Mostrando página _PAGE_ de _PAGES_",
+						"info": "Mostrando pgina _PAGE_ de _PAGES_",
 						"infoEmpty": "No hay registros de esa busqueda",
 						"infoFiltered": "(filtrado de _MAX_ total Total de regístros)",
 						"search":  "Busqueda:",
-						"loadingRecords": "Cargando...",
-						"processing":     "Procesando...",
 						"paginate": {
 							"first":      "Primero",
 							"last":       "Ultimo",
