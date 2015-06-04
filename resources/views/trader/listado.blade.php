@@ -12,7 +12,7 @@
 @section('content')
 	@include('partials.flash')
 	<table id="table" class="table table-bordered table-responsive">
-		<caption>Busqua el nombre del usuario remitender de la encomienda y has <b>click</b> para enlasar el formulario</caption>
+		<caption style="color: #954121">Localiza el nombre del <b>remitente</b> de la encomienda y has <b>click en su nombre</b> abajo en la tabla para enlasar el formulario de creación de encomiendas</caption>
 		<thead>
 		<th>Apellidos</th>
 		<th>Nombres</th>
