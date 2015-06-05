@@ -6,7 +6,11 @@
 	<div class="col-md-2">
 		{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
 		{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
-		{!! Form::hidden('estado_id', 2) !!}
+		@if(Auth::user()->hasRole(['centro-acopio']))
+			{!! Form::hidden('estado_id', 3) !!}
+		@else
+			{!! Form::hidden('estado_id', 2) !!}
+		@endif
 		{!! Form::hidden('shipment_id', $paquete->id) !!}
 		{!! Form::hidden('details', "Todo Correcto") !!}
 		{!! Form::close() !!}
