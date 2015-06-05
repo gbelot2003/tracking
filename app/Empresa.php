@@ -9,7 +9,7 @@ class Empresa extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'Encomiendas';
+	protected $table = 'empresas';
 
 	/**
 	 * @var bool
