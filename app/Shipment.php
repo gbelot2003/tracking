@@ -52,9 +52,21 @@ class Shipment extends Model {
 		}]);
 	}
 
+	/**
+	 * Un shipment fue creado por un usuario
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function user()
 	{
 		return $this->belongsTo('App\User', 'user_id', 'id');
 	}
 
+	/**
+	 * Un shipment tiene varias bolsas
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function bolsas()
+	{
+		return $this->belongsToMany('App\Bolsa');
+	}
 }
