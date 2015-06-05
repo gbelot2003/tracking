@@ -59,7 +59,7 @@ class UserController extends Controller {
 		$trader = $trader_list->lists('full_name', 'id');
 		$estado = Userstatus::lists('name', 'id');
 		$area = Area::lists('areas', 'id');
-		$empresas = Empresa::all();
+		$empresas = Empresa::lists('name', 'id');
 		$barra = 2;
 
 		return View('user.create', compact('roles', 'trader', 'estado', 'area', 'barra', 'empresas'));
@@ -119,7 +119,7 @@ class UserController extends Controller {
 
 		$estado = Userstatus::lists('name', 'id');
 		$area = Area::lists('areas', 'id');
-		$empresas = Empresa::all();
+		$empresas = Empresa::lists('name', 'id');
 
 		return View('user.edit', compact('user', 'roles', 'trader', 'area', 'estado', 'barra', 'empresas'));
 	}
