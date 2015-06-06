@@ -14,7 +14,7 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return View('bolsas.index');
 	}
 
 	/**

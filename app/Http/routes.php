@@ -23,8 +23,9 @@ Route::resource('establecimientos', 'EstablecimientosController');
 
 Route::resource('personal', 'TraderController');
 
-Route::resource('shipments', 'ShipmentCotroller');
+Route::resource('bolsas', 'BolsasController');
 
+Route::resource('shipments', 'ShipmentCotroller');
 Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
 
 Route::get('clientes', 'ClientesController@index');
@@ -36,7 +37,6 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('transitos/create/{id}', 'TransitosController@create');
-
 Route::post('transitos/store', 'TransitosController@store');
 
 Route::controllers([
