@@ -14,6 +14,7 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
+
 		return View('bolsas.index');
 	}
 
@@ -24,7 +25,7 @@ class BolsasController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return View('bolsas.create');
 	}
 
 	/**
@@ -34,7 +35,8 @@ class BolsasController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		// Vamos a usar
+
 	}
 
 	/**

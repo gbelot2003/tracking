@@ -16,6 +16,7 @@ class CreateBolsasTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('code');
+			$table->integer('envios_establecimiento_id');
 			$table->integer('establecimiento_id');
 			$table->string('firma');
 			$table->timestamps();
