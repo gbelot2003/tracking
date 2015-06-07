@@ -21,8 +21,8 @@
 		<th>Nombre</th>
 		<th>email</th>
 		<th>Roles</th>
-		<th>Area</th>
 		<th>Empresa</th>
+		<th>Establecimiento asignado</th>
 		@if(Auth::user()->hasRole(['owner']))
 			<th>Estado</th>
 			<th>Activo Desde</th>
@@ -38,8 +38,8 @@
 						{{ $role->name }}
 					@endforeach
 				</td>
-				<td>{{ $user->area->areas }}</td>
-				<td>{{ $user->empresa_id }}</td>
+				<td>{{ $user->empresa->name }}</td>
+				<td>{{ $user->establecimiento->name }}</td>
 				@if(Auth::user()->hasRole(['owner']))
 					<td>{{ $user->estado->name }}</td>
 					<td>{{ $user->created_at }}</td>
