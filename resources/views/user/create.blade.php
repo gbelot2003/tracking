@@ -22,5 +22,7 @@
 		$('#rol-select').select2({
 			placeholder: 'Escoge un permiso'
 		});
+
+
 	</script>
 @stop

@@ -15,13 +15,16 @@
         $('#cargo-select').select2({ placeholder: 'Escoge una Sección' });
         $('#dept-select').select2();
         $('#tipo-select').select2();
+        $('#rol-select').select2({placeholder: 'Escoge un permiso'});
+
         /** establecimientos.create/edit form script **/
         var mid = $("#dept-select option:selected").val();
         $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });
         $('#dept-select').on('change', function(){
             var mid = $("#dept-select option:selected").val();
-                $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });
-            });
+            $('#municipios').load("/querys/municipios/" + mid, function(){ $('#munic-select').select2(); });
+        });
+
         /** shipments.create/edit form script **/
         $("#location-select").select2();
         var establecimiento =$("#location-select option:selected").val();
@@ -29,6 +32,14 @@
         $("#location-select").on('change', function () {
             var establecimiento =$("#location-select option:selected").val();
             $('#trader-content').load('/querys/traderlocation/' + establecimiento, function(){$('#reciver-select').select2(); });
+        });
+
+        /** user.create/edit form script **/
+        var empresa_id =$("#empresa-select option:selected").val();
+        $('#establecimientos-content').load('/listados/establecimientos/' + empresa_id, function(){$('#establecimiento-select').select2(); });
+        $("#empresa-select").on('change', function () {
+            var empresa_id =$("#empresa-select option:selected").val();
+            $('#establecimientos-content').load('/listados/establecimientos/' + empresa_id, function(){$('#establecimiento-select').select2(); });
         });
 
         /** Shipments.show form script **/
@@ -48,6 +59,7 @@
                 }
             });
         });
+
         /***crear perfil en shipments.create */
         $('#cerrar-perfil').hide();
         $('#perfil').on('click', function(e){

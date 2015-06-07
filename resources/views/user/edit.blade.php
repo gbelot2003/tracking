@@ -24,10 +24,7 @@
 
 @section('post-script')
 	<script>
-		$('#rol-select').select2({
-			placeholder: 'Escoge un permiso'
-		});
 
-		$('#trader-select').select2();
+
 	</script>
 @stop
