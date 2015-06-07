@@ -74,6 +74,14 @@ class ListadosController extends Controller {
 			->where('departamento_id', '=', $ndep)->get();
 	}
 
+	public function getEstablecimientos($empresa_id)
+	{
+		$empresa = (int) $empresa_id;
+		$establecimiento = Establecimiento::where('empresa_id', '=', $empresa);
+		$listado = $establecimiento->Lists('name', 'id');
+		return View('listados/establecimientos', compact('listado'));
+	}
+
 	public function getShipments()
 	{
 		/**
