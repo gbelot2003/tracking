@@ -23,8 +23,5 @@
 @stop
 
 @section('post-script')
-	<script>
-
-
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop
