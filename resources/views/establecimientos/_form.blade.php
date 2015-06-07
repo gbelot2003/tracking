@@ -21,7 +21,7 @@
 		<!-- Name Departamento Input -->
 		<div class="form-group">
 			{!! Form::label('empresa_id', 'Empresa') !!}
-			{!! Form::select("empresa_id", $tipo, 1 ,['class' => 'select form-control', 'id' => 'tipo-select']) !!}
+			{!! Form::select("empresa_id", $tipo, NULL ,['class' => 'select form-control', 'id' => 'tipo-select']) !!}
 		</div>
 	</div>
 

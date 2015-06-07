@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Departamento;
+use App\Empresa;
 use App\Establecimiento;
 use App\Http\Controllers\Controller;
 
@@ -46,7 +47,7 @@ class EstablecimientosController extends Controller {
 	{
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		$tipo =	Establecimiento::lists('name', 'id');
+		$tipo =	Empresa::lists('name', 'id');
 		return View('establecimientos.create', compact('departamentos', 'municipios', 'tipo'));
 	}
 
@@ -85,7 +86,7 @@ class EstablecimientosController extends Controller {
 		$establecimiento = Establecimiento::findOrFail($id);
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		$tipo =	Establecimiento::lists('name', 'id');
+		$tipo =	Empresa::lists('name', 'id');
 		return View('establecimientos.edit', compact('establecimiento', 'departamentos', 'municipios', 'tipo'));
 	}
 
