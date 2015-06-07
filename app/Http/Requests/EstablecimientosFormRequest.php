@@ -24,7 +24,8 @@ class EstablecimientosFormRequest extends Request {
 		return [
 			'name' 				=> 'required|unique:establecimientos',
 			'departamento_id' 	=> 'required',
-			'municipio_id'		=> 'required'
+			'municipio_id'		=> 'required',
+			'empresa_id'		=> 'required|integer'
 		];
 	}
 

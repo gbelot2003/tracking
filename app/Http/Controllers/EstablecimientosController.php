@@ -28,8 +28,9 @@ class EstablecimientosController extends Controller {
 	 */
 	public function index()
 	{
+
 		if(Auth::user()->hasRole(['centro-acopio', 'currier', 'cliente'])){
-			$establecimientos = Establecimiento::where('testablecimiento_id', '=', 1)->get();
+			$establecimientos = Establecimiento::where('empresa_id', '=', 1)->get();
 		} else {
 			$establecimientos = Establecimiento::all();
 		}
@@ -45,7 +46,7 @@ class EstablecimientosController extends Controller {
 	{
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		$tipo =	Testablecimiento::lists('name', 'id');
+		$tipo =	Establecimiento::lists('name', 'id');
 		return View('establecimientos.create', compact('departamentos', 'municipios', 'tipo'));
 	}
 
@@ -84,7 +85,7 @@ class EstablecimientosController extends Controller {
 		$establecimiento = Establecimiento::findOrFail($id);
 		$departamentos = Departamento::lists('departamento', 'id');
 		$municipios = Municipio::lists('municipio', 'id');
-		$tipo =	Testablecimiento::lists('name', 'id');
+		$tipo =	Establecimiento::lists('name', 'id');
 		return View('establecimientos.edit', compact('establecimiento', 'departamentos', 'municipios', 'tipo'));
 	}
 

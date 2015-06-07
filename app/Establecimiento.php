@@ -18,7 +18,7 @@ class Establecimiento extends Model {
 	 * Mass assingment protection
 	 * @var array
 	 */
-	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'testablecimiento_id'];
+	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'empresa_id'];
 
 	/**
 	 * Un establecimiento pertenece a un municipio
@@ -65,8 +65,8 @@ class Establecimiento extends Model {
 		return $this->perms->lists('id');
 	}
 
-	public function testablecimiento()
+	public function Empresa()
 	{
-		return $this->belongsTo('App\Testablecimiento');
+		return $this->belongsTo('App\Empresa', 'empresa_id', 'id');
 	}
 }

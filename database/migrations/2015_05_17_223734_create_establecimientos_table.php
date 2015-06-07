@@ -27,10 +27,6 @@ class CreateEstablecimientosTable extends Migration {
 			$table->integer('municipio_id')->unsigned();
 			$table->string('name');
 			$table->text('address')->nullable();
-			$table->foreign('empresa_id')
-				->references('id')
-				->on('empresas')
-				->onDelete('cascade');
 		});
 	}
 
