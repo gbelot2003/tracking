@@ -53,15 +53,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	/**
-	 * Un usuario esta en una area
-	 * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-	 */
-	public function area()
-	{
-		return $this->belongsTo('App\Area', 'area_id', 'id');
-	}
-
-	/**
 	 * Un usuario puede tener varios usuarios traders
 	 * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
 	 */
