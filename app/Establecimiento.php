@@ -73,13 +73,4 @@ class Establecimiento extends Model {
 	{
 		return $this->belongsTo('App\Empresa', 'empresa_id', 'id');
 	}
-
-	/**
-	 * Conseguir un listado sin id de unidos express
-	 * @return collection
-	 */
-	public function getListasnormalesAttribute()
-	{
-		return $this->where('id', '!=', '1')->lists('id');
-	}
 }
