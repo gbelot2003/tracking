@@ -26,7 +26,7 @@
 	<thead>
 	<th>Estado</th>
 	<th>Usuario</th>
-	<th>Sección</th>
+	<th>Lugar</th>
 	<th>Detalles</th>
 	<th>Firma</th>
 	<th>Foto</th>
