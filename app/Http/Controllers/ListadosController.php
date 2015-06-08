@@ -76,8 +76,14 @@ class ListadosController extends Controller {
 
 	public function getEstablecimientos($empresa_id)
 	{
+
 		$empresa = (int) $empresa_id;
-		$establecimiento = Establecimiento::where('empresa_id', '=', $empresa);
+		if($empresa === 1){ //si la empresa es unidos expres
+			$establecimiento = Establecimiento::where('empresa_id', '!=', 2);
+		} else {
+			$establecimiento = Establecimiento::where('empresa_id', '=', $empresa);
+		}
+
 		$listado = $establecimiento->Lists('name', 'id');
 		return View('listados/establecimientos', compact('listado'));
 	}

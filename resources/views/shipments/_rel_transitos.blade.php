@@ -26,6 +26,7 @@
 	<thead>
 	<th>Estado</th>
 	<th>Usuario</th>
+	<th>Sección</th>
 	<th>Detalles</th>
 	<th>Firma</th>
 	<th>Foto</th>
@@ -36,6 +37,7 @@
 		<tr>
 			<td>{{ $transito->estados->name }}</td>
 			<td>{{ $transito->user->name }}</td>
+			<td>{{ $transito->user->establecimiento->name }}</td>
 			<td>{{ $transito->details }}</td>
 			<td>
 				@if(!$transito->firma)
