@@ -50,4 +50,7 @@
 </div>
 <div class="form-group">
 	<button type="submit" class="btn btn-primary">{{ $submitButtonText }}</button>
+	@if(Request::ajax())
+	<a id="establecimiento" href="/establecimientos/create/" class="btn btn-material-purple">Crear Establecimiento</a>
+	@endif
 </div>

@@ -17,12 +17,11 @@
 		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
 		<div class="options">
 			<ul class="list-inline">
-				<li><a href="#!" class="inline btn" id="perfil">Crear nuevo perfil</a></li>
-				<li><a href="#!" class="inline btn" id="cerrar-perfil">Cerrar formulario</a></li>
+				<li><a href="#!" class="inline btn btn-material-orange" id="perfil">Crear nuevo perfil</a></li>
+				<li><a href="#!" class="inline btn btn-material-red" id="cerrar-perfil">Cerrar formulario</a></li>
 			</ul>
 		</div>
 		<div id="create-form" class="col-md-12">
-			<div id="#loading"></div>
 		</div>
 		<hr />
 		@endif
