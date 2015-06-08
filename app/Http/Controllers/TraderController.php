@@ -44,7 +44,7 @@ class TraderController extends Controller {
 		 *  Si no es Owner, dependera de la empresa de trabajo
 		 *  para administrador en adelante
 		 **/
-		$establecimiento = Establecimiento::Lists('name', 'id');
+		$establecimiento = Establecimiento::lista()->lists('name', 'id');
 
 		/**	OJO **/
 
@@ -88,8 +88,6 @@ class TraderController extends Controller {
 			}
 		}
 
-
-
 		$sender = Shipment::where('sender_id', '=', $id)->test()->get();
 		$reciber = Shipment::where('reciber_id', '=', $id)->test()->get();
 		$users = $trader->user;
@@ -109,7 +107,7 @@ class TraderController extends Controller {
 		 *  Si no es Owner, dependera de la empresa de trabajo
 		 *  para administrador en adelante
 		 **/
-		$establecimiento = Establecimiento::Lists('name', 'id');
+		$establecimiento = Establecimiento::lista()->lists('name', 'id');
 
 		/**	OJO **/
 		$secciones = Seccion::lists('name', 'id');

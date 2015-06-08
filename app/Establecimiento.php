@@ -48,29 +48,20 @@ class Establecimiento extends Model {
 	}
 
 	/**
-	 * Listado de departamentos para lists
-	 * @return array
-	 */
-	public function getDepartamentoListsAttribute()
-	{
-		return $this->perms->lists('id');
-	}
-
-	/**
-	 * Listado de Municipios para lists
-	 * @return array
-	 */
-	public function getMunicipioListsAttribute()
-	{
-		return $this->perms->lists('id');
-	}
-
-	/**
 	 * Un establecimiento pertenece a una empresa
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function Empresa()
 	{
 		return $this->belongsTo('App\Empresa', 'empresa_id', 'id');
+	}
+
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeLista($query)
+	{
+		return $query->where('empresa_id', '>=', '2');
 	}
 }
