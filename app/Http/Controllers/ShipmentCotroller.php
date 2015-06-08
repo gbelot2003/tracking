@@ -62,9 +62,8 @@ class ShipmentCotroller extends Controller {
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 		 		
 		$estado = Estado::lists('name', 'id');
-		$establecimiento = Establecimiento::lists('name', 'id');
-		// Vamos a generar un numero random por ahora
-		//$randnum = rand(100000000, 900000000);
+		$establecimiento = Establecimiento::where('empresa_id', '>=', '2')->lists('name', 'id');
+
 
 		return View('shipments.create', compact('sender', 'reciver', 'estado', 'establecimiento'));
 	}
@@ -122,7 +121,7 @@ class ShipmentCotroller extends Controller {
 		$reciver_list 		= Trader::all();
 		$reciver 			= $reciver_list->lists('full_name', 'id');
 		$estado = Estado::lists('name', 'id');
-		$establecimiento = Establecimiento::lists('name', 'id');
+		$establecimiento = Establecimiento::where('empresa_id', '>=', '2')->lists('name', 'id');
 
 		return View('shipments.edit', compact('paquete', 'sender', 'reciver', 'randnum', 'estado', 'establecimiento'));
 	}
@@ -151,30 +150,5 @@ class ShipmentCotroller extends Controller {
 	public function destroy($id)
 	{
 		//
-	}
-
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function fcreate($fid)
-	{
-		$user = User::findorFail($this->id);
-		$trader = $user->traders;
-		dd($fid);
-		$sender_list 		= Trader::all();
-		$sender 			= $sender_list->lists('full_name', 'id');
-
-		$reciver_list 		= Trader::all();
-		$reciver 			= $reciver_list->lists('full_name', 'id');
-
-		$estado = Estado::lists('name', 'id');
-
-		// Vamos a generar un numero random por ahora
-		$randnum = rand(100000000, 900000000);
-
-		return View('shipments.create', compact('sender', 'reciver', 'randnum', 'estado'));
 	}
 }
