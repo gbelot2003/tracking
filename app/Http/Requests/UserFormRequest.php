@@ -27,7 +27,7 @@ class UserFormRequest extends Request {
 			'name' => 'required',
 			'establecimiento_id' => 'required|integer',
 			'empresa_id' => 'required|integer',
-			'estado_id' => 'required|integer'
+			'userstatus_id' => 'required|integer'
 		];
 
 		$edit = [
@@ -35,7 +35,7 @@ class UserFormRequest extends Request {
 			'name' => 'required',
 			'establecimiento_id' => 'required|integer',
 			'empresa_id' => 'required|integer',
-			'estado_id' => 'required|integer'
+			'userstatus_id' => 'required|integer'
 		];
 
 		if($this->method == 'PUT'){
