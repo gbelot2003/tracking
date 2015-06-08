@@ -15,6 +15,7 @@
         $('#cargo-select').select2({ placeholder: 'Escoge una Sección' });
         $('#dept-select').select2();
         $('#tipo-select').select2();
+        $('#sender-select').select2({ placeholder: "Select a state" });
         $('#rol-select').select2({placeholder: 'Escoge un permiso'});
 
         /** establecimientos.create/edit form script **/
@@ -59,7 +60,6 @@
                 }
             });
         });
-
         /***crear perfil en shipments.create */
         $('#cerrar-perfil').hide();
         $('#perfil').on('click', function(e){
