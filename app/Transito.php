@@ -16,7 +16,7 @@ class Transito extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['shipment_id', 'estado_id', 'seccion_id', 'user_id', 'details', 'firma', 'foto'];
+	protected $fillable = ['shipment_id', 'estado_id', 'seccion_id', 'user_id', 'establecimiento_id', 'details', 'firma', 'foto'];
 
 	/**
 	 * Un trancito pretences a un Encargo
@@ -49,8 +49,8 @@ class Transito extends Model {
 	 * Esta entrada pertenece a una seccion
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function seccion()
+	public function establecimiento()
 	{
-		return $this->belongsTo('App\Seccion', 'seccion_id', 'id');
+		return $this->belongsTo('App\Establecimiento', 'establecimiento_id', 'id');
 	}
 }
