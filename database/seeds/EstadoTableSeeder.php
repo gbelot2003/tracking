@@ -72,5 +72,10 @@ class EstadoTableSeeder extends Seeder
 			'name'			=> 'Entragado con observaciones',
 			'description'	=>	'La encomienda a sido entregada y hay observaciones en su entrega'
 		]);
+
+		Estado::create([
+			'name'			=> 'Entregado a terceros, entrega final',
+			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
+		]);
     }
 }
