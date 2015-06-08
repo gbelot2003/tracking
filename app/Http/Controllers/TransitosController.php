@@ -46,8 +46,9 @@ class TransitosController extends Controller {
 		$establecimiento = Auth::user()->establecimiento_id;
 		$cerrar_trancito = $request->input('estado_id');
 		$shipmente = Shipment::find($request->input('shipment_id'));
+		$estado = $shipmente->estado;
 
-		if($shipmente->estado == 2)
+		if($estado == 2)
 		{
 			return redirect()->back()->with('error', 'Esta encomienda ya a sido entregada cerrada');
 		}
@@ -75,12 +76,26 @@ class TransitosController extends Controller {
 			'foto' => $foto_name
 		]));
 
-		$message = 'Registro editado';
-		if($cerrar_trancito = 11 or $cerrar_trancito = 12 or $cerrar_trancito = 13)
-		{
-			$shipmente->estado = 2;
-			$shipmente->save();
-			$message = "Registro editado, y entrega cerrada";
+		switch ($cerrar_trancito) {
+			case 11:
+				$shipmente->estado = 2;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 12:
+				$shipmente->estado = 2;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 13:
+				$shipmente->estado = 2;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			default:
+				$shipmente->estado = 1;
+				$shipmente->save();
+				$message = 'Registro editado';
 		}
 
 		Session::flash('flash_message', $message);
