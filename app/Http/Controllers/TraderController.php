@@ -40,7 +40,14 @@ class TraderController extends Controller {
 	 */
 	public function create()
 	{
-		$establecimiento = Establecimiento::where('testablecimiento_id', '=', 1)->Lists('name', 'id');
+		/** Agregar metodo por empresa de usuario
+		 *  Si no es Owner, dependera de la empresa de trabajo
+		 *  para administrador en adelante
+		 **/
+		$establecimiento = Establecimiento::Lists('name', 'id');
+
+		/**	OJO **/
+
 		$secciones = Seccion::Lists('name', 'id');
 		$estado = Userstatus::lists('name', 'id');
 
