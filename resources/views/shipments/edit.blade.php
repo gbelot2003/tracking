@@ -15,7 +15,7 @@
 	@include('partials.flash')
 	@include('errors.form-error')
 	{!! Form::model($paquete, ['method' => 'PUT', 'action' => ['ShipmentCotroller@update', $paquete->id]]) !!}
-		@include('shipments._form',['submitButtonText' => 'Editar'])
+		@include('shipments._form',['submitButtonText' => 'Guardar'])
 	{!! Form::close() !!}
 @stop
 @section('post-script')

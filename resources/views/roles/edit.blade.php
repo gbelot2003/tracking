@@ -25,7 +25,7 @@ Edición de {{ $roles->display_name }}
 		@include('errors.form-error')
 
 		{!! Form::model($roles, ['method' => 'PUT', 'action' => ['RolesController@update', $roles->id]]) !!}
-			@include('roles._form', ['submitButtonText' => 'Editar'])
+			@include('roles._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop

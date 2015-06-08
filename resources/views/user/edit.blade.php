@@ -17,7 +17,7 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::model($user, ['method' => 'PUT', 'action' => ['UserController@update', $user->id]]) !!}
-		@include('user._form', ['submitButtonText' => 'Editar'])
+		@include('user._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop
