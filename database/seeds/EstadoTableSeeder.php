@@ -19,12 +19,12 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name' 			=> 'En Transito, en buen estado',
+			'name' 			=> 'Transito, regular',
 			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
 		]);
 
 		Estado::create([
-			'name' 			=> 'En Transito, Centro de acopio',
+			'name' 			=> 'Transito, Centro de acopio',
 			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito'
 		]);
 
@@ -34,17 +34,12 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name' 			=> 'En Transito, en movimiento',
-			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito'
-		]);
-
-		Estado::create([
-			'name'			=>  'En transito, presenta daños ligeros',
+			'name'			=>  'Transito, presenta daños ligeros',
 			'description'	=>	'La encomienda presenta algun tipo de daños'
 		]);
 
 		Estado::create([
-			'name'			=>  'En transito, presenta daños graves',
+			'name'			=>  'Transito, presenta daños graves',
 			'description'	=>	'La encomienda presenta daños severos, sellos violentados, ruturas, contenido roto etc'
 		]);
 
@@ -54,22 +49,27 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name'			=>  'En Transito, Extraviado',
+			'name'			=>  'Extraviado',
 			'description'	=>	'La encomienda se a extraviado en algun punto en la linea de transito'
 		]);
 
 		Estado::create([
-			'name'			=>  'Extraviado, Irrecuperable',
-			'description'	=>	'La encomienda se a extraviado por causas mayores(desastre natural, robo, hurto etc) y es imposible de recuperar.'
+			'name'			=>  'Robado',
+			'description'	=>	'El paquete a sido robado.'
 		]);
 
 		Estado::create([
-			'name'			=> 'Entraga Finalizada',
-			'description'	=>	'La encomienda a sido entregada'
+			'name'			=>  'Dañado por completo',
+			'description'	=>	'El paquete a sido robado.'
 		]);
 
 		Estado::create([
-			'name'			=> 'Entraga Finalizada con observaciones',
+			'name'			=> 'Entragado',
+			'description'	=>	'La encomienda a sido entregada sin observaciones'
+		]);
+
+		Estado::create([
+			'name'			=> 'Entragado con observaciones',
 			'description'	=>	'La encomienda a sido entregada y hay observaciones en su entrega'
 		]);
     }
