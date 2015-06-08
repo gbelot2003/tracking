@@ -21,12 +21,27 @@ class EstablecimientosFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+		$create = [
 			'name' 				=> 'required|unique:establecimientos',
 			'departamento_id' 	=> 'required',
 			'municipio_id'		=> 'required',
-			'empresa_id'		=> 'required|integer'
+			'empresa_id'		=> 'required|integer',
+			'address'			=> 'string'
 		];
+
+		$edit = [
+			'name' 				=> 'required',
+			'departamento_id' 	=> 'required',
+			'municipio_id'		=> 'required',
+			'empresa_id'		=> 'required|integer',
+			'address'			=> 'string'
+		];
+
+		if($this->method == 'PUT'){
+			return $edit;
+		} else {
+			return $create;
+		}
 	}
 
 }
