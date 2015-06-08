@@ -3,21 +3,23 @@
 	<div class="col-md-3">
 		<h3>Estados</h3>
 	</div>
-	<div class="col-md-2">
-		{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
-		{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
-		@if(Auth::user()->hasRole(['centro-acopio']))
-			{!! Form::hidden('estado_id', 3) !!}
-		@else
-			{!! Form::hidden('estado_id', 2) !!}
-		@endif
-		{!! Form::hidden('shipment_id', $paquete->id) !!}
-		{!! Form::hidden('details', "Todo Correcto") !!}
-		{!! Form::close() !!}
-	</div>
-	<div class="col-md-3">
-		<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Transito observaciones</a>
-	</div>
+	@if($paquete->estado === 1)
+		<div class="col-md-2">
+			{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
+			{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
+			@if(Auth::user()->hasRole(['centro-acopio']))
+				{!! Form::hidden('estado_id', 3) !!}
+			@else
+				{!! Form::hidden('estado_id', 2) !!}
+			@endif
+			{!! Form::hidden('shipment_id', $paquete->id) !!}
+			{!! Form::hidden('details', "Todo Correcto") !!}
+			{!! Form::close() !!}
+		</div>
+		<div class="col-md-3">
+			<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Transito observaciones</a>
+		</div>
+	@endif
 </div>
 @endif
 
