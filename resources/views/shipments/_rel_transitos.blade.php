@@ -37,7 +37,7 @@
 		<tr>
 			<td>{{ $transito->estados->name }}</td>
 			<td>{{ $transito->user->name }}</td>
-			<td>{{ $transito->user->establecimiento->name }}</td>
+			<td>{{ $transito->establecimiento->name }}</td>
 			<td>{{ $transito->details }}</td>
 			<td>
 				@if(!$transito->firma)
