@@ -43,6 +43,7 @@ class TransitosController extends Controller {
 	{
 		$firma_name = null;
 		$foto_name = null;
+		$establecimiento = Auth::user()->establecimiento_id;
 
 		$date = date('Y-m-d h:m');
 		if($request->hasFile('firma')){
@@ -59,6 +60,7 @@ class TransitosController extends Controller {
 		Auth::User()->transitos()->save(New Transito([
 			'shipment_id' => $request->input('shipment_id'),
 			'estado_id' => $request->input('estado_id'),
+			'establecimiento_id' => $establecimiento,
 			'details' => $request->input('details'),
 			'firma' => $firma_name,
 			'foto' => $foto_name
