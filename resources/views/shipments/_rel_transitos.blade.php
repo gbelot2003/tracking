@@ -1,7 +1,7 @@
 @if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 <div class="row">
 	<div class="col-md-3">
-		<h3>Transitos</h3>
+		<h3>Estados</h3>
 	</div>
 	<div class="col-md-2">
 		{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
