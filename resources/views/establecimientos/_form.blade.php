@@ -20,8 +20,8 @@
 	<div class="col-md-2 col-sm-12">
 		<!-- Name Departamento Input -->
 		<div class="form-group">
-			{!! Form::label('testablecimiento_id', 'Tipo') !!}
-			{!! Form::select("testablecimiento_id", $tipo, 1 ,['class' => 'select form-control', 'id' => 'tipo-select']) !!}
+			{!! Form::label('empresa_id', 'Empresa') !!}
+			{!! Form::select("empresa_id", $tipo, NULL ,['class' => 'select form-control', 'id' => 'tipo-select']) !!}
 		</div>
 	</div>
 

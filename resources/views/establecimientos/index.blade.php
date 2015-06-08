@@ -23,7 +23,7 @@
 			<th>Departamento</th>
 			<th>Municipio</th>
 			<th>Dirección</th>
-			<th>Tipo Establecimiento</th>
+			<th>Empresa</th>
 		</thead>
 		<tbody>
 		@foreach($establecimientos as $data)
@@ -33,7 +33,7 @@
 				<td>{{ $data->departamento->departamento }}</td>
 				<td>{{ $data->municipio->municipio }}</td>
 				<td>{{ $data->address }}</td>
-				<td>{{ $data->testablecimiento->name }}</td>
+				<td>{{ $data->empresa->name }}</td>
 			</tr>
 		@endforeach
 		</tbody>
@@ -43,7 +43,22 @@
 @section('post-script')
 	<script>
 		$(function() {
-			$('#table').DataTable();
+			$('#table').DataTable({
+				"language": {
+					"lengthMenu": "Mostrar _MENU_ registros por página",
+					"zeroRecords": "Registro no encotrado - lo sentimos",
+					"info": "Mostrando página _PAGE_ de _PAGES_",
+					"infoEmpty": "No hay registros de esa busqueda",
+					"infoFiltered": "(filtrado de _MAX_ total Total de regístros)",
+					"search":  "Busqueda:",
+					"paginate": {
+						"first":      "Primero",
+						"last":       "Ultimo",
+						"next":       "Siguiente",
+						"previous":   "Anterior"
+					}
+				}
+			});
 		});
 	</script>
 @stop

@@ -2,32 +2,19 @@
 	<div class="col-md-12">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title">codigo</h3>
+				<h3 class="panel-title">No. Guia</h3>
 			</div>
 			<div class="panel-body">
-			
-				<!-- code Form Input -->
-				<div class="form-group">
-					{!! Form::text("code", null,  ['class' => 'select form-control']) !!}
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="col-md-6">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Destinatario (A quien se dirige el paquete)</h3>
-			</div>
-			<div class="panel-body">
-				<div class="col-md-6">
-					<!-- sender Form Input -->
-					<div class="form-group">
-						{!! Form::select('reciber_seccion', $establecimiento, null, ['class' => 'select form-control', 'id' => 'location-select']) !!}
+				<div class="row">
+					<div class="col-md-10">
+						<!-- code Form Input -->
+						<div class="form-group">
+							{!! Form::text("code", null,  ['class' => 'select form-control', 'id' => 'code']) !!}
+						</div>
 					</div>
-				</div>
-				<div id="trader-content" class="col-md-6">
-
+					<div class="col-md-2">
+						<button id="generate" class="btn btn btn btn-material-indigo">Generar</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -47,6 +34,24 @@
 		</div>
 	</div>
 
+	<div class="col-md-6">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">Destinatario (A quien se dirige el paquete)</h3>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-6">
+					<!-- sender Form Input -->
+					<div class="form-group">
+						{!! Form::select('reciber_seccion', $establecimiento, null, ['class' => 'select form-control', 'id' => 'location-select']) !!}
+					</div>
+				</div>
+				<div id="trader-content" class="col-md-6">
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="col-md-12">
 		<!-- Description Form Input -->

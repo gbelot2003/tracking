@@ -14,7 +14,7 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::model($perm, ['method' => 'PUT', 'action' => ['PermissionsController@update', $perm->id]]) !!}
-		@include('permisos._form', ['submitButtonText' => 'Editar'])
+		@include('permisos._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop

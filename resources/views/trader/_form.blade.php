@@ -40,7 +40,7 @@
 	<div class="col-md-3">
 		<!-- establecimiento Form Input -->
 		<div class="form-group">
-			{!! Form::label('establecimientos', "Agencia o Edificio de trabajo:") !!}
+			{!! Form::label('establecimientos', "Estado del perfil") !!}
 			{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'status-select']) !!}
 		</div>
 	</div>

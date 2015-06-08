@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $fillable = ['userstatuses_id', 'name',  'first_name',  'last_name',
-							'area_id', 'empresa_id', 'email', 'password'];
+							'establecimiento_id', 'empresa_id', 'email', 'password'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -50,15 +50,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function estado()
 	{
 		return $this->belongsTo('App\Userstatus', 'userstatus_id', 'id');
-	}
-
-	/**
-	 * Un usuario esta en una area
-	 * @return \Illuminate\Database\Eloquent\Relations\belongsTo
-	 */
-	public function area()
-	{
-		return $this->belongsTo('App\Area', 'area_id', 'id');
 	}
 
 	/**
@@ -114,6 +105,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function empresa()
 	{
 		return $this->belongsTo('App\Empresa', 'empresa_id', 'id');
+	}
+
+	/**
+	 * Los usuarios estan asignados a un establecimiento
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function establecimiento()
+	{
+		return $this->belongsTo('App\Establecimiento');
 	}
 
 }

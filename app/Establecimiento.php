@@ -18,7 +18,7 @@ class Establecimiento extends Model {
 	 * Mass assingment protection
 	 * @var array
 	 */
-	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'testablecimiento_id'];
+	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'empresa_id'];
 
 	/**
 	 * Un establecimiento pertenece a un municipio
@@ -48,25 +48,20 @@ class Establecimiento extends Model {
 	}
 
 	/**
-	 * Listado de departamentos para lists
-	 * @return array
+	 * Un establecimiento pertenece a una empresa
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function getDepartamentoListsAttribute()
+	public function Empresa()
 	{
-		return $this->perms->lists('id');
+		return $this->belongsTo('App\Empresa', 'empresa_id', 'id');
 	}
 
 	/**
-	 * Listado de Municipios para lists
-	 * @return array
+	 * @param $query
+	 * @return mixed
 	 */
-	public function getMunicipioListsAttribute()
+	public function scopeLista($query)
 	{
-		return $this->perms->lists('id');
-	}
-
-	public function testablecimiento()
-	{
-		return $this->belongsTo('App\Testablecimiento');
+		return $query->where('empresa_id', '>=', '2');
 	}
 }

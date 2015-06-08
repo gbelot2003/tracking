@@ -13,7 +13,7 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::model($establecimiento, ['method' => 'PUT', 'action' => ['EstablecimientosController@update', $establecimiento->id]]) !!}
-		@include('establecimientos._form', ['submitButtonText' => 'Editar'])
+		@include('establecimientos._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop

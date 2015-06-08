@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class EstablecimientosFormRequest extends Request {
+class BolsasFormRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +11,7 @@ class EstablecimientosFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -22,10 +22,7 @@ class EstablecimientosFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' 				=> 'required|unique:establecimientos',
-			'departamento_id' 	=> 'required',
-			'municipio_id'		=> 'required',
-			'empresa_id'		=> 'required|integer'
+			//
 		];
 	}
 

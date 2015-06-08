@@ -21,14 +21,11 @@ Route::resource('secciones', 'SeccionesController');
 
 Route::resource('establecimientos', 'EstablecimientosController');
 
-/** IMPORTANTE, para fines practicos y de menos confución en el codigo
- * y el front-end y ademas por la similitud con usuarios, TraderController
- * se designara como personal en las rutas y titulos **/
-
 Route::resource('personal', 'TraderController');
 
-Route::resource('shipments', 'ShipmentCotroller');
+Route::resource('bolsas', 'BolsasController');
 
+Route::resource('shipments', 'ShipmentCotroller');
 Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
 
 Route::get('clientes', 'ClientesController@index');
@@ -40,7 +37,6 @@ Route::get('/', 'WelcomeController@index');
 Route::get('home', 'HomeController@index');
 
 Route::get('transitos/create/{id}', 'TransitosController@create');
-
 Route::post('transitos/store', 'TransitosController@store');
 
 Route::controllers([

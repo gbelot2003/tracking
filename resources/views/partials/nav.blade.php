@@ -21,11 +21,13 @@
 				@else
 
 				@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
-					<li><a href="{{ url('/shipments') }}">Administración de Encomiendas</a></li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Encomiendas<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="#!">Primer reporte</a></li>
+							<li><a href="{{ url('/shipments') }}">Administración de Encomiendas</a></li>
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+								<li><a href="{{ url('bolsas') }}">Administración de Bolsas</a></li>
+							@endif
 						</ul>
 					</li>
 				@endif

@@ -34,24 +34,20 @@
 				</div>
 			</div>
 			<div class="col-md-3">
-				<!-- Area géografica Form Input -->
+				<!-- Repassword Form Input -->
 				<div class="form-group">
-					<label for="roles_list">Área Géografica</label>
-					{!! Form::select('area_id', $area, null, ['class' => 'select form-control', 'id' => 'area-select']) !!}
+					<label for="empresa">Empresa que labora</label>
+					{!! Form::select('empresa_id', $empresas, null, ['class' => 'select form-control', 'id' => 'empresa-select']) !!}
 				</div>
 			</div>
-			<div class="col-md-3">
+			<div id="establecimientos-content" class="col-md-3">
+
+			</div>
+			<div class="col-md-2">
 				<!-- userstatus Form Input -->
 				<div class="form-group">
 					<label for="roles_list">Estado del Usuario</label>
 					{!! Form::select('userstatus_id', $estado, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
-				</div>
-			</div>
-			<div class="col-md-2">
-				<!-- Repassword Form Input -->
-				<div class="form-group">
-					<label for="empresa">Empresa que labora</label>
-					{!! Form::select('empresa_id', $empresas, null, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
 				</div>
 			</div>
 		</div>

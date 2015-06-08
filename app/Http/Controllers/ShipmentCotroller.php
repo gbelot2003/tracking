@@ -77,11 +77,13 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function store(ShipmentsFormRequest $request)
 	{
+		$establecimiento = Auth::user()->establecimiento_id;
 		$shipments = Shipment::create($request->all());
 
 		$transito = Transito::create([
 			'shipment_id'	=> $shipments->id,
 			'estado_id'	 	=> $request->estado_id,
+			'establecimiento_id' => $establecimiento,
 			'user_id'	 	=> Auth::id(),
 			'details'		=> 'Sin detalles'
 		]);
