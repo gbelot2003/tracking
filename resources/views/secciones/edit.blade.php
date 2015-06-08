@@ -14,7 +14,7 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::model($seccion, ['method' => 'PUT', 'action' => ['SeccionesController@update', $seccion->id]]) !!}
-			@include('secciones._form', ['submitButtonText' => 'Editar sección'])
+			@include('secciones._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop

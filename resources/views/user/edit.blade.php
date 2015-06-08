@@ -17,17 +17,11 @@
 	<div class="col-md-12">
 		@include('errors.form-error')
 		{!! Form::model($user, ['method' => 'PUT', 'action' => ['UserController@update', $user->id]]) !!}
-		@include('user._form', ['submitButtonText' => 'Editar'])
+		@include('user._form', ['submitButtonText' => 'Guardar'])
 		{!! Form::close() !!}
 	</div>
 @stop
 
 @section('post-script')
-	<script>
-		$('#rol-select').select2({
-			placeholder: 'Escoge un permiso'
-		});
-
-		$('#trader-select').select2();
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop

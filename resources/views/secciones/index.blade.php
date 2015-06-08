@@ -36,7 +36,21 @@
 	<script>
 		$(document).ready(function(){
 			$('#table').DataTable({
-				"pageLength": 10
+				"pageLength": 10,
+				"language": {
+					"lengthMenu": "Mostrar _MENU_ registros por página",
+					"zeroRecords": "Registro no encotrado - lo sentimos",
+					"info": "Mostrando página _PAGE_ de _PAGES_",
+					"infoEmpty": "No hay registros de esa busqueda",
+					"infoFiltered": "(filtrado de _MAX_ total Total de regístros)",
+					"search":  "Busqueda:",
+					"paginate": {
+						"first":      "Primero",
+						"last":       "Ultimo",
+						"next":       "Siguiente",
+						"previous":   "Anterior"
+					}
+				}
 			});
 		});
 	</script>

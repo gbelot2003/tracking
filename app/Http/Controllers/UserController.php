@@ -2,6 +2,7 @@
 
 use App\Area;
 use App\Empresa;
+use App\Establecimiento;
 use App\Estado;
 use App\Http\Requests\UserFormRequest;
 use App\Http\Controllers\Controller;
@@ -58,11 +59,11 @@ class UserController extends Controller {
 		$trader_list = Trader::all();
 		$trader = $trader_list->lists('full_name', 'id');
 		$estado = Userstatus::lists('name', 'id');
-		$area = Area::lists('areas', 'id');
+		$establecimiento = Establecimiento::lists('name', 'id');
 		$empresas = Empresa::lists('name', 'id');
 		$barra = 2;
 
-		return View('user.create', compact('roles', 'trader', 'estado', 'area', 'barra', 'empresas'));
+		return View('user.create', compact('roles', 'trader', 'estado', 'establecimiento', 'barra', 'empresas'));
 	}
 
 	/**
@@ -118,10 +119,10 @@ class UserController extends Controller {
 		$trader = $trader_list->lists('full_name', 'id');
 
 		$estado = Userstatus::lists('name', 'id');
-		$area = Area::lists('areas', 'id');
+		$establecimiento = Establecimiento::lists('name', 'id');
 		$empresas = Empresa::lists('name', 'id');
 
-		return View('user.edit', compact('user', 'roles', 'trader', 'area', 'estado', 'barra', 'empresas'));
+		return View('user.edit', compact('user', 'roles', 'trader', 'establecimiento', 'estado', 'barra', 'empresas'));
 	}
 
 	/**

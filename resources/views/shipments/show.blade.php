@@ -31,11 +31,11 @@
 			</div>
 
 			<div class="col-md-6">
-				@include('shipments._reciver')
+				@include('shipments._sender')
 			</div>
 
 			<div class="col-md-6">
-				@include('shipments._sender')
+				@include('shipments._reciver')
 			</div>
 
 		</div>

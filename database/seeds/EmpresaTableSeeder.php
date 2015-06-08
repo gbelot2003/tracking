@@ -20,8 +20,13 @@ class EmpresaTableSeeder extends Seeder
 			1 =>
 				array (
 					'id' => 2,
-					'name' => 'Ficohsa',
+					'name' => 'Establecimientos externos',
 				),
+			3 =>
+				array(
+					'id' => 3,
+					'name' => 'Ficohsa'
+				)
 		));
 
     }

@@ -18,9 +18,5 @@
 	</div>
 @stop
 @section('post-script')
-	<script>
-		$('#rol-select').select2({
-			placeholder: 'Escoge un permiso'
-		});
-	</script>
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop

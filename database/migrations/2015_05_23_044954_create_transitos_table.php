@@ -18,6 +18,7 @@ class CreateTransitosTable extends Migration {
 			$table->increments('id');
 			$table->integer('shipment_id')->unsigned();
 			$table->integer('estado_id')->unsigned();
+			$table->integer('establecimiento_id')->unsigned()->index();
 			$table->integer('user_id')->unsigned();
 			$table->text('details')->nullable();
 			$table->string('firma')->nullable();

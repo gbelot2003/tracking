@@ -24,4 +24,23 @@ class Empresa extends Model {
 	{
 		return $this->hasMany('App\User');
 	}
+
+
+	/**
+	 * Una empresa tiene varios establecimientos
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function establecimientos()
+	{
+		return $this->hasMany('App\Establecimiento');
+	}
+
+	/**
+	 * Conseguir un listado filtrando el primer registro
+	 * @return collection
+	 */
+	public function scopeListado($query)
+	{
+		return $query->where('id', '!=', '1');
+	}
 }
