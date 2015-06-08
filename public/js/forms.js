@@ -78,6 +78,20 @@
                 $('#main_form').val(2)
                 $('#establecimiento-select').select2({ placeholder: 'Escoge una Sucursal' });
                 $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
+                $('#establecimiento').on('click', function(e){
+                    e.preventDefault();
+                    $(this).colorbox({
+                        onComplete: function loadMunic(){
+                            var mid = $("#dept-select option:selected").val();
+                            $('#municipios').load("/querys/municipios/" + mid);
+                            $('#dept-select').on('change', function(){
+                                var mid = $("#dept-select option:selected").val();
+                                $('#municipios').load("/querys/municipios/" + mid);
+                            });
+                        }
+                    });
+
+                });
             });
         });
     });
