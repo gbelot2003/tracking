@@ -57,7 +57,7 @@
 				"language": {
 					"lengthMenu": "Mostrar _MENU_ registros por página",
 					"zeroRecords": "Registro no encotrado - lo sentimos",
-					"info": "Mostrando pgina _PAGE_ de _PAGES_",
+					"info": "Mostrando página _PAGE_ de _PAGES_",
 					"infoEmpty": "No hay registros de esa busqueda",
 					"infoFiltered": "(filtrado de _MAX_ total Total de regístros)",
 					"search":  "Busqueda:",
