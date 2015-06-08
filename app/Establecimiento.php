@@ -18,7 +18,7 @@ class Establecimiento extends Model {
 	 * Mass assingment protection
 	 * @var array
 	 */
-	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'empresa_id'];
+	protected $fillable = ['name', 'departamento_id', 'municipio_id', 'empresa_id', 'address'];
 
 	/**
 	 * Un establecimiento pertenece a un municipio
