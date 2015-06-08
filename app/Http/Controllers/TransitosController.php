@@ -44,15 +44,24 @@ class TransitosController extends Controller {
 		$firma_name = null;
 		$foto_name = null;
 		$establecimiento = Auth::user()->establecimiento_id;
+		$cerrar_trancito = $request->input('estado_id');
+		$shipmente = Shipment::find($request->input('shipment_id'));
+
+		if($shipmente->estado == 2)
+		{
+			return redirect()->back()->with('error', 'Esta encomienda ya a sido entregada cerrada');
+		}
 
 		$date = date('Y-m-d h:m');
-		if($request->hasFile('firma')){
+		if($request->hasFile('firma'))
+		{
 			$firma = $request->input('shipment_id') . '.' . $request->file('firma')->getClientOriginalExtension();
 			$firma_name = "firma-" . $date .'--'. $firma;
 			$request->file('firma')->move(base_path() . '/public/images/transitos/firmas/', $firma_name);
 		}
 
-		if($request->hasFile('foto')){
+		if($request->hasFile('foto'))
+		{
 			$foto = $request->input('shipment_id') . '.' . $request->file('foto')->getClientOriginalExtension();
 			$foto_name = "foto-" . $date .'-'. $foto;
 			$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
@@ -66,11 +75,16 @@ class TransitosController extends Controller {
 			'foto' => $foto_name
 		]));
 
-		Session::flash('flash_message', 'El registro a sido editado');
+		$message = 'Registro editado';
+		if($cerrar_trancito = 11 or $cerrar_trancito = 12 or $cerrar_trancito = 13)
+		{
+			$shipmente->estado = 2;
+			$shipmente->save();
+			$message = "Registro editado, y entrega cerrada";
+		}
+
+		Session::flash('flash_message', $message);
 		return redirect()->route('shipments.show',$request->input('shipment_id'));
-
-
-
 	}
 
 	/**
