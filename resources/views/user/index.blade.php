@@ -41,7 +41,7 @@
 				<td>{{ $user->empresa->name }}</td>
 				<td>{{ $user->establecimiento->name }}</td>
 				@if(Auth::user()->hasRole(['owner']))
-					<td>{{ $user->estado->name }}</td>
+					<td>{{ $user->estado['name'] }}</td>
 					<td>{{ $user->created_at }}</td>
 				@endif
 			</tr>
