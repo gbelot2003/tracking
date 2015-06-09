@@ -14,8 +14,12 @@
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')
+
 		{!! Form::open() !!}
 			@include('bolsas._form')
 		{!! Form::close() !!}
 	</div>
+@stop
+@section('post-script')
+	<script src="{{ URL::asset("js/forms.js") }}"></script>
 @stop

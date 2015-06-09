@@ -15,6 +15,7 @@
 
 @section('content')
 	@include('partials.flash')
+	@include('errors.form-error')
 
 			<table id="shipments" class="table table-bordered table-hover">
 				<caption>Agregar encomiendas a la bolsa</caption>

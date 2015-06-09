@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Establecimiento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -25,7 +26,9 @@ class BolsasController extends Controller {
 	 */
 	public function create()
 	{
-		return View('bolsas.create');
+		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->lists('name', 'id');
+
+		return View('bolsas.create', compact('establecimientos'));
 	}
 
 	/**
