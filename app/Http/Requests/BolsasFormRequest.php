@@ -11,7 +11,7 @@ class BolsasFormRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -21,9 +21,32 @@ class BolsasFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			//
+		$create = [
+			'code' => "integer|required",
+			'envios_establecimiento_id' => 'interger',
+			'establecimiento_id' => 'integer'
 		];
+
+		$edit = [
+			'code' => "integer|required",
+			'envios_establecimiento_id' => 'interger',
+			'establecimiento_id' => 'integer'
+		];
+
+		if($this->method == 'PUT'){
+			foreach($this->request->get('shipment_id') as $key => $val)
+			{
+				$create['shipment_id.'.$key] = 'required|max:10';
+			}
+
+			return $create;
+		} else {
+			foreach($this->request->get('shipment_id') as $key => $val)
+			{
+				$edit['shipment_id.'.$key] = 'required|max:10';
+			}
+			return $edit;
+		}
 	}
 
 }
