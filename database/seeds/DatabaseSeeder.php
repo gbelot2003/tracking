@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SeccionTableSeeder');
 		$this->command->info('Seccions table seeded!');
 
-		$this->call('TraderTableSeeder');
+		$this->call('TradersTableSeeder');
 		$this->command->info('Sujetos table seeded!');
 
 		$this->call('RoleTableSeeder');
@@ -52,6 +52,7 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('TransitosTableSeeder');
 		$this->command->info('Transitos table seeded!');
+
 	}
 
 }
