@@ -13,7 +13,7 @@ class bolsa extends Model {
 	 * Mass assingment protection
 	 * @var array
 	 */
-	protected $fillable = ['code', 'seccion_id', 'firma'];
+	protected $fillable = ['code', 'establecimiento_envio_id', 'establecimiento_recive_id', 'estado_id', 'user_id'];
 
 	/**
 	 * Una Bolsa tiene varios Shipmentes
@@ -28,8 +28,34 @@ class bolsa extends Model {
 	 * Referencia al establecimiento al que se envia la bolsa
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function enviosEstablecimientos()
+	public function sender()
 	{
-		return $this->belongsTo('App\Establecimiento', 'envios_establecimiento_id', 'id');
+		return $this->belongsTo('App\Establecimiento', 'establecimiento_envio_id', 'id');
+	}
+
+	/**
+	 * Referencia al establecimiento que recibe
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function reciber()
+	{
+		return $this->belongsTo('App\Establecimiento', 'establecimiento_recive_id', 'id');
+	}
+
+	/**
+	 * Una bolsa tiene un estado
+	 * @return \Illuminate\Database\Eloquent\Relations\belongsTo
+	 */
+	public function estado()
+	{
+		return $this->belongsTo('App\Estado', 'estado_id');
+	}
+	/**
+	 * Una bolsa pertenece a un usuario
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function user()
+	{
+		return $this->belongsTo('App\User', 'user_id', 'id');
 	}
 }
