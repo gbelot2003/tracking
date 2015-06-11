@@ -75,20 +75,45 @@ class TransitosController extends Controller {
 			'firma' => $firma_name,
 			'foto' => $foto_name
 		]));
-
+		/**
+		 * estado -> 1 abierto a trancitos
+		 * estado -> 2 en centro de acopio / abierto a transitos
+		 * estado -> 3 el paquete esta cerrado para mas transitos
+		 * reflex shipments._rel_tranbsitos
+		 */
 		switch ($cerrar_trancito) {
+			case 3:
+				$shipmente->estado = 2; // Aqui esta en centro de acopio o bolsa
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 8:
+				$shipmente->estado = 3;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 9:
+				$shipmente->estado = 3;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 10:
+				$shipmente->estado = 3;
+				$shipmente->save();
+				$message = "Registro editado, y entrega cerrada";
+				break;
 			case 11:
-				$shipmente->estado = 2;
+				$shipmente->estado = 3;
 				$shipmente->save();
 				$message = "Registro editado, y entrega cerrada";
 				break;
 			case 12:
-				$shipmente->estado = 2;
+				$shipmente->estado = 3;
 				$shipmente->save();
 				$message = "Registro editado, y entrega cerrada";
 				break;
 			case 13:
-				$shipmente->estado = 2;
+				$shipmente->estado = 3;
 				$shipmente->save();
 				$message = "Registro editado, y entrega cerrada";
 				break;
