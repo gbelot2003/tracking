@@ -15,9 +15,11 @@ class CreateBolsasTable extends Migration {
 		Schema::create('bolsas', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('code');
-			$table->integer('envios_establecimiento_id');
-			$table->integer('establecimiento_id');
+			$table->integer('code')->unsigned();
+			$table->integer('establecimiento_envio_id')->unsigned();
+			$table->integer('establecimiento_recive_id')->unsigned();
+			$table->integer('estado_id')->unsigned();
+			$table->integer('user_id')->unsigned()->index();
 			$table->string('firma');
 			$table->timestamps();
 		});

@@ -12,6 +12,7 @@ use App\Seccion;
 use App\Cargo;
 use Datatables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
@@ -42,6 +43,9 @@ class ListadosController extends Controller {
 			->make();
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getPersonal()
 	{
 
@@ -74,6 +78,10 @@ class ListadosController extends Controller {
 			->where('departamento_id', '=', $ndep)->get();
 	}
 
+	/**
+	 * @param $empresa_id
+	 * @return View
+	 */
 	public function getEstablecimientos($empresa_id)
 	{
 
@@ -88,6 +96,9 @@ class ListadosController extends Controller {
 		return View('listados/establecimientos', compact('listado'));
 	}
 
+	/**
+	 * @return mixed
+	 */
 	public function getShipments()
 	{
 		/**
@@ -122,12 +133,56 @@ class ListadosController extends Controller {
 			->make(true);
 	}
 
+	public function getContenidoBolsas()
+	{
+		$centro_acopio = Auth::user()->establecimiento_id;
+
+		/**
+		 * Query de busqueda de eccomiendas principa
+		 * recuperacion via ajax
+		 * @var $traders */
+		$traders = Shipment::select([
+			'shipments.id',
+			'shipments.code',
+			'sender.id as sid',
+			'sender.last_name as sender_last',
+			'sender.first_name as sender_first',
+			'aestab.name as sender_agen',
+			'aseccion.name as sender_section',
+			'reciber.id as rid',
+			'reciber.last_name as reciber_last',
+			'reciber.first_name as reciber_first',
+			'bestab.name as reciber_agen',
+			'bseccion.name as reciber_section',
+			'shipments.description as description',
+		])
+			->where('shipments.estado', '=', 2)
+			->distinct()
+			->Join('traders as sender', 'sender_id', '=', 'sender.id')
+			->Join('traders as reciber', 'reciber_id', '=', 'reciber.id')
+			->Join('establecimientos as aestab', 'sender.establecimiento_id', '=', 'aestab.id')
+			->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
+			->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
+			->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
+			->orderBy('shipments.id', '=', 'ASC')
+			->get();
+		return Datatables::of($traders)
+			->make(true);
+	}
+
+	/**
+	 * @param $shipments
+	 * @return View
+	 */
 	public function getShipmentstate($shipments)
 	{
 		$transitos = Transito::where('shipment_id', '=', $shipments)->get();
 		return View('listados.shipmentstate', compact('transitos'));
 	}
 
+	/**
+	 * @return View
+	 */
 	public function getListadosPersonas()
 	{
 		return View('trader.listado');

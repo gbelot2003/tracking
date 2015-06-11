@@ -6,8 +6,11 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\BolsasFormRequest;
+use App\Shipment;
+use App\Transito;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
@@ -45,11 +48,8 @@ class BolsasController extends Controller {
 	 */
 	public function store(BolsasFormRequest $request)
 	{
-		$shipments[] = $request->input('shipment_id');
-		foreach($shipments as $key => $value):
-			print_r($value[$key]);
-		endforeach;
-
+		$shipments_id = $request->input('shipment_id');
+		$count = count($shipments_id);
 		$bolsas = Bolsa::create([
 			'code' => $request->input('code'),
 			'establecimiento_envio_id' =>  Auth::user()->establecimiento_id,
@@ -57,13 +57,19 @@ class BolsasController extends Controller {
 			'estado_id'	=> 3,
 			'user_id'	=>Auth::id(),
 		]);
-		// -> estado de bolsa automaticamente
+		for($i = 0; $i < $count; $i++){
+			$transitos = Transito::create([
+				'shipment_id' => $shipments_id[$i],
+				'estado_id' => 4,
+				'establecimiento_id' => Auth::user()->establecimiento_id,
+				'user_id'	=> Auth::id()
+			]);
+			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado' => 1]);
+			$bolsas->shipments()->attach($shipments_id[$i]);
+		}
 
-		//relacionar la bolsa con su contenido
-		//Cambiar el estado del contenido de las bolsas
-		//redireccionar a bolsas
-		Session::flash('flash_message', 'El registro a sido creado');
-		return redirect('bolsas');
+		return redirect()->back()->with('flash_message', 'shipments acutalizados');
+
 	}
 
 	/**
