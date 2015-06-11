@@ -1,9 +1,18 @@
 <?php namespace App\Http\Controllers;
 
+use App\Establecimiento;
+use App\Bolsa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\BolsasFormRequest;
+use App\Shipment;
+use App\Transito;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class BolsasController extends Controller {
 
@@ -14,8 +23,8 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
-
-		return View('bolsas.index');
+		$bolsas = Bolsa::all();
+		return View('bolsas.index', compact('bolsas'));
 	}
 
 	/**
@@ -25,7 +34,11 @@ class BolsasController extends Controller {
 	 */
 	public function create()
 	{
-		return View('bolsas.create');
+		$remitente = Auth::user()->establecimiento->name;
+		$remitente_id = Auth::user()->establecimiento_id;
+		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
+
+		return View('bolsas.create', compact('establecimientos', 'remitente'));
 	}
 
 	/**
@@ -33,9 +46,29 @@ class BolsasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(BolsasFormRequest $request)
 	{
-		// Vamos a usar
+		$shipments_id = $request->input('shipment_id');
+		$count = count($shipments_id);
+		$bolsas = Bolsa::create([
+			'code' => $request->input('code'),
+			'establecimiento_envio_id' =>  Auth::user()->establecimiento_id,
+			'establecimiento_recive_id' => $request->input('destino_id'),
+			'estado_id'	=> 3,
+			'user_id'	=>Auth::id(),
+		]);
+		for($i = 0; $i < $count; $i++){
+			$transitos = Transito::create([
+				'shipment_id' => $shipments_id[$i],
+				'estado_id' => 4,
+				'establecimiento_id' => Auth::user()->establecimiento_id,
+				'user_id'	=> Auth::id()
+			]);
+			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado' => 1]);
+			$bolsas->shipments()->attach($shipments_id[$i]);
+		}
+
+		return redirect()->back()->with('flash_message', 'shipments acutalizados');
 
 	}
 

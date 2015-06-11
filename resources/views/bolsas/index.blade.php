@@ -15,14 +15,28 @@
 
 @section('content')
 	@include('partials.flash')
+	@include('errors.form-error')
 
 			<table id="shipments" class="table table-bordered table-hover">
 				<caption>Agregar encomiendas a la bolsa</caption>
 				<thead>
 					<th>Guia de Bolsa</th>
 					<th>Destino</th>
+					<th>Usuario</th>
+					<th>Estado</th>
 					<th>Hora</th>
 				</thead>
+				<tbody>
+				@foreach($bolsas as $bolsa)
+					<tr>
+						<td>{{ $bolsa->code }}</td>
+						<td>{{ $bolsa->reciber->name }}</td>
+						<td>{{ $bolsa->user->name }}</td>
+						<td>{{ $bolsa->estado->name }}, {{ $bolsa->sender->name }}</td>
+						<td>{{ $bolsa->created_at }}</td>
+					</tr>
+				@endforeach
+				</tbody>
 			</table>
 
 @stop

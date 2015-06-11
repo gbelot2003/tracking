@@ -29,8 +29,8 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name'			=> 'Procesando',
-			'description'	=>	'Hay varias encomiendas en este punto, se esta creando un listado total especifico'
+			'name'			=> 'Transito, en bolsa de transporte',
+			'description'	=>	'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega'
 		]);
 
 		Estado::create([
@@ -77,5 +77,6 @@ class EstadoTableSeeder extends Seeder
 			'name'			=> 'Entregado a terceros, entrega final',
 			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
 		]);
+
     }
 }

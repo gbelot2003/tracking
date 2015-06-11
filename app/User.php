@@ -116,4 +116,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsTo('App\Establecimiento');
 	}
 
+	/**
+	 * Un usuario esta relacionado a una bolsa
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function bolsas()
+	{
+		return $this->hasOne('App\Bolsa');
+	}
 }
