@@ -1,10 +1,15 @@
 <?php namespace App\Http\Controllers;
 
 use App\Establecimiento;
+use App\Bolsa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\BolsasFormRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class BolsasController extends Controller {
 
@@ -15,8 +20,8 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
-
-		return View('bolsas.index');
+		$bolsas = Bolsa::all();
+		return View('bolsas.index', compact('bolsas'));
 	}
 
 	/**
@@ -26,9 +31,11 @@ class BolsasController extends Controller {
 	 */
 	public function create()
 	{
-		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->lists('name', 'id');
+		$remitente = Auth::user()->establecimiento->name;
+		$remitente_id = Auth::user()->establecimiento_id;
+		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
 
-		return View('bolsas.create', compact('establecimientos'));
+		return View('bolsas.create', compact('establecimientos', 'remitente'));
 	}
 
 	/**
@@ -36,10 +43,27 @@ class BolsasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(BolsasFormRequest $request)
 	{
-		// Vamos a usar
+		$shipments[] = $request->input('shipment_id');
+		foreach($shipments as $key => $value):
+			print_r($value[$key]);
+		endforeach;
 
+		$bolsas = Bolsa::create([
+			'code' => $request->input('code'),
+			'establecimiento_envio_id' =>  Auth::user()->establecimiento_id,
+			'establecimiento_recive_id' => $request->input('destino_id'),
+			'estado_id'	=> 3,
+			'user_id'	=>Auth::id(),
+		]);
+		// -> estado de bolsa automaticamente
+
+		//relacionar la bolsa con su contenido
+		//Cambiar el estado del contenido de las bolsas
+		//redireccionar a bolsas
+		Session::flash('flash_message', 'El registro a sido creado');
+		return redirect('bolsas');
 	}
 
 	/**
