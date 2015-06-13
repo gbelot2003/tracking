@@ -40,10 +40,10 @@ class BolsasFormRequest extends Request {
 			{
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
-					$create['shipment_id.'.$key] = 'required|max:10';
+					$edit['shipment_id.'.$key] = 'required|max:10';
 				}
 			} else {
-				$create = ['shipment_id' => 'required'];
+				$edit = ['shipment_id' => 'required'];
 			}
 
 			return $create;
@@ -53,12 +53,12 @@ class BolsasFormRequest extends Request {
 			{
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
-					$edit['shipment_id.'.$key] = 'required|max:10';
+					$create['shipment_id.'.$key] = 'required|max:10';
 				}
 			}else {
-				$edit = ['shipment_id' => 'required'];
+				$create = ['shipment_id' => 'required'];
 			}
-			return $edit;
+			return $create;
 		}
 	}
 
