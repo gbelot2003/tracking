@@ -24,7 +24,7 @@ elixir(function(mix) {
 });
 
 elixir(function(mix){
-    mix.scripts(['vue.js', 'vue-resource.js'], 'public/js/vue.js');
+    mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
 });
 
 elixir(function(mix) {

@@ -13,7 +13,7 @@ class Shipment extends Model {
 	 * Proteccion para MassAssigments
 	 * @var array
 	 */
-	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description'];
+	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'completed'];
 
 	/**
 	 * Un sender pertenece a un Trader

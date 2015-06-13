@@ -133,41 +133,41 @@ class ListadosController extends Controller {
 			->make(true);
 	}
 
-	public function getContenidoBolsas()
+	public function getContenidoBolsas($establecimiento = null)
 	{
 		$centro_acopio = Auth::user()->establecimiento_id;
 
-		/**
-		 * Query de busqueda de eccomiendas principa
-		 * recuperacion via ajax
-		 * @var $traders */
-		$traders = Shipment::select([
-			'shipments.id',
-			'shipments.code',
-			'sender.id as sid',
-			'sender.last_name as sender_last',
-			'sender.first_name as sender_first',
-			'aestab.name as sender_agen',
-			'aseccion.name as sender_section',
-			'reciber.id as rid',
-			'reciber.last_name as reciber_last',
-			'reciber.first_name as reciber_first',
-			'bestab.name as reciber_agen',
-			'bseccion.name as reciber_section',
-			'shipments.description as description',
-		])
-			->where('shipments.estado', '=', 2)
-			->distinct()
-			->Join('traders as sender', 'sender_id', '=', 'sender.id')
-			->Join('traders as reciber', 'reciber_id', '=', 'reciber.id')
-			->Join('establecimientos as aestab', 'sender.establecimiento_id', '=', 'aestab.id')
-			->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
-			->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
-			->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
-			->orderBy('shipments.id', '=', 'ASC')
-			->get();
-		return Datatables::of($traders)
-			->make(true);
+		if($establecimiento == null)
+		{
+			$shipments = Shipment::select([
+				'shipments.id',
+				'shipments.code',
+				'establecimientos.name',
+				'establecimientos.id as establecimientoid',
+				'shipments.created_at',
+			])
+				->where('shipments.estado', '=', 2)
+				->join('traders','reciber_id', '=', 'traders.id')
+				->join('establecimientos','establecimientos.id', '=', 'traders.establecimiento_id')
+				->get();
+		} else {
+
+			$shipments = Shipment::select([
+				'shipments.id',
+				'shipments.code',
+				'establecimientos.name',
+				'establecimientos.id as establecimientoid',
+				'shipments.created_at',
+			])
+				->where('shipments.estado', '=', 2)
+				->where('establecimientos.id', '=', $establecimiento)
+				->join('traders','reciber_id', '=', 'traders.id')
+				->join('establecimientos','establecimientos.id', '=', 'traders.establecimiento_id')
+				->get();
+		}
+
+
+		return $shipments;
 	}
 
 	/**
