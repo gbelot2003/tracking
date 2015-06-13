@@ -10,6 +10,7 @@ use App\User;
 use App\Establecimiento;
 use App\Seccion;
 use App\Cargo;
+use App\Bolsa;
 use Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -79,6 +80,42 @@ class ListadosController extends Controller {
 	}
 
 	/**
+	 * Listado de establecimientos filtradas por municipio
+	 * @param null $municipio
+	 * @return mixed
+	 */
+	public function getEstablecimientosMunicipiosRaw($municipio = null)
+	{
+		$remitente_id = Auth::user()->establecimiento_id;
+		$mnp = (int) $municipio;
+		if($municipio == null){
+			return Establecimiento::select('id', 'name')
+				->where('empresa_id', '!=', 1)
+				->get();
+		} else
+		{
+			return Establecimiento::select('id', 'name')
+				->where('municipio_id', '=', $mnp)
+				->where('empresa_id', '!=', 1)
+				->get();
+		}
+	}
+
+	/**
+	 * @param $bolsa
+	 * @return mixed
+	 */
+	public function getShipmentsRelacionados($bolsa)
+	{
+		$shipments = Bolsa::where('id', '=', $bolsa)->with('shipments.recivers.establecimiento')->get();
+		foreach ($shipments as $shipment){
+			$bolsaContens = $shipment->shipments;
+		}
+		return $bolsaContens;
+	}
+
+
+	/**
 	 * @param $empresa_id
 	 * @return View
 	 */
@@ -135,39 +172,21 @@ class ListadosController extends Controller {
 
 	public function getContenidoBolsas()
 	{
-		$centro_acopio = Auth::user()->establecimiento_id;
 
-		/**
-		 * Query de busqueda de eccomiendas principa
-		 * recuperacion via ajax
-		 * @var $traders */
-		$traders = Shipment::select([
-			'shipments.id',
-			'shipments.code',
-			'sender.id as sid',
-			'sender.last_name as sender_last',
-			'sender.first_name as sender_first',
-			'aestab.name as sender_agen',
-			'aseccion.name as sender_section',
-			'reciber.id as rid',
-			'reciber.last_name as reciber_last',
-			'reciber.first_name as reciber_first',
-			'bestab.name as reciber_agen',
-			'bseccion.name as reciber_section',
-			'shipments.description as description',
-		])
-			->where('shipments.estado', '=', 2)
-			->distinct()
-			->Join('traders as sender', 'sender_id', '=', 'sender.id')
-			->Join('traders as reciber', 'reciber_id', '=', 'reciber.id')
-			->Join('establecimientos as aestab', 'sender.establecimiento_id', '=', 'aestab.id')
-			->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
-			->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
-			->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
-			->orderBy('shipments.id', '=', 'ASC')
-			->get();
-		return Datatables::of($traders)
-			->make(true);
+		if (Auth::user()->hasRole(['centro-acopio'])) :
+			$shipment = Shipment::whereHas('transitos', function ($query)
+			{
+				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
+			})
+				->with('recivers.establecimiento')
+				->where('estado', '=', 2)
+				->get();
+		else:
+			$shipment = Shipment::with('recivers.establecimiento')->where('estado', '=', 2)->get();
+		endif;
+
+
+		return $shipment;
 	}
 
 	/**

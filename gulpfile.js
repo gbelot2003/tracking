@@ -21,13 +21,10 @@ elixir(function(mix) {
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
                  'select2.full.min.js', 'flexigrid.js' , 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js')
     mix.scripts(['forms.js'], 'public/js/forms.js');
-
-
 });
 
 elixir(function(mix){
-    mix.copy('bower_components/angular/angular.min.js', 'resources/assets/js/angular.min.js');
-    mix.scripts(['angular.min.js', 'app/app-angular.js'], 'public/js/angular.js');
+    mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
 });
 
 elixir(function(mix) {

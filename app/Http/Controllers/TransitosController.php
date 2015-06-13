@@ -48,9 +48,9 @@ class TransitosController extends Controller {
 		$shipmente = Shipment::find($request->input('shipment_id'));
 		$estado = $shipmente->estado;
 
-		if($estado == 2)
+		if($estado == 3)
 		{
-			return redirect()->back()->with('error', 'Esta encomienda ya a sido entregada cerrada');
+			return redirect()->back()->with('errors', 'Esta encomienda ya a sido entregada cerrada');
 		}
 
 		$date = date('Y-m-d h:m');
@@ -85,7 +85,7 @@ class TransitosController extends Controller {
 			case 3:
 				$shipmente->estado = 2; // Aqui esta en centro de acopio o bolsa
 				$shipmente->save();
-				$message = "Registro editado, y entrega cerrada";
+				$message = "Registro ingresado en centro de acopio";
 				break;
 			case 8:
 				$shipmente->estado = 3;

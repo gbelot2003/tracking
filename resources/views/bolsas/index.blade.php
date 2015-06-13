@@ -1,10 +1,11 @@
 @extends('app')
 
 @section('title', 'Administración de Bolsas')
-
-@section('link-button')
-	<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Nueva Bolsa</a>
-@stop
+@if($sinBolsa != 0)
+	@section('link-button')
+		<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Hay <strong>{{ $sinBolsa }}</strong> paquete sin procesar</a>
+	@stop
+@endif
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">
@@ -29,7 +30,7 @@
 				<tbody>
 				@foreach($bolsas as $bolsa)
 					<tr>
-						<td>{{ $bolsa->code }}</td>
+						<td><a href="{{ action('BolsasController@edit', $bolsa->id) }}">{{ $bolsa->code }}</a></td>
 						<td>{{ $bolsa->reciber->name }}</td>
 						<td>{{ $bolsa->user->name }}</td>
 						<td>{{ $bolsa->estado->name }}, {{ $bolsa->sender->name }}</td>
@@ -38,5 +39,4 @@
 				@endforeach
 				</tbody>
 			</table>
-
 @stop

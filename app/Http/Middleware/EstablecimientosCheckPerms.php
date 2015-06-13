@@ -13,7 +13,7 @@ class EstablecimientosCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])) {
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'currier'])) {
 			return redirect('home');
 		}
 		return $next($request);

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Departamento;
 use App\Establecimiento;
 use App\Bolsa;
 use App\Http\Requests;
@@ -24,7 +25,19 @@ class BolsasController extends Controller {
 	public function index()
 	{
 		$bolsas = Bolsa::all();
-		return View('bolsas.index', compact('bolsas'));
+		if(Auth::user()->hasRole(['centro-acopio'])) :
+
+			$sinBolsa = Shipment::whereHas('transitos', function($query){
+				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
+			})
+				->with('recivers.establecimiento')
+				->where('estado', '=', 2)
+				->count();
+
+		else:
+			$sinBolsa = Shipment::where('estado', '=', 2)->count();
+		endif;
+		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
 
 	/**
@@ -36,9 +49,10 @@ class BolsasController extends Controller {
 	{
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
+		$departamentos =  Departamento::all();
 		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
-
-		return View('bolsas.create', compact('establecimientos', 'remitente'));
+		$selectEsta = Establecimiento::where('empresa_id', '!=', 1)->get();
+		return View('bolsas.create', compact('departamentos', 'establecimientos', 'remitente', 'selectEsta'));
 	}
 
 	/**
@@ -68,7 +82,7 @@ class BolsasController extends Controller {
 			$bolsas->shipments()->attach($shipments_id[$i]);
 		}
 
-		return redirect()->back()->with('flash_message', 'shipments acutalizados');
+		return redirect('bolsas')->with('flash_message', 'Bolsa creada');
 
 	}
 
@@ -91,7 +105,11 @@ class BolsasController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$bolsa = Bolsa::findOrFail($id);
+		$remitente = Auth::user()->establecimiento->name;
+		$remitente_id = Auth::user()->establecimiento_id;
+		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
+		return View('bolsas.edit', compact('bolsa', 'establecimientos'));
 	}
 
 	/**
@@ -100,7 +118,7 @@ class BolsasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(BolsasFormRequest $request, $id)
 	{
 		//
 	}
