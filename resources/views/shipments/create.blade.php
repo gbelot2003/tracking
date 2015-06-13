@@ -14,7 +14,7 @@
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')
-		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 		<div class="options">
 			<ul class="list-inline">
 				<li><a href="#!" class="inline btn btn-material-orange" id="perfil">Crear nuevo perfil</a></li>
