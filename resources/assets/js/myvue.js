@@ -1,4 +1,12 @@
 new Vue({
+    el: '#listadosEdit',
+    data:{
+        items: [],
+        selected: '1'
+    }
+});
+
+new Vue({
     el: '#listados',
     ready: function(){
         this.fetchMessages();
@@ -109,7 +117,6 @@ new Vue({
         sortBy: function(sortKey) {
             this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
             this.sortKey = sortKey;
-        },
-
+        }
     }
 });

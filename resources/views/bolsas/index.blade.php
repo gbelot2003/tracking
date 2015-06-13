@@ -29,7 +29,7 @@
 				<tbody>
 				@foreach($bolsas as $bolsa)
 					<tr>
-						<td>{{ $bolsa->code }}</td>
+						<td><a href="{{ action('BolsasController@edit', $bolsa->id) }}">{{ $bolsa->code }}</a></td>
 						<td>{{ $bolsa->reciber->name }}</td>
 						<td>{{ $bolsa->user->name }}</td>
 						<td>{{ $bolsa->estado->name }}, {{ $bolsa->sender->name }}</td>
@@ -38,5 +38,4 @@
 				@endforeach
 				</tbody>
 			</table>
-
 @stop

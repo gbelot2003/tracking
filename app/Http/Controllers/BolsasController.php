@@ -71,7 +71,7 @@ class BolsasController extends Controller {
 			$bolsas->shipments()->attach($shipments_id[$i]);
 		}
 
-		return redirect()->back()->with('flash_message', 'shipments acutalizados');
+		return redirect('bolsas')->with('flash_message', 'Bolsa creada');
 
 	}
 
@@ -94,7 +94,11 @@ class BolsasController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$bolsa = Bolsa::findOrFail($id);
+		$remitente = Auth::user()->establecimiento->name;
+		$remitente_id = Auth::user()->establecimiento_id;
+		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
+		return View('bolsas.edit', compact('bolsa', 'establecimientos'));
 	}
 
 	/**
