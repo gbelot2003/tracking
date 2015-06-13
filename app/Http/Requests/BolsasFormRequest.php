@@ -30,7 +30,6 @@ class BolsasFormRequest extends Request {
 		];
 
 		$edit = [
-			'code' => "required|integer",
 			'envios_establecimiento_id' => 'interger',
 			'destino_id' => 'integer',
 			'establecimiento_id' => 'integer'
