@@ -25,13 +25,15 @@ class BolsasFormRequest extends Request {
 
 
 		if($this->method == 'PUT'){
+			$edit = [
+
+				'envios_establecimiento_id' => 'interger',
+				'destino_id' => 'integer',
+				'establecimiento_id' => 'integer'
+			];
+
 			if($shipment > 1)
 			{
-				$edit = [
-					'envios_establecimiento_id' => 'interger',
-					'destino_id' => 'integer',
-					'establecimiento_id' => 'integer'
-				];
 
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
@@ -44,14 +46,15 @@ class BolsasFormRequest extends Request {
 			return $edit;
 		} else {
 
+			$create = [
+				'code' => "required|integer|unique:bolsas",
+				'envios_establecimiento_id' => 'interger',
+				'destino_id' => 'integer',
+				'establecimiento_id' => 'integer'
+			];
+
 			if($shipment > 1)
 			{
-				$create = [
-					'code' => "required|integer|unique:bolsas",
-					'envios_establecimiento_id' => 'interger',
-					'destino_id' => 'integer',
-					'establecimiento_id' => 'integer'
-				];
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
 					$create['shipment_id.'.$key] = 'required|max:10';
