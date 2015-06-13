@@ -22,22 +22,17 @@ class BolsasFormRequest extends Request {
 	public function rules()
 	{
 		$shipment = count($this->request->get('shipment_id'));
-		$create = [
-			'code' => "required|integer|unique:bolsas",
-			'envios_establecimiento_id' => 'interger',
-			'destino_id' => 'integer',
-			'establecimiento_id' => 'integer'
-		];
 
-		$edit = [
-			'envios_establecimiento_id' => 'interger',
-			'destino_id' => 'integer',
-			'establecimiento_id' => 'integer'
-		];
 
 		if($this->method == 'PUT'){
 			if($shipment > 1)
 			{
+				$edit = [
+					'envios_establecimiento_id' => 'interger',
+					'destino_id' => 'integer',
+					'establecimiento_id' => 'integer'
+				];
+
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
 					$edit['shipment_id.'.$key] = 'required|max:10';
@@ -46,11 +41,17 @@ class BolsasFormRequest extends Request {
 				$edit = ['shipment_id' => 'required'];
 			}
 
-			return $create;
+			return $edit;
 		} else {
 
 			if($shipment > 1)
 			{
+				$create = [
+					'code' => "required|integer|unique:bolsas",
+					'envios_establecimiento_id' => 'interger',
+					'destino_id' => 'integer',
+					'establecimiento_id' => 'integer'
+				];
 				foreach($this->request->get('shipment_id') as $key => $val)
 				{
 					$create['shipment_id.'.$key] = 'required|max:10';
