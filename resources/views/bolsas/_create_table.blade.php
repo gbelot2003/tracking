@@ -41,13 +41,13 @@
 				item: items |
 				noProcess |
 				orderBy sortKey reverse |
-				filterBy selected in 'establecimientoid' |
+				filterBy selected in 'recivers.establecimiento_id' number |
 				filterBy departamentos in 'establecimientosdep' |
 				filterBy municipio in 'establecimientosmun'
 
 		">
 			<td>@{{ item.code  }}</td>
-			<td>@{{ item.name  }}<input type="hidden" name="destinos" value="@{{ item.establecimientoid }}" /></td>
+			<td>@{{ item.recivers.establecimiento.name  }}<input type="hidden" name="destinos" value="@{{ item.recivers.establecimiento_id }}" /></td>
 			<td>@{{ item.created_at  }}</td>
 			<td>
 				<button v-on="click: addItem(item)">&#10004;</button>

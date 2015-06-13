@@ -1,8 +1,20 @@
 new Vue({
     el: '#listadosEdit',
+    ready: function(){
+        this.fetchShipments();
+    },
     data:{
+        url: '',
         items: [],
         selected: '1'
+    },
+
+    methods: {
+        fetchShipments: function () {
+            this.$http.get('/listados/shipments-relacionados/' + this.url, function (items) {
+                this.$set("items", items);
+            });
+        }
     }
 });
 
@@ -81,30 +93,14 @@ new Vue({
         },
 
         toggleItemCompletion: function(item){
-            this.items.push({
-                id:item.id,
-                code: item.code,
-                name: item.name,
-                establecimientoid: item.establecimientoid,
-                establecimientosdep: item.establecimientosdep,
-                establecimientosmun: item.establecimientosmun,
-                created_at: item.created_at,
-                completed: false
-            });
+            this.items.push(item);
+            item.completed = false;
             this.removeItem(item);
         },
 
         addItem: function(item){
-            this.items.push({
-                id:item.id,
-                code: item.code,
-                name: item.name,
-                establecimientoid: item.establecimientoid,
-                establecimientosdep: item.establecimientosdep,
-                establecimientosmun: item.establecimientosmun,
-                created_at: item.created_at,
-                completed: true
-            });
+            this.items.push(item);
+            item.completed = true;
             this.removeItem(item);
         },
 

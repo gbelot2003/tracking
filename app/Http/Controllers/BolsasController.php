@@ -25,7 +25,19 @@ class BolsasController extends Controller {
 	public function index()
 	{
 		$bolsas = Bolsa::all();
-		return View('bolsas.index', compact('bolsas'));
+		if(Auth::user()->hasRole(['centro-acopio'])) :
+
+			$sinBolsa = Shipment::whereHas('transitos', function($query){
+				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
+			})
+				->with('recivers.establecimiento')
+				->where('estado', '=', 2)
+				->count();
+
+		else:
+			$sinBolsa = Shipment::where('estado', '=', 2)->count();
+		endif;
+		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
 
 	/**
@@ -40,7 +52,6 @@ class BolsasController extends Controller {
 		$departamentos =  Departamento::all();
 		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
 		$selectEsta = Establecimiento::where('empresa_id', '!=', 1)->get();
-
 		return View('bolsas.create', compact('departamentos', 'establecimientos', 'remitente', 'selectEsta'));
 	}
 
@@ -107,7 +118,7 @@ class BolsasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(BolsasFormRequest $request, $id)
 	{
 		//
 	}

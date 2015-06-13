@@ -27,7 +27,7 @@
 				@{{ item.code  }}
 				<input type="hidden" name="shipment_id[]" value="@{{ item.id  }}"/>
 			</td>
-			<td>@{{ item.name  }}</td>
+			<td>@{{ item.recivers.establecimiento.name }}</td>
 			<td>@{{ item.created_at  }}</td>
 			<td>
 				<button type="button" v-on="click: toggleItemCompletion(item)">&#10007;</button>

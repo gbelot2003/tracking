@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+	<div>{{ Auth::user()->establecimiento->name }}</div>
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')

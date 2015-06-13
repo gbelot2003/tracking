@@ -10,6 +10,7 @@ use App\User;
 use App\Establecimiento;
 use App\Seccion;
 use App\Cargo;
+use App\Bolsa;
 use Datatables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,6 +79,11 @@ class ListadosController extends Controller {
 			->where('departamento_id', '=', $ndep)->get();
 	}
 
+	/**
+	 * Listado de establecimientos filtradas por municipio
+	 * @param null $municipio
+	 * @return mixed
+	 */
 	public function getEstablecimientosMunicipiosRaw($municipio = null)
 	{
 		$remitente_id = Auth::user()->establecimiento_id;
@@ -95,10 +101,19 @@ class ListadosController extends Controller {
 		}
 	}
 
-	public function getEstablecimientosDepartamentosRaw($departamentos)
+	/**
+	 * @param $bolsa
+	 * @return mixed
+	 */
+	public function getShipmentsRelacionados($bolsa)
 	{
-
+		$shipments = Bolsa::where('id', '=', $bolsa)->with('shipments.recivers.establecimiento')->get();
+		foreach ($shipments as $shipment){
+			$bolsaContens = $shipment->shipments;
+		}
+		return $bolsaContens;
 	}
+
 
 	/**
 	 * @param $empresa_id
@@ -155,45 +170,23 @@ class ListadosController extends Controller {
 			->make(true);
 	}
 
-	public function getContenidoBolsas($establecimiento = null)
+	public function getContenidoBolsas()
 	{
-		$centro_acopio = Auth::user()->establecimiento_id;
 
-		if($establecimiento == null)
-		{
-			$shipments = Shipment::select([
-				'shipments.id',
-				'shipments.code',
-				'establecimientos.name',
-				'establecimientos.id as establecimientoid',
-				'establecimientos.departamento_id as establecimientosdep',
-				'establecimientos.municipio_id as establecimientosmun',
-				'shipments.created_at',
-			])
-				->where('shipments.estado', '=', 2)
-				->join('traders','reciber_id', '=', 'traders.id')
-				->join('establecimientos','establecimientos.id', '=', 'traders.establecimiento_id')
+		if (Auth::user()->hasRole(['centro-acopio'])) :
+			$shipment = Shipment::whereHas('transitos', function ($query)
+			{
+				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
+			})
+				->with('recivers.establecimiento')
+				->where('estado', '=', 2)
 				->get();
-		} else {
-
-			$shipments = Shipment::select([
-				'shipments.id',
-				'shipments.code',
-				'establecimientos.name',
-				'establecimientos.id as establecimientoid',
-				'establecimientos.departamento_id as establecimientosdep',
-				'establecimientos.municipio_id as establecimientosmun',
-				'shipments.created_at',
-			])
-				->where('shipments.estado', '=', 2)
-				->where('establecimientos.id', '=', $establecimiento)
-				->join('traders','reciber_id', '=', 'traders.id')
-				->join('establecimientos','establecimientos.id', '=', 'traders.establecimiento_id')
-				->get();
-		}
+		else:
+			$shipment = Shipment::with('recivers.establecimiento')->where('estado', '=', 2)->get();
+		endif;
 
 
-		return $shipments;
+		return $shipment;
 	}
 
 	/**
