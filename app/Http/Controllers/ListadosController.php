@@ -78,6 +78,28 @@ class ListadosController extends Controller {
 			->where('departamento_id', '=', $ndep)->get();
 	}
 
+	public function getEstablecimientosMunicipiosRaw($municipio = null)
+	{
+		$remitente_id = Auth::user()->establecimiento_id;
+		$mnp = (int) $municipio;
+		if($municipio == null){
+			return Establecimiento::select('id', 'name')
+				->where('empresa_id', '!=', 1)
+				->get();
+		} else
+		{
+			return Establecimiento::select('id', 'name')
+				->where('municipio_id', '=', $mnp)
+				->where('empresa_id', '!=', 1)
+				->get();
+		}
+	}
+
+	public function getEstablecimientosDepartamentosRaw($departamentos)
+	{
+
+	}
+
 	/**
 	 * @param $empresa_id
 	 * @return View
@@ -144,6 +166,8 @@ class ListadosController extends Controller {
 				'shipments.code',
 				'establecimientos.name',
 				'establecimientos.id as establecimientoid',
+				'establecimientos.departamento_id as establecimientosdep',
+				'establecimientos.municipio_id as establecimientosmun',
 				'shipments.created_at',
 			])
 				->where('shipments.estado', '=', 2)
@@ -157,6 +181,8 @@ class ListadosController extends Controller {
 				'shipments.code',
 				'establecimientos.name',
 				'establecimientos.id as establecimientoid',
+				'establecimientos.departamento_id as establecimientosdep',
+				'establecimientos.municipio_id as establecimientosmun',
 				'shipments.created_at',
 			])
 				->where('shipments.estado', '=', 2)

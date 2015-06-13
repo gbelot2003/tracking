@@ -13,12 +13,7 @@
 			{!! Form::select('destino_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'sender-select']) !!}
 		</div>
 	</div>
-	<div class="col-md-2">
-		<div class="form-group">
-			{!! Form::label('firma', "Firma:") !!}
-			{!! Form::file('estado_id', ['class' => 'form_contro']) !!}
-		</div>
-	</div>
+
 	<table class="table table-hovered table-bordered">
 		<theader>
 			<th>No. Guia</th>

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Departamento;
 use App\Establecimiento;
 use App\Bolsa;
 use App\Http\Requests;
@@ -36,10 +37,11 @@ class BolsasController extends Controller {
 	{
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
+		$departamentos =  Departamento::all();
 		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
 		$selectEsta = Establecimiento::where('empresa_id', '!=', 1)->get();
 
-		return View('bolsas.create', compact('establecimientos', 'remitente', 'selectEsta'));
+		return View('bolsas.create', compact('departamentos', 'establecimientos', 'remitente', 'selectEsta'));
 	}
 
 	/**

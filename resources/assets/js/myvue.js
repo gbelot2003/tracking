@@ -2,11 +2,17 @@ new Vue({
     el: '#listados',
     ready: function(){
         this.fetchMessages();
+        this.fetchMunicipios(8);
+        this.fetchEstablecimientos(110)
     },
     data:{
         items: [],
         selected: '',
-        SelectKey: '',
+        departamentos: '',
+        municipio: '',
+        municipios: [],
+        establecimiento: '',
+        establecimientos:[],
         sortKey: '',
         reverse: false
     },
@@ -22,6 +28,7 @@ new Vue({
                 return ! items.completed;
             });
         }
+
     },
     filters: {
         noProcess: function (items) {
@@ -49,6 +56,18 @@ new Vue({
             });
         },
 
+        fetchMunicipios: function(value){
+            this.$http.get('/listados/municipios/' + value, function (municipios) {
+                this.$set("municipios", municipios);
+            })
+        },
+
+        fetchEstablecimientos: function(value){
+          this.$http.get('/listados/establecimientos-municipios-raw/' + value, function(establecimientos){
+              this.$set("establecimientos", establecimientos);
+          })
+        },
+
         removeItem: function(items){
             this.items.$remove(items);
         },
@@ -59,6 +78,8 @@ new Vue({
                 code: item.code,
                 name: item.name,
                 establecimientoid: item.establecimientoid,
+                establecimientosdep: item.establecimientosdep,
+                establecimientosmun: item.establecimientosmun,
                 created_at: item.created_at,
                 completed: false
             });
@@ -71,6 +92,8 @@ new Vue({
                 code: item.code,
                 name: item.name,
                 establecimientoid: item.establecimientoid,
+                establecimientosdep: item.establecimientosdep,
+                establecimientosmun: item.establecimientosmun,
                 created_at: item.created_at,
                 completed: true
             });
