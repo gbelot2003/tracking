@@ -22,7 +22,7 @@ class SeccionesFormRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required|unique:secciones'
+			'name' => 'required|unique:seccions'
 		];
 	}
 
