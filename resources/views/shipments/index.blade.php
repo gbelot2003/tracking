@@ -15,6 +15,14 @@
 
 @section('content')
 	@include('partials.flash')
+
+	<div class="alert alert-success {{Session::has('flash_message_important') ? 'alert-important' : ''}} ">
+		<button class="close" type="button" data-dismiss="alert" aria-hidden="true">&times;</button>
+		@foreach(Auth::user()->roles as $rol)
+		<p>Ingresado al sistema como <strong>{{ Auth::user()->name }}</strong> y con el rol de <strong>{{ $rol->name }}</strong></p>
+		@endforeach
+	</div>
+
 	<div class="table-responsive">
 		<table id="shipmentsTable" class="table table-hover">
 			<thead>

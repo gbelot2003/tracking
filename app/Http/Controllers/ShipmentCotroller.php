@@ -39,6 +39,7 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function create($fid)
 	{
+
 		/** Reconociemos si la entrada viene de perfil o de formulario de shipments */
 		if($fid != 0){
 			/** is biene de perfil, obtenemos el objeto trader **/
@@ -65,7 +66,7 @@ class ShipmentCotroller extends Controller {
 		$establecimiento = Establecimiento::where('empresa_id', '>=', '2')->lists('name', 'id');
 
 
-		return View('shipments.create', compact('sender', 'reciver', 'estado', 'establecimiento'));
+		return View('shipments.create', compact('sender', 'reciver', 'estado', 'establecimiento', 'mesage'));
 	}
 
 	/**
