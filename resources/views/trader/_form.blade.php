@@ -1,19 +1,11 @@
 
 <div class="row">
 
-	<div class="col-md-6">
+	<div class="col-md-12">
 		<!-- Last_name Form Input -->
 		<div class="form-group">
-			{!! Form::label('last_name', "Apellidos:") !!}
+			{!! Form::label('name', "Nombre Completo:") !!}
 			{!! Form::text("last_name", null, ['class' => 'form-control']) !!}
-		</div>
-	</div>
-
-	<div class="col-md-6">
-		<!-- First_name Form Input -->
-		<div class="form-group">
-			{!! Form::label('first_name', "Nombres:") !!}
-			{!! Form::text("first_name", null, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 

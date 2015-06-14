@@ -56,10 +56,10 @@ class ShipmentCotroller extends Controller {
 		} elseif($fid == 0) {
 			$sender_list 		= Trader::where('userstatus_id', '=', 1)->get();
 		}
-		$sender 			= $sender_list->lists('full_name', 'id');
+		$sender 			= $sender_list->lists('name', 'id');
 
 		$reciver_list 		= Trader::where('userstatus_id', '=', 1)->get();
-		$reciver 			= $reciver_list->lists('full_name', 'id');
+		$reciver 			= $reciver_list->lists('name', 'id');
 		 		
 		$estado = Estado::lists('name', 'id');
 		$establecimiento = Establecimiento::where('empresa_id', '>=', '2')->lists('name', 'id');

@@ -11,7 +11,7 @@
 			</thead>
 			<tbody>
 			<tr>
-				<td><span class="info-row">{{ $paquete->senders->first_name }} {{ $paquete->senders->last_name }}</span></td>
+				<td><span class="info-row">{{ $paquete->senders->name }}</span></td>
 				<td><span class="info-row"><span class="info-row">{{ $paquete->senders->seccion->name }}</span></span></td>
 				<td>{{ $paquete->senders->establecimiento->name }}</td>
 

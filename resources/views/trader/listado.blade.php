@@ -14,8 +14,6 @@
 	<table id="table" class="table table-bordered table-responsive">
 		<caption style="color: #954121">Localiza el nombre del <b>remitente</b> de la encomienda y has <b>click en su nombre</b> abajo en la tabla para enlasar el formulario de creación de encomiendas</caption>
 		<thead>
-		<th>Apellidos</th>
-		<th>Nombres</th>
 		<th>Nombre Completo</th>
 		<th>Establecimento</th>
 		<th>Sección</th>
@@ -34,12 +32,10 @@
 				serverSide: true,
 				ajax: '{{ URL::to("listados/personal") }}',
 				columns: [
-					{data: 'last_name', name: 'traders.last_name', "visible": false},
-					{data: 'first_name', name: 'traders.first_name', "visible": false},
-					{data: null, name: 'nombre_completo', "searchable": false, render: function( data, type, full, meta){
-						return "<a href='/shipments/create/"+ full.id +"' >" + full.first_name + " " + full.last_name + "</a>"
+					{data: 'name', name: 'traders.name', "searchable": true, render: function( data, type, full, meta){
+						return "<a href='/shipments/create/"+ full.id +"' >" + full.name + "</a>"
 					}},
-					{data: 'name', name: 'establecimientos.name'},
+					{data: 'establecimiento', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},
 					{data: 'estado', name: 'userstatuses.name'}
 				],

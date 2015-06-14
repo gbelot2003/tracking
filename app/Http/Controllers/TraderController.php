@@ -62,9 +62,9 @@ class TraderController extends Controller {
 	public function store(TradersFormRequest $request)
 	{
 		$trader = Trader::create($request->all());
-		$lastname = $trader->first_name . " " .$trader->last_name;
+		$name = $trader->name;
 		$seccion = $trader->establecimiento->name;
-		Session::flash('flash_message', 'El nuevo registro de "'. $lastname .'" en "'. $seccion .'"" a sido creado');
+		Session::flash('flash_message', 'El nuevo registro de "'. $name .'" en "'. $seccion .'"" a sido creado');
 
 		if($request->input('main_form') != 1){
 			return redirect()->back();

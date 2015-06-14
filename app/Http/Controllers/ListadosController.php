@@ -53,8 +53,8 @@ class ListadosController extends Controller {
 			$traders = Trader::Select(
 				[
 					'traders.id',
-					'traders.name as fullname',
-					'establecimientos.name',
+					'traders.name',
+					'establecimientos.name as establecimiento',
 					'seccions.name as seccion',
 					'userstatuses.name as estado'
 				])->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
@@ -64,6 +64,14 @@ class ListadosController extends Controller {
 
 		return Datatables::of($traders)->make(true);
 
+	}
+
+	/**
+	 * @return View
+	 */
+	public function getListadosPersonas()
+	{
+		return View('trader.listado');
 	}
 
 	/**
@@ -196,11 +204,5 @@ class ListadosController extends Controller {
 		return View('listados.shipmentstate', compact('transitos'));
 	}
 
-	/**
-	 * @return View
-	 */
-	public function getListadosPersonas()
-	{
-		return View('trader.listado');
-	}
+
 }

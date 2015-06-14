@@ -10,7 +10,7 @@
 		<tr>
 			<td><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}"><b>{{ $paquete->code }}</b></a></td>
 			<td>
-				<div class="info-row">{{ $paquete->senders->first_name }}, {{ $paquete->senders->last_name }}</div>
+				<div class="info-row">{{ $paquete->senders->name }}</div>
 				<div class="info-row"><span class="info-row">{{ $paquete->senders->seccion->name }}</span></div>
 			</td>
 			<td>{{ $paquete->created_at }}</td>

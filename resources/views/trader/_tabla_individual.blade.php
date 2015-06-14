@@ -3,7 +3,7 @@
 	<div class="warp">
 		<div class="row">
 			<div class="col-md-12">
-				<h4 class="text-danger">{{ $trader->last_name }}, {{ $trader->first_name }}</h4>
+				<h4 class="text-danger">{{ $trader->name }}</h4>
 			</div>
 		</div>
 	</div>
