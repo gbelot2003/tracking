@@ -20,8 +20,6 @@ class UsersTableSeeder extends Seeder {
 				'id' => 1,
 				'userstatus_id' => 1,
 				'name' => 'gbelot2003',
-				'first_name' => 'Gerardo A',
-				'last_name' => 'Belot',
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'gbelot2003@hotmail.com',
@@ -35,8 +33,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 2,
 				'userstatus_id' => 1,
 				'name' => 'Harold Rivera',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'lavariox@hotmail.com',
@@ -50,8 +48,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 3,
 				'userstatus_id' => 1,
 				'name' => 'Jose Marcelino Cruz Sanchez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jsanchez@unidosexpress.com',
@@ -65,8 +63,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 4,
 				'userstatus_id' => 1,
 				'name' => 'Karen Janeth Carbajal Almendares',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'kalmendarez@unidosexpress.com',
@@ -80,8 +78,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 5,
 				'userstatus_id' => 1,
 				'name' => 'Mahelyn Alejandra Funez Espinoza',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'mespinoza@unidosexpress.com',
@@ -95,8 +93,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 6,
 				'userstatus_id' => 1,
 				'name' => 'Nelson Oreste Canales Silva',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'nsilva@unidosexpress.com',
@@ -110,8 +108,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 7,
 				'userstatus_id' => 1,
 				'name' => 'Olvin Rene Amaya Ortez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'oamaya@unidosexpress.com',
@@ -125,8 +123,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 8,
 				'userstatus_id' => 1,
 				'name' => 'Paola Maria Raudales Casco',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'praudales@unidosexpress.com',
@@ -140,8 +138,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 9,
 				'userstatus_id' => 1,
 				'name' => 'Luis Joel Sanchez Rodezno',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'lsanchez@unidosexpress.com',
@@ -155,8 +153,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 10,
 				'userstatus_id' => 1,
 				'name' => 'Victor Hugo Portillo Amador',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'vportillo@unidosexpress.com',
@@ -170,8 +168,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 11,
 				'userstatus_id' => 1,
 				'name' => 'Oscar Rene Herrera Gonzalez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jbanegas@unidosexpress.com',
@@ -185,8 +183,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 12,
 				'userstatus_id' => 1,
 				'name' => 'Jimmy Jovel Caceres Inestroza',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jinestroza@unidosexpress.com',
@@ -200,8 +198,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 13,
 				'userstatus_id' => 1,
 				'name' => 'Franklin Enrique Salinas Guillen',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'fsalinas@unidosexpress.com',
@@ -215,8 +213,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 14,
 				'userstatus_id' => 1,
 				'name' => 'Flavio Geovanny Solorzano Fortin',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'fsolorzano@unidosexpress.com',
@@ -230,8 +228,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 15,
 				'userstatus_id' => 1,
 				'name' => 'Daniel Abraham Ramos Avila',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'dramos@unidosexpress.com',
@@ -245,8 +243,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 16,
 				'userstatus_id' => 1,
 				'name' => 'Byan Eduardo Matute Arias',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'bmatute@unidosexpress.com',
@@ -260,8 +258,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 17,
 				'userstatus_id' => 1,
 				'name' => 'Jorge Fransua Padilla Aleman',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jpadilla@unidosexpress.com',
@@ -275,8 +273,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 18,
 				'userstatus_id' => 1,
 				'name' => 'Ivys Josue Hernandez Flores',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'iflores@unidosexpress.com',
@@ -290,8 +288,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 19,
 				'userstatus_id' => 1,
 				'name' => 'Osmin David Ortiz Perez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'operez@unidosexpress.com',
@@ -305,8 +303,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 20,
 				'userstatus_id' => 1,
 				'name' => 'Walter Javier Cruz Aguilar',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'wcruz@unidosexpress.com',
@@ -320,8 +318,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 21,
 				'userstatus_id' => 1,
 				'name' => 'Allan Gerardo Bustillo Quezada',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'abustillo@unidosexpress.com',
@@ -335,8 +333,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 22,
 				'userstatus_id' => 1,
 				'name' => 'Jose Manuel Osorto Castellanos',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'josorto@unidosexpress.com',
@@ -350,8 +348,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 23,
 				'userstatus_id' => 1,
 				'name' => 'Ulices Noe Ordoñez Izaguirre',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'nizaguirre@unidosexpress.com',
@@ -365,8 +363,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 24,
 				'userstatus_id' => 1,
 				'name' => 'Luis Alexis Andino Castro',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'landino@unidosexpress.com',
@@ -380,8 +378,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 25,
 				'userstatus_id' => 1,
 				'name' => 'Pedro Antonio Cruz Dominguez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'pcruz@unidosexpress.com',
@@ -395,8 +393,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 26,
 				'userstatus_id' => 1,
 				'name' => 'Jose Jeremias Mejia Duarte',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'jmejia@unidosexpress.com',
@@ -410,8 +408,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 27,
 				'userstatus_id' => 1,
 				'name' => 'Enrique Fernando De Leon Martinez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'emartinez@unidosexpress.com',
@@ -425,8 +423,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 28,
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Rosales Colman',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jrosales@unidosexpress.com',
@@ -440,8 +438,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 29,
 				'userstatus_id' => 1,
 				'name' => 'Sayd Rene Reyes Agurcia',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'sreyes@unidosexpress.com',
@@ -455,8 +453,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 30,
 				'userstatus_id' => 1,
 				'name' => 'Jeahns Ruocbell Sevilla Moncada',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jsevilla@unidosexpress.com',
@@ -470,8 +468,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 31,
 				'userstatus_id' => 1,
 				'name' => 'Dorian Danery Matute Gonzales',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'dgonzales@unidosexpress.com',
@@ -485,8 +483,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 32,
 				'userstatus_id' => 1,
 				'name' => 'Allan Josue Espinoza Avila',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jespinoza@unidosexpress.com',
@@ -500,8 +498,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 33,
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Osorto  caballero',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'rcaballero@unidosexpress.com',
@@ -515,8 +513,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 34,
 				'userstatus_id' => 1,
 				'name' => 'Selvin Samir Lagos Caballero',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'slagos@unidosexpress.com',
@@ -530,8 +528,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 35,
 				'userstatus_id' => 1,
 				'name' => 'Yeimy Carolina Chavarria Urquia',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'curquia@unidosexpress.com',
@@ -545,8 +543,8 @@ class UsersTableSeeder extends Seeder {
 				'id' => 36,
 				'userstatus_id' => 1,
 				'name' => 'dtrochez',
-				'first_name' => NULL,
-				'last_name' => NULL,
+				
+				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'dtrochez@conectahn.com',
