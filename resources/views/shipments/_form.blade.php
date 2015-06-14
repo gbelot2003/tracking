@@ -10,6 +10,9 @@
 						<!-- code Form Input -->
 						<div class="form-group">
 							{!! Form::text("code", null,  ['class' => 'select form-control', 'id' => 'code']) !!}
+							@if(Auth::user()->hasRole(['centro-acopio']))
+							{!! Form::hidden('estado', 2)!!}
+							@endif
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -58,14 +61,20 @@
 		<div class="form-group">
 			{!! Form::textarea("description", null, ['class' => 'form-control floating-label', 'placeholder' => 'Descripción']) !!}
 		</div>
-		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
-		<div class="form-group">
-			{!! Form::select('estado_id', $estado, 2, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
-		</div>
+		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'currier']))
+			<div class="form-group">
+				{!! Form::select('estado_id', $estado, 2, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
+			</div>
+		@elseif(Auth::user()->hasRole(['centro-acopio']))
+			<div class="form-group">
+				{!! Form::select('estado_id', $estado, 3, ['class' => 'select form-control', 'id' => 'estado-select']) !!}
+			</div>
 		@endif
+
 		@if(Auth::user()->hasRole(['cliente']))
 			{!! Form::hidden('estado_id', 1) !!}
 		@endif
+
 		<div class="form-group">
 			{!! Form::submit($submitButtonText, ['class' => 'btn btn-primary']) !!}
 		</div>
