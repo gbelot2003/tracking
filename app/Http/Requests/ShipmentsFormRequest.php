@@ -27,7 +27,8 @@ class ShipmentsFormRequest extends Request {
 			'sender_id' => 'required|Integer',
 			'reciber_id' => 'required|Integer|different:sender_id',
 			'reciber_seccion' => 'required|Integer',
-			'description' => 'String'
+			'description' => 'String',
+			'estado' => 'Integer'
 		];
 
 		return $rules;
