@@ -53,8 +53,7 @@ class ListadosController extends Controller {
 			$traders = Trader::Select(
 				[
 					'traders.id',
-					'traders.last_name',
-					'traders.first_name',
+					'traders.name as fullname',
 					'establecimientos.name',
 					'seccions.name as seccion',
 					'userstatuses.name as estado'
@@ -146,13 +145,11 @@ class ListadosController extends Controller {
 									'shipments.id',
 									'shipments.code',
 									'sender.id as sid',
-									'sender.last_name as sender_last',
-									'sender.first_name as sender_first',
+									'sender.name as sender_name',
 									'aestab.name as sender_agen',
 									'aseccion.name as sender_section',
 									'reciber.id as rid',
-									'reciber.last_name as reciber_last',
-									'reciber.first_name as reciber_first',
+									'reciber.name as reciber_name',
 									'bestab.name as reciber_agen',
 									'bseccion.name as reciber_section',
 									'shipments.description as description',

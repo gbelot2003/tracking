@@ -18,6 +18,12 @@
 	<div class="table-responsive">
 		<table id="shipmentsTable" class="table table-hover">
 			<thead>
+			<th>sender_name</th>
+			<th>reciber_name</th>
+			<th>reciber_name</th>
+			<th>sender_agen</th>
+			<th>reciber_agen</th>
+			<th>reciber_section</th>
 			<th>No. Guia</th>
 			<th>Remitente</th>
 			<th>Destinatario</th>
@@ -40,6 +46,12 @@
 					serverSide: true,
 					ajax: '{{ URL::to("listados/shipments") }}',
 					columns: [
+						{data: 'sender_name', name: 'sender_name', "visible": false, searchable: true},
+						{data: 'reciber_name', name: 'reciber_name', "visible": false, searchable: true},
+						{data: 'sender_agen', name: 'sender_agen', "visible": false, searchable: true},
+						{data: 'reciber_agen', name: 'reciber_agen', "visible": false, searchable: true},
+						{data: 'sender_section', name: 'sender_section', "visible": false, searchable: true},
+						{data: 'reciber_section', name: 'reciber_section', "visible": false, searchable: true},
 						{data: 'code', name: "code",
 							render: function(data, type, full, meta){
 								return "<a href='shipments/" + full.id + "' >" + full.code + "</a>"
@@ -51,12 +63,13 @@
 										"<b>"+ full.sender_agen +"</b>"+
 										"</div>" +
 										"<div class='col-md-12'>" +
-											"<a href='personal/" + full.sid + "'>" + full.sender_first + " " + full.sender_last +"</a>" +
+											"<a href='personal/" + full.sid + "'>" + full.sender_name + "</a>" +
 										"</div>" +
 										"<div class='col-md-12'>" +
 											"<b>" + full.sender_section + "</b>"
 										"</div>"
-							}
+							},
+							searchable: false
 						},
 						{data: 'reciber', name: 'reciber.last_name',
 							render: function(data, type, full, meta){
@@ -64,7 +77,7 @@
 										"<b>"+ full.reciber_agen +"</b>"+
 										"</div>" +
 										"<div class='col-md-12'>" +
-											"<a href='personal/" + full.rid + "' >" + full.reciber_first + " " + full.reciber_last +"</a>" +
+											"<a href='personal/" + full.rid + "' >" + full.reciber_name +"</a>" +
 										"</div>"+
 										"<div class='col-md-12'>" +
 										"<b>" + full.reciber_section + "</b>"
@@ -101,11 +114,6 @@
 						}
 					}
 				});
-
-				setInterval( function () {
-					table.ajax.reload();
-				}, 30000 );
-
 
 				var search_thread = null;
 				$(".dataTables_filter input")
