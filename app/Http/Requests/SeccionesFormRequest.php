@@ -21,9 +21,18 @@ class SeccionesFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+		$create = [
 			'name' => 'required|unique:seccions'
 		];
+		$edit = [
+			'name' => 'required'
+		];
+
+		if($this->method == 'PUT'){
+			return $edit;
+		} else {
+			return $create;
+		}
 	}
 
 }
