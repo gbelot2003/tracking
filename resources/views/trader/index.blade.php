@@ -38,9 +38,9 @@
 				ajax: '{{ URL::to("listados/personal") }}',
 				columns: [
 					{data: 'fullname', name: 'traders.name', render: function( data, type, full, meta){
-						return "<a href='personal/"+ full.id +"' >" + full.fullname + "</a>"
+						return "<a href='personal/"+ full.id +"' >" + full.name + "</a>"
 					}},
-					{data: 'name', name: 'establecimientos.name'},
+					{data: 'establecimiento', name: 'establecimientos.name'},
 					{data: 'seccion', name: 'seccions.name'},
 					{data: 'estado', name: 'userstatuses.name'}
 				],
