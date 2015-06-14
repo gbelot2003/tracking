@@ -40,7 +40,7 @@
 		(function(){
 			$(document).ready(function(){
 				var table = $('#shipmentsTable').DataTable({
-					"pageLength": 5,
+					"pageLength": 10,
 					"order": [[ 0, "desc" ]],
 					processing: true,
 					serverSide: true,
