@@ -6,7 +6,7 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('bolsas') }}">Administración de Bolsas</a></li>
-		<li><a href="#!">Edición de Bolsas No </a></li>
+		<li><a href="#!">Edición de Bolsas No. {{ $bolsas->code }}</a></li>
 	</ol>
 @stop
 
