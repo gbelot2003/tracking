@@ -1,11 +1,14 @@
 <div id="listados" class="list-group">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-4">
 			<!-- Code Form Input -->
 			<div class="form-group">
 				{!! Form::label('code', "No Guia de Bolsa:") !!}
 				{!! Form::text("code", null, ['class' => 'form-control']) !!}
 			</div>
+		</div>
+		<div class="col-md-2">
+			<button id="generate" class="btn btn btn btn-material-indigo">Generar</button>
 		</div>
 		<div class="col-md-6">
 			<!-- sender Form Input -->
