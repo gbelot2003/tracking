@@ -2,7 +2,7 @@
 
 @section('title', 'Administración de Bolsas')
 	@section('link-button')
-		<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Hay <strong>{{ $sinBolsa }}</strong> paquete sin procesar</a>
+		<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Crear Bolsa</a>
 	@stop
 
 @section('breadcrumbs')
