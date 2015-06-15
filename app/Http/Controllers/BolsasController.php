@@ -125,6 +125,17 @@ class BolsasController extends Controller {
 		$bolsas->update([
 			'establecimiento_recive_id' => $request->input('destino_id'),
 		]);
+
+		foreach($request->input('shipment_id') as $shipments):
+
+			$transito = Transito::where('shipment_id', '=', $id)->orderBy('id', 'DESC')->first();
+			if($transito->estado_id == 1){
+				$transito->update([
+					'estado_id' => 2
+				]);
+			}
+
+		endforeach;
 		$bolsas->shipments()->sync($request->input('shipment_id'));
 
 		return redirect()->back()->with('flash_message', 'Bolsa Editada');

@@ -40,11 +40,6 @@ class BolsasFormRequest extends Request {
 				'establecimiento_id' => 'integer'
 			];
 
-			foreach($this->request->get('shipment_id') as $key => $val)
-			{
-				$edit['shipment_id.'.$key] = 'required|max:10';
-			}
-
 			return $edit;
 		} else {
 
@@ -54,11 +49,6 @@ class BolsasFormRequest extends Request {
 				'destino_id' => 'integer',
 				'establecimiento_id' => 'integer'
 			];
-
-			foreach($this->request->get('shipment_id') as $key => $val)
-			{
-				$create['shipment_id.'.$key] = 'required|max:12';
-			}
 
 			return $create;
 		}

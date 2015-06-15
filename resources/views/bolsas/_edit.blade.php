@@ -73,13 +73,14 @@
 					</div>
 				</td>
 				<td>{{ $shipments->created_at }}</td>
-				<td class="remove"><button class="removeItem">&#10007;</button></td>
+				<td class="remove"><button class="removeItem" href="/transito/bolsa/{{ $shipments->id }}">&#10007;</button></td>
 			</tr>
 			@endforeach
 			<tr v-repeat="nitem: nitems">
 				<td>
 					@{{ nitem.code }}
 					<input name="shipment_id[]" type="hidden" value="@{{ nitem.id }}"/>
+
 				</td>
 				<td>
 					<div class="col-md-12">
