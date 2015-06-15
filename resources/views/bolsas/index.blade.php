@@ -1,11 +1,9 @@
 @extends('app')
 
 @section('title', 'Administración de Bolsas')
-@if($sinBolsa != 0)
 	@section('link-button')
 		<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Hay <strong>{{ $sinBolsa }}</strong> paquete sin procesar</a>
 	@stop
-@endif
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">

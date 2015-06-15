@@ -14,6 +14,16 @@ class BolsasFormRequest extends Request {
 		return true;
 	}
 
+	public function messages()
+	{
+		$messages = [];
+		foreach($this->request->get('shipment_id') as $key => $val)
+		{
+			$messages['items.'.$key.'.max'] = 'The field labeled "Book Title '.$key.'" must be less than :max characters.';
+		}
+		return $messages;
+	}
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
@@ -21,8 +31,6 @@ class BolsasFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		$shipment = count($this->request->get('shipment_id'));
-
 
 		if($this->method == 'PUT'){
 			$edit = [
@@ -32,15 +40,9 @@ class BolsasFormRequest extends Request {
 				'establecimiento_id' => 'integer'
 			];
 
-			if($shipment > 1)
+			foreach($this->request->get('shipment_id') as $key => $val)
 			{
-
-				foreach($this->request->get('shipment_id') as $key => $val)
-				{
-					$edit['shipment_id.'.$key] = 'required|max:10';
-				}
-			} else {
-				$edit = ['shipment_id' => 'required'];
+				$edit['shipment_id.'.$key] = 'required|max:10';
 			}
 
 			return $edit;
@@ -53,15 +55,11 @@ class BolsasFormRequest extends Request {
 				'establecimiento_id' => 'integer'
 			];
 
-			if($shipment > 1)
+			foreach($this->request->get('shipment_id') as $key => $val)
 			{
-				foreach($this->request->get('shipment_id') as $key => $val)
-				{
-					$create['shipment_id.'.$key] = 'required|max:10';
-				}
-			}else {
-				$create = ['shipment_id' => 'required'];
+				$create['shipment_id.'.$key] = 'required|max:12';
 			}
+
 			return $create;
 		}
 	}

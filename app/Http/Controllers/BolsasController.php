@@ -50,7 +50,7 @@ class BolsasController extends Controller {
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
 		$departamentos =  Departamento::all();
-		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
+		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
 		$selectEsta = Establecimiento::where('empresa_id', '!=', 1)->get();
 		return View('bolsas.create', compact('departamentos', 'establecimientos', 'remitente', 'selectEsta'));
 	}
@@ -79,8 +79,8 @@ class BolsasController extends Controller {
 				'user_id'	=> Auth::id()
 			]);
 			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado' => 1]);
-			$bolsas->shipments()->attach($shipments_id[$i]);
 		}
+		$bolsas->shipments()->attach($request->input('shipment_id'));
 
 		return redirect('bolsas')->with('flash_message', 'Bolsa creada');
 
@@ -105,11 +105,11 @@ class BolsasController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$bolsa = Bolsa::findOrFail($id);
+		$bolsas = Bolsa::findOrFail($id);
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
-		$establecimientos = Establecimiento::where('empresa_id', '=', 1)->where('id', '!=', $remitente_id)->lists('name', 'id');
-		return View('bolsas.edit', compact('bolsa', 'establecimientos'));
+		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
+		return View('bolsas.edit', compact('bolsas', 'establecimientos'));
 	}
 
 	/**
@@ -120,7 +120,14 @@ class BolsasController extends Controller {
 	 */
 	public function update(BolsasFormRequest $request, $id)
 	{
-		//
+		$shipments_id = $request->input('shipment_id');
+		$bolsas = Bolsa::findOrFail($id);
+		$bolsas->update([
+			'establecimiento_recive_id' => $request->input('destino_id'),
+		]);
+		$bolsas->shipments()->sync($request->input('shipment_id'));
+
+		return redirect()->back()->with('flash_message', 'Bolsa Editada');
 	}
 
 	/**

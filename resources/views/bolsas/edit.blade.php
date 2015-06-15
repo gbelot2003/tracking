@@ -15,7 +15,7 @@
 		@include('partials.flash')
 		@include('errors.form-error')
 
-		{!! Form::model($bolsa, ['method' => 'PUT', 'action' => ['BolsasController@update', $bolsa->id]]) !!}
+		{!! Form::model($bolsas, ['method' => 'PUT', 'action' => ['BolsasController@update', $bolsas->id]]) !!}
 			@include('bolsas._edit')
 		{!! Form::close() !!}
 
@@ -24,4 +24,14 @@
 @section('post-script')
 	<script src="{{ URL::asset("js/forms.js") }}"></script>
 	<script src="{{ URL::asset("js/vue.js") }}"></script>
+	<script>
+		$(document).ready(function(){
+			$('.removeItem').each(function(){
+				$(this).on('click', function(e){
+					e.preventDefault();
+					$(this).closest('tr').remove();
+				});
+			});
+		});
+	</script>
 @stop

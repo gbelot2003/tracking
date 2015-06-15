@@ -109,18 +109,22 @@ class ListadosController extends Controller {
 	}
 
 	/**
+	 * Query usada en myvuejs para localizar encomiendas por codigo
 	 * @param $bolsa
 	 * @return mixed
 	 */
-	public function getShipmentsRelacionados($bolsa)
+	public function getShipmentsRelacionados($code)
 	{
-		$shipments = Bolsa::where('id', '=', $bolsa)->with('shipments.recivers.establecimiento')->get();
-		foreach ($shipments as $shipment){
-			$bolsaContens = $shipment->shipments;
-		}
-		return $bolsaContens;
+		$shipments = Shipment::where('code', '=', $code)->with('recivers.establecimiento', 'senders.establecimiento')->get();
+		return $shipments;
 	}
 
+
+	public function getContenidoBolsas($code)
+	{
+		$bolsas = Bolsa::with('shipments.recivers.establecimiento', 'shipments.senders.establecimiento')->where('code', '=', $code)->get();
+		return $bolsas;
+	}
 
 	/**
 	 * @param $empresa_id
@@ -175,24 +179,6 @@ class ListadosController extends Controller {
 			->make(true);
 	}
 
-	public function getContenidoBolsas()
-	{
-
-		if (Auth::user()->hasRole(['centro-acopio'])) :
-			$shipment = Shipment::whereHas('transitos', function ($query)
-			{
-				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
-			})
-				->with('recivers.establecimiento')
-				->where('estado', '=', 2)
-				->get();
-		else:
-			$shipment = Shipment::with('recivers.establecimiento')->where('estado', '=', 2)->get();
-		endif;
-
-
-		return $shipment;
-	}
 
 	/**
 	 * @param $shipments

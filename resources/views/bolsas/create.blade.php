@@ -11,21 +11,14 @@
 @stop
 
 @section('content')
-	<div>{{ Auth::user()->establecimiento->name }}</div>
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')
 
-		<div id="listados" class="list-group">
-
 			{!! Form::open(['action' => ['BolsasController@store']]) !!}
 				@include('bolsas._form')
 			{!! Form::close() !!}
-
 			<hr/>
-
-			@include('bolsas._create_table')
-		</div>
 	</div>
 @stop
 @section('post-script')
