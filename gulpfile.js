@@ -21,6 +21,7 @@ elixir(function(mix) {
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
                  'select2.full.min.js', 'flexigrid.js' , 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js')
     mix.scripts(['forms.js'], 'public/js/forms.js');
+    mix.scripts(['bolsas.js'], 'public/js/bolsas.js');
 });
 
 elixir(function(mix){

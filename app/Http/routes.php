@@ -10,6 +10,12 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('transito/bolsa/{id}', function($id){
+
+	$transito = \App\Transito::where('shipment_id', '=', $id)->orderBy('id', 'DESC')->first();
+
+	dd($transito);
+});
 
 Route::resource('roles', 'RolesController');
 
