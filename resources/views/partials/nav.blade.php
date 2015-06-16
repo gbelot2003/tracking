@@ -38,15 +38,10 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#!">Configuraciones Generales<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
-
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 								<li><a href="{{ url('establecimientos') }}">Agencias y Establecimientos</a></li>
 								<li><a href="{{ url('secciones') }}">Secciones Administrativas</a></li>
-							@endif
-
-							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
-
-									<li><a href="{{ url('personal') }}">Control de Personal</a></li>
+								<li><a href="{{ url('personal') }}">Control de Personal</a></li>
 							@endif
 							@if(Auth::user()->hasRole(['cliente']))
 								<li><a href="{{ url('mis-paquetes') }}">Mis Paquetes</a></li>
