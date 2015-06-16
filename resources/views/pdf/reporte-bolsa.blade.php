@@ -1,14 +1,11 @@
 @extends('pdf')
 @section('content')
 <h2>Titulo de pagina</h2>
-<div id="listadosEdit">
-
 	<div class="row">
 		<div class="col-md-3">
 			<!-- Code Form Input -->
 			<div class="form-group">
-				{!! Form::label('code', "Code:") !!}
-				{!! Form::text("code", null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
+				<h3>{{ $bolsas->code }}</h3>
 			</div>
 		</div>
 		<div class="col-md-3">
@@ -24,25 +21,6 @@
 		</div>
 	</div>
 
-	<div class="col-md-12">
-		<hr />
-		<div class="row">
-			<div class="col-md-6">
-				<div class="form-group has-error">
-					<label for="">No Guia de Encomiendas</label>
-					<input type="number"  class="form-control floating-label"  placeholder="No de Guia de encomiendas"  v-model="codes"/>
-					<input type="hidden" value="{{ $bolsas->id }}" v-model="url"/>
-					<div id="removed-items"></div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<button class="btn btn-info" v-on="click: fetchShipments($event)">&#10004;</button>
-			</div>
-		</div>
-		<hr />
-	</div>
-
-
 	<input type="hidden" v-model="url" value="{{ $bolsas->code }}"/>
 	<table class="table table-hovered table-bordered">
 		<theader>
@@ -50,7 +28,6 @@
 			<th>Remitente</th>
 			<th>Destinatario</th>
 			<th>Fecha</th>
-			<th>Agregar</th>
 		</theader>
 		<tbody>
 		@foreach($bolsas->shipments as $shipments)
@@ -78,13 +55,8 @@
 					</div>
 				</td>
 				<td>{{ $shipments->created_at }}</td>
-				<td class="remove"><button class="removeItem" href="{{ $shipments->id }}">&#10007;</button></td>
 			</tr>
 		@endforeach
 		</tbody>
 	</table>
-	<div class="form-group">
-		{!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
-	</div>
-</div>
 @stop
