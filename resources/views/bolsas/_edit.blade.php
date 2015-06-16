@@ -1,5 +1,12 @@
 <div id="listadosEdit">
 	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<a id="virtual-form" class="btn btn-primary " href="">Transito</a>
+			<a id="virtual-form" class="btn btn-primary " href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito</a>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-md-3">
 			<!-- Code Form Input -->
 			<div class="form-group">
@@ -28,6 +35,7 @@
 					<label for="">No Guia de Encomiendas</label>
 					<input type="number"  class="form-control floating-label"  placeholder="No de Guia de encomiendas"  v-model="codes"/>
 					<input type="hidden" value="{{ $bolsas->id }}" v-model="url"/>
+					<div id="removed-items"></div>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -73,14 +81,14 @@
 					</div>
 				</td>
 				<td>{{ $shipments->created_at }}</td>
-				<td class="remove"><button class="removeItem" href="/transito/bolsa/{{ $shipments->id }}">&#10007;</button></td>
+				<td class="remove"><button class="removeItem" href="{{ $shipments->id }}">&#10007;</button></td>
 			</tr>
 			@endforeach
 			<tr v-repeat="nitem: nitems">
 				<td>
 					@{{ nitem.code }}
 					<input name="shipment_id[]" type="hidden" value="@{{ nitem.id }}"/>
-
+					<input name="addtransito_id[]" type="hidden" value="@{{ nitem.id }}"/>
 				</td>
 				<td>
 					<div class="col-md-12">

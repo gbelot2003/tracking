@@ -126,16 +126,29 @@ class BolsasController extends Controller {
 			'establecimiento_recive_id' => $request->input('destino_id'),
 		]);
 
-		foreach($request->input('shipment_id') as $shipments):
-
-			$transito = Transito::where('shipment_id', '=', $id)->orderBy('id', 'DESC')->first();
-			if($transito->estado_id == 1){
+		if($request->input('removed-items')){
+			foreach($request->input('removed-items') as $shipments => $id)
+			{
+				$transito = Transito::where('shipment_id', '=', $id)->orderBy('id', 'DESC')->first();
 				$transito->update([
-					'estado_id' => 2
+					'estado_id' => 3
+				]);
+
+			}
+		}
+
+		if($request->input('addtransito_id')){
+			foreach($request->input('addtransito_id') as $shipments => $id)
+			{
+				$transito = Transito::create([
+					'shipment_id' => $id,
+					'estado_id' => 4,
+					'establecimiento_id' => Auth::user()->establecimiento_id,
+					'user_id' => Auth::id()
 				]);
 			}
+		}
 
-		endforeach;
 		$bolsas->shipments()->sync($request->input('shipment_id'));
 
 		return redirect()->back()->with('flash_message', 'Bolsa Editada');

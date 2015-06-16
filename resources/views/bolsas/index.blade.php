@@ -15,7 +15,8 @@
 @section('content')
 	@include('partials.flash')
 	@include('errors.form-error')
-
+	<div class="col-md-12">
+	</div>
 			<table id="shipments" class="table table-bordered table-hover">
 				<caption>Agregar encomiendas a la bolsa</caption>
 				<thead>
@@ -24,6 +25,7 @@
 					<th>Usuario</th>
 					<th>Estado</th>
 					<th>Hora</th>
+					<th>Transito</th>
 				</thead>
 				<tbody>
 				@foreach($bolsas as $bolsa)

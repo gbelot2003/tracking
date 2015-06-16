@@ -6,7 +6,7 @@
 	<ol class="breadcrumb">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('bolsas') }}">Administración de Bolsas</a></li>
-		<li><a href="#!">Edición de Bolsas No </a></li>
+		<li><a href="#!">Edición de Bolsas No. {{ $bolsas->code }}</a></li>
 	</ol>
 @stop
 
@@ -28,9 +28,12 @@
 		$(document).ready(function(){
 			$('.removeItem').each(function(){
 				$(this).on('click', function(e){
+					e.preventDefault();
 					var shipment = $(this).attr('href');
-					$.get(shipment);
 					$(this).closest('tr').remove();
+					var rimput = ("<input name='removed-items[]' type='hidden' value='"+ shipment +"' />");
+					$('#removed-items').append(rimput);
+
 				});
 			});
 		});

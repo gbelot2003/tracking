@@ -124,4 +124,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		return $this->hasOne('App\Bolsa');
 	}
+
+	public function transitobolsa()
+	{
+		return $this->hasMany('App\TransitoBolsa');
+	}
 }
