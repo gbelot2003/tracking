@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": ["bolsas.js"],
+  "names": [],
+  "mappings": "AAAA;AACA;AACA;AACA;AACA;AACA;AACA",
+  "file": "bolsas.js",
+  "sourcesContent": ["(function(){\n    var send = $('#send');\n    send.on('click', function (e) {\n        e.preventDefault();\n    });\n\n})();"],
+  "sourceRoot": "/source/"
+}
