@@ -38,8 +38,8 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SeccionTableSeeder');
 		$this->command->info('Seccions table seeded!');
 
-		$this->call('TradersTableSeeder');
-		$this->command->info('Sujetos table seeded!');
+		//$this->call('TradersTableSeeder');
+		//$this->command->info('Sujetos table seeded!');
 
 		$this->call('RoleTableSeeder');
 		$this->command->info('Roles table seeded!');
@@ -47,11 +47,11 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->command->info('Users table seeded!');
 
-		$this->call('ShipmentsTableSeeder');
-		$this->command->info('Shipments table seeded!');
+		//$this->call('ShipmentsTableSeeder');
+		//$this->command->info('Shipments table seeded!');
 
-		$this->call('TransitosTableSeeder');
-		$this->command->info('Transitos table seeded!');
+		//$this->call('TransitosTableSeeder');
+		//$this->command->info('Transitos table seeded!');
 
 	}
 
