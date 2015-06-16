@@ -35,6 +35,11 @@
 						<td>{{ $bolsa->user->name }}</td>
 						<td>{{ $bolsa->estado->name }}, {{ $bolsa->sender->name }}</td>
 						<td>{{ $bolsa->created_at }}</td>
+						<td>
+							@foreach($bolsa->bolsastransito->slice(0, 1) as $transito)
+							{{ $bolsa->estado->name }}
+							@endforeach
+						</td>
 					</tr>
 				@endforeach
 				</tbody>
