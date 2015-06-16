@@ -6,6 +6,7 @@
 			<!-- Code Form Input -->
 			<div class="form-group">
 				<h3>{{ $bolsas->code }}</h3>
+				{!! DNS2D::getBarcodeSVG( $bolsas->code , "QRCODE") !!}
 			</div>
 		</div>
 		<div class="col-md-3">
