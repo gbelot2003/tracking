@@ -20,7 +20,7 @@
 			{{ $bolsas->created_at }}
 		</div>
 	</div>
-
+	@if($bolsaCerrada != true)
 	<div class="col-md-12">
 		<hr />
 		<div class="row">
@@ -38,6 +38,7 @@
 		</div>
 		<hr />
 	</div>
+	@endif
 
 
 		<input type="hidden" v-model="url" value="{{ $bolsas->code }}"/>
@@ -47,7 +48,9 @@
 				<th>Remitente</th>
 				<th>Destinatario</th>
 				<th>Fecha</th>
+				@if($bolsaCerrada != true)
 				<th>Agregar</th>
+				@endif
 			</theader>
 			<tbody>
 			@foreach($bolsas->shipments as $shipments)
@@ -75,7 +78,9 @@
 					</div>
 				</td>
 				<td>{{ $shipments->created_at }}</td>
+				@if($bolsaCerrada != true)
 				<td class="remove"><button class="removeItem" href="{{ $shipments->id }}">&#10007;</button></td>
+				@endif
 			</tr>
 			@endforeach
 			<tr v-repeat="nitem: nitems">
@@ -107,7 +112,9 @@
 			</tr>
 			</tbody>
 		</table>
+	@if($bolsaCerrada != true)
 	<div class="form-group">
 		{!! Form::submit('Guardar', ['class' => 'btn btn-primary']) !!}
 	</div>
+	@endif
 </div>

@@ -38,11 +38,10 @@
 						<td>{{ $bolsa->user->name }}</td>
 						<td>{{ $bolsa->created_at }}</td>
 						<td>
-							@foreach($bolsa->bolsastransito->slice(0, 1) as $transito)
-								<div class="col-md-12">{{ $bolsa->estado->name }}</div>
-								<div class="col-md-12"><a id="transito-bolsas" href="bolsas/transitos/{{ $bolsa->id }}">Historial de Transitos</a></div>
-							@endforeach
-						</td>
+							<div class="col-md-12">{{ $bolsa->estado->name }}</div>
+							<div class="col-md-12"><a id="transito-bolsas" href="bolsas/transitos/{{ $bolsa->id }}">Historial
+									de Transitos</a></div>
+						</td
 					</tr>
 				@endforeach
 				</tbody>

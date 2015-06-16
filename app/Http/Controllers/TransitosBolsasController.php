@@ -69,6 +69,7 @@ class TransitosBolsasController extends Controller {
 		}
 
 		$bolsa = Bolsa::findOrFail($bolsa_id);
+		$bolsa->estado_id = $request->input('estado_id');
 		foreach($bolsa->shipments as $shipment){
 			Transito::create([
 				'shipment_id' => $shipment->id,
@@ -81,6 +82,7 @@ class TransitosBolsasController extends Controller {
 				'foto' => $foto_name
 			]);
 		}
+		$bolsa->update();
 
 		Auth::User()->transitobolsa()->save(New TransitoBolsa([
 			'bolsa_id' => $bolsa_id,

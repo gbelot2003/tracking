@@ -110,11 +110,23 @@ class BolsasController extends Controller {
 	 */
 	public function edit($id)
 	{
+
 		$bolsas = Bolsa::findOrFail($id);
+
+		$cerrada = $bolsas->estado_id;
+		if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13)
+		{
+			$bolsaCerrada = true;
+		} else
+		{
+			$bolsaCerrada = false;
+		}
+
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
 		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
-		return View('bolsas.edit', compact('bolsas', 'establecimientos'));
+
+		return View('bolsas.edit', compact('bolsas', 'establecimientos', 'bolsaCerrada'));
 	}
 
 	/**

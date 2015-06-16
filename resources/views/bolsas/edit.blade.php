@@ -21,22 +21,27 @@
 						<div class="btn-group">
 							<a type="button" href="/bolsas/reporte/{{ $bolsas->id }}" class="btn">Imprir</a>
 						</div>
-						<div class="btn-group">
-							{!! Form::open(['action' => ['TransitosBolsasController@store'], 'class' => 'form-inline',
-							'data-ask-submit'] ) !!}
-							<button id="virtual-form" type="submit" class="btn btn-primary " href="">Transito carriers locales</button>
-							{!! Form::hidden('bolsa_id', $bolsas->id) !!}
-							{!! Form::hidden('estado_id', '14') !!}
-							{!! Form::hidden('establecimiento_id', Auth::user()->establecimiento->id) !!}
-							{!! Form::hidden('user_id', Auth::id()) !!}
-							{!! Form::close() !!}
-						</div>
-						<div class="btn-group">
-							<button type="button" id="virtual-form" class="btn btn-info"
-							        href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con
-								observaciones
-							</button>
-						</div>
+						@if($bolsaCerrada != true)
+							<div class="btn-group">
+								{!! Form::open(['action' => ['TransitosBolsasController@store'], 'class' =>
+								'form-inline',
+								'data-ask-submit'] ) !!}
+								<button id="virtual-form" type="submit" class="btn btn-primary " href="">Transito
+									carriers locales
+								</button>
+								{!! Form::hidden('bolsa_id', $bolsas->id) !!}
+								{!! Form::hidden('estado_id', '14') !!}
+								{!! Form::hidden('establecimiento_id', Auth::user()->establecimiento->id) !!}
+								{!! Form::hidden('user_id', Auth::id()) !!}
+								{!! Form::close() !!}
+							</div>
+							<div class="btn-group">
+								<a type="button" id="virtual-form" class="btn btn-info"
+								   href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con
+									observaciones
+								</a>
+							</div>
+						@endif
 					</div>
 
 				</div>
@@ -46,7 +51,6 @@
 		{!! Form::model($bolsas, ['method' => 'PUT', 'action' => ['BolsasController@update', $bolsas->id]]) !!}
 			@include('bolsas._edit')
 		{!! Form::close() !!}
-
 	</div>
 @stop
 @section('post-script')
