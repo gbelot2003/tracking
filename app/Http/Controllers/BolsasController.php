@@ -1,21 +1,15 @@
 <?php namespace App\Http\Controllers;
 
+use App\Bolsa;
 use App\Departamento;
 use App\Establecimiento;
-use App\Bolsa;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Http\Requests\BolsasFormRequest;
 use App\Shipment;
-
 use App\Transito;
 use App\TransitoBolsa;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
 
 class BolsasController extends Controller {
 
@@ -174,6 +168,16 @@ class BolsasController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function reporte($id)
+	{
+		$bolsas = Bolsa::findOrFail($id);
+		$remitente = Auth::user()->establecimiento->name;
+		$remitente_id = Auth::user()->establecimiento_id;
+		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
+
+		return View('pdf.reporte-bolsa', compact('bolsas', 'establecimientos'));
 	}
 
 }
