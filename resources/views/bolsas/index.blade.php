@@ -17,7 +17,7 @@
 	@include('errors.form-error')
 	<div class="col-md-12">
 	</div>
-			<table id="shipments" class="table table-bordered table-hover">
+	<table id="table" class="table table-bordered table-hover">
 				<caption>Agregar encomiendas a la bolsa</caption>
 				<thead>
 					<th>Guia de Bolsa</th>
@@ -51,6 +51,23 @@
 		(function(){
 			$('#transito-bolsas').on('click', function(){
 				$(this).colorbox();
+			});
+			$('#table').DataTable({
+				"pageLength": 10,
+				"language": {
+					"lengthMenu": "Mostrar _MENU_ registros por página",
+					"zeroRecords": "Registro no encotrado - lo sentimos",
+					"info": "Mostrando página _PAGE_ de _PAGES_",
+					"infoEmpty": "No hay registros de esa busqueda",
+					"infoFiltered": "(filtrado de _MAX_ total Total de regístros)",
+					"search": "Busqueda:",
+					"paginate": {
+						"first": "Primero",
+						"last": "Ultimo",
+						"next": "Siguiente",
+						"previous": "Anterior"
+					}
+				}
 			});
 		})();
 	</script>
