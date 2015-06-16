@@ -2,8 +2,10 @@
 @section('content')
 	<div class="col-md-12 hidden-print">
 		<div class="btn-group">
-			<a class="btn" onclick="window.print();return false;">Imprimir</a>
 			<a class="btn btn-info" href="{{ action('BolsasController@edit', $bolsas->id) }}">Regresar</a>
+		</div>
+		<div class="btn-group">
+			<a class="btn" onclick="window.print();return false;">Imprimir</a>
 		</div>
 	</div>
 	<div class="col-md-12 ">
