@@ -14,7 +14,28 @@
 	<div class="col-md-12">
 		@include('partials.flash')
 		@include('errors.form-error')
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-5">
+						{!! Form::open(['action' => ['TransitosBolsasController@store'], 'class' => 'form-inline', 'data-ask-submit'] ) !!}
+							<button id="virtual-form" type="submit" class="btn btn-primary " href="">Transito carriers locales</button>
+							{!! Form::hidden('bolsa_id', $bolsas->id) !!}
+							{!! Form::hidden('estado_id', '14') !!}
+							{!! Form::hidden('establecimiento_id', Auth::user()->establecimiento->id) !!}
+							{!! Form::hidden('user_id', Auth::id()) !!}
+						{!! Form::close() !!}
+					</div>
 
+					<div class="col-md-5">
+						<a id="virtual-form" class="btn btn-info " href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con observaciones</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr/>
 		{!! Form::model($bolsas, ['method' => 'PUT', 'action' => ['BolsasController@update', $bolsas->id]]) !!}
 			@include('bolsas._edit')
 		{!! Form::close() !!}
