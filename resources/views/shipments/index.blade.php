@@ -43,7 +43,6 @@
 
 @stop
 @section('post-script')
-
 	<script>
 		(function(){
 			$(document).ready(function(){

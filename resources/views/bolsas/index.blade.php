@@ -37,11 +37,21 @@
 						<td>{{ $bolsa->created_at }}</td>
 						<td>
 							@foreach($bolsa->bolsastransito->slice(0, 1) as $transito)
-							{{ $bolsa->estado->name }}
+								<div class="col-md-12">{{ $bolsa->estado->name }}</div>
+								<div class="col-md-12"><a id="transito-bolsas" href="bolsas/transitos/{{ $bolsa->id }}">Historial de Transitos</a></div>
 							@endforeach
 						</td>
 					</tr>
 				@endforeach
 				</tbody>
 			</table>
+@stop
+@section('post-script')
+	<script>
+		(function(){
+			$('#transito-bolsas').on('click', function(){
+				$(this).colorbox();
+			});
+		})();
+	</script>
 @stop

@@ -18,6 +18,12 @@ class TransitosBolsasController extends Controller {
 		$this->middleware('auth');
 	}
 
+	public function index($id)
+	{
+		$transitos = TransitoBolsa::latest()->where('bolsa_id', '=', $id)->get();
+		return View('transitosbolsas.index', compact('transitos'));
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *

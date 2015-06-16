@@ -49,6 +49,7 @@ Route::get('home', 'HomeController@index');
 Route::get('transitos/create/{id}', 'TransitosController@create');
 Route::post('transitos/store', 'TransitosController@store');
 
+Route::get('bolsas/transitos/{id}', 'TransitosBolsasController@index');
 Route::get('bolsas/transitos/create/{id}', 'TransitosBolsasController@create');
 Route::post('bolsas/transitos/store', 'TransitosBolsasController@store');
 
