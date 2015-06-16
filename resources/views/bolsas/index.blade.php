@@ -21,9 +21,9 @@
 				<caption>Agregar encomiendas a la bolsa</caption>
 				<thead>
 					<th>Guia de Bolsa</th>
+					<th>Remitente</th>
 					<th>Destino</th>
 					<th>Usuario</th>
-					<th>Estado</th>
 					<th>Hora</th>
 					<th>Transito</th>
 				</thead>
@@ -31,9 +31,9 @@
 				@foreach($bolsas as $bolsa)
 					<tr>
 						<td><a href="{{ action('BolsasController@edit', $bolsa->id) }}">{{ $bolsa->code }}</a></td>
+						<td>{{ $bolsa->sender->name }}</td>
 						<td>{{ $bolsa->reciber->name }}</td>
 						<td>{{ $bolsa->user->name }}</td>
-						<td>{{ $bolsa->estado->name }}, {{ $bolsa->sender->name }}</td>
 						<td>{{ $bolsa->created_at }}</td>
 						<td>
 							@foreach($bolsa->bolsastransito->slice(0, 1) as $transito)
