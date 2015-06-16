@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateShipmentsTable extends Migration {
 
@@ -19,7 +19,7 @@ class CreateShipmentsTable extends Migration {
 			$table->integer('sender_id')->unsigned();
 			$table->integer('reciber_id')->unsigned();
 			$table->integer('reciber_seccion')->unsigned();
-			$table->integer('estado')->unsigned()->default(1);
+			$table->integer('estado_id')->unsigned();
 			$table->text('description');
 			$table->timestamps();
 		});

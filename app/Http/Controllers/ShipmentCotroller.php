@@ -2,7 +2,6 @@
 
 use App\Establecimiento;
 use App\Estado;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\ShipmentsFormRequest;
 use App\Shipment;
 use App\Trader;
@@ -10,7 +9,6 @@ use App\Transito;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
 
 class ShipmentCotroller extends Controller {
 
@@ -99,6 +97,7 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function show($id)
 	{
+
 		$paquete = Shipment::findOrFail($id);
 		$paquete->with(['transitos' => function($q){
 			$q->orderBy('id', 'desc')->get();
