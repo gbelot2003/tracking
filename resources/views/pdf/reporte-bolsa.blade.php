@@ -10,7 +10,7 @@
 		<h2>Bolsa No {{ $bolsas->code }}</h2>
 
 		<div class="visible-print-block">
-			{!! \DNS2D::getBarcodeSVG("4445645656", "QRCODE",4,4); !!}
+			{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
 		</div>
 		<div class="row">
 			<div class="col-md-3">
