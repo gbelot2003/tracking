@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\BolsasFormRequest;
 use App\Shipment;
+
 use App\Transito;
+use App\TransitoBolsa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -71,6 +73,15 @@ class BolsasController extends Controller {
 			'estado_id'	=> 3,
 			'user_id'	=>Auth::id(),
 		]);
+
+		$transitosBolsas = TransitoBolsa::create([
+			'bolsa_id' => $bolsas->id,
+			'estado_id' => 3,
+			'establecimiento_id' => Auth::user()->establecimiento_id,
+			'user_id' => Auth::id(),
+			'details' => 'Bolsa creada'
+		]);
+
 		for($i = 0; $i < $count; $i++){
 			$transitos = Transito::create([
 				'shipment_id' => $shipments_id[$i],
