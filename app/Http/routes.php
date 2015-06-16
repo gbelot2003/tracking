@@ -13,8 +13,12 @@
 Route::get('transito/bolsa/{id}', function($id){
 
 	$transito = \App\Transito::where('shipment_id', '=', $id)->orderBy('id', 'DESC')->first();
+	$transito->update([
+		'estado_id' => 3,
+		'establecimiento_id' => \Auth::user()->establecimiento_id,
+		'details' => '',
+	]);
 
-	dd($transito);
 });
 
 Route::resource('roles', 'RolesController');
@@ -44,6 +48,10 @@ Route::get('home', 'HomeController@index');
 
 Route::get('transitos/create/{id}', 'TransitosController@create');
 Route::post('transitos/store', 'TransitosController@store');
+
+Route::get('bolsas/transitos/create/{id}', 'TransitosBolsasController@create');
+Route::post('bolsas/transitos/store', 'TransitosBolsasController@store');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

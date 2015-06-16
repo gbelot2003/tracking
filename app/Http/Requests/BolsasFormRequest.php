@@ -14,16 +14,6 @@ class BolsasFormRequest extends Request {
 		return true;
 	}
 
-	public function messages()
-	{
-		$messages = [];
-		foreach($this->request->get('shipment_id') as $key => $val)
-		{
-			$messages['items.'.$key.'.max'] = 'The field labeled "Book Title '.$key.'" must be less than :max characters.';
-		}
-		return $messages;
-	}
-
 	/**
 	 * Get the validation rules that apply to the request.
 	 *

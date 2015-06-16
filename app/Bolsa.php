@@ -58,4 +58,9 @@ class bolsa extends Model {
 	{
 		return $this->belongsTo('App\User', 'user_id', 'id');
 	}
+
+	public function bolsastransito()
+	{
+		return $this->hasMany('\App\TransitoBolsa');
+	}
 }

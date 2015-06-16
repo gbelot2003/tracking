@@ -28,9 +28,12 @@
 		$(document).ready(function(){
 			$('.removeItem').each(function(){
 				$(this).on('click', function(e){
+					e.preventDefault();
 					var shipment = $(this).attr('href');
-					$.get(shipment);
 					$(this).closest('tr').remove();
+					var rimput = ("<input name='removed-items[]' type='hidden' value='"+ shipment +"' />");
+					$('#removed-items').append(rimput);
+
 				});
 			});
 		});

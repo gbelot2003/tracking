@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Municipio;
 use App\Trader;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class QueryController extends Controller {
 
@@ -21,6 +22,11 @@ class QueryController extends Controller {
 		$lists = $traders->Lists('full_name', 'id');
 
 		return View('querys.traderlocation', compact('lists'));
+	}
+
+	public function getBusquedaPaquete()
+	{
+		return View('busquedas.encomienda');
 	}
 
 }
