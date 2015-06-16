@@ -1,12 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Municipio;
 use App\Trader;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\View;
 
 class QueryController extends Controller {
 
@@ -19,7 +15,7 @@ class QueryController extends Controller {
 	public function getTraderlocation($id)
 	{
 		$traders = Trader::where('establecimiento_id', '=', $id)->where('userstatus_id', '=', '1')->get();
-		$lists = $traders->Lists('full_name', 'id');
+		$lists = $traders->Lists('name', 'id');
 
 		return View('querys.traderlocation', compact('lists'));
 	}
