@@ -66,7 +66,7 @@ class TraderController extends Controller {
 			return redirect()->back();
 		}
 
-		return redirect()->route('personal');
+		return redirect()->route('trader.index');
 	}
 
 	/**
