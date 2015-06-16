@@ -78,5 +78,10 @@ class EstadoTableSeeder extends Seeder
 			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
 		]);
 
+		Estado::create([
+			'name'			=> 'Transito de bolsa regular (Centros de acopio)',
+			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
+		]);
+
     }
 }
