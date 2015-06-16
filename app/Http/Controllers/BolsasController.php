@@ -173,11 +173,12 @@ class BolsasController extends Controller {
 	public function reporte($id)
 	{
 		$bolsas = Bolsa::findOrFail($id);
+		$establecimientos = $bolsas->reciber->name;
 		$remitente = Auth::user()->establecimiento->name;
-		$remitente_id = Auth::user()->establecimiento_id;
-		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
+		//$pdf = \PDF::loadView('pdf.reporte-bolsa', compact('bolsas', 'establecimientos', 'remitente'));
+		//return $pdf->download('reporte.pdf');
+		return View('pdf.reporte-bolsa', compact('bolsas', 'establecimientos', 'remitente'));
 
-		return View('pdf.reporte-bolsa', compact('bolsas', 'establecimientos'));
 	}
 
 }

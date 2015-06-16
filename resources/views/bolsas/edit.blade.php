@@ -15,23 +15,30 @@
 		@include('partials.flash')
 		@include('errors.form-error')
 		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-5">
-						{!! Form::open(['action' => ['TransitosBolsasController@store'], 'class' => 'form-inline', 'data-ask-submit'] ) !!}
+					<div class="col-md-12">
+						<div class="btn-group">
+							<a type="button" href="/bolsas/reporte/{{ $bolsas->id }}" class="btn">Imprir</a>
+						</div>
+						<div class="btn-group">
+							{!! Form::open(['action' => ['TransitosBolsasController@store'], 'class' => 'form-inline',
+							'data-ask-submit'] ) !!}
 							<button id="virtual-form" type="submit" class="btn btn-primary " href="">Transito carriers locales</button>
 							{!! Form::hidden('bolsa_id', $bolsas->id) !!}
 							{!! Form::hidden('estado_id', '14') !!}
 							{!! Form::hidden('establecimiento_id', Auth::user()->establecimiento->id) !!}
 							{!! Form::hidden('user_id', Auth::id()) !!}
-						{!! Form::close() !!}
+							{!! Form::close() !!}
+						</div>
+						<div class="btn-group">
+							<button type="button" id="virtual-form" class="btn btn-info"
+							        href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con
+								observaciones
+							</button>
+						</div>
 					</div>
 
-					<div class="col-md-5">
-						<a id="virtual-form" class="btn btn-info " href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con observaciones</a>
-					</div>
 				</div>
 			</div>
 		</div>
