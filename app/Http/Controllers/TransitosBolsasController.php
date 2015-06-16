@@ -81,6 +81,7 @@ class TransitosBolsasController extends Controller {
 				'estado_id' => $estado,
 				'establecimiento_id' => $establecimiento,
 				'details' => $request->input('details'),
+				'user_id' => Auth::id(),
 				'firma' => $firma_name,
 				'foto' => $foto_name
 			]);
