@@ -2,17 +2,13 @@
 
 use App\Establecimiento;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
 use App\Http\Requests\TradersFormRequest;
+use App\Seccion;
 use App\Shipment;
+use App\Trader;
 use App\Userstatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use App\Seccion;
-use App\Trader;
-use App\User;
-use Illuminate\Http\Request;
 
 class TraderController extends Controller {
 
@@ -70,7 +66,7 @@ class TraderController extends Controller {
 			return redirect()->back();
 		}
 
-		return redirect()->route('personal.show', $trader->id);
+		return redirect()->route('personal');
 	}
 
 	/**
