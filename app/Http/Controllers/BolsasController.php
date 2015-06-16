@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BolsasController extends Controller {
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -31,7 +35,7 @@ class BolsasController extends Controller {
 				->count();
 
 		else:
-			$sinBolsa = Shipment::where('estado', '=', 2)->count();
+			$sinBolsa = Shipment::count();
 		endif;
 		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
@@ -83,7 +87,7 @@ class BolsasController extends Controller {
 				'establecimiento_id' => Auth::user()->establecimiento_id,
 				'user_id'	=> Auth::id()
 			]);
-			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado' => 1]);
+			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado_id' => 4]);
 		}
 		$bolsas->shipments()->attach($request->input('shipment_id'));
 

@@ -70,6 +70,10 @@ class Shipment extends Model {
 		return $this->belongsToMany('App\Bolsa');
 	}
 
+	/**
+	 * Un shoipment tiene un estado
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function  estados()
 	{
 		return $this->belongsTo('App\Estado', 'estados_id', 'id');

@@ -81,8 +81,12 @@ class TransitosBolsasController extends Controller {
 				'firma' => $firma_name,
 				'foto' => $foto_name
 			]);
+
+			$shipment->estado_id = $estado;
+			$shipment->update();
 		}
 		$bolsa->update();
+
 
 		Auth::User()->transitobolsa()->save(New TransitoBolsa([
 			'bolsa_id' => $bolsa_id,

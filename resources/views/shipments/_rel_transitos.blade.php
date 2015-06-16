@@ -3,7 +3,7 @@
 	<div class="col-md-3">
 		<h3>Estados</h3>
 	</div>
-	@if($paquete->estado != 3)
+	@if($bolsaCerrada != true)
 		<div class="col-md-2">
 			{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
 			{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}

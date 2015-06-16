@@ -4,7 +4,7 @@
 	Guia No. {{ $paquete->code }}
 @stop
 @section('link-button')
-	@if($paquete->estado != 3)
+	@if($bolsaCerrada != true)
 		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
 			<a id="virtual-form" class="btn btn-material-cyan"
 			   href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar Registro</a>

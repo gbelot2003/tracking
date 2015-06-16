@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="btn-group">
-							<a type="button" href="/bolsas/reporte/{{ $bolsas->id }}" class="btn">Imprir</a>
+							<a type="button" href="/bolsas/reporte/{{ $bolsas->id }}" class="btn">Imprimir</a>
 						</div>
 						@if($bolsaCerrada != true)
 							<div class="btn-group">

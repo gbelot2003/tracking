@@ -99,10 +99,19 @@ class ShipmentCotroller extends Controller {
 	{
 
 		$paquete = Shipment::findOrFail($id);
+		$cerrada = $paquete->estado_id;
+		if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13)
+		{
+			$bolsaCerrada = true;
+		} else
+		{
+			$bolsaCerrada = false;
+		}
 		$paquete->with(['transitos' => function($q){
 			$q->orderBy('id', 'desc')->get();
 		}]);
-		return View('shipments.show', compact('paquete'));
+
+		return View('shipments.show', compact('paquete', 'bolsaCerrada'));
 	}
 
 	/**
@@ -113,6 +122,7 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function edit($id)
 	{
+
 		$paquete = Shipment::findOrFail($id);
 		$randnum = $paquete->code;
 		$sender_list 		= Trader::all();
