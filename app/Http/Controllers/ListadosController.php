@@ -21,7 +21,7 @@ class ListadosController extends Controller {
 
 	public function __construct()
 	{
-		view()->share('controller', 'ListadosController.php');
+		$this->middleware('auth');
 	}
 
 	/**
