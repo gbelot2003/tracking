@@ -69,4 +69,9 @@ class Shipment extends Model {
 	{
 		return $this->belongsToMany('App\Bolsa');
 	}
+
+	public function  estados()
+	{
+		return $this->belongsTo('App\Estado', 'estados_id', 'id');
+	}
 }
