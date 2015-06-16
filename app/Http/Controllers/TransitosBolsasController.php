@@ -2,15 +2,11 @@
 
 use App\Bolsa;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
-use App\Shipment;
 use App\Transito;
 use App\TransitoBolsa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
 
 class TransitosBolsasController extends Controller {
 
@@ -57,11 +53,6 @@ class TransitosBolsasController extends Controller {
 		$establecimiento = Auth::user()->establecimiento_id;
 		$estado = $request->input('estado_id');
 
-		if($estado == 11)
-		{
-			return redirect()->back()->with('errors', 'Esta Bolsa ya a sido entregada cerrada');
-		}
-
 		$date = date('Y-m-d h:m');
 		if($request->hasFile('firma'))
 		{
@@ -99,6 +90,38 @@ class TransitosBolsasController extends Controller {
 			'firma' => $firma_name,
 			'foto' => $foto_name
 		]));
+		/**
+		 * estado -> 1 abierto a trancitos
+		 * estado -> 2 en centro de acopio / abierto a transitos
+		 * estado -> 3 el paquete esta cerrado para mas transitos
+		 * reflex shipments._rel_tranbsitos
+		 */
+		switch ($estado)
+		{
+			case 3:
+				$message = "Registro ingresado en centro de acopio";
+				break;
+			case 8:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 9:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 10:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 11:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 12:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			case 13:
+				$message = "Registro editado, y entrega cerrada";
+				break;
+			default:
+				$message = 'Registro editado';
+		}
 
 		Session::flash('flash_message', 'Transito creado');
 		return redirect()->route('bolsas.edit',$request->input('bolsa_id'));
