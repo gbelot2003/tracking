@@ -1,11 +1,5 @@
 <div id="listadosEdit">
-	<div class="row">
-		<div class="col-md-5"></div>
-		<div class="col-md-7">
-			<a id="virtual-form" class="btn btn-primary " href="">Transito carriers locales</a>
-			<a id="virtual-form" class="btn btn-info " href="{{ url('bolsas/transitos/create/'. $bolsas->id ) }}">Transito con observaciones</a>
-		</div>
-	</div>
+
 	<div class="row">
 		<div class="col-md-3">
 			<!-- Code Form Input -->
