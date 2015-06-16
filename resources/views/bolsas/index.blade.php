@@ -1,9 +1,11 @@
 @extends('app')
 
 @section('title', 'Administración de Bolsas')
-	@section('link-button')
-		<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Crear Bolsa</a>
-	@stop
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+@section('link-button')
+	<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Crear Bolsa</a>
+@stop
+@endif
 
 @section('breadcrumbs')
 	<ol class="breadcrumb">
