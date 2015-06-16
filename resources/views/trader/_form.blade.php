@@ -5,7 +5,7 @@
 		<!-- Last_name Form Input -->
 		<div class="form-group">
 			{!! Form::label('name', "Nombre Completo:") !!}
-			{!! Form::text("last_name", null, ['class' => 'form-control']) !!}
+			{!! Form::text("name", null, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 

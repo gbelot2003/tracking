@@ -13,6 +13,8 @@
 
 	@section('content')
 		@include('partials.flash')
+		@include('errors.form-error')
+
 		<div class="col-md-12">
 			{!! Form::open(['action' => ['TraderController@store']]) !!}
 			@include('trader._form', ['submitButtonText' => 'crear'])
