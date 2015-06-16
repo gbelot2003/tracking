@@ -33,14 +33,12 @@ class TransitosBolsasController extends Controller {
 	{
 		$bolsa = Bolsa::findOrFail($id);
 		$estado = [
-			'4' => 'Transito, en bolsa de transporte',
 			'7' => 'Entragada a terceros',
 			'8' => 'Extraviado',
 			'9' => 'Robado',
 			'11' => 'Entragado',
 			'12' => 'Entragado con observaciones',
-			'13' => 'Entragado con observaciones'
-
+			'13' => 'Entragado con observaciones',
 		];
 		return View('transitosbolsas.create', compact('bolsa', 'estado'));
 	}
