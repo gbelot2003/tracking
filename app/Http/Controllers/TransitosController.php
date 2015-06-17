@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use App\Estado;
 use App\Http\Requests;
 use App\Http\Requests\TransitosFormRequest;
 use App\Shipment;
@@ -32,7 +31,19 @@ class TransitosController extends Controller {
 	public function create($id)
 	{
 		$paquete = Shipment::findOrFail($id);
-		$estado = Estado::lists('name', 'id');
+		$estado = [
+			'2' => 'Transito, regular',
+			'3' => 'Transito, Centro de acopio',
+			'5' => 'Transito, presenta daños ligeros',
+			'6' => 'Transito, presenta daños graves',
+			'7' => 'Entragada a terceros (Sin Cerrrar)',
+			'8' => 'Extraviado',
+			'9' => 'Robado',
+			'11' => 'Entragado y Cerrado',
+			'12' => 'Entragado con observaciones',
+			'13' => 'Entregado a terceros, entrega final'
+
+		];
 		return View('transitos.create', compact('paquete', 'estado'));
 	}
 
