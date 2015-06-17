@@ -8,5 +8,4 @@ database/seeds/dev_sistema.sql
 public/images/transitos/firmas/*
 public/images/transitos/fotos/*
 
-database/seeds/ShipmentsTableSeeder.php
-database/seeds/TransitosTableSeeder.php
+database/seeds/DatabaseSeeder.php
