@@ -34,7 +34,7 @@ class TransitosBolsasController extends Controller {
 			'9' => 'Robado',
 			'11' => 'Entragado',
 			'12' => 'Entragado con observaciones',
-			'13' => 'Entragado con observaciones',
+			'15' => 'Entregada (Bolsa en Centros de acopio)'
 		];
 		return View('transitosbolsas.create', compact('bolsa', 'estado'));
 	}
