@@ -1,1 +1,1 @@
-{{ $scode }}
+<h3>Sin Resultados</h3>
