@@ -18,7 +18,7 @@
 				@else
 
 
-					<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>
+						<!--<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>-->
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 					<li class="dropdown">
