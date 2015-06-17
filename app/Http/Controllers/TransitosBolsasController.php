@@ -51,6 +51,7 @@ class TransitosBolsasController extends Controller {
 		$foto_name = null;
 		$bolsa_id = $request->input('bolsa_id');
 		$establecimiento = Auth::user()->establecimiento_id;
+
 		$estado = $request->input('estado_id');
 
 		$date = date('Y-m-d h:m');
@@ -68,23 +69,37 @@ class TransitosBolsasController extends Controller {
 			$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
 		}
 
+		if ($estado == 15)
+		{
+			$estadoShipmentes = 3;
+		} else
+		{
+			$estadoShipmentes = $estado;
+		}
+
+		// Abrimos bolsa
 		$bolsa = Bolsa::findOrFail($bolsa_id);
+		// Cambiamos estado de bolsa
 		$bolsa->estado_id = $request->input('estado_id');
+		// Abrimos paquetes
 		foreach($bolsa->shipments as $shipment){
+			// Abrimos transito de paquetes
 			Transito::create([
 				'shipment_id' => $shipment->id,
 				'bolsa_id' => $bolsa_id,
-				'estado_id' => $estado,
+				'estado_id' => $estadoShipmentes,
 				'establecimiento_id' => $establecimiento,
 				'details' => $request->input('details'),
 				'user_id' => Auth::id(),
 				'firma' => $firma_name,
 				'foto' => $foto_name
 			]);
-
-			$shipment->estado_id = $estado;
+			// Cambiamos estado paquetes
+			$shipment->estado_id = $estadoShipmentes;
+			// Salvamos cambios paquetes
 			$shipment->update();
 		}
+		// Salvamos cambios bolsa
 		$bolsa->update();
 
 
