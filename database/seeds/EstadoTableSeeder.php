@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: ajax
  */
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use App\Estado;
+use Illuminate\Database\Seeder;
 
 class EstadoTableSeeder extends Seeder
 {
@@ -64,7 +63,7 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name'			=> 'Entragado',
+			'name' => 'Entragado y Cerrado',
 			'description'	=>	'La encomienda a sido entregada sin observaciones'
 		]);
 
@@ -81,6 +80,11 @@ class EstadoTableSeeder extends Seeder
 		Estado::create([
 			'name'			=> 'Transito de bolsa regular (Centros de acopio)',
 			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
+		]);
+
+		Estado::create([
+			'name' => 'Entregada (Bolsa en Centros de acopio)',
+			'description' => 'Se entrega la bolsa y se cierra, pero el contenido esta habilitado para mas transitos'
 		]);
 
     }
