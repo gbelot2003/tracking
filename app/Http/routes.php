@@ -59,5 +59,6 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' 	=> 'Auth\PasswordController',
 	'listados' 	=> 'ListadosController',
-	'querys'	=> 'QueryController'
+	'querys' => 'QueryController',
+	'busquedas' => 'BusquedasController'
 ]);

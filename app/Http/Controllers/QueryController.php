@@ -6,6 +6,11 @@ use App\Trader;
 
 class QueryController extends Controller {
 
+	public function __construct()
+	{
+		$this->middleware('auth');
+	}
+
 	public function getMunicipios($id)
 	{
 		$municipios = Municipio::where('departamento_id', '=', $id)->Lists('municipio', 'id');

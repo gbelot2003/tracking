@@ -17,17 +17,20 @@
 					<li><a href="{{ url('/auth/login') }}">Login</a></li>
 				@else
 
-					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
-						<li><a href="{{ url('/bolsas/create/') }}"><strong>Nueva Bolsa</strong></a></li>
-					@endif
-				@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
-						<li><a href="{{ url('/listados/listados-personas/') }}"><strong>Nueva Encomienda</strong></a>
-						</li>
+
+					<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>
+
+					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Encomiendas<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ url('/listados/listados-personas/') }}"><strong>Nueva
+										Encomienda</strong></a></li>
 							<li><a href="{{ url('/shipments') }}">Administración de Encomiendas</a></li>
 							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+								<li><a href="{{ url('/bolsas/create/') }}"><strong>Nueva Bolsa</strong></a></li>
+							@endif
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 								<li><a href="{{ url('bolsas') }}">Administración de Bolsas</a></li>
 							@endif
 						</ul>
@@ -78,6 +81,7 @@
 					</li>
 				@endif
 			</ul>
+
 		</div>
 	</div>
 </nav>

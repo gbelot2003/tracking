@@ -7,6 +7,7 @@
     $(document).ajaxStop(function(e) {
         $("#loading").hide();
     });
+
     jQuery(document).ready(function(){
         $('a#firma').colorbox();
         $('a#foto').colorbox();
@@ -75,7 +76,7 @@
             });
             $('#create-form').load('/personal/create', function(){
                 $(this).slideDown().css({'background' : '#EEEEEE', 'margin-bottom':'3rem'});
-                $('#main_form').val(2)
+                $('#main_form').val(2);
                 $('#establecimiento-select').select2({ placeholder: 'Escoge una Sucursal' });
                 $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
                 $('#establecimiento').on('click', function(e){

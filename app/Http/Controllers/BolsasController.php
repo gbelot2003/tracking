@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class BolsasController extends Controller {
+
 	public function __construct()
 	{
 		$this->middleware('auth');
