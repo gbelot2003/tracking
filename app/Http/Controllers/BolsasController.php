@@ -119,7 +119,7 @@ class BolsasController extends Controller {
 		$bolsas = Bolsa::findOrFail($id);
 
 		$cerrada = $bolsas->estado_id;
-		if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13)
+		if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13 or $cerrada == 15)
 		{
 			$bolsaCerrada = true;
 		} else
