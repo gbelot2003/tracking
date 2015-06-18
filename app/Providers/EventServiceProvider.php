@@ -11,8 +11,10 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		'App\Event\SaveTransitosBolsas' => [
+			'App\Listeners\UploadImages',
+			'App\Listeners\CheckVariables',
+			'App\Listeners\SaveRecordsOnTransaction'
 		],
 	];
 

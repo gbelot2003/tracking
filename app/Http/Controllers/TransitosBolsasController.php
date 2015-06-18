@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Bolsa;
+use App\Event\SaveTransitosBolsas;
 use App\Http\Requests;
 use App\Transito;
 use App\TransitoBolsa;
@@ -46,76 +47,9 @@ class TransitosBolsasController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-
-		$firma_name = null;
-		$foto_name = null;
-		$bolsa_id = $request->input('bolsa_id');
-		$establecimiento = Auth::user()->establecimiento_id;
-
-		$estado = $request->input('estado_id');
-
-		$date = date('Y-m-d h:m');
-		if($request->hasFile('firma'))
-		{
-			$firma = $request->input('shipment_id') . '.' . $request->file('firma')->getClientOriginalExtension();
-			$firma_name = "firma-" . $date .'--'. $firma;
-			$request->file('firma')->move(base_path() . '/public/images/transitos/firmas/', $firma_name);
-		}
-
-		if($request->hasFile('foto'))
-		{
-			$foto = $request->input('shipment_id') . '.' . $request->file('foto')->getClientOriginalExtension();
-			$foto_name = "foto-" . $date .'-'. $foto;
-			$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
-		}
-
-		if ($estado == 15)
-		{
-			$estadoShipmentes = 3;
-		} else
-		{
-			$estadoShipmentes = $estado;
-		}
-
-		// Abrimos bolsa
-		$bolsa = Bolsa::findOrFail($bolsa_id);
-		// Cambiamos estado de bolsa
-		$bolsa->estado_id = $request->input('estado_id');
-		// Abrimos paquetes
-		foreach($bolsa->shipments as $shipment){
-			// Abrimos transito de paquetes
-			Transito::create([
-				'shipment_id' => $shipment->id,
-				'bolsa_id' => $bolsa_id,
-				'estado_id' => $estadoShipmentes,
-				'establecimiento_id' => $establecimiento,
-				'details' => $request->input('details'),
-				'user_id' => Auth::id(),
-				'firma' => $firma_name,
-				'foto' => $foto_name
-			]);
-			// Cambiamos estado paquetes
-			$shipment->estado_id = $estadoShipmentes;
-			// Salvamos cambios paquetes
-			$shipment->update();
-		}
-		// Salvamos cambios bolsa
-		$bolsa->update();
-
-
-		Auth::User()->transitobolsa()->save(New TransitoBolsa([
-			'bolsa_id' => $bolsa_id,
-			'estado_id' => $estado,
-			'establecimiento_id' => $establecimiento,
-			'details' => $request->input('details'),
-			'firma' => $firma_name,
-			'foto' => $foto_name
-		]));
-
-
-		Session::flash('flash_message', 'Transito creado');
+		$user = Auth::user();
+		event(new SaveTransitosBolsas($request->all(), $user));
 		return redirect()->route('bolsas.edit',$request->input('bolsa_id'));
-
 	}
 
 }
