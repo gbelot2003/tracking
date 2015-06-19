@@ -1,6 +1,6 @@
 <?php namespace App\Listeners;
 
-use App\bolsa;
+use App\Bolsa;
 use App\Event\SaveTransitosBolsas;
 
 use App\Transito;
