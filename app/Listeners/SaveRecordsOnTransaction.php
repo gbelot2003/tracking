@@ -42,7 +42,7 @@ class SaveRecordsOnTransaction {
 					'bolsa_id' => $event->bolsas_id,
 					'estado_id' => $event->estado_id,
 					'establecimiento_id' => $event->establecimiento_id,
-					'details' => $event->request['details'],
+					'details' => $this->$details,
 					'user_id' => $event->user,
 					'firma' => $event->firma,
 					'foto' => $event->foto
@@ -59,7 +59,7 @@ class SaveRecordsOnTransaction {
 				'bolsa_id' => $event->bolsas_id,
 				'estado_id' => $event->request['estado_id'],
 				'establecimiento_id' => $event->establecimiento_id,
-				'details' => $event->request['details'],
+				'details' => $this->$details,
 				'user_id' => $event->user,
 				'firma' => $event->firma,
 				'foto' => $event->foto
