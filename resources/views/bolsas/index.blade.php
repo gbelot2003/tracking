@@ -39,7 +39,7 @@
 						<td>{{ $bolsa->created_at }}</td>
 						<td>
 							<div class="col-md-12">{{ $bolsa->estado->name }}</div>
-							<div class="col-md-12"><a id="transito-bolsas" href="bolsas/transitos/{{ $bolsa->id }}">Historial
+							<div class="col-md-12"><a class="transito-bolsas" href="bolsas/transitos/{{ $bolsa->id }}">Historial
 									de Transitos</a></div>
 						</td
 					</tr>
@@ -50,8 +50,10 @@
 @section('post-script')
 	<script>
 		(function(){
-			$('#transito-bolsas').on('click', function(){
-				$(this).colorbox();
+			$('.transito-bolsas').each(function(){
+				$(this).on('click', function(e){
+					$(this).colorbox();
+				});
 			});
 			$('#table').DataTable({
 				"pageLength": 10,
