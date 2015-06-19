@@ -32,10 +32,13 @@ elixir(function(mix) {
 
 elixir(function(mix){
     mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
+    mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
+    mix.scripts('jquery-ui.js');
 });
 
 elixir(function(mix) {
     mix.sass('app.scss');
     mix.sass('colorbox.scss');
     mix.sass('trackhn.scss');
+    mix.sass(['jquery-ui.scss', 'jquery-ui.structure.scss', 'jquery-ui.theme.scss'], 'public/css/jquery-ui.css');
 });
