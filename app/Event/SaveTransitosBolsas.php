@@ -12,6 +12,7 @@ class SaveTransitosBolsas extends Event {
 	public $bolsas_id;
 	public $establecimiento_id;
 	public $estado_id;
+	public $details;
 	public $user;
 	public $date;
 	public $foto;
@@ -27,6 +28,11 @@ class SaveTransitosBolsas extends Event {
 		$this->request = $request;
 		$this->bolsas_id = $request['bolsa_id'];
 		$this->establecimiento_id = $user['establecimiento_id'];
+		if(isset($request['details'])) {
+			$this->details = $request['details'];
+		} else {
+			$this->details = null;
+		}
 		$this->date = date('Y-m-d h:m');
 		$this->user = $user['id'];
 	}
