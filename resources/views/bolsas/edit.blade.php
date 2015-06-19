@@ -27,7 +27,7 @@
 								'form-inline',
 								'data-ask-submit'] ) !!}
 								<button id="virtual-form" type="submit" class="btn btn-primary " href="">Transito
-									carriers locales
+									mensageros locales
 								</button>
 								{!! Form::hidden('bolsa_id', $bolsas->id) !!}
 								{!! Form::hidden('estado_id', '14') !!}
