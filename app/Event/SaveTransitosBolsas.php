@@ -31,7 +31,7 @@ class SaveTransitosBolsas extends Event {
 		if(isset($request['details'])) {
 			$this->details = $request['details'];
 		} else {
-			$this->details = null;
+			$this->details = "";
 		}
 		$this->date = date('Y-m-d h:m');
 		$this->user = $user['id'];
