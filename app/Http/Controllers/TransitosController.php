@@ -106,18 +106,12 @@ class TransitosController extends Controller {
 				$message = "Registro editado, y entrega cerrada";
 				break;
 			case 12:
-				$shipmente->estado = 3;
-				$shipmente->save();
 				$message = "Registro editado, y entrega cerrada";
 				break;
 			case 13:
-				$shipmente->estado = 3;
-				$shipmente->save();
 				$message = "Registro editado, y entrega cerrada";
 				break;
 			default:
-				$shipmente->estado = 1;
-				$shipmente->save();
 				$message = 'Registro editado';
 		}
 
