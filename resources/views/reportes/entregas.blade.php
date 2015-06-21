@@ -20,8 +20,6 @@
 	<hr class="hidden-print"/>
 	<div id="reportes-entrega">
 
-
-
 		@include('reportes._entregas')
 		@include('reportes.entregas-result')
 	</div>
