@@ -1,4 +1,8 @@
 		<div>
+			<div class="col-md-12" v-if="! rows.length">
+				<h4>No hay resultados para esta busqueda.</h4>
+			</div>
+
 			<div class="col-md-12" v-if="rows.length">
 				<h4>Hay <strong style="color: red">@{{ rows.length }}</strong> coincidencia(s)</h4>
 			</div>
