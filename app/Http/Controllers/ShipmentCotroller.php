@@ -8,6 +8,7 @@ use App\Trader;
 use App\Transito;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class ShipmentCotroller extends Controller {
@@ -75,18 +76,23 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function store(ShipmentsFormRequest $request)
 	{
-		$establecimiento = Auth::user()->establecimiento_id;
-		$shipments = Shipment::create($request->all());
+		DB::transaction(function() use ($request, &$data){
+			$establecimiento = Auth::user()->establecimiento_id;
+			$shipments = Shipment::create($request->all());
+			$shipments->estado_id = $request->estado_id;
+			$transito = Transito::create([
+				'shipment_id'	=> $shipments->id,
+				'estado_id'	 	=> $request->estado_id,
+				'establecimiento_id' => $establecimiento,
+				'user_id'	 	=> Auth::id(),
+				'details'		=> 'Sin detalles'
+			]);
+			$shipments->update();
 
-		$transito = Transito::create([
-			'shipment_id'	=> $shipments->id,
-			'estado_id'	 	=> $request->estado_id,
-			'establecimiento_id' => $establecimiento,
-			'user_id'	 	=> Auth::id(),
-			'details'		=> 'Sin detalles'
-		]);
+		});
 		Session::flash('flash_message', 'El nuevo registro a sido creado');
-		return redirect()->route('shipments.show', $shipments->id);
+		return redirect()->route('shipments.index');
+
 	}
 
 	/**
