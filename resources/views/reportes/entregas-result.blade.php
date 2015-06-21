@@ -41,6 +41,12 @@
 							<td class="smaller">Tiempos</td>
 						</tr>
 					</tbody>
+					<tfooter v-if="rows.length">
+						<tr>
+							<td colspan="6">Total</td>
+							<td>@{{ rows.length }}</td>
+						</tr>
+					</tfooter>
 				</table>
 			</div>
 		</div>
