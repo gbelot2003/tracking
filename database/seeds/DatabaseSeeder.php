@@ -53,6 +53,7 @@ class DatabaseSeeder extends Seeder {
 		/**$this->call('TransitosTableSeeder');
 		$this->command->info('Transitos table seeded!');**/
 
+		$this->call('SeccionsTableSeeder');
 	}
 
 }

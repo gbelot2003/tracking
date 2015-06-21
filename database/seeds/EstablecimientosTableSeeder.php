@@ -1458,6 +1458,78 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'name' => 'Cargo Express',
 				'address' => 'Empresa de transporte',
 			),
+			156 => 
+			array (
+				'id' => 157,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Agencia El MAnchen',
+				'address' => 'Blv. Los Proceres FTe. a Supermercado Max por Menos',
+			),
+			157 => 
+			array (
+				'id' => 158,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Instituto Hondureño de Seguridad Social IHSS',
+				'address' => 'Colonia La Granja , al par de Posta Policial,Comayaguela.',
+			),
+			158 => 
+			array (
+				'id' => 159,
+				'empresa_id' => 2,
+				'departamento_id' => 11,
+				'municipio_id' => 161,
+				'name' => 'Agencia de Claro',
+				'address' => 'Megaplaza  - Roatan',
+			),
+			159 => 
+			array (
+				'id' => 160,
+				'empresa_id' => 2,
+				'departamento_id' => 11,
+				'municipio_id' => 161,
+				'name' => 'Hondutel',
+				'address' => 'Coxen Hole Roatan',
+			),
+			160 => 
+			array (
+				'id' => 161,
+				'empresa_id' => 2,
+				'departamento_id' => 15,
+				'municipio_id' => 228,
+				'name' => 'VTN La Colonia Juticalpa',
+				'address' => 'Col el Castaño atras de terminal de buses',
+			),
+			161 => 
+			array (
+				'id' => 162,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Banadesa',
+				'address' => 'Comayaguela 2 cuadras arriba del parque El Obelisco',
+			),
+			162 => 
+			array (
+				'id' => 163,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'UNIDOS EXPRESS',
+				'address' => 'Barrio La Guadalupe Ave.Juan Manuel Galvez Edif.Decoraciones Lando Atras Posta Policial Femenina.',
+			),
+			163 => 
+			array (
+				'id' => 164,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Cuerpo de Bomberos de Honduras',
+				'address' => 'Contiguo al Estadio Nacional Tiburcio Carias Andino ,MDC',
+			),
 		));
 	}
 
