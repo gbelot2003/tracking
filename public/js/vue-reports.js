@@ -9288,153 +9288,99 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }
 /******/ ]);
+Vue.directive('establecimiento', {
+    bind: function () {
+        var vm = this.vm;
+        var key = this.expression;
+        $(this.el).select2({
+            placeholder: 'Selección de establecimiento',
+            allowClear: true
+        });
+        $(this.el).on('change', function(){
+            var mid = $('#establecimientos option:selected').val();
+            vm.$set(key, mid);
+        });
+    }
+});
 
-/*** Validaciones ***/
-var notNumber = (/^\s*(\+|-)?\d+\s*$/);
+Vue.directive('estado', {
+    bind: function () {
+        var vm = this.vm;
+        var key = this.expression;
+        $(this.el).select2({
+            placeholder: 'Selección de estado de encomiendas',
+            allowClear: true
+        });
+        $(this.el).on('change', function(){
+            var mid = $('#estado option:selected').val();
+            vm.$set(key, mid);
+        });
+    }
+});
 
-function validateCode(codigos, termino){
+var v = new Vue({
+    el: '#reportes-entrega',
 
-    if(codigos.indexOf(termino)==-1)
-       return false
-    else
-        return true
-}
-
-/*** Vue Editar ****/
-new Vue({
-    el: '#listadosEdit',
     ready: function(){
-        this.getShipments(this.url);
-    },
-    data:{
-        shipments:[],
-        url: '', // Identificador para querys
-        items: [], //Primera lista recuperada de fetchShipments
-        nitems :[], //Segunda lista recuparada, cuando se agrega un item nuevo
-        codes:'', // Listado de codigos preagregados
-        codigos: [],
-        num: '',
-        ced: []
-    },
-    computed: {
-        completions: function () {
-            return this.items.filter(function (items) {
-                return items.code;
-            });
-        }
+        this.getShipments(this.fecha);
     },
 
-    filters: {
-        codeExist: function (items) {
-            return items.filter(function (items) {
-                return items.code;
-            });
-        }
-
+    data: {
+        rows: [],
+        remitentes:[],
+        fecha : '',
+        establecimiento_id: 0,
+        estado_id : 0,
+        sortKey: '',
+        reverse: false,
+        inicio: '',
+        final: '',
+        message: 'Eliga los parametros de busqueda',
+        registros: ''
     },
 
     methods: {
-        getShipments: function(url){
-            this.$http.get('/listados/contenido-bolsas/' + url, function (items){
-                this.$set('items', items);
+        getEstablecimiento: function(){
+            this.establecimiento_id = this.establecimiento;
+        },
 
-                this.num = this.items.length;
-                for(var i=0; i < this.num; i++) {
-                    var sizes = Object.keys(this.items[i].shipments).length;
-                    for (e = 0; e < sizes; e++){
-                        this.ced.push(this.items[i].shipments[e].code);
+        getEstado: function(){
+            this.estado_id = this.estado;
+        },
+
+        getShipments: function(fecha) {
+            this.$http.get('/reportes/rows-reporte/' + fecha , function (fecha) {
+                this.$set('rows', fecha);
+            });
+        },
+
+        getShipmentsOnClick: function(fecha){
+            this.fecha = fecha
+            this.$http.get('/reportes/rows-reporte/' + this.fecha, function (data) {
+                this.$set('rows', data);
+            });
+        },
+
+        getQuery: function () {
+            var estado = this.estado_id;
+            var establecimiento = this.establecimiento_id;
+            var fecha = this.fecha;
+
+            this.$http.get('/reportes/rows-reporte/' + fecha + "/" + estado + "/" + establecimiento, function(data){
+                this.$set('rows', data, function(){
+                    if (this.data === null){
+                        this.message = "No hay coincidencias para esta busqueda";
                     }
-                }
+                });
             });
+
         },
 
-        fetchShipments: function (e) {
-            e.preventDefault();
-            this.$http.get('/listados/shipments-relacionados/' + this.codes, function (shipments) {
-
-                var cad = shipments[0].code;
-
-                if(validateCode(this.codigos, cad) === true) {
-                    alert('El elemento ya existe');
-                } else if(validateCode(this.ced, cad) === true) {
-                    alert('El elemento ya existe');
-                } else {
-                    this.$set('shipments', shipments);
-                    this.addItem(this.shipments);
-                    this.codigos.push(shipments[0].code);
-                }
-
-            });
-            this.codes = '';
-        },
-
-        addItem: function(shipments){
-            this.nitems.push(shipments[0]);
-        },
-
-        removenitems: function(items){
-            this.nitems.$remove(items);
-        },
-
-        removeItem: function(items){
-            this.items.$remove(items);
+        sortBy: function(sortKey){
+            this.reverse = (this.sortKey == sortKey) ? ! this.reverse : false;
+            this.sortKey = sortKey;
         }
 
     }
 });
-
-/*** Vue Editar ****/
-new Vue({
-    el: '#listados',
-    data:{
-        shipments:[],
-        items: [],
-        codes:'',
-        codigos: [],
-        eidos: ''
-    },
-
-    computed: {
-        completions: function () {
-            return this.items.filter(function (items) {
-                return items.code;
-            });
-        }
-    },
-
-    filters: {
-        codeExist: function (items) {
-            return items.filter(function (items) {
-                return items.code;
-            });
-        }
-
-    },
-
-    methods: {
-        fetchShipments: function (e) {
-            e.preventDefault();
-            this.$http.get('/listados/shipments-relacionados/' + this.codes, function (shipments) {
-                var cod = shipments[0].code;
-                if(validateCode(this.codigos, cod) === true){
-                    alert('El elemento ya existe');
-                } else {
-                    this.$set('shipments', shipments);
-                    this.addItem(this.shipments);
-                    this.codigos.push(shipments[0].code);
-                }
-
-            });
-            this.codes = '';
-        },
-
-        addItem: function(shipments){
-                this.items.push(shipments[0]);
-        },
-
-        removeItem: function(items){
-            this.items.$remove(items);
-        }
-    }
-});
-//# sourceMappingURL=vue.js.map
+//# sourceMappingURL=vue-reports.js.map

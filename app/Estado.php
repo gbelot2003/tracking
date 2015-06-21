@@ -24,4 +24,9 @@ class Estado extends Model {
 	{
 		return $this->hasOne('App\Transito');
 	}
+
+	public function shipments()
+	{
+		$this->hasOne('App\Shipment');
+	}
 }

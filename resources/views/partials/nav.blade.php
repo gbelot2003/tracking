@@ -17,8 +17,14 @@
 					<li><a href="{{ url('/auth/login') }}">Login</a></li>
 				@else
 
+					<!--<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>-->
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="{{ url('/reportes/reportes-entregas/') }}">Reporte de encomiendas</a></li>
+						</ul>
+					</li>
 
-						<!--<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>-->
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 					<li class="dropdown">

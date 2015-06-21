@@ -16615,4 +16615,4 @@ var effectTransfer = $.effects.effect.transfer = function( o, done ) {
 
 
 }));
-//# sourceMappingURL=all.js.map
+//# sourceMappingURL=jquery-ui.js.map

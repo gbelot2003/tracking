@@ -74,8 +74,8 @@ class Shipment extends Model {
 	 * Un shoipment tiene un estado
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function  estados()
+	public function estados()
 	{
-		return $this->belongsTo('App\Estado', 'estados_id', 'id');
+		return $this->belongsTo('App\Estado', 'estado_id');
 	}
 }
