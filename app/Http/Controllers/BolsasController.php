@@ -32,7 +32,7 @@ class BolsasController extends Controller {
 				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
 			})
 				->with('recivers.establecimiento')
-				->where('estado', '=', 2)
+				->where('estado_id', '=', 2)
 				->count();
 
 		else:
