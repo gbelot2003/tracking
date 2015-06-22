@@ -7,6 +7,7 @@ use App\Transito;
 use App\TransitoBolsa;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -49,7 +50,8 @@ class SaveRecordsOnTransaction {
 				]);
 				// Cambiamos estado paquetes
 				$shipment->estado_id = $event->estado_id;
-				$shipment->firma = $event->firma;
+				$shipment->firma =  $event->user;
+				$shipment->user_id = Auth::id();
 				// Salvamos cambios paquetes
 				$shipment->update();
 			}
