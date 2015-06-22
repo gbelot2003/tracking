@@ -21,6 +21,7 @@ class CreateShipmentsTable extends Migration {
 			$table->integer('reciber_seccion')->unsigned();
 			$table->integer('estado_id')->unsigned();
 			$table->text('description');
+			$table->string('firma')->nullable();
 			$table->timestamps();
 		});
 	}

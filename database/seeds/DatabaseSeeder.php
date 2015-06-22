@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('EstablecimientosTableSeeder');
 		$this->command->info('Establecimientos table seeded!');
 
-		$this->call('SeccionTableSeeder');
+		$this->call('SeccionsTableSeeder');
 		$this->command->info('Seccions table seeded!');
 
 		$this->call('TradersTableSeeder');

@@ -49,6 +49,7 @@ class SaveRecordsOnTransaction {
 				]);
 				// Cambiamos estado paquetes
 				$shipment->estado_id = $event->estado_id;
+				$shipment->firma = $event->firma;
 				// Salvamos cambios paquetes
 				$shipment->update();
 			}

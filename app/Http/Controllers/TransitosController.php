@@ -5,6 +5,7 @@ use App\Http\Requests\TransitosFormRequest;
 use App\Shipment;
 use App\Transito;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class TransitosController extends Controller {
@@ -44,44 +45,57 @@ class TransitosController extends Controller {
 	 */
 	public function store(TransitosFormRequest $request)
 	{
+
 		$firma_name = null;
 		$foto_name = null;
 		$establecimiento = Auth::user()->establecimiento_id;
 		$cerrar_trancito = $request->input('estado_id');
-		$shipmente = Shipment::find($request->input('shipment_id'));
+		$shipmente = Shipment::findOrFail($request->input('shipment_id'));
 		$cerrada = $shipmente->estado_id;
 
-		if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13)
-		{
-			return redirect()->back()->with('errors', 'Esta encomienda ya a sido entregada cerrada');
-		}
+		DB::transaction(function() use ($request, $establecimiento, $cerrar_trancito, $shipmente, $cerrada, &$data){
 
-		$date = date('Y-m-d h:m');
-		if($request->hasFile('firma'))
-		{
-			$firma = $request->input('shipment_id') . '.' . $request->file('firma')->getClientOriginalExtension();
-			$firma_name = "firma-" . $date .'--'. $firma;
-			$request->file('firma')->move(base_path() . '/public/images/transitos/firmas/', $firma_name);
-		}
+			if ($cerrada == 8 or $cerrada == 9 or $cerrada == 10 or $cerrada == 11 or $cerrada == 12 or $cerrada == 13)
+			{
+				return redirect()->back()->with('errors', 'Esta encomienda ya a sido entregada cerrada');
+			}
 
-		if($request->hasFile('foto'))
-		{
-			$foto = $request->input('shipment_id') . '.' . $request->file('foto')->getClientOriginalExtension();
-			$foto_name = "foto-" . $date .'-'. $foto;
-			$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
-		}
+			$date = date('Y-m-d h:m');
 
-		Auth::User()->transitos()->save(New Transito([
-			'shipment_id' => $request->input('shipment_id'),
-			'estado_id' => $request->input('estado_id'),
-			'establecimiento_id' => $establecimiento,
-			'details' => $request->input('details'),
-			'firma' => $firma_name,
-			'foto' => $foto_name
-		]));
+			if($request->hasFile('firma'))
+			{
+				$firma = $request->input('shipment_id') . '.' . $request->file('firma')->getClientOriginalExtension();
+				$firma_name = "firma-" . $date .'--'. $firma;
+				$request->file('firma')->move(base_path() . '/public/images/transitos/firmas/', $firma_name);
+			} else {
+				$firma_name = null;
+			}
 
-		$shipmente->estado_id = $request->input('estado_id');
-		$shipmente->save();
+			if($request->hasFile('foto'))
+			{
+				$foto = $request->input('shipment_id') . '.' . $request->file('foto')->getClientOriginalExtension();
+				$foto_name = "foto-" . $date .'-'. $foto;
+				$request->file('foto')->move(base_path() . '/public/images/transitos/fotos/', $foto_name);
+			} else{
+				$foto_name = null;
+			}
+
+
+			Auth::User()->transitos()->save(New Transito([
+				'shipment_id' => $request->input('shipment_id'),
+				'estado_id' => $request->input('estado_id'),
+				'establecimiento_id' => $establecimiento,
+				'details' => $request->input('details'),
+				'firma' => $firma_name,
+				'foto' => $foto_name
+			]));
+
+
+			$shipmente->estado_id = $request->input('estado_id');
+			$shipmente->firma = $firma_name;
+			$shipmente->save();
+
+		});
 
 		/**
 		 * estado -> 1 abierto a trancitos
