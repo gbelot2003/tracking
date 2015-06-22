@@ -15,7 +15,7 @@ class ShipmentsCheckPerms {
 	{
 
 		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])) {
-			return redirect()->back();
+			return redirect('mis-encomiendas');
 		}
 
 		return $next($request);
