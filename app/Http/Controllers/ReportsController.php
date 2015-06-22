@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Shipment;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -36,7 +37,7 @@ class ReportsController extends Controller {
 
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
 				->where('estado_id', '=', $state)
-				->whereBetween('updated_at', array($bdate, $edate))->get();
+				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		} elseif($state != 0 and $stablish != 0){
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
@@ -44,18 +45,18 @@ class ReportsController extends Controller {
 					$q->where('establecimiento_id', '=', $stablish);
 				})
 				->where('estado_id', '=', $state)
-				->whereBetween('updated_at', array($bdate, $edate))->get();
+				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		} elseif($state == 0 and $stablish != 0){
 
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
 				->where('establecimiento', '=', $stablish)
-				->whereBetween('updated_at', array($bdate, $edate))->get();
+				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		} else{
 
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
-				->whereBetween('updated_at', array($bdate, $edate))->get();
+				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		}
 
@@ -72,7 +73,7 @@ class ReportsController extends Controller {
 			->where('estado_id', '=', 11)
 			->orWhere('estado_id', '=', 12)
 			->orWhere('estado_id', '=', 13)
-			->whereBetween('updated_at', array($bdate, $edate))->get();
+			->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		return $shipments;
 	}
@@ -86,13 +87,24 @@ class ReportsController extends Controller {
 			->where('estado_id', '=', 8)
 			->orWhere('estado_id', '=', 9)
 			->orWhere('estado_id', '=', 10)
-			->whereBetween('updated_at', array($bdate, $edate))->get();
+			->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		return $shipments;
 	}
 
 	public function getReporteUsuarios()
 	{
-		return View('reportes.usuarios.usuarios');
+		$user = User::where('userstatus_id', '=', 1)
+			->whereHas('roles', function($query){
+				$query->where('id', '=', 4);
+			})
+			->where('empresa_id', '=', 1)
+			->get();
+		return View('reportes.usuarios.usuarios', compact('user'));
+	}
+
+	public function getReporteUsuariosDetalle($id, $fecha)
+	{
+
 	}
 }
