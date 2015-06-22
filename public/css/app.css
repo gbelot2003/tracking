@@ -1,4 +1,3 @@
-@import url('http://fonts.googleapis.com/css?family=Raleway|Merriweather+Sans');
 /*** Sass Import bootstrap ***/
 /*!
 Animate.css - http://daneden.me/animate
@@ -12575,6 +12574,8 @@ table.dataTable, table.dataTable th, table.dataTable td {
 */
 .cboxIE #cboxTopLeft, .cboxIE #cboxTopCenter, .cboxIE #cboxTopRight, .cboxIE #cboxBottomLeft, .cboxIE #cboxBottomCenter, .cboxIE #cboxBottomRight, .cboxIE #cboxMiddleLeft, .cboxIE #cboxMiddleRight {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF); }
+
+/*@import url('http://fonts.googleapis.com/css?family=Raleway|Merriweather+Sans');
 
 /*
 font-family: 'Raleway', sans-serif;

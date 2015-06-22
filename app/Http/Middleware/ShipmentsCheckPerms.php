@@ -13,9 +13,11 @@ class ShipmentsCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier'])) {
+
+		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])) {
 			return redirect()->back();
 		}
+
 		return $next($request);
 	}
 
