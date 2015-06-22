@@ -90,8 +90,8 @@ class TransitosController extends Controller {
 				'foto' => $foto_name
 			]));
 
-
 			$shipmente->estado_id = $request->input('estado_id');
+			$shipmente->user_id = Auth::id();
 			$shipmente->firma = $firma_name;
 			$shipmente->save();
 
