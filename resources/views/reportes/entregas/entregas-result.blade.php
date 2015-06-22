@@ -40,7 +40,7 @@
 							<td class="smaller" v-if="entregados | rows.length">@{{ row.updated_at }}</td>
 							<td class="smaller">@{{ row.estados.name }}</td>
 							<td class="" v-if="entregados | rows.length">
-								<img width="70px" src="{{ URL::asset('images/transitos/firmas/') }}/@{{ row.firma }} " alt=""/>
+								<img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/@{{ row.firma }} " alt=""/>
 							</td>
 							<td class="smaller" v-if="entregados | rows.length">Tiempos</td>
 						</tr>
