@@ -80,6 +80,7 @@ class ShipmentCotroller extends Controller {
 			$establecimiento = Auth::user()->establecimiento_id;
 			$shipments = Shipment::create($request->all());
 			$shipments->estado_id = $request->estado_id;
+			$shipments->user_id = Auth::id();
 			$transito = Transito::create([
 				'shipment_id'	=> $shipments->id,
 				'estado_id'	 	=> $request->estado_id,
