@@ -20,16 +20,17 @@ class ReportsController extends Controller {
 	{
 
 		$establecimiento = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
-		$estados = Estado::take(13)->lists('name', 'id');
+		$estados = Estado::take(12)->skip(1)->lists('name', 'id');
 
-		return View('reportes.entregas', compact('establecimiento', 'estados', 'shipments'));
+		return View('reportes.entregas.entregas', compact('establecimiento', 'estados', 'shipments'));
 	}
 
-	public function getRowsReporte($date, $state = 0, $stablish = 0)
+	public function getRowsReporte($date_init, $date_finale, $state = 0, $stablish = 0)
 	{
 
-		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
 
 		if($state != 0 and $stablish == 0){
 
@@ -62,4 +63,36 @@ class ReportsController extends Controller {
 
 	}
 
+	public function getRowReportesEntregados($date_init, $date_finale)
+	{
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
+		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento')
+			->where('estado_id', '=', 11)
+			->orWhere('estado_id', '=', 12)
+			->orWhere('estado_id', '=', 13)
+			->whereBetween('updated_at', array($bdate, $edate))->get();
+
+		return $shipments;
+	}
+
+	public function getRowReportesErrores($date_init, $date_finale)
+	{
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
+		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento')
+			->where('estado_id', '=', 8)
+			->orWhere('estado_id', '=', 9)
+			->orWhere('estado_id', '=', 10)
+			->whereBetween('updated_at', array($bdate, $edate))->get();
+
+		return $shipments;
+	}
+
+	public function getReporteUsuarios()
+	{
+		return View('reportes.usuarios.usuarios');
+	}
 }
