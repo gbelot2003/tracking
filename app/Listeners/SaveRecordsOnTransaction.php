@@ -50,7 +50,7 @@ class SaveRecordsOnTransaction {
 				]);
 				// Cambiamos estado paquetes
 				$shipment->estado_id = $event->estado_id;
-				$shipment->firma =  $event->user;
+				$shipment->firma =  $event->firma;
 				$shipment->user_id = Auth::id();
 				// Salvamos cambios paquetes
 				$shipment->update();
