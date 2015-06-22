@@ -1,11 +1,11 @@
 @extends('app-ui')
 
-@section('title', 'Reportes de encomiendas entregadas')
+@section('title', 'Reportes de encomiendas por fecha y estados')
 
 @section('breadcrumbs')
 	<ol class="breadcrumb hidden-print">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="{{ url('roles') }}">Reportes de encomiendas </a></li>
+		<li><a href="#">Reportes de encomiendas por fecha y estados</a></li>
 	</ol>
 @stop
 
@@ -20,8 +20,9 @@
 	<hr class="hidden-print"/>
 	<div id="reportes-entrega">
 
-		@include('reportes._entregas')
-		@include('reportes.entregas-result')
+		@include('reportes.entregas._entregas')
+		@include('reportes.entregas.entregas-result')
+		<pre>@{{ $data | json }}</pre>
 	</div>
 @stop
 

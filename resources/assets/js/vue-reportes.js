@@ -32,13 +32,12 @@ var v = new Vue({
     el: '#reportes-entrega',
 
     ready: function(){
-        this.getShipments(this.fecha);
+        this.getShipments(this.inicio, this.final);
     },
 
     data: {
         rows: [],
         remitentes:[],
-        fecha : '',
         establecimiento_id: 0,
         estado_id : 0,
         sortKey: '',
@@ -46,7 +45,8 @@ var v = new Vue({
         inicio: '',
         final: '',
         message: 'Eliga los parametros de busqueda',
-        registros: ''
+        registros: '',
+        entregados: false
     },
 
     methods: {
@@ -58,30 +58,45 @@ var v = new Vue({
             this.estado_id = this.estado;
         },
 
-        getShipments: function(fecha) {
-            this.$http.get('/reportes/rows-reporte/' + fecha , function (fecha) {
-                this.$set('rows', fecha);
-            });
-        },
-
-        getShipmentsOnClick: function(fecha){
-            this.fecha = fecha
-            this.$http.get('/reportes/rows-reporte/' + this.fecha, function (data) {
+        getShipments: function(inicio, final) {
+            this.$http.get('/reportes/rows-reporte/' + inicio + "/" + final , function (data) {
                 this.$set('rows', data);
             });
+
+        },
+
+        getEntregados: function(inicio, final){
+            var inicio = this.inicio;
+            var final = this.final;
+            this.$http.get('/reportes/row-reportes-entregados/' + inicio + "/" + final , function (data) {
+                this.$set('rows', data);
+            });
+            this.entregados = true
+        },
+
+        getErrores: function(inicio, final){
+            var inicio = this.inicio;
+            var final = this.final;
+            this.$http.get('/reportes/row-reportes-errores/' + inicio + "/" + final , function (data) {
+                this.$set('rows', data);
+            });
+            this.entregados = true
         },
 
         getQuery: function () {
             var estado = this.estado_id;
             var establecimiento = this.establecimiento_id;
-            var fecha = this.fecha;
+            var inicio = this.inicio;
+            var final = this.final;
 
-            this.$http.get('/reportes/rows-reporte/' + fecha + "/" + estado + "/" + establecimiento, function(data){
-                this.$set('rows', data, function(){
-                    if (this.data === null){
-                        this.message = "No hay coincidencias para esta busqueda";
-                    }
-                });
+            this.$http.get('/reportes/rows-reporte/' + inicio + "/" + final + "/" + estado + "/" + establecimiento, function(data){
+                this.$set('rows', data);
+
+                if (estado == 8 || estado == 9 || estado == 10 || estado == 11 || estado == 12  || estado == 13){
+                    this.entregados = true
+                } else {
+                    this.entregados = false
+                }
             });
 
         },

@@ -1,10 +1,10 @@
 		<div>
 			<div class="col-md-12" v-if="! rows.length">
-				<h4>No hay resultados para esta busqueda.</h4>
+				<h4 smaller>No hay resultados para esta busqueda.</h4>
 			</div>
 
 			<div class="col-md-12" v-if="rows.length">
-				<h4>Hay <strong style="color: red">@{{ rows.length }}</strong> coincidencia(s)</h4>
+				<h4 smaller>Hay <strong style="color: red">@{{ rows.length }}</strong> coincidencia(s)</h4>
 			</div>
 			<div class="col-md-12">
 				<table class="table table-hover table-bordered table-striped">
@@ -13,9 +13,9 @@
 					<th>Remitente</th>
 					<th>Destinatario</th>
 					<th>Fecha de inicio</th>
-					<th>Fecha de entrega</th>
+					<th v-if="entregados | rows.length">Fecha de entrega</th>
 					<th>Estado</th>
-					<th>Tiempo de entrega</th>
+					<th v-if="entregados | rows.length">Tiempo de entrega</th>
 					</thead>
 					<tbody>
 						<tr v-if="! rows.length">
@@ -36,15 +36,19 @@
 								@{{ row.recivers.establecimiento.name }}
 							</td>
 							<td class="smaller">@{{ row.created_at }}</td>
-							<td class="smaller">@{{ row.updated_at }}</td>
+							<td class="smaller" v-if="entregados | rows.length">@{{ row.updated_at }}</td>
 							<td class="smaller">@{{ row.estados.name }}</td>
-							<td class="smaller">Tiempos</td>
+							<td class="smaller" v-if="entregados | rows.length">Tiempos</td>
 						</tr>
 					</tbody>
 					<tfooter v-if="rows.length">
-						<tr>
-							<td colspan="6">Total</td>
-							<td>@{{ rows.length }}</td>
+						<tr v-if="entregados">
+							<td colspan="6" class="smaller">Total</td>
+							<td class="smaller">@{{ rows.length }}</td>
+						</tr>
+						<tr v-if="!entregados">
+							<td colspan="4" class="smaller">Total</td>
+							<td class="smaller" >@{{ rows.length }}</td>
 						</tr>
 					</tfooter>
 				</table>
