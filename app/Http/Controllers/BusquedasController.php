@@ -30,7 +30,7 @@ class BusquedasController extends Controller {
 			if(isset($bolsa)){
 				$bid = $bolsa->id;
 			} else{
-				return redirect()->back()->with('flash_message', 'no hay resultados con esa busquedas');
+				return redirect()->back()->with('flash_message', 'No hay registros relacionados a ese codigo');
 			}
 
 
