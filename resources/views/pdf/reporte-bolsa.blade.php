@@ -10,10 +10,27 @@
 	</div>
 	<div class="col-md-12 ">
 		<h2>Bolsa No {{ $bolsas->code }}</h2>
+		<table class="visible-print-block">
+			<tr>
+				<td>
+					<div class="visible-print-block">
+						{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
+					</div>
+				</td>
+				<td>
+					&#160;
+				</td>
+				<td>
+					<div class="visible-print-block">
+						{!! \DNS1D::getBarcodeSVG($bolsas->code, "C39",1,70); !!}
+					</div>
+				</td>
+			</tr>
+		</table>
 
-		<div class="visible-print-block">
-			{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
-		</div>
+
+
+
 		<div class="row">
 			<div class="col-md-3">
 				<!-- sender Form Input -->
