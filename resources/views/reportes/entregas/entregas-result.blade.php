@@ -15,6 +15,7 @@
 					<th>Fecha de inicio</th>
 					<th v-if="entregados | rows.length">Fecha de entrega</th>
 					<th>Estado</th>
+					<th v-if="entregados | rows.length">Firma</th>
 					<th v-if="entregados | rows.length">Tiempo de entrega</th>
 					</thead>
 					<tbody>
@@ -38,12 +39,15 @@
 							<td class="smaller">@{{ row.created_at }}</td>
 							<td class="smaller" v-if="entregados | rows.length">@{{ row.updated_at }}</td>
 							<td class="smaller">@{{ row.estados.name }}</td>
+							<td class="" v-if="entregados | rows.length">
+								<img width="70px" src="{{ URL::asset('images/transitos/firmas/') }}/@{{ row.firma }} " alt=""/>
+							</td>
 							<td class="smaller" v-if="entregados | rows.length">Tiempos</td>
 						</tr>
 					</tbody>
 					<tfooter v-if="rows.length">
 						<tr v-if="entregados">
-							<td colspan="6" class="smaller">Total</td>
+							<td colspan="7" class="smaller">Total</td>
 							<td class="smaller">@{{ rows.length }}</td>
 						</tr>
 						<tr v-if="!entregados">
