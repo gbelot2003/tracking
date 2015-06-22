@@ -1,14 +1,3 @@
-<!--<div id="form-search" class="row">
-	<div class="col-md-12">
-		<form class="well" role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="No Guía">
-			</div>
-			<button type="submit" class="btn btn-default">Buscar</button>
-		</form>
-	</div>
-</div>-->
-<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<form action="/busquedas/busqueda-rapida/">

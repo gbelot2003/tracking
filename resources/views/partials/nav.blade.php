@@ -18,7 +18,7 @@
 				@else
 
 				@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
-					<!--<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>-->
+
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -29,6 +29,7 @@
 				@endif
 
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
+					<li><a data-toggle="modal" data-target="#myModal"><strong>Busqueda Rapida</strong></a></li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Encomiendas<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
