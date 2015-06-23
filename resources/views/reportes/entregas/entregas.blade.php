@@ -18,7 +18,6 @@
 	<div id="reportes-entrega">
 		@include('reportes.entregas._entregas')
 		@include('reportes.entregas.entregas-result')
-		<pre>@{{ $data | json }}</pre>
 	</div>
 @stop
 
