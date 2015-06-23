@@ -1530,6 +1530,16 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'name' => 'Cuerpo de Bomberos de Honduras',
 				'address' => 'Contiguo al Estadio Nacional Tiburcio Carias Andino ,MDC',
 			),
+			164 => 
+			array (
+				'id' => 165,
+				'empresa_id' => 2,
+				'departamento_id' => 3,
+				'municipio_id' => 19,
+				'name' => 'BANCO ATLANTIDA',
+				'address' => 'BLV. 4 CENTENARIO ESQUINA OPUSTA AL CENTRO DE SALUD CALLE PRINCIPAL SALIDA A LA LIBERTAD
+',
+			),
 		));
 	}
 

@@ -1034,6 +1034,16 @@ class TradersTableSeeder extends Seeder {
 				'created_at' => '2015-06-20 14:42:33',
 				'updated_at' => '2015-06-20 14:42:33',
 			),
+			102 => 
+			array (
+				'id' => 104,
+				'establecimiento_id' => 66,
+				'seccion_id' => 5,
+				'name' => 'LISSANDRA LAGOS',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-22 17:37:36',
+				'updated_at' => '2015-06-22 17:37:36',
+			),
 		));
 	}
 
