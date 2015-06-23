@@ -88,7 +88,10 @@ class BolsasController extends Controller {
 				'establecimiento_id' => Auth::user()->establecimiento_id,
 				'user_id'	=> Auth::id()
 			]);
-			DB::table('shipments')->where('id', $shipments_id[$i])->update(['estado_id' => 4]);
+			DB::table('shipments')->where('id', $shipments_id[$i])->update([
+					'estado_id' => 4,
+					'transito_id' => $transitos->id
+				]);
 		}
 		$bolsas->shipments()->attach($request->input('shipment_id'));
 
@@ -117,14 +120,25 @@ class BolsasController extends Controller {
 	{
 
 		$bolsas = Bolsa::findOrFail($id);
-
+		$bolsaCerrada = null;
 		$cerrada = $bolsas->estado_id;
-		if ($cerrada != 3 or ! Auth::user()->hasRole(['owner', 'admin']))
-		{
-			$bolsaCerrada = true;
-		} else
+
+		if ($cerrada === 3)
 		{
 			$bolsaCerrada = false;
+
+		} elseif($cerrada === 14){
+
+			$bolsaCerrada == false;
+
+		} elseif(Auth::user()->hasRole(['owner', 'admin', 'supervisor'])){
+
+			$bolsaCerrada = false;
+
+		} else{
+
+			$bolsaCerrada = true;
+
 		}
 
 		$remitente = Auth::user()->establecimiento->name;
@@ -192,8 +206,6 @@ class BolsasController extends Controller {
 		$bolsas = Bolsa::findOrFail($id);
 		$establecimientos = $bolsas->reciber->name;
 		$remitente = Auth::user()->establecimiento->name;
-		//$pdf = \PDF::loadView('pdf.reporte-bolsa', compact('bolsas', 'establecimientos', 'remitente'));
-		//return $pdf->download('reporte.pdf');
 		return View('pdf.reporte-bolsa', compact('bolsas', 'establecimientos', 'remitente'));
 
 	}

@@ -80,18 +80,20 @@ class TransitosController extends Controller {
 				$foto_name = null;
 			}
 
-
-			Auth::User()->transitos()->save(New Transito([
+			$transitos = new Transito();
+			$transitos->create([
 				'shipment_id' => $request->input('shipment_id'),
 				'estado_id' => $request->input('estado_id'),
 				'establecimiento_id' => $establecimiento,
+				'user_id' => Auth::id(),
 				'details' => $request->input('details'),
 				'firma' => $firma_name,
 				'foto' => $foto_name
-			]));
+			]);
 
 			$shipmente->estado_id = $request->input('estado_id');
 			$shipmente->user_id = Auth::id();
+			$shipmente->transito_id = $transitos->id;
 			$shipmente->firma = $firma_name;
 			$shipmente->save();
 

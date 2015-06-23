@@ -88,6 +88,7 @@ class ShipmentCotroller extends Controller {
 				'user_id'	 	=> Auth::id(),
 				'details'		=> 'Sin detalles'
 			]);
+			$shipments->transito_id = $transito->id;
 			$shipments->update();
 
 		});
