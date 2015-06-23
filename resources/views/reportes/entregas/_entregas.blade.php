@@ -3,7 +3,7 @@
 				<form>
 					<div class="row">
 						<div class="col-md-12">
-							<div class="form-group">
+							<div class="btn-group" role="group" aria-label="...">
 								<button type="button" class="btn btn-primary btn-sm" v-on="click: getQuery">Buscar</button>
 								<button type="button" class="btn btn-warning btn-sm" v-on="click: getEntregados">paquetes entregados en el periodo</button>
 								<button type="button" class="btn btn-danger btn-sm" v-on="click: getErrores">paquetes extraviados o robados en el periodo</button>
