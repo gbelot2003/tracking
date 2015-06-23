@@ -43,6 +43,15 @@ class Shipment extends Model {
 	}
 
 	/**
+	 * Seguda relacion de actualización de estados de transito en shipments
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function btransitos()
+	{
+		return $this->belongsTo('App\Transito');
+	}
+
+	/**
 	 * @return mixed
 	 */
 	public function scopeTest($query)
