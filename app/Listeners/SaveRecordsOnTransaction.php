@@ -56,7 +56,7 @@ class SaveRecordsOnTransaction {
 				// Salvamos cambios paquetes
 				$shipment->update();
 			}
-
+			$bolsas->firma = $event->firma;
 			$bolsas->save();
 
 			TransitoBolsa::create([
