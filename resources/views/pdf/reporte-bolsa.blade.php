@@ -60,6 +60,9 @@
 				<td>Remitente</td>
 				<td>Destinatario</td>
 				<td>Fecha</td>
+				@if($shipments->firma)
+					<td>Firma</td>
+				@endif
 			</tr>
 			@foreach($bolsas->shipments as $shipments)
 				<tr style="page-break-inside: avoid;">
@@ -78,6 +81,9 @@
 					</td>
 
 					<td><b>{{ $shipments->created_at }}</b></td>
+					@if($shipments->firma)
+						<td><b>{{ $shipments->firma }}</b></td>
+					@endif
 				</tr>
 			@endforeach
 		</table>
