@@ -1,6 +1,5 @@
 <?php
 
-use App\User;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder {
@@ -13,10 +12,10 @@ class UsersTableSeeder extends Seeder {
 	public function run()
 	{
 		\DB::table('users')->delete();
-
-		\DB::table('users')->insert([
-			0 =>
-				[
+        
+		\DB::table('users')->insert(array (
+			0 => 
+			array (
 				'id' => 1,
 				'userstatus_id' => 1,
 				'name' => 'gbelot2003',
@@ -24,32 +23,28 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 153,
 				'email' => 'gbelot2003@hotmail.com',
 				'password' => '$2y$10$mDl.MkctMqXySPi81SJKU.S0WM9yCS4g007EmnwKxLzfF4QuCl4wm',
-				'remember_token' => NULL,
+				'remember_token' => 'XVREEdsdtsazgOgUSXpS3MYMfFJ0r0PzRskWYos4xC1XEVmKpDnlWa8z5bUF',
 				'created_at' => '2015-05-30 20:38:57',
-				'updated_at' => '2015-05-30 20:38:57',
-				],
-			1 =>
-				[
+				'updated_at' => '2015-06-22 00:13:21',
+			),
+			1 => 
+			array (
 				'id' => 2,
 				'userstatus_id' => 1,
 				'name' => 'Harold Rivera',
-				
-				
 				'empresa_id' => 1,
-				'establecimiento_id' => 153,
-				'email' => 'lavariox@hotmail.com',
-				'password' => '$2y$10$hgvGASPE2N5cMIaTJZcQTueBWBZgckZnMrdkuraOvrqbcT.z4sI1m',
-				'remember_token' => 'K5ndDnt8TVS4KnqFnjRJvLXjafC4HPojbuaMXjff0USoWFPqO0d4ZK5BsZri',
+				'establecimiento_id' => 107,
+				'email' => 'hrivera@conectahn.com',
+				'password' => '$2y$10$uHuDdWLi14zA2jzSkeMNFu5K3TKXTUuEdH7aebh98AUEVPE2FeWba',
+				'remember_token' => 'Hv32IJI783VwKb0tTTGNwWVb6EMxi4yiXaan8YoeyduI7OZuveABLcfEdNLr',
 				'created_at' => '2015-05-30 20:46:30',
-				'updated_at' => '2015-05-31 02:08:36',
-				],
-			2 =>
-				[
+				'updated_at' => '2015-06-22 07:28:33',
+			),
+			2 => 
+			array (
 				'id' => 3,
 				'userstatus_id' => 1,
 				'name' => 'Jose Marcelino Cruz Sanchez',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jsanchez@unidosexpress.com',
@@ -57,14 +52,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'e551xrEC07vG7ms77U9qSkJAPiYXljzMNla2msW8mo4ZevndJfwi89fMLlEk',
 				'created_at' => '2015-05-31 03:14:52',
 				'updated_at' => '2015-06-13 10:19:47',
-				],
-			3 =>
-				[
+			),
+			3 => 
+			array (
 				'id' => 4,
 				'userstatus_id' => 1,
 				'name' => 'Karen Janeth Carbajal Almendares',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'kalmendarez@unidosexpress.com',
@@ -72,14 +65,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'z48r1Gs6jqq72397ZDtMPr2qwuntr7BlM54fainfvEpWY5POWd9sTzGJ6scL',
 				'created_at' => '2015-05-31 03:56:01',
 				'updated_at' => '2015-06-13 11:20:32',
-				],
-			4 =>
-				[
+			),
+			4 => 
+			array (
 				'id' => 5,
 				'userstatus_id' => 1,
 				'name' => 'Mahelyn Alejandra Funez Espinoza',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'mespinoza@unidosexpress.com',
@@ -87,14 +78,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => '1v83ctzughG991H5yCPlWXdr51SFsg9mBwilVjpoMzWBN6cKhOltG9A6vbGj',
 				'created_at' => '2015-05-31 03:56:52',
 				'updated_at' => '2015-06-13 11:20:23',
-				],
-			5 =>
-				[
+			),
+			5 => 
+			array (
 				'id' => 6,
 				'userstatus_id' => 1,
 				'name' => 'Nelson Oreste Canales Silva',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'nsilva@unidosexpress.com',
@@ -102,14 +91,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'VDMTMVoYIDgQcEeRVxybCBxxNr10OzMKMl39QLa6quSwELXQ6eheViaDvTdY',
 				'created_at' => '2015-05-31 03:57:56',
 				'updated_at' => '2015-06-13 10:18:10',
-				],
-			6 =>
-				[
+			),
+			6 => 
+			array (
 				'id' => 7,
 				'userstatus_id' => 1,
 				'name' => 'Olvin Rene Amaya Ortez',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'oamaya@unidosexpress.com',
@@ -117,14 +104,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'AkuySBtYYjP5fcNH83n3xTOsU8A9dfbCguUYnzA7KSPmyJ26ZEZ7J9goSafv',
 				'created_at' => '2015-05-31 03:59:25',
 				'updated_at' => '2015-06-13 10:18:44',
-				],
-			7 =>
-				[
+			),
+			7 => 
+			array (
 				'id' => 8,
 				'userstatus_id' => 1,
 				'name' => 'Paola Maria Raudales Casco',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'praudales@unidosexpress.com',
@@ -132,14 +117,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'jiEbcun1Nb2tev9Qw3RxGeTHZ4B2V7L4tb8oBr4mJaemvFydOekx66tVfDWx',
 				'created_at' => '2015-05-31 04:00:32',
 				'updated_at' => '2015-06-13 10:18:29',
-				],
-			8 =>
-				[
+			),
+			8 => 
+			array (
 				'id' => 9,
 				'userstatus_id' => 1,
 				'name' => 'Luis Joel Sanchez Rodezno',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'lsanchez@unidosexpress.com',
@@ -147,14 +130,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'T08IFIi4BqEdK1XC9ULs4sxIQTtMg7HcOykhxu2dgAU5VMDHHi4Ov6TcBo3l',
 				'created_at' => '2015-05-31 04:10:38',
 				'updated_at' => '2015-06-13 10:18:26',
-				],
-			9 =>
-				[
+			),
+			9 => 
+			array (
 				'id' => 10,
 				'userstatus_id' => 1,
 				'name' => 'Victor Hugo Portillo Amador',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'vportillo@unidosexpress.com',
@@ -162,29 +143,25 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'V8T3B6clYWVbSWJdQdvZcROCJb9RYfn98SglfcXxnhlqt4PagwK6B7B7ycIa',
 				'created_at' => '2015-05-31 04:11:36',
 				'updated_at' => '2015-06-13 10:18:09',
-				],
-			10 =>
-				[
+			),
+			10 => 
+			array (
 				'id' => 11,
 				'userstatus_id' => 1,
-				'name' => 'Oscar Rene Herrera Gonzalez',
-				
-				
+				'name' => 'Juan Ramon Banegas Caballero',
 				'empresa_id' => 1,
-				'establecimiento_id' => 153,
+				'establecimiento_id' => 107,
 				'email' => 'jbanegas@unidosexpress.com',
-				'password' => '$2y$10$k9z1D72.IXCTiBLWO79O9eZuXCA1fIJP6U9rN39pYAqT9lyfgEKz2',
+				'password' => '$2y$10$9sGgIDTrPI8VFEzjuVKTPuHLyEuCK.ZVCDc0NTELrWxJZC9XLu5s6',
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 04:12:17',
-				'updated_at' => '2015-05-31 04:12:17',
-				],
-			11 =>
-				[
+				'updated_at' => '2015-06-16 21:07:09',
+			),
+			11 => 
+			array (
 				'id' => 12,
 				'userstatus_id' => 1,
 				'name' => 'Jimmy Jovel Caceres Inestroza',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jinestroza@unidosexpress.com',
@@ -192,14 +169,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 04:13:10',
 				'updated_at' => '2015-05-31 04:13:10',
-				],
-			12 =>
-				[
+			),
+			12 => 
+			array (
 				'id' => 13,
 				'userstatus_id' => 1,
 				'name' => 'Franklin Enrique Salinas Guillen',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'fsalinas@unidosexpress.com',
@@ -207,14 +182,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'lGrqr0k5lJ2iDQ3D7kxFrfY3hnbTgevNoo0aSJmGk3dPV1vmndBPeCUeac6i',
 				'created_at' => '2015-05-31 04:14:14',
 				'updated_at' => '2015-06-13 10:18:29',
-				],
-			13 =>
-				[
+			),
+			13 => 
+			array (
 				'id' => 14,
 				'userstatus_id' => 1,
 				'name' => 'Flavio Geovanny Solorzano Fortin',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'fsolorzano@unidosexpress.com',
@@ -222,29 +195,25 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'KpuDOaUu1KUNWI3Zlt9Tby5NikB17oeWpNtwFLLGiMShgUXWUxCuKS0QSxDo',
 				'created_at' => '2015-05-31 05:43:59',
 				'updated_at' => '2015-06-13 10:18:53',
-				],
-			14 =>
-				[
+			),
+			14 => 
+			array (
 				'id' => 15,
 				'userstatus_id' => 1,
 				'name' => 'Daniel Abraham Ramos Avila',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'dramos@unidosexpress.com',
 				'password' => '$2y$10$cCYAwSfuST.x4jKmSxQcvOf.e.pmJ/QVCDaYPGLNLc3uxRyyjQFw.',
-				'remember_token' => 'nmFmyUZUpcuzC9iVmy1NYpbCB3oMwCEWSBFkctVEF9N6w1k644tKfYE4Rm0a',
+				'remember_token' => '1faK3tuAT2LIiEyZPVo3lJub3dKEoydsXXtEpWNiB8Cfg1mSbuLFuNC6TKQ1',
 				'created_at' => '2015-05-31 05:45:19',
-				'updated_at' => '2015-06-13 10:30:03',
-				],
-			15 =>
-				[
+				'updated_at' => '2015-06-20 11:50:42',
+			),
+			15 => 
+			array (
 				'id' => 16,
 				'userstatus_id' => 1,
 				'name' => 'Byan Eduardo Matute Arias',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'bmatute@unidosexpress.com',
@@ -252,14 +221,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'aJt84Dh3E7EsVB8gtIL6J8lWGfVGhhBjZyyYZwc0nLEWuTlBeKcmEAF3S9q3',
 				'created_at' => '2015-05-31 05:46:23',
 				'updated_at' => '2015-06-13 10:32:41',
-				],
-			16 =>
-				[
+			),
+			16 => 
+			array (
 				'id' => 17,
 				'userstatus_id' => 1,
 				'name' => 'Jorge Fransua Padilla Aleman',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jpadilla@unidosexpress.com',
@@ -267,14 +234,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:47:13',
 				'updated_at' => '2015-05-31 05:47:13',
-				],
-			17 =>
-				[
+			),
+			17 => 
+			array (
 				'id' => 18,
 				'userstatus_id' => 1,
 				'name' => 'Ivys Josue Hernandez Flores',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'iflores@unidosexpress.com',
@@ -282,14 +247,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:48:04',
 				'updated_at' => '2015-05-31 05:48:04',
-				],
-			18 =>
-				[
+			),
+			18 => 
+			array (
 				'id' => 19,
 				'userstatus_id' => 1,
 				'name' => 'Osmin David Ortiz Perez',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'operez@unidosexpress.com',
@@ -297,14 +260,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:48:44',
 				'updated_at' => '2015-05-31 05:48:44',
-				],
-			19 =>
-				[
+			),
+			19 => 
+			array (
 				'id' => 20,
 				'userstatus_id' => 1,
 				'name' => 'Walter Javier Cruz Aguilar',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'wcruz@unidosexpress.com',
@@ -312,14 +273,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:49:33',
 				'updated_at' => '2015-05-31 05:49:33',
-				],
-			20 =>
-				[
+			),
+			20 => 
+			array (
 				'id' => 21,
 				'userstatus_id' => 1,
 				'name' => 'Allan Gerardo Bustillo Quezada',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'abustillo@unidosexpress.com',
@@ -327,14 +286,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => '7iCRchJMZHq2pYBv81iEOq4HjKUyZEbNTO6QBoThFOknIVEnNkYgiIWvqDgE',
 				'created_at' => '2015-05-31 05:53:03',
 				'updated_at' => '2015-06-13 11:20:34',
-				],
-			21 =>
-				[
+			),
+			21 => 
+			array (
 				'id' => 22,
 				'userstatus_id' => 1,
 				'name' => 'Jose Manuel Osorto Castellanos',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'josorto@unidosexpress.com',
@@ -342,14 +299,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:53:57',
 				'updated_at' => '2015-05-31 05:53:57',
-				],
-			22 =>
-				[
+			),
+			22 => 
+			array (
 				'id' => 23,
 				'userstatus_id' => 1,
 				'name' => 'Ulices Noe Ordoñez Izaguirre',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'nizaguirre@unidosexpress.com',
@@ -357,14 +312,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:54:40',
 				'updated_at' => '2015-05-31 05:54:40',
-				],
-			23 =>
-				[
+			),
+			23 => 
+			array (
 				'id' => 24,
 				'userstatus_id' => 1,
 				'name' => 'Luis Alexis Andino Castro',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'landino@unidosexpress.com',
@@ -372,14 +325,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:55:25',
 				'updated_at' => '2015-05-31 05:55:25',
-				],
-			24 =>
-				[
+			),
+			24 => 
+			array (
 				'id' => 25,
 				'userstatus_id' => 1,
 				'name' => 'Pedro Antonio Cruz Dominguez',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'pcruz@unidosexpress.com',
@@ -387,14 +338,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:56:17',
 				'updated_at' => '2015-05-31 05:56:17',
-				],
-			25 =>
-				[
+			),
+			25 => 
+			array (
 				'id' => 26,
 				'userstatus_id' => 1,
 				'name' => 'Jose Jeremias Mejia Duarte',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'jmejia@unidosexpress.com',
@@ -402,14 +351,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'N8abHIbrlrIGWJ5QtOOWeFFJvpu8blMZzZ7xitNUKKD35S8VL1CdFnyDgV7J',
 				'created_at' => '2015-05-31 05:56:55',
 				'updated_at' => '2015-06-13 11:20:25',
-				],
-			26 =>
-				[
+			),
+			26 => 
+			array (
 				'id' => 27,
 				'userstatus_id' => 1,
 				'name' => 'Enrique Fernando De Leon Martinez',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'emartinez@unidosexpress.com',
@@ -417,14 +364,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 05:57:44',
 				'updated_at' => '2015-05-31 05:58:12',
-				],
-			27 =>
-				[
+			),
+			27 => 
+			array (
 				'id' => 28,
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Rosales Colman',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jrosales@unidosexpress.com',
@@ -432,14 +377,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 06:00:21',
 				'updated_at' => '2015-05-31 06:00:21',
-				],
-			28 =>
-				[
+			),
+			28 => 
+			array (
 				'id' => 29,
 				'userstatus_id' => 1,
 				'name' => 'Sayd Rene Reyes Agurcia',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 2,
 				'email' => 'sreyes@unidosexpress.com',
@@ -447,14 +390,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 06:01:05',
 				'updated_at' => '2015-05-31 06:01:05',
-				],
-			29 =>
-				[
+			),
+			29 => 
+			array (
 				'id' => 30,
 				'userstatus_id' => 1,
 				'name' => 'Jeahns Ruocbell Sevilla Moncada',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jsevilla@unidosexpress.com',
@@ -462,29 +403,25 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 06:01:49',
 				'updated_at' => '2015-05-31 06:01:49',
-				],
-			30 =>
-				[
+			),
+			30 => 
+			array (
 				'id' => 31,
 				'userstatus_id' => 1,
 				'name' => 'Dorian Danery Matute Gonzales',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'dgonzales@unidosexpress.com',
 				'password' => '$2y$10$5PH4v/zqRWEP1EPXRgSMc.rXf1wkcyS7CYpGAFOv8P8KxR1UIxiXC',
-				'remember_token' => NULL,
+				'remember_token' => 'CEZS64wSjQK1bJuA6bCDEQU0KwlomhN1yRLjkf6jA5JlfryLOF4HEvI1UiEu',
 				'created_at' => '2015-05-31 06:02:49',
-				'updated_at' => '2015-05-31 06:02:49',
-				],
-			31 =>
-				[
+				'updated_at' => '2015-06-23 03:51:33',
+			),
+			31 => 
+			array (
 				'id' => 32,
 				'userstatus_id' => 1,
 				'name' => 'Allan Josue Espinoza Avila',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'jespinoza@unidosexpress.com',
@@ -492,14 +429,12 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 06:03:40',
 				'updated_at' => '2015-05-31 06:03:40',
-				],
-			32 =>
-				[
+			),
+			32 => 
+			array (
 				'id' => 33,
 				'userstatus_id' => 1,
 				'name' => 'Juan Ramon Osorto  caballero',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'rcaballero@unidosexpress.com',
@@ -507,29 +442,25 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'qmx7UJASBPy4iBDu6Ls9ZAFJ4gB45VOsE5eHT6v2KoE4eBAjaOnm2JJSuuf4',
 				'created_at' => '2015-05-31 06:04:18',
 				'updated_at' => '2015-06-13 11:20:20',
-				],
-			33 =>
-				[
+			),
+			33 => 
+			array (
 				'id' => 34,
 				'userstatus_id' => 1,
-				'name' => 'Selvin Samir Lagos Caballero',
-				
-				
+				'name' => 'Selvin Samir Lagos Carranza',
 				'empresa_id' => 1,
-				'establecimiento_id' => 153,
+				'establecimiento_id' => 107,
 				'email' => 'slagos@unidosexpress.com',
-				'password' => '$2y$10$y4C5L.1QHh33X11uLDWpue1ajanF8SLO44LRPb.NwFXfv8ojLF5D2',
+				'password' => '$2y$10$GNcBCQdrs.EMDvXFvlXEm.X8y4nWPJyakZTJgFHTwxpkl7.yqDrHm',
 				'remember_token' => 'DWo3quqdJkcgMIVrajC2H5dpxUEVLM3Bdu6qe9Hrw9DBjVvoxDai2lYCc12w',
 				'created_at' => '2015-05-31 06:05:04',
-				'updated_at' => '2015-06-13 11:20:23',
-				],
-			34 =>
-				[
+				'updated_at' => '2015-06-16 21:08:31',
+			),
+			34 => 
+			array (
 				'id' => 35,
 				'userstatus_id' => 1,
 				'name' => 'Yeimy Carolina Chavarria Urquia',
-				
-				
 				'empresa_id' => 1,
 				'establecimiento_id' => 153,
 				'email' => 'curquia@unidosexpress.com',
@@ -537,78 +468,73 @@ class UsersTableSeeder extends Seeder {
 				'remember_token' => 'Z78fqJSFv6wZR9SOI1v6Eo5iwBS9sAZ3vNlPUaWttBijqMT9JNIuSg2xWJrv',
 				'created_at' => '2015-05-31 06:05:44',
 				'updated_at' => '2015-06-13 11:20:14',
-				],
-			35 =>
-				[
+			),
+			35 => 
+			array (
 				'id' => 36,
 				'userstatus_id' => 1,
-				'name' => 'dtrochez',
-				
-				
+				'name' => 'Jose David Trochez',
 				'empresa_id' => 1,
-				'establecimiento_id' => 153,
+				'establecimiento_id' => 107,
 				'email' => 'dtrochez@conectahn.com',
+				'password' => '$2y$10$78/BYzxDEz3LKkDIjeerKeK7iCx5793bPt97D62YrVHh6lBBM439u',
+				'remember_token' => NULL,
+				'created_at' => '2015-05-31 06:05:44',
+				'updated_at' => '2015-06-16 14:02:46',
+			),
+			36 => 
+			array (
+				'id' => 37,
+				'userstatus_id' => 1,
+				'name' => 'Gerardo Lopez',
+				'empresa_id' => 1,
+				'establecimiento_id' => 1,
+				'email' => 'glopez@conectahn.com',
 				'password' => '$2y$10$RPtA6.QA0AqC2bTP3wCkUebT15qvaZwMhWdpR1AHihZ4wu0NFbDU6',
 				'remember_token' => NULL,
 				'created_at' => '2015-05-31 06:05:44',
-				'updated_at' => '2015-05-31 06:05:44',
-				],
-			36 =>
-				[
-					'id' => 37,
-					'userstatus_id' => 1,
-					'name' => 'Gerardo Lopez',
-					'empresa_id' => 1,
-					'establecimiento_id' => 153,
-					'email' => 'glopez@conectahn.com',
-					'password' => '$2y$10$RPtA6.QA0AqC2bTP3wCkUebT15qvaZwMhWdpR1AHihZ4wu0NFbDU6',
-					'remember_token' => null,
-					'created_at' => '2015-05-31 06:05:44',
-					'updated_at' => '2015-05-31 06:05:44',
-				],
-		]);
-		$user = new App\User();
-		$user = User::find(1); $user->attachRole(1);
-		$user = User::find(2); $user->attachRole(1);
-		$user = User::find(3); $user->attachRole(4);
-		$user = User::find(4); $user->attachRole(4);
-		$user = User::find(5); $user->attachRole(4);
-		$user = User::find(6); $user->attachRole(4);
-		$user = User::find(7); $user->attachRole(4);
-		$user = User::find(8); $user->attachRole(4);
-		$user = User::find(9); $user->attachRole(4);
-		$user = User::find(10); $user->attachRole(4);
-
-		$user = User::find(11); $user->attachRole(4);
-		$user = User::find(12); $user->attachRole(4);
-		$user = User::find(13); $user->attachRole(4);
-		$user = User::find(14); $user->attachRole(4);
-		$user = User::find(15); $user->attachRole(4);
-		$user = User::find(16); $user->attachRole(4);
-		$user = User::find(17); $user->attachRole(4);
-		$user = User::find(18); $user->attachRole(4);
-		$user = User::find(19); $user->attachRole(4);
-		$user = User::find(20); $user->attachRole(4);
-
-		$user = User::find(21); $user->attachRole(4);
-		$user = User::find(22); $user->attachRole(4);
-		$user = User::find(23); $user->attachRole(4);
-		$user = User::find(24); $user->attachRole(4);
-		$user = User::find(25); $user->attachRole(4);
-		$user = User::find(26); $user->attachRole(4);
-		$user = User::find(27); $user->attachRole(4);
-		$user = User::find(28); $user->attachRole(4);
-		$user = User::find(29); $user->attachRole(4);
-		$user = User::find(30); $user->attachRole(4);
-
-		$user = User::find(31); $user->attachRole(4);
-		$user = User::find(32); $user->attachRole(4);
-		$user = User::find(33); $user->attachRole(4);
-		$user = User::find(34); $user->attachRole(4);
-		$user = User::find(35); $user->attachRole(4);
-		$user = User::find(36); $user->attachRole(4);
-		$user = User::find(36);
-		$user->attachRole(2);
+				'updated_at' => '2015-06-16 09:39:13',
+			),
+			37 => 
+			array (
+				'id' => 38,
+				'userstatus_id' => 1,
+				'name' => 'Gerardo Enrique Lopez Torres',
+				'empresa_id' => 1,
+				'establecimiento_id' => 1,
+				'email' => 'glopez@unidosexpress.com',
+				'password' => '$2y$10$TV5/2AGvJ7VUdBPVIRuNPeKWLTEfhf5MIKQxcg.I9N.EdxJcTwXxC',
+				'remember_token' => 'AcxugFV43G29n91Fp2L52KoceplR4YRYrdgUExn5NCH5LZJUlHy94re7Mgsr',
+				'created_at' => '2015-06-16 14:18:18',
+				'updated_at' => '2015-06-22 18:37:39',
+			),
+			38 => 
+			array (
+				'id' => 39,
+				'userstatus_id' => 1,
+				'name' => 'Manuel Canales',
+				'empresa_id' => 1,
+				'establecimiento_id' => 107,
+				'email' => 'mcanales@unidosexpress.com',
+				'password' => '$2y$10$CEdhsq3B7Q9/WwHrN0aQXOS5hw7SnNpdevHwfw2W3SeO4BZuxgyH6',
+				'remember_token' => NULL,
+				'created_at' => '2015-06-16 21:16:29',
+				'updated_at' => '2015-06-16 21:16:29',
+			),
+			39 => 
+			array (
+				'id' => 40,
+				'userstatus_id' => 1,
+				'name' => 'NOMBRE DE PRUEBA',
+				'empresa_id' => 1,
+				'establecimiento_id' => 91,
+				'email' => 'lavariox@hotmail.com',
+				'password' => '$2y$10$7Frp8hAa7NsZUdMmF/2RuuyuEG5X0sXf9P6sGdSiPDEJc.pkR1uT.',
+				'remember_token' => NULL,
+				'created_at' => '2015-06-19 14:58:47',
+				'updated_at' => '2015-06-19 14:58:47',
+			),
+		));
 	}
 
 }
