@@ -23,7 +23,7 @@ class ReportsController extends Controller {
 		$establecimiento = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
 		$estados = Estado::take(12)->skip(1)->lists('name', 'id');
 
-		return View('reportes.entregas.entregas', compact('establecimiento', 'estados', 'shipments'));
+		return View('reportes.entregas.entregas', compact('establecimiento', 'estados', 'shipments', 'btransitos'));
 	}
 
 	public function getRowsReporte($date_init, $date_finale, $state = 0, $stablish = 0)
@@ -35,12 +35,12 @@ class ReportsController extends Controller {
 
 		if($state != 0 and $stablish == 0){
 
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
+			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
 				->where('estado_id', '=', $state)
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		} elseif($state != 0 and $stablish != 0){
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
+			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
 				->whereHas('recivers', function($q) use (&$data, $stablish) {
 					$q->where('establecimiento_id', '=', $stablish);
 				})
@@ -49,13 +49,13 @@ class ReportsController extends Controller {
 
 		} elseif($state == 0 and $stablish != 0){
 
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
+			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
 				->where('establecimiento', '=', $stablish)
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		} else{
 
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento')
+			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 
 		}
