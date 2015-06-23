@@ -23,4 +23,11 @@ class CurriersController extends Controller {
 		return View('curriers.index');
 	}
 
+	public function bolsas()
+	{
+		$bolsas = Bolsa::where('user_id', '=', Auth::id());
+
+		return View('curriers.bolsas', compact('bolsas'));
+	}
+
 }

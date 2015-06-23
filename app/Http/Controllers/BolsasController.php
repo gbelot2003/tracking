@@ -16,6 +16,7 @@ class BolsasController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
+
 	}
 
 	/**
@@ -26,18 +27,6 @@ class BolsasController extends Controller {
 	public function index()
 	{
 		$bolsas = Bolsa::all();
-		if(Auth::user()->hasRole(['centro-acopio'])) :
-
-			$sinBolsa = Shipment::whereHas('transitos', function($query){
-				$query->where('establecimiento_id', '=', $centro_acopio = Auth::user()->establecimiento_id)->latest();
-			})
-				->with('recivers.establecimiento')
-				->where('estado_id', '=', 2)
-				->count();
-
-		else:
-			$sinBolsa = Shipment::count();
-		endif;
 		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
 
