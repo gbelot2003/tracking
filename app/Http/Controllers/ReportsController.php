@@ -69,7 +69,7 @@ class ReportsController extends Controller {
 		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
-		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento')
+		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
 			->where('estado_id', '=', 11)
 			->orWhere('estado_id', '=', 12)
 			->orWhere('estado_id', '=', 13)
@@ -83,7 +83,7 @@ class ReportsController extends Controller {
 		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
-		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento')
+		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
 			->where('estado_id', '=', 8)
 			->orWhere('estado_id', '=', 9)
 			->orWhere('estado_id', '=', 10)
