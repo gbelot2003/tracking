@@ -45,6 +45,8 @@
 				<td><img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/{{ $bolsas->firma }}" alt=""/></td>
 				@endif
 			</tr>
+			<tr><td colspan="4">Detalles</td></tr>
+			<tr><td colspan="4">{{ $bolsas->details }}</td></tr>
 		</table>
 
 
