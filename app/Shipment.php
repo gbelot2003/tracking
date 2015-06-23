@@ -48,7 +48,7 @@ class Shipment extends Model {
 	 */
 	public function btransitos()
 	{
-		return $this->belongsTo('App\Transito');
+		return $this->belongsTo('App\Transito', 'transito_id', 'id');
 	}
 
 	/**
