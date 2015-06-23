@@ -1,8 +1,9 @@
 @extends('app')
 
 @section('title')
-	Guia No. {{ $paquete->code }}
+	Guía No. {{ $paquete->code }}
 @stop
+
 @section('link-button')
 	@if($bolsaCerrada != true)
 		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
