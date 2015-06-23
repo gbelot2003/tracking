@@ -96,15 +96,51 @@ class ReportsController extends Controller {
 	{
 		$user = User::where('userstatus_id', '=', 1)
 			->whereHas('roles', function($query){
-				$query->where('id', '=', 4);
+				$query->where('id', '!=', 1);
 			})
 			->where('empresa_id', '=', 1)
 			->get();
 		return View('reportes.usuarios.usuarios', compact('user'));
 	}
 
-	public function getReporteUsuariosDetalle($id, $fecha)
+	public function getReporteUsuariosDetalle($id)
 	{
+		$user = User::findOrFail($id);
+		$estados = Estado::take(12)->skip(1)->lists('name', 'id');
 
+		return View('reportes.usuarios.detalle', compact('user', 'estados'));
+	}
+
+	public function getReportesUsuariosRows($id, $date_init, $date_finale)
+	{
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
+		$shipments = Shipment::with('estados', 'senders', 'recivers')
+			->where('estado_id', '=', 13)
+			->where('user_id', '=', $id)
+			->whereBetween('updated_at', [$bdate, $edate])->get();
+
+		return $shipments;
+	}
+
+	public function getReportesUsuariosStatesRows($id, $date_init, $date_finale, $state)
+	{
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
+		if($state == 0 or $state == null){
+			$shipments = Shipment::with('estados', 'senders', 'recivers')
+				->where('user_id', '=', $id)
+				->whereBetween('updated_at', [$bdate, $edate])->get();
+		} else {
+			$shipments = Shipment::with('estados', 'senders', 'recivers')
+				->where('estado_id', '=', $state)
+				->where('user_id', '=', $id)
+				->whereBetween('updated_at', [$bdate, $edate])->get();
+		}
+
+
+		return $shipments;
 	}
 }
