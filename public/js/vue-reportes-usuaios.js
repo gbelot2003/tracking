@@ -9343,18 +9343,43 @@ var v = new Vue({
         userId: '',
         estado_id: '0',
         inicio: '',
-        final: ''
+        final: '',
+        entregados: false,
+        message: 'Eliga los parametros de busqueda'
     },
 
     methods:{
         getShipmentsUsers: function(id, fecha1, fecha2){
+            $('#loader').show();
             this.$http.get('/reportes/reportes-usuarios-rows/' + id + "/" + fecha1 + "/" + fecha2).success(function(data){
                 this.$set('rows', data);
                 $('#loader').fadeOut(2000);
-            })
+            });
+            this.entregados = false
+        },
+
+        getShipmentsCompleate: function(id, fecha1, fecha2){
+            $('#loader').show();
+            this.$http.get('/reportes/reportes-usuarios-rows/' + id + "/" + fecha1 + "/" + fecha2).success(function(data){
+                this.$set('rows', data);
+                $('#loader').fadeOut(2000);
+
+            });
+            this.entregados = true
+        },
+
+        getShipmentsLost: function(id, fecha1, fecha2){
+            $('#loader').show();
+            this.$http.get('/reportes/reportes-usuarios-lost-rows/' + id + "/" + fecha1 + "/" + fecha2).success(function(data){
+                this.$set('rows', data);
+                $('#loader').fadeOut(2000);
+
+            });
+            this.entregados = true
         },
 
         getShipmentsUsersStates: function(id, fecha1, fecha2, state){
+            $('#loader').show();
             if(state == 0 || state == NaN || state == null){
                 state = 0
             }
@@ -9363,7 +9388,7 @@ var v = new Vue({
                 this.$set('rows', data);
                 $('#loader').fadeOut(2000);
             });
-
+            this.entregados = false
         }
     }
 });

@@ -1,6 +1,11 @@
 @extends('app-ui')
 
 @section('title', 'Reportes de encomiendas por usuarios')
+@section('link-button')
+	<div class="btn-group hidden-print">
+		<a type="button" onclick="window.print();return false;" class="btn">Imprimir</a>
+	</div>
+@stop
 
 @section('breadcrumbs')
 	<ol class="breadcrumb hidden-print col-md-12">
@@ -13,9 +18,7 @@
 @section('content')
 	<div class="row" id="reportes-usuarios">
 		@include('reportes.usuarios._filtros')
-		<hr/>
 		@include('reportes.usuarios._resultados')
-		<pre>@{{ $data | json }}</pre>
 	</div>
 @stop
 @section('post-script')

@@ -3,6 +3,15 @@
 		<form>
 			<div class="row">
 				<div class="col-md-12">
+					<div class="col-md-12">
+						<div class="btn-group" role="group" aria-label="...">
+							<button type="button" class="btn btn-primary btn-sm" v-on="click: getShipmentsUsersStates(userId, inicio, final, estado_id)">Buscar</button>
+							<button type="button" class="btn btn-warning btn-sm" v-on="click: getShipmentsCompleate(userId, inicio, final)">Entregadas en el periodo</button>
+							<button type="button" class="btn btn-danger btn-sm" v-on="click: getShipmentsLost(userId, inicio, final)">Extraviadas o robadas en el periodo</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
 
 					<div class="col-md-2">
 						<div class="form-group">
@@ -23,12 +32,6 @@
 						<div class="">
 							<label for="" class="">Estados</label>
 							{!! Form::select('estado_id', $estados, null, ['class' => 'select form-control', 'id' => 'estado', 'v-estado' => 'estado_id', 'v-model' => 'estado_id']) !!}
-						</div>
-					</div>
-
-					<div class="col-md-2">
-						<div class="form-group">
-							<button type="button" class="btn btn-primary btn-sm" v-on="click: getShipmentsUsersStates(userId, inicio, final, estado_id)">Buscar</button>
 						</div>
 					</div>
 

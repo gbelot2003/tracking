@@ -31,7 +31,7 @@
 						<tr v-repeat="row: rows">
 							<td class="smaller">@{{ row.code }}</td>
 							<td class="smaller">
-								<div>@{{ row.senders.name }}</div>
+								@{{ row.senders.name }}<br/>
 								@{{ row.senders.establecimiento.name }}
 							</td>
 							<td class="smaller">

@@ -116,8 +116,21 @@ class ReportsController extends Controller {
 		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
-		$shipments = Shipment::with('estados', 'senders', 'recivers')
-			->where('estado_id', '=', 13)
+		$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
+			->whereBetween('estado_id', [11, 13])
+			->where('user_id', '=', $id)
+			->whereBetween('updated_at', [$bdate, $edate])->get();
+
+		return $shipments;
+	}
+
+	public function getReportesUsuariosLostRows($id, $date_init, $date_finale)
+	{
+		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+
+		$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
+			->whereBetween('estado_id', [8, 10])
 			->where('user_id', '=', $id)
 			->whereBetween('updated_at', [$bdate, $edate])->get();
 
@@ -130,17 +143,15 @@ class ReportsController extends Controller {
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
 		if($state == 0 or $state == null){
-			$shipments = Shipment::with('estados', 'senders', 'recivers')
+			$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
 				->where('user_id', '=', $id)
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 		} else {
-			$shipments = Shipment::with('estados', 'senders', 'recivers')
+			$shipments = Shipment::with('estados', 'senders', 'recivers', 'btransitos')
 				->where('estado_id', '=', $state)
 				->where('user_id', '=', $id)
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 		}
-
-		dd($shipments);
 		return $shipments;
 	}
 }
