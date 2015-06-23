@@ -25,9 +25,15 @@ class CheckVariables {
 	 */
 	public function handle(SaveTransitosBolsas $event)
 	{
-		if($event->request['estado_id'] == 15){
+		if($event->request['estado_id'] == 15)
+		{
 			$event->estado_id = 3;
-		} else {
+		}elseif($event->request['estado_id'] == 14)
+		{
+			$event->estado_id = 7;
+		}
+		else
+		{
 			$event->estado_id = $event->request['estado_id'];
 		}
 

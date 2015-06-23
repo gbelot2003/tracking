@@ -20,7 +20,8 @@ class CreateBolsasTable extends Migration {
 			$table->integer('establecimiento_recive_id')->unsigned();
 			$table->integer('estado_id')->unsigned();
 			$table->integer('user_id')->unsigned()->index();
-			$table->string('firma');
+			$table->string('firma')->nullable;
+			$table->text('details')->nullable;
 			$table->timestamps();
 		});
 	}

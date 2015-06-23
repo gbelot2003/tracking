@@ -179,6 +179,42 @@ class ListadosController extends Controller {
 			->make(true);
 	}
 
+	/**
+	 * @return mixed
+	 */
+	public function getShipmentsCurriers()
+	{
+		/**
+		 * Query de busqueda de eccomiendas principa
+		 * recuperacion via ajax
+		 * @var $traders */
+		$traders = Shipment::select([
+			'shipments.id',
+			'shipments.code',
+			'sender.id as sid',
+			'sender.name as sender_name',
+			'aestab.name as sender_agen',
+			'aseccion.name as sender_section',
+			'reciber.id as rid',
+			'reciber.name as reciber_name',
+			'bestab.name as reciber_agen',
+			'bseccion.name as reciber_section',
+			'shipments.description as description',
+		])
+			->distinct()
+			->where('shipments.user_id', '=', Auth::id())
+			->Join('traders as sender', 'sender_id', '=', 'sender.id')
+			->Join('traders as reciber', 'reciber_id', '=', 'reciber.id')
+			->Join('establecimientos as aestab', 'sender.establecimiento_id', '=', 'aestab.id')
+			->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
+			->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
+			->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
+			->orderBy('shipments.id', '=', 'ASC')
+			->get();
+		return Datatables::of($traders)
+			->make(true);
+	}
+
 
 	/**
 	 * @param $shipments

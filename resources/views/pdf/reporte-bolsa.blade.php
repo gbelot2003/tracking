@@ -10,11 +10,47 @@
 	</div>
 	<div class="col-md-12 ">
 		<h2>Bolsa No {{ $bolsas->code }}</h2>
+		<table class="visible-print-block">
+			<tr>
+				<td>
+					<div class="visible-print-block">
+						{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
+					</div>
+				</td>
+				<td>
+					&#160;
+				</td>
+				<td>
+					<div class="visible-print-block">
+						{!! \DNS1D::getBarcodeSVG($bolsas->code, "C39",1,70); !!}
+					</div>
+				</td>
+			</tr>
+		</table>
 
-		<div class="visible-print-block">
-			{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
-		</div>
-		<div class="row">
+		<table class="table table-bordered visible-print-block">
+			<tr>
+				<td>Remitente</td>
+				<td>Destino</td>
+				<td>Fecha de entrega</td>
+				@if($bolsas->firma)
+				<td>Firma</td>
+				@endif
+			</tr>
+			<tr>
+				<td>{{ $remitente }}</td>
+				<td>{{ $establecimientos }}</td>
+				<td>{{ $bolsas->updated_at }}</td>
+				@if($bolsas->firma)
+				<td><img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/{{ $bolsas->firma }}" alt=""/></td>
+				@endif
+			</tr>
+			<tr><td colspan="4">Detalles</td></tr>
+			<tr><td colspan="4">{{ $bolsas->details }}</td></tr>
+		</table>
+
+
+		<div class="row hidden-print">
 			<div class="col-md-3">
 				<!-- sender Form Input -->
 				<div class="form-group">

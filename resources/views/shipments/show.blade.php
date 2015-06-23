@@ -1,19 +1,22 @@
 @extends('app')
 
 @section('title')
-	Guia No. {{ $paquete->code }}
+	Guía No. {{ $paquete->code }}
 @stop
+
 @section('link-button')
-	@if($bolsaCerrada != true)
-		@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
-			<a id="virtual-form" class="btn btn-material-cyan"
-			   href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar Registro</a>
-		@endif
-	@endif
+			<div class="hidden-print">
+				@if($bolsaCerrada != true)
+					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
+						<a id="virtual-form" class="btn btn-material-cyan"  type="button" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar</a>
+					@endif
+				@endif
+				<a type="button" class="btn"  onclick="window.print();return false;">Imprimir</a>
+			</div>
 @stop
 
 @section('breadcrumbs')
-	<ol class="breadcrumb">
+	<ol class="breadcrumb hidden-print">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('shipments') }}">Administración de Encomiendas</a></li>
 		<li><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->code }}</a></li>
@@ -27,23 +30,23 @@
 	<div class="col-md-12">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="well">
+				<div class="well hidden-print">
 					<h4>Descripción</h4>
 					<p>{{ $paquete->description }}</p>
 				</div>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6 hidden-print">
 				@include('shipments._sender')
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-6 hidden-print">
 				@include('shipments._reciver')
 			</div>
-
+			@include('shipments._print')
 		</div>
 	</div>
-	<div class="col-md-12">
+	<div class="col-md-12 hidden-print">
 		@include('shipments._rel_transitos')
 	</div>
 @stop
