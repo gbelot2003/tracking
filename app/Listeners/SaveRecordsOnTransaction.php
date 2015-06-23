@@ -56,6 +56,7 @@ class SaveRecordsOnTransaction {
 				// Salvamos cambios paquetes
 				$shipment->update();
 			}
+			$bolsas->details = $event->details;
 			$bolsas->firma = $event->firma;
 			$bolsas->save();
 

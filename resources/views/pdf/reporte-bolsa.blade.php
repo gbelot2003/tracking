@@ -28,10 +28,27 @@
 			</tr>
 		</table>
 
+		<table class="table table-bordered visible-print-block">
+			<tr>
+				<td>Remitente</td>
+				<td>Destino</td>
+				<td>Fecha de entrega</td>
+				@if($bolsas->firma)
+				<td>Firma</td>
+				@endif
+			</tr>
+			<tr>
+				<td>{{ $remitente }}</td>
+				<td>{{ $establecimientos }}</td>
+				<td>{{ $bolsas->updated_at }}</td>
+				@if($bolsas->firma)
+				<td><img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/{{ $bolsas->firma }}" alt=""/></td>
+				@endif
+			</tr>
+		</table>
 
 
-
-		<div class="row">
+		<div class="row hidden-print">
 			<div class="col-md-3">
 				<!-- sender Form Input -->
 				<div class="form-group">
@@ -60,9 +77,6 @@
 				<td>Remitente</td>
 				<td>Destinatario</td>
 				<td>Fecha</td>
-				@if($shipments->firma)
-					<td>Firma</td>
-				@endif
 			</tr>
 			@foreach($bolsas->shipments as $shipments)
 				<tr style="page-break-inside: avoid;">
@@ -81,9 +95,6 @@
 					</td>
 
 					<td><b>{{ $shipments->created_at }}</b></td>
-					@if($shipments->firma)
-						<td><b>{{ $shipments->firma }}</b></td>
-					@endif
 				</tr>
 			@endforeach
 		</table>
