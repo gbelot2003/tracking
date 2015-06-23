@@ -47,13 +47,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('UsersTableSeeder');
 		$this->command->info('Users table seeded!');
 
-	//	$this->call('ShipmentsTableSeeder');
-	//	$this->command->info('Shipments table seeded!');
-
-	//	$this->call('TransitosTableSeeder');
-	//	$this->command->info('Transitos table seeded!');
-
-		$this->call('SeccionsTableSeeder');
 	}
 
 }

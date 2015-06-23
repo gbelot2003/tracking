@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder {
 
@@ -535,6 +536,52 @@ class UsersTableSeeder extends Seeder {
 				'updated_at' => '2015-06-19 14:58:47',
 			),
 		));
+
+		$user = new App\User();
+				$user = User::find(1); $user->attachRole(1);
+				$user = User::find(2); $user->attachRole(1);
+				$user = User::find(3); $user->attachRole(4);
+				$user = User::find(4); $user->attachRole(4);
+				$user = User::find(5); $user->attachRole(4);
+				$user = User::find(6); $user->attachRole(4);
+				$user = User::find(7); $user->attachRole(4);
+				$user = User::find(8); $user->attachRole(4);
+				$user = User::find(9); $user->attachRole(4);
+				$user = User::find(10); $user->attachRole(4);
+
+				$user = User::find(11); $user->attachRole(4);
+				$user = User::find(12); $user->attachRole(4);
+				$user = User::find(13); $user->attachRole(4);
+				$user = User::find(14); $user->attachRole(4);
+				$user = User::find(15); $user->attachRole(4);
+				$user = User::find(16); $user->attachRole(4);
+				$user = User::find(17); $user->attachRole(4);
+				$user = User::find(18); $user->attachRole(4);
+				$user = User::find(19); $user->attachRole(4);
+				$user = User::find(20); $user->attachRole(4);
+
+				$user = User::find(21); $user->attachRole(4);
+				$user = User::find(22); $user->attachRole(4);
+				$user = User::find(23); $user->attachRole(4);
+				$user = User::find(24); $user->attachRole(4);
+				$user = User::find(25); $user->attachRole(4);
+				$user = User::find(26); $user->attachRole(4);
+				$user = User::find(27); $user->attachRole(4);
+				$user = User::find(28); $user->attachRole(4);
+				$user = User::find(29); $user->attachRole(4);
+				$user = User::find(30); $user->attachRole(4);
+
+				$user = User::find(31); $user->attachRole(4);
+				$user = User::find(32); $user->attachRole(4);
+				$user = User::find(33); $user->attachRole(4);
+				$user = User::find(34); $user->attachRole(4);
+				$user = User::find(35); $user->attachRole(4);
+				$user = User::find(36); $user->attachRole(4);
+				$user = User::find(36); $user->attachRole(2);
+				$user = User::find(37); $user->attachRole(2);
+				$user = User::find(38); $user->attachRole(2);
+				$user = User::find(39); $user->attachRole(4);
+				$user = User::find(40); $user->attachRole(2);
 	}
 
 }

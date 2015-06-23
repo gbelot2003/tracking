@@ -14,37 +14,37 @@ class EstadoTableSeeder extends Seeder
 
 		Estado::create([
 			'name'			=> 'En Espera',
-			'description'	=> 'La encomienda a sido creada y registrada en el sistema, pero no a ingresado a la linea de entragas'
+			'description'	=> 'La encomienda a sido creada y registrada en el sistema, pero no a ingresado a la linea de entragas.'
 		]);
 
 		Estado::create([
 			'name' 			=> 'Transito, regular',
-			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria'
+			'description'	=> 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'
 		]);
 
 		Estado::create([
 			'name' 			=> 'Transito, Centro de acopio',
-			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito'
+			'description'	=> 'La encomienda a ingresado a el centro de acopio descrito.'
 		]);
 
 		Estado::create([
 			'name'			=> 'Transito, en bolsa de transporte',
-			'description'	=>	'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega'
+			'description'	=>	'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'
 		]);
 
 		Estado::create([
 			'name'			=>  'Transito, presenta daños ligeros',
-			'description'	=>	'La encomienda presenta algun tipo de daños'
+			'description'	=>	'La encomienda presenta algun tipo de daños.'
 		]);
 
 		Estado::create([
 			'name'			=>  'Transito, presenta daños graves',
-			'description'	=>	'La encomienda presenta daños severos, sellos violentados, ruturas, contenido roto etc'
+			'description'	=>	'La encomienda presenta daños severos, sellos violentados, ruturas, contenido roto etc.'
 		]);
 
 		Estado::create([
-			'name'			=> 'Entragada a terceros',
-			'description'	=>	'La encomienda a pasado a manos de terseras personas o empresas para su manejo y entrega'
+			'name'			=> 'Entragada a terceros (Transitos continuan)',
+			'description'	=>	'La encomienda a pasado a manos de terseras personas o empresas para su manejo y entrega en otra agencia del banco.'
 		]);
 
 		Estado::create([
@@ -63,7 +63,7 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name' => 'Entragado y Cerrado',
+			'name' 			=> 'Entragado y Cerrado',
 			'description'	=>	'La encomienda a sido entregada sin observaciones'
 		]);
 
@@ -74,17 +74,19 @@ class EstadoTableSeeder extends Seeder
 
 		Estado::create([
 			'name'			=> 'Entregado a terceros, entrega final',
-			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
+			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. La encomiendas
+			salieron definitivamente del sistema.'
 		]);
 
 		Estado::create([
-			'name'			=> 'Transito de bolsa regular (Centros de acopio)',
-			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. '
+			'name'			=> 'Transito de bolsa regular (Entregado a terceros y transitos continuan)',
+			'description'	=>	'Se entrega a otra empresa de mensajería o a personal autorizados por la empresa para entregar la encomienda en su destino. las encomiendas y
+			la bolsa seran recepcionados nuevamente en el sistema'
 		]);
 
 		Estado::create([
-			'name' => 'Entregada (Bolsa en Centros de acopio)',
-			'description' => 'Se entrega la bolsa y se cierra, pero el contenido esta habilitado para mas transitos'
+			'name' 			=> 'Entregada (Bolsa en Centros de acopio)',
+			'description'	=> 'Se entrega la bolsa y se cierra, pero el contenido esta habilitado para mas transitos'
 		]);
 
     }

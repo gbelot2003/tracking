@@ -8,3 +8,24 @@
 @import "trackhn";
 @import "custom";
 
+.fecha{
+  width: 100%;
+  height: 2.8rem;
+  border-radius: 5px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+#loader{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+}
+.ajax-loader{
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -32px; /* -1 * image width / 2 */
+  margin-top: -32px; /* -1 * image height / 2 */
+}

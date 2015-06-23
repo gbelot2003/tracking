@@ -13,7 +13,7 @@ class Shipment extends Model {
 	 * Proteccion para MassAssigments
 	 * @var array
 	 */
-	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'completed', 'estado'];
+	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'completed', 'estado_id', 'firma', 'user_id'];
 
 	/**
 	 * Un sender pertenece a un Trader
@@ -40,6 +40,15 @@ class Shipment extends Model {
 	public function transitos()
 	{
 		return $this->hasMany('App\Transito');
+	}
+
+	/**
+	 * Seguda relacion de actualización de estados de transito en shipments
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function btransitos()
+	{
+		return $this->belongsTo('App\Transito', 'transito_id', 'id');
 	}
 
 	/**
@@ -74,8 +83,8 @@ class Shipment extends Model {
 	 * Un shoipment tiene un estado
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function  estados()
+	public function estados()
 	{
-		return $this->belongsTo('App\Estado', 'estados_id', 'id');
+		return $this->belongsTo('App\Estado', 'estado_id');
 	}
 }

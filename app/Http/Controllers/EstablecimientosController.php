@@ -29,12 +29,7 @@ class EstablecimientosController extends Controller {
 	 */
 	public function index()
 	{
-
-		if(Auth::user()->hasRole(['centro-acopio', 'currier', 'cliente'])){
-			$establecimientos = Establecimiento::where('empresa_id', '=', 1)->get();
-		} else {
-			$establecimientos = Establecimiento::all();
-		}
+		$establecimientos = Establecimiento::all();
 		return View('establecimientos.index', compact('establecimientos'));
 	}
 

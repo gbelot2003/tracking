@@ -33,6 +33,7 @@ elixir(function(mix) {
 elixir(function(mix){
     mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
+    mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes-usuarios.js'], 'public/js/vue-reportes-usuaios.js');
     mix.scripts(['jquery-ui.js'], 'public/js/jquery-ui.js');
 });
 

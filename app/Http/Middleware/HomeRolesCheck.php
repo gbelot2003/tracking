@@ -13,11 +13,16 @@ class HomeRolesCheck {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if($request->user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier'])){
-			return redirect('shipments');
-		}
+		if($request->user()->hasRole(['owner', 'admin', 'supervisor'])){
 
-		if($request->user()->hasRole('cliente')){
+			return redirect('shipments');
+
+		} elseif($request->user()->hasRole(['centro-acopio', 'currier'])){
+
+			return redirect('mis-encomiendas');
+
+		} elseif($request->user()->hasRole('cliente')) {
+
 			return redirect('mis-paquetes');
 		}
 
