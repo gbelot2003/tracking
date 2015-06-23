@@ -80,8 +80,7 @@ class TransitosController extends Controller {
 				$foto_name = null;
 			}
 
-			$transitos = new Transito();
-			$transitos->create([
+			$transitos = Transito::create([
 				'shipment_id' => $request->input('shipment_id'),
 				'estado_id' => $request->input('estado_id'),
 				'establecimiento_id' => $establecimiento,

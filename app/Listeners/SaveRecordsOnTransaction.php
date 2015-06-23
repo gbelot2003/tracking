@@ -38,7 +38,7 @@ class SaveRecordsOnTransaction {
 			$bolsas->estado_id = $event->request['estado_id'];
 
 			foreach($bolsas->shipments as $shipment){
-				Transito::create([
+				$transitos = Transito::create([
 					'shipment_id' => $shipment->id,
 					'bolsa_id' => $event->bolsas_id,
 					'estado_id' => $event->estado_id,
@@ -52,6 +52,7 @@ class SaveRecordsOnTransaction {
 				$shipment->estado_id = $event->estado_id;
 				$shipment->firma =  $event->firma;
 				$shipment->user_id = Auth::id();
+				$shipment->transito_id = $transitos->id;
 				// Salvamos cambios paquetes
 				$shipment->update();
 			}

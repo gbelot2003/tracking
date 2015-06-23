@@ -140,7 +140,7 @@ class ReportsController extends Controller {
 				->whereBetween('updated_at', [$bdate, $edate])->get();
 		}
 
-
+		dd($shipments);
 		return $shipments;
 	}
 }
