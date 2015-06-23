@@ -1,26 +1,28 @@
 		<div>
-			<div class="col-md-12" v-if="! rows.length">
-				<h4 smaller>No hay resultados para esta busqueda.</h4>
-			</div>
-
-			<div class="col-md-12" v-if="rows.length">
-				<h4 smaller>Hay <strong style="color: red">@{{ rows.length }}</strong> coincidencia(s)</h4>
-			</div>
 			<div class="col-md-12">
+				<div id="loader">
+					<img src="{{ asset('images/loading.gif') }}" class="ajax-loader">
+				</div>
+				<div  class="hidden-print" v-if="! rows.length">
+					<h4 smaller>No hay resultados para esta busqueda.</h4>
+				</div>
+				<div class="hidden-print" v-if="rows.length">
+					<h4 smaller>Hay <strong style="color: red">@{{ rows.length }}</strong> coincidencia(s)</h4>
+				</div>
 				<table class="table table-hover table-bordered table-striped">
 					<thead>
 					<th>No. Guía</th>
 					<th>Remitente</th>
 					<th>Destinatario</th>
-					<th>Fecha de inicio</th>
-					<th v-if="entregados | rows.length">Fecha de entrega</th>
+					<th>Fecha/inicio</th>
+					<th v-if="entregados | rows.length">Fecha/entrega</th>
 					<th>Estado</th>
 					<th v-if="entregados | rows.length">Firma</th>
 					<th v-if="entregados | rows.length">Tiempo de entrega</th>
 					</thead>
 					<tbody>
 						<tr v-if="! rows.length">
-							<td colspan="7">
+							<td colspan="8">
 								<div class="alert alert-info">
 									<p class="text-center">@{{ message }}</p>
 								</div>
@@ -33,7 +35,7 @@
 								@{{ row.senders.establecimiento.name }}
 							</td>
 							<td class="smaller">
-								<div>@{{ row.recivers.name }}</div>
+								@{{ row.recivers.name }}<br/>
 								@{{ row.recivers.establecimiento.name }}
 							</td>
 							<td class="smaller">@{{ row.created_at }}</td>
@@ -42,7 +44,7 @@
 							<td class="" v-if="entregados | rows.length">
 								<img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/@{{ row.firma }} " alt=""/>
 							</td>
-							<td class="smaller" v-if="entregados | rows.length">Tiempos</td>
+							<td class="smaller" v-if="entregados | rows.length">@{{ row.differ }}</td>
 						</tr>
 					</tbody>
 					<tfooter v-if="rows.length">

@@ -1,6 +1,11 @@
 @extends('app-ui')
 
 @section('title', 'Reportes de encomiendas por fecha y estados')
+@section('link-button')
+	<div class="btn-group hidden-print">
+		<a type="button" onclick="window.print();return false;" class="btn">Imprimir</a>
+	</div>
+@stop
 
 @section('breadcrumbs')
 	<ol class="breadcrumb hidden-print">
@@ -10,44 +15,14 @@
 @stop
 
 @section('content')
-	<div class="col-md-12 hidden-print">
-		<div class="col-md-12">
-			<div class="btn-group">
-				<a type="button" href="" class="btn">Imprimir</a>
-			</div>
-		</div>
-	</div>
-	<hr class="hidden-print"/>
 	<div id="reportes-entrega">
-
 		@include('reportes.entregas._entregas')
 		@include('reportes.entregas.entregas-result')
-		<pre>@{{ $data | json }}</pre>
 	</div>
 @stop
 
 @section('post-script')
 	<script src="{{ URL::asset("js/vue-reports.js") }}"></script>
-	<script>
-
-		$('#establecimiento-select').select2({
-			click: function(data){
-				console.log(data)
-			}
-		});
-
-	</script>
-
-	<style type="text/css" media="screen">
-		.fecha{
-			width: 100%;
-			height: 2.8rem;
-			border-radius: 5px;
-			text-align: right;
-			padding-right: 10px;
-		}
-	</style>
-
 	<style type="text/css" media="print">
 		.smaller{font-size: 0.7rem;}
 		table th {font-size: 0.7rem;font-weight: bold;}
