@@ -3,6 +3,7 @@
 use App\Bolsa;
 use App\Departamento;
 use App\Establecimiento;
+use App\Event\SaveBolsas;
 use App\Http\Requests;
 use App\Http\Requests\BolsasFormRequest;
 use App\Shipment;
@@ -52,38 +53,7 @@ class BolsasController extends Controller {
 	 */
 	public function store(BolsasFormRequest $request)
 	{
-		$shipments_id = $request->input('shipment_id');
-		$count = count($shipments_id);
-		$bolsas = Bolsa::create([
-			'code' => $request->input('code'),
-			'establecimiento_envio_id' =>  Auth::user()->establecimiento_id,
-			'establecimiento_recive_id' => $request->input('destino_id'),
-			'estado_id'	=> 3,
-			'user_id'	=>Auth::id(),
-		]);
-
-		$transitosBolsas = TransitoBolsa::create([
-			'bolsa_id' => $bolsas->id,
-			'estado_id' => 3,
-			'establecimiento_id' => Auth::user()->establecimiento_id,
-			'user_id' => Auth::id(),
-			'details' => 'Bolsa creada'
-		]);
-
-		for($i = 0; $i < $count; $i++){
-			$transitos = Transito::create([
-				'shipment_id' => $shipments_id[$i],
-				'estado_id' => 4,
-				'establecimiento_id' => Auth::user()->establecimiento_id,
-				'user_id'	=> Auth::id()
-			]);
-			DB::table('shipments')->where('id', $shipments_id[$i])->update([
-					'estado_id' => 4,
-					'transito_id' => $transitos->id
-				]);
-		}
-		$bolsas->shipments()->attach($request->input('shipment_id'));
-
+		event(new SaveBolsas($request->all()));
 		return redirect('bolsas')->with('flash_message', 'Bolsa creada');
 
 	}
