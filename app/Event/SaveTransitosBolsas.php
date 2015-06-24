@@ -19,9 +19,8 @@ class SaveTransitosBolsas extends Event {
 	public $firma;
 
 	/**
-	 * Create a new event instance.
-	 *
-	 * @return void
+	 * @param $request
+	 * @param $user
 	 */
 	public function __construct($request, $user)
 	{
