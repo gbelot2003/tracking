@@ -14,16 +14,6 @@ use Illuminate\Support\Facades\Session;
 class SaveRecordsOnTransaction {
 
 	/**
-	 * Create the event handler.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		//
-	}
-
-	/**
 	 * Handle the event.
 	 *
 	 * @param  SaveTransitosBolsas  $event
