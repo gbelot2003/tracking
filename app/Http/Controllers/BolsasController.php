@@ -54,8 +54,7 @@ class BolsasController extends Controller {
 	public function store(BolsasFormRequest $request)
 	{
 		event(new SaveBolsas($request->all()));
-		return redirect('bolsas')->with('flash_message', 'Bolsa creada');
-
+		return redirect('bolsas');
 	}
 
 	/**

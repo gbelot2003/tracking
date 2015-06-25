@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BolsasSaveRecordsOnTransaction {
 
@@ -29,29 +30,34 @@ class BolsasSaveRecordsOnTransaction {
 				'estado_id'	=> 3,
 				'user_id'	=>Auth::id(),
 			]);
+
+
+			$event->transitoBolsas = TransitoBolsa::create([
+				'bolsa_id' => $event->bolsas->id,
+				'estado_id' => 3,
+				'establecimiento_id' => Auth::user()->establecimiento_id,
+				'user_id' => Auth::id(),
+				'details' => 'Bolsa creada'
+			]);
+
+			for($i = 0; $i < $event->count; $i++){
+				$event->transito = Transito::create([
+					'shipment_id' => $event->shipments_id[$i],
+					'estado_id' => 4,
+					'establecimiento_id' => Auth::user()->establecimiento_id,
+					'user_id'	=> Auth::id()
+				]);
+				DB::table('shipments')->where('id', $event->shipments_id[$i])->update([
+					'estado_id' => 4,
+					'transito_id' => $event->transito->id
+				]);
+
+				$event->bolsas->shipments()->attach($event->shipments_id[$i]);
+			}
 		});
 
-		$event->transitoBolsas = TransitoBolsa::create([
-			'bolsa_id' => $event->bolsas->id,
-			'estado_id' => 3,
-			'establecimiento_id' => Auth::user()->establecimiento_id,
-			'user_id' => Auth::id(),
-			'details' => 'Bolsa creada'
-		]);
+		Session::flash('flash_message', "Bolsa Creada");
 
-		for($i = 0; $i < $event->count; $i++){
-			$event->transito = Transito::create([
-				'shipment_id' => $event->shipments_id[$i],
-				'estado_id' => 4,
-				'establecimiento_id' => Auth::user()->establecimiento_id,
-				'user_id'	=> Auth::id()
-			]);
-			DB::table('shipments')->where('id', $event->shipments_id[$i])->update([
-				'estado_id' => 4,
-				'transito_id' => $event->transito->id
-			]);
-		}
-		$event->bolsas->shipments()->attach($event->shipments_id['shipment_id']);
 	}
 
 

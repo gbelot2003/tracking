@@ -10,6 +10,7 @@ class SaveBolsas extends Event {
 	use SerializesModels;
 	public $request;
 	public $shipments_id;
+	public $shipments;
 	public $count;
 	public $bolsas;
 	public $transitoBolsas;
