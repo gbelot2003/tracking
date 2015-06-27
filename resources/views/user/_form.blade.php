@@ -30,7 +30,7 @@
 				<!-- Rol Form Input -->
 				<div class="form-group">
 					<label for="roles_list">Rol de Usuario</label>
-					{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select']) !!}
+					{!! Form::select('roles_lists[]', $roles, null, ['class' => 'select form-control', 'id' => 'rol-select', 'multiple']) !!}
 				</div>
 			</div>
 			<div class="col-md-3">
