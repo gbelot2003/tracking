@@ -14,7 +14,7 @@ class BolsasCheckPerms {
 	public function handle($request, Closure $next)
 	{
 		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])) {
-			return redirect('mis-encomiendas');
+			return redirect('mis-bolsas');
 		}
 		return $next($request);
 	}

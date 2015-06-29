@@ -40,6 +40,7 @@ class Kernel extends HttpKernel {
 		'ShipmentsCheckPerms'			=> 'App\Http\Middleware\ShipmentsCheckPerms',
 		'ShipmentsUserCheckPerms'		=> 'App\Http\Middleware\ShipmentsUserCheckPerms',
 		'ShipmentsCheckPerms'			=> 'App\Http\Middleware\ShipmentsCheckPerms',
+		'BolsasCheckPerms'				=> 'App\Http\Middleware\BolsasCheckPerms',
 		'homecheck'						=> 'App\Http\Middleware\HomeRolesCheck',
 	];
 
