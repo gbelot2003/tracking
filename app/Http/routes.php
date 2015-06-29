@@ -39,6 +39,7 @@ Route::resource('shipments', 'ShipmentCotroller');
 Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
 
 Route::get('mis-encomiendas', 'CurriersController@index');
+
 Route::get('mis-bolsas', 'CurriersController@bolsas');
 
 Route::get('clientes', 'ClientesController@index');
