@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title', 'Administración de Bolsas')
-	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+	@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 @section('link-button')
 	<a id="virtual-form" class="btn btn-primary" href="{{ action('BolsasController@create') }}">Crear Bolsa</a>
 @stop
