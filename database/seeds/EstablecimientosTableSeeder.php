@@ -560,7 +560,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'empresa_id' => 3,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
-				'name' => 'VTN. ALCALDÍA LA CEIBA CBA',
+				'name' => 'AGN. ALCALDÍA LA CEIBA CBA',
 				'address' => 'Barrio El Centro, Ave San Isidro , Calle 9, Contiguo al Parque Central, Frente a la Catedral, Edificio Alcaldía de Ceiba.',
 			),
 			57 => 
@@ -740,7 +740,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'empresa_id' => 3,
 				'departamento_id' => 1,
 				'municipio_id' => 1,
-				'name' => 'AGN LC CEIBA CBA',
+				'name' => 'AGN La Colonia CEIBA CBA',
 				'address' => 'Bo. el Centro  Zona Mazapán  Blvd 15 de Sept,  8 calle',
 			),
 			77 => 
@@ -1539,6 +1539,69 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'name' => 'BANCO ATLANTIDA',
 				'address' => 'BLV. 4 CENTENARIO ESQUINA OPUSTA AL CENTRO DE SALUD CALLE PRINCIPAL SALIDA A LA LIBERTAD
 ',
+			),
+			165 => 
+			array (
+				'id' => 166,
+				'empresa_id' => 2,
+				'departamento_id' => 15,
+				'municipio_id' => 228,
+				'name' => 'hondutel juticalpa',
+				'address' => 'Barrio jesus calle del estadio ',
+			),
+			166 => 
+			array (
+				'id' => 167,
+				'empresa_id' => 2,
+				'departamento_id' => 1,
+				'municipio_id' => 1,
+				'name' => 'local de prueba',
+				'address' => 'Este establecimiento fue creado para prueba',
+			),
+			167 => 
+			array (
+				'id' => 168,
+				'empresa_id' => 1,
+				'departamento_id' => 1,
+				'municipio_id' => 1,
+				'name' => 'local de prueba 2',
+				'address' => '',
+			),
+			168 => 
+			array (
+				'id' => 169,
+				'empresa_id' => 3,
+				'departamento_id' => 18,
+				'municipio_id' => 290,
+				'name' => 'VTN ZIP EL PORVENIR ',
+				'address' => 'Carretera hacia Tela Km 7 ',
+			),
+			169 => 
+			array (
+				'id' => 170,
+				'empresa_id' => 2,
+				'departamento_id' => 5,
+				'municipio_id' => 68,
+				'name' => 'aduana pto cortes',
+				'address' => '2 avenida frente a correo nacional y frente bac ',
+			),
+			170 => 
+			array (
+				'id' => 171,
+				'empresa_id' => 3,
+				'departamento_id' => 1,
+				'municipio_id' => 1,
+				'name' => 'VENTANILLA LA COLONIA',
+				'address' => 'BO. EL CENTRO FRENTE ESTANDAR ZONA MASAPAN',
+			),
+			171 => 
+			array (
+				'id' => 172,
+				'empresa_id' => 2,
+				'departamento_id' => 11,
+				'municipio_id' => 161,
+				'name' => 'DEi roatan',
+				'address' => 'Coxen hole frente al parque',
 			),
 		));
 	}

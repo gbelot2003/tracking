@@ -1044,6 +1044,236 @@ class TradersTableSeeder extends Seeder {
 				'created_at' => '2015-06-22 17:37:36',
 				'updated_at' => '2015-06-22 17:37:36',
 			),
+			103 => 
+			array (
+				'id' => 105,
+				'establecimiento_id' => 69,
+				'seccion_id' => 11,
+				'name' => 'ERIKA BONILLA',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-23 15:52:28',
+				'updated_at' => '2015-06-23 15:52:28',
+			),
+			104 => 
+			array (
+				'id' => 106,
+				'establecimiento_id' => 107,
+				'seccion_id' => 7,
+				'name' => 'Persona prueba',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-25 09:38:51',
+				'updated_at' => '2015-06-25 09:38:51',
+			),
+			105 => 
+			array (
+				'id' => 107,
+				'establecimiento_id' => 162,
+				'seccion_id' => 7,
+				'name' => 'Danery prueba',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-25 11:16:36',
+				'updated_at' => '2015-06-25 11:16:36',
+			),
+			106 => 
+			array (
+				'id' => 108,
+				'establecimiento_id' => 90,
+				'seccion_id' => 7,
+				'name' => 'prueba 001',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-25 15:17:07',
+				'updated_at' => '2015-06-25 15:17:07',
+			),
+			107 => 
+			array (
+				'id' => 109,
+				'establecimiento_id' => 169,
+				'seccion_id' => 34,
+				'name' => 'Geylin Alvarado ',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-26 10:07:56',
+				'updated_at' => '2015-06-26 10:07:56',
+			),
+			108 => 
+			array (
+				'id' => 110,
+				'establecimiento_id' => 170,
+				'seccion_id' => 9,
+				'name' => 'Martin Perez',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-26 15:10:36',
+				'updated_at' => '2015-06-26 15:10:36',
+			),
+			109 => 
+			array (
+				'id' => 111,
+				'establecimiento_id' => 172,
+				'seccion_id' => 16,
+				'name' => 'Migel aguilar',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-27 10:44:07',
+				'updated_at' => '2015-06-27 10:48:44',
+			),
+			110 => 
+			array (
+				'id' => 112,
+				'establecimiento_id' => 57,
+				'seccion_id' => 11,
+				'name' => 'Ivan Damas',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:22:09',
+				'updated_at' => '2015-06-28 11:22:09',
+			),
+			111 => 
+			array (
+				'id' => 113,
+				'establecimiento_id' => 54,
+				'seccion_id' => 5,
+				'name' => 'Lidia Suyapa Salgado',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:25:12',
+				'updated_at' => '2015-06-28 11:25:12',
+			),
+			112 => 
+			array (
+				'id' => 114,
+				'establecimiento_id' => 54,
+				'seccion_id' => 11,
+				'name' => 'Flor Alvarado',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:29:21',
+				'updated_at' => '2015-06-28 11:29:21',
+			),
+			113 => 
+			array (
+				'id' => 115,
+				'establecimiento_id' => 54,
+				'seccion_id' => 15,
+				'name' => 'Anabel Mendoza Alvarez',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:33:35',
+				'updated_at' => '2015-06-28 11:33:35',
+			),
+			114 => 
+			array (
+				'id' => 116,
+				'establecimiento_id' => 54,
+				'seccion_id' => 91,
+				'name' => 'Seleny Varela',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:34:57',
+				'updated_at' => '2015-06-28 11:34:57',
+			),
+			115 => 
+			array (
+				'id' => 117,
+				'establecimiento_id' => 54,
+				'seccion_id' => 91,
+				'name' => 'Ingris Patricia Cruz',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:36:07',
+				'updated_at' => '2015-06-28 11:36:07',
+			),
+			116 => 
+			array (
+				'id' => 118,
+				'establecimiento_id' => 54,
+				'seccion_id' => 91,
+				'name' => 'Marlen Valencia',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:37:05',
+				'updated_at' => '2015-06-28 11:37:05',
+			),
+			117 => 
+			array (
+				'id' => 119,
+				'establecimiento_id' => 54,
+				'seccion_id' => 73,
+				'name' => 'Yolanda Ortiz',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:38:04',
+				'updated_at' => '2015-06-28 11:38:04',
+			),
+			118 => 
+			array (
+				'id' => 120,
+				'establecimiento_id' => 54,
+				'seccion_id' => 34,
+				'name' => 'Alejandro Neptali Ortiz',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:39:24',
+				'updated_at' => '2015-06-28 11:39:24',
+			),
+			119 => 
+			array (
+				'id' => 121,
+				'establecimiento_id' => 54,
+				'seccion_id' => 13,
+				'name' => 'Zunny Rodriguez',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 11:40:48',
+				'updated_at' => '2015-06-28 11:40:48',
+			),
+			120 => 
+			array (
+				'id' => 122,
+				'establecimiento_id' => 54,
+				'seccion_id' => 17,
+				'name' => 'Mario Duarte',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:05:14',
+				'updated_at' => '2015-06-28 12:05:14',
+			),
+			121 => 
+			array (
+				'id' => 123,
+				'establecimiento_id' => 54,
+				'seccion_id' => 31,
+				'name' => 'Marione Abularach',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:09:46',
+				'updated_at' => '2015-06-28 12:09:46',
+			),
+			122 => 
+			array (
+				'id' => 124,
+				'establecimiento_id' => 54,
+				'seccion_id' => 31,
+				'name' => 'Oscar Ruiz',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:12:44',
+				'updated_at' => '2015-06-28 12:12:44',
+			),
+			123 => 
+			array (
+				'id' => 125,
+				'establecimiento_id' => 55,
+				'seccion_id' => 9,
+				'name' => 'Amelia Borjas',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:14:16',
+				'updated_at' => '2015-06-28 12:14:16',
+			),
+			124 => 
+			array (
+				'id' => 126,
+				'establecimiento_id' => 76,
+				'seccion_id' => 73,
+				'name' => 'Edgar Carranza',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:15:50',
+				'updated_at' => '2015-06-28 12:15:50',
+			),
+			125 => 
+			array (
+				'id' => 127,
+				'establecimiento_id' => 76,
+				'seccion_id' => 91,
+				'name' => 'Daniel Vasquez',
+				'userstatus_id' => 1,
+				'created_at' => '2015-06-28 12:16:32',
+				'updated_at' => '2015-06-28 12:16:32',
+			),
 		));
 	}
 

@@ -479,6 +479,36 @@ class SeccionsTableSeeder extends Seeder {
 				'id' => 93,
 				'name' => 'Ingenieria',
 			),
+			93 => 
+			array (
+				'id' => 94,
+				'name' => 'Jefe Administrativo',
+			),
+			94 => 
+			array (
+				'id' => 95,
+				'name' => 'Cajero De Apoyo',
+			),
+			95 => 
+			array (
+				'id' => 96,
+				'name' => 'Compensacion',
+			),
+			96 => 
+			array (
+				'id' => 97,
+				'name' => 'Jefe De Seguridad',
+			),
+			97 => 
+			array (
+				'id' => 98,
+				'name' => 'Ficohsa Seguros',
+			),
+			98 => 
+			array (
+				'id' => 99,
+				'name' => 'Pymex',
+			),
 		));
 	}
 
