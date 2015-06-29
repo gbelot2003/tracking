@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
 
 class UsersTableSeeder extends Seeder {
 
@@ -24,9 +23,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 153,
 				'email' => 'gbelot2003@hotmail.com',
 				'password' => '$2y$10$mDl.MkctMqXySPi81SJKU.S0WM9yCS4g007EmnwKxLzfF4QuCl4wm',
-				'remember_token' => 'XVREEdsdtsazgOgUSXpS3MYMfFJ0r0PzRskWYos4xC1XEVmKpDnlWa8z5bUF',
+				'remember_token' => 'K8X9TH9LYl1R8E0l6KsKzSvDF1qjrf5NBArxgXWpwbQmHYfk2cMWd03UtcwS',
 				'created_at' => '2015-05-30 20:38:57',
-				'updated_at' => '2015-06-22 00:13:21',
+				'updated_at' => '2015-06-29 14:53:35',
 			),
 			1 => 
 			array (
@@ -37,9 +36,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 107,
 				'email' => 'hrivera@conectahn.com',
 				'password' => '$2y$10$uHuDdWLi14zA2jzSkeMNFu5K3TKXTUuEdH7aebh98AUEVPE2FeWba',
-				'remember_token' => 'Hv32IJI783VwKb0tTTGNwWVb6EMxi4yiXaan8YoeyduI7OZuveABLcfEdNLr',
+				'remember_token' => 'QbdhOTh45FGPRycK7ByLaGPMpf1KZGsLaO4ZQlHc3rsnXW7cGCDCsoSN2Ux5',
 				'created_at' => '2015-05-30 20:46:30',
-				'updated_at' => '2015-06-22 07:28:33',
+				'updated_at' => '2015-06-29 14:59:10',
 			),
 			2 => 
 			array (
@@ -206,9 +205,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 153,
 				'email' => 'dramos@unidosexpress.com',
 				'password' => '$2y$10$cCYAwSfuST.x4jKmSxQcvOf.e.pmJ/QVCDaYPGLNLc3uxRyyjQFw.',
-				'remember_token' => '1faK3tuAT2LIiEyZPVo3lJub3dKEoydsXXtEpWNiB8Cfg1mSbuLFuNC6TKQ1',
+				'remember_token' => 'l4dMw03aE4vijq613K4lkYNCBJeFIaJwiYWYYHzgy3N5zIzMGWp60fbZS7y3',
 				'created_at' => '2015-05-31 05:45:19',
-				'updated_at' => '2015-06-20 11:50:42',
+				'updated_at' => '2015-06-29 07:27:39',
 			),
 			15 => 
 			array (
@@ -232,9 +231,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 153,
 				'email' => 'jpadilla@unidosexpress.com',
 				'password' => '$2y$10$.CemG73/Ag497CMOdMbgbem4HKET9f/dVwkO0i0bUjW4qnW0Pz9bq',
-				'remember_token' => NULL,
+				'remember_token' => 'wMpTuf0I3T7TOzfQbyWn4Bzwh70PmiFEPsp84nGk0yNeIEJPwOPenBOV1C9z',
 				'created_at' => '2015-05-31 05:47:13',
-				'updated_at' => '2015-05-31 05:47:13',
+				'updated_at' => '2015-06-29 10:59:55',
 			),
 			17 => 
 			array (
@@ -349,9 +348,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 2,
 				'email' => 'jmejia@unidosexpress.com',
 				'password' => '$2y$10$N8CYpua.060H7O7fvsOFIebN7ta4NjHZuOLO9vsPTZCQsemieO6Fa',
-				'remember_token' => 'N8abHIbrlrIGWJ5QtOOWeFFJvpu8blMZzZ7xitNUKKD35S8VL1CdFnyDgV7J',
+				'remember_token' => 'wbNXEkDlqMhbY671pBgtvfyJEhjEDiwK7NIMKhnaoLkpy7jtp10KqdJ3dKD6',
 				'created_at' => '2015-05-31 05:56:55',
-				'updated_at' => '2015-06-13 11:20:25',
+				'updated_at' => '2015-06-29 13:06:58',
 			),
 			26 => 
 			array (
@@ -479,9 +478,9 @@ class UsersTableSeeder extends Seeder {
 				'establecimiento_id' => 107,
 				'email' => 'dtrochez@conectahn.com',
 				'password' => '$2y$10$78/BYzxDEz3LKkDIjeerKeK7iCx5793bPt97D62YrVHh6lBBM439u',
-				'remember_token' => NULL,
+				'remember_token' => 'yQpgH11F1jSgAMup3ndXaQq0ne7aue7WQCvAnaaxsQ0EnbSImCm1HN2IDJzr',
 				'created_at' => '2015-05-31 06:05:44',
-				'updated_at' => '2015-06-16 14:02:46',
+				'updated_at' => '2015-06-29 14:54:01',
 			),
 			36 => 
 			array (
@@ -535,53 +534,33 @@ class UsersTableSeeder extends Seeder {
 				'created_at' => '2015-06-19 14:58:47',
 				'updated_at' => '2015-06-19 14:58:47',
 			),
+			40 => 
+			array (
+				'id' => 41,
+				'userstatus_id' => 1,
+				'name' => 'Edwin Bladimir Martinez',
+				'empresa_id' => 3,
+				'establecimiento_id' => 107,
+				'email' => 'bmartinez@grupoficohsa.hn',
+				'password' => '$2y$10$wu8l7uRrN.dNU2BbMYeaqeWzVmNv.1O4BPFO9EOXtv4XxtW9Z2Gnq',
+				'remember_token' => 'INntACf1JwjOr5qL2Bj6OosHXb0rQU1MciFS9mWiaf5Ybew8HgWU9U6SULnL',
+				'created_at' => '2015-06-29 14:03:40',
+				'updated_at' => '2015-06-29 14:29:23',
+			),
+			41 => 
+			array (
+				'id' => 42,
+				'userstatus_id' => 1,
+				'name' => 'Lenin Lozano Velasquez',
+				'empresa_id' => 3,
+				'establecimiento_id' => 107,
+				'email' => 'lalozano@grupoficohsa.hn',
+				'password' => '$2y$10$csGADNPhs8CI0AhIc/lbsOSw6Ln7NC4ff6k.c/HmXz9ug2eTSCN32',
+				'remember_token' => 'AxUe3dPsocgYayrMMGCJdyZU1dGL6bgGCyCKGIiUFEsEaDGhPzAGSaKo0nu6',
+				'created_at' => '2015-06-29 14:08:01',
+				'updated_at' => '2015-06-29 14:52:01',
+			),
 		));
-
-		$user = new App\User();
-				$user = User::find(1); $user->attachRole(1);
-				$user = User::find(2); $user->attachRole(1);
-				$user = User::find(3); $user->attachRole(4);
-				$user = User::find(4); $user->attachRole(4);
-				$user = User::find(5); $user->attachRole(4);
-				$user = User::find(6); $user->attachRole(4);
-				$user = User::find(7); $user->attachRole(4);
-				$user = User::find(8); $user->attachRole(4);
-				$user = User::find(9); $user->attachRole(4);
-				$user = User::find(10); $user->attachRole(4);
-
-				$user = User::find(11); $user->attachRole(4);
-				$user = User::find(12); $user->attachRole(4);
-				$user = User::find(13); $user->attachRole(4);
-				$user = User::find(14); $user->attachRole(4);
-				$user = User::find(15); $user->attachRole(4);
-				$user = User::find(16); $user->attachRole(4);
-				$user = User::find(17); $user->attachRole(4);
-				$user = User::find(18); $user->attachRole(4);
-				$user = User::find(19); $user->attachRole(4);
-				$user = User::find(20); $user->attachRole(4);
-
-				$user = User::find(21); $user->attachRole(4);
-				$user = User::find(22); $user->attachRole(4);
-				$user = User::find(23); $user->attachRole(4);
-				$user = User::find(24); $user->attachRole(4);
-				$user = User::find(25); $user->attachRole(4);
-				$user = User::find(26); $user->attachRole(4);
-				$user = User::find(27); $user->attachRole(4);
-				$user = User::find(28); $user->attachRole(4);
-				$user = User::find(29); $user->attachRole(4);
-				$user = User::find(30); $user->attachRole(4);
-
-				$user = User::find(31); $user->attachRole(4);
-				$user = User::find(32); $user->attachRole(4);
-				$user = User::find(33); $user->attachRole(4);
-				$user = User::find(34); $user->attachRole(4);
-				$user = User::find(35); $user->attachRole(4);
-				$user = User::find(36); $user->attachRole(4);
-				$user = User::find(36); $user->attachRole(2);
-				$user = User::find(37); $user->attachRole(2);
-				$user = User::find(38); $user->attachRole(2);
-				$user = User::find(39); $user->attachRole(4);
-				$user = User::find(40); $user->attachRole(2);
 	}
 
 }
