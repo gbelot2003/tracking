@@ -154,4 +154,9 @@ class ReportsController extends Controller {
 		}
 		return $shipments;
 	}
+
+	public function getReportesHistorial()
+	{
+		return View('reportes.historial.index');
+	}
 }
