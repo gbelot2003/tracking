@@ -40,23 +40,41 @@
 		<td colspan="3">{{ $paquete->recivers->establecimiento->address }}</td>
 	</tr>
 </table>
-<table class="table table-striped visible-print-block">
-	<tr>
-		<td>Descripción</td>
-		<td>Estado</td>
-		<td>Fecha</td>
-		@if($paquete->firma)
-			<td>Firma</td>
-		@endif
-	</tr>
-	<tr>
-		<td><p>{{ $paquete->description }}</p></td>
-		<td>{{ $paquete->estados->name }}</td>
-		<td>{{ $paquete->updated_at }}</td>
-		@if($paquete->firma)
+
+<table class="table table-hover table-border visible-print-block">
+	<caption>Estados de transito de esta encomienda</caption>
+	<thead>
+	<th>Estado</th>
+	<th>Usuario</th>
+	<th>Lugar</th>
+	<th>Detalles</th>
+	<th>Firma</th>
+	<th>Foto</th>
+	<th>Hora</th>
+	</thead>
+	<tbody>
+	@foreach($paquete->transitos as $transito)
+		<tr>
+			<td>{{ $transito->estados->name }}</td>
+			<td>{{ $transito->user->name }}</td>
+			<td>{{ $transito->establecimiento->name }}</td>
+			<td>{{ $transito->details }}</td>
 			<td>
-				<img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/{{ $paquete->firma }}" alt=""/>
+				@if(!$transito->firma)
+					----
+				@else
+					<a id="firma" href="{{ asset('images/transitos/firmas/'. $transito->firma) }}">Firma</a>
+				@endif
 			</td>
-		@endif
-	</tr>
+			<td>
+				@if(!$transito->foto)
+					----
+				@else
+					<a id="foto" href="{{ asset('images/transitos/fotos/'. $transito->foto) }}">Foto</a>
+				@endif
+			</td>
+			<td>{{ $transito->created_at }}</td>
+		</tr>
+	@endforeach
+	</tbody>
 </table>
