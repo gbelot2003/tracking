@@ -63,12 +63,12 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name' 			=> 'Entragado y Cerrado',
+			'name' 			=> 'Entregado y Cerrado',
 			'description'	=>	'La encomienda a sido entregada sin observaciones'
 		]);
 
 		Estado::create([
-			'name'			=> 'Entragado con observaciones',
+			'name'			=> 'Entregado con observaciones',
 			'description'	=>	'La encomienda a sido entregada y hay observaciones en su entrega'
 		]);
 
@@ -88,6 +88,5 @@ class EstadoTableSeeder extends Seeder
 			'name' 			=> 'Entregada (Bolsa en Centros de acopio)',
 			'description'	=> 'Se entrega la bolsa y se cierra, pero el contenido esta habilitado para mas transitos'
 		]);
-
     }
 }
