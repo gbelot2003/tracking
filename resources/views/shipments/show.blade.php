@@ -8,10 +8,10 @@
 			<div class="hidden-print">
 				@if($bolsaCerrada != true)
 					@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor']))
-						<a id="virtual-form" class="btn btn-material-cyan"  type="button" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar</a>
+						<a id="virtual-form" class="btn"  type="button" href="{{ action('ShipmentCotroller@edit' ,$paquete->id) }}">Editar</a>
 					@endif
 				@endif
-				<a type="button" class="btn"  onclick="window.print();return false;">Imprimir</a>
+				<a type="button" class="btn btn-material-cyan"  onclick="window.print();return false;">Imprimir</a>
 			</div>
 @stop
 
