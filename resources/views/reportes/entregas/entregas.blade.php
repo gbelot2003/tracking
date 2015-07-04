@@ -3,7 +3,7 @@
 @section('title', 'Reportes de encomiendas por fecha y estados')
 @section('link-button')
 	<div class="btn-group hidden-print">
-		<a type="button" onclick="window.print();return false;" class="btn">Imprimir</a>
+		<a type="button" onclick="window.print();return false;" class="btn btn-material-cyan">Imprimir</a>
 	</div>
 @stop
 
