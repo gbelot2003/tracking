@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class bolsa extends Model {
+class Bolsa extends Model {
 
 	/**
 	 * @var string
