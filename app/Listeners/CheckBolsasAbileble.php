@@ -19,7 +19,7 @@ class CheckBolsasAbileble {
 			if (count($event->shipments->bolsas) > 0)
 			{
 					$cerrados = [8, 9, 10, 11, 12, 13];
-					if (in_array($cerrados, $event->shipments->estado_id)){
+					if (in_array($event->shipments->estado_id, $cerrados)){
 						Session::flash('flash_message', "El registro con numero " . $event->shipments->code . " se encuentra registrada en otra bolsa, La bolsa no a sido creada");
 						Session::flash('flash_message_important', true);
 
