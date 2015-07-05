@@ -20,7 +20,6 @@ class CheckTransitosAbileble {
 		$permisos = [8, 9, 10, 11, 12, 13];
 
 		if(in_array($event->cerrada, $permisos)){
-			dd($event->cerrada);
 			Session::flash('flash_message', 'Esta encomienda ya a sido entregada cerrada');
 			return false;
 		}

@@ -26,7 +26,7 @@ class CurriersController extends Controller {
 
 	public function bolsas()
 	{
-		$bolsas = Bolsa::where('user_id', '=', Auth::id());
+		$bolsas = Bolsa::where('user_id', '=', Auth::id())->get();
 
 		return View('curriers.bolsas', compact('bolsas'));
 	}

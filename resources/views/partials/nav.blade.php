@@ -36,7 +36,7 @@
 							<li><a href="{{ url('/listados/listados-personas/') }}"><strong>Nueva
 										Encomienda</strong></a></li>
 							<li><a href="{{ url('/shipments') }}">Administración de Encomiendas</a></li>
-							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio']))
+							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
 								<li><a href="{{ url('/bolsas/create/') }}"><strong>Nueva Bolsa</strong></a></li>
 							@endif
 							@if(Auth::user()->hasRole(['owner', 'admin', 'supervisor', 'centro-acopio', 'currier']))
