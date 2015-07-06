@@ -28,7 +28,7 @@ class TransitosController extends Controller {
 			'3' => 'Transito, Centro de acopio',
 			'5' => 'Transito, presenta daños ligeros',
 			'6' => 'Transito, presenta daños graves',
-			'7' => 'Entragada a terceros (Sin Cerrrar)',
+			'7' => 'Entregada a terceros (Sin Cerrrar)',
 			'8' => 'Extraviado',
 			'9' => 'Robado',
 			'11' => 'Entregado y Cerrado',
