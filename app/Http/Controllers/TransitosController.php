@@ -31,8 +31,8 @@ class TransitosController extends Controller {
 			'7' => 'Entragada a terceros (Sin Cerrrar)',
 			'8' => 'Extraviado',
 			'9' => 'Robado',
-			'11' => 'Entragado y Cerrado',
-			'12' => 'Entragado con observaciones',
+			'11' => 'Entregado y Cerrado',
+			'12' => 'Entregado con observaciones',
 			'13' => 'Entregado a terceros, entrega final'
 
 		];
