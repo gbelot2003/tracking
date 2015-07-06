@@ -43,7 +43,7 @@ class EstadoTableSeeder extends Seeder
 		]);
 
 		Estado::create([
-			'name'			=> 'Entragada a terceros (Transitos continuan)',
+			'name'			=> 'Entregada a terceros (Transitos continuan)',
 			'description'	=>	'La encomienda a pasado a manos de terseras personas o empresas para su manejo y entrega en otra agencia del banco.'
 		]);
 
