@@ -17,7 +17,7 @@ class SeccionsTableSeeder extends Seeder {
 			0 => 
 			array (
 				'id' => 1,
-				'name' => 'Presidencia',
+				'name' => 'administracion',
 			),
 			1 => 
 			array (
@@ -57,7 +57,7 @@ class SeccionsTableSeeder extends Seeder {
 			8 => 
 			array (
 				'id' => 9,
-				'name' => 'Administración',
+				'name' => 'mensajeria externa',
 			),
 			9 => 
 			array (
@@ -508,6 +508,61 @@ class SeccionsTableSeeder extends Seeder {
 			array (
 				'id' => 99,
 				'name' => 'Pymex',
+			),
+			99 => 
+			array (
+				'id' => 100,
+				'name' => 'CORRESPONDENCIA',
+			),
+			100 => 
+			array (
+				'id' => 101,
+				'name' => 'Medico Eespecialista',
+			),
+			101 => 
+			array (
+				'id' => 102,
+				'name' => 'Presidencia',
+			),
+			102 => 
+			array (
+				'id' => 103,
+				'name' => 'asistente de finanzas',
+			),
+			103 => 
+			array (
+				'id' => 104,
+				'name' => 'Alcalde',
+			),
+			104 => 
+			array (
+				'id' => 105,
+				'name' => 'gps',
+			),
+			105 => 
+			array (
+				'id' => 106,
+				'name' => 'analisis',
+			),
+			106 => 
+			array (
+				'id' => 107,
+				'name' => 'contabilidad portuaria',
+			),
+			107 => 
+			array (
+				'id' => 108,
+				'name' => 'Emergencias',
+			),
+			108 => 
+			array (
+				'id' => 109,
+				'name' => 'Internista Cardiologia',
+			),
+			109 => 
+			array (
+				'id' => 110,
+				'name' => 'Pediatria',
 			),
 		));
 	}

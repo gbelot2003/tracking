@@ -40,8 +40,8 @@ class EstablecimientosTableSeeder extends Seeder {
 				'empresa_id' => 3,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
-				'name' => 'AGN-ATB JUAN PABLO II TGU',
-				'address' => 'Blvd. Juan Pablo II, contiguo a Pizza Hut',
+				'name' => 'unidos express',
+				'address' => 'avenida Juan Valdes',
 			),
 			3 => 
 			array (
@@ -1518,7 +1518,7 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'empresa_id' => 2,
 				'departamento_id' => 8,
 				'municipio_id' => 110,
-				'name' => 'UNIDOS EXPRESS',
+				'name' => 'UNIDOS EXPRESS TGU',
 				'address' => 'Barrio La Guadalupe Ave.Juan Manuel Galvez Edif.Decoraciones Lando Atras Posta Policial Femenina.',
 			),
 			163 => 
@@ -1602,6 +1602,522 @@ Anillo Periférico Sur, Contiguo a MOLSA."
 				'municipio_id' => 161,
 				'name' => 'DEi roatan',
 				'address' => 'Coxen hole frente al parque',
+			),
+			172 => 
+			array (
+				'id' => 173,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Hospital',
+				'address' => 'Centro de tegucigalpa',
+			),
+			173 => 
+			array (
+				'id' => 174,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital Honduras medical center',
+				'address' => '',
+			),
+			174 => 
+			array (
+				'id' => 175,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => ' hospital mater dei',
+				'address' => 'Colonia tepeyac',
+			),
+			175 => 
+			array (
+				'id' => 176,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'torres meeicas Tepeyac',
+				'address' => 'Colonia tepeyac',
+			),
+			176 => 
+			array (
+				'id' => 177,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Hospital dime',
+				'address' => 'Frente a la universidad jose cecilio del valle',
+			),
+			177 => 
+			array (
+				'id' => 178,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital centro medico hondureño',
+				'address' => 'Barrio la granja una cuadra abajo de los juzgados',
+			),
+			178 => 
+			array (
+				'id' => 179,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital privado infantil',
+				'address' => 'Frente a hospital centro medico hondureño',
+			),
+			179 => 
+			array (
+				'id' => 180,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital la.policlinica',
+				'address' => '',
+			),
+			180 => 
+			array (
+				'id' => 181,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital san jorge',
+				'address' => '',
+			),
+			181 => 
+			array (
+				'id' => 182,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'centro de deformidades òseas',
+				'address' => 'Barrio la granja',
+			),
+			182 => 
+			array (
+				'id' => 183,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'centro de neurociencias',
+				'address' => 'Dentro del hospital centroedico hondureño',
+			),
+			183 => 
+			array (
+				'id' => 184,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'CORPORACION DINANT',
+				'address' => 'BLV.SUYAPA FRENTE A PLANTAS TROPICALES 
+
+
+',
+			),
+			184 => 
+			array (
+				'id' => 185,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital viera',
+				'address' => 'En el centro de tegucigalpa',
+			),
+			185 => 
+			array (
+				'id' => 186,
+				'empresa_id' => 2,
+				'departamento_id' => 5,
+				'municipio_id' => 63,
+				'name' => 'UNIDOS EXPRESS SAN PEDRO SULA',
+				'address' => 'BARRIO GUAMILITO EDIF.SILOE ',
+			),
+			186 => 
+			array (
+				'id' => 187,
+				'empresa_id' => 2,
+				'departamento_id' => 1,
+				'municipio_id' => 1,
+				'name' => 'UNIDOS EXPRESS LA CEIBA',
+				'address' => 'LA CEIBA FTE. A LOVABLE',
+			),
+			187 => 
+			array (
+				'id' => 188,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'FICOHSA - SEGUROS',
+				'address' => 'Edificio plaza victoria col las colinas 4 Nivel ',
+			),
+			188 => 
+			array (
+				'id' => 189,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Proveeduria La Pradera',
+				'address' => 'Col la pradera calle principal fte a la llantera',
+			),
+			189 => 
+			array (
+				'id' => 190,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Bufete Abogados y Asesores',
+				'address' => 'Col Payaqui Blv. San Juan Bosco 20 mts despues de Tv Azteca',
+			),
+			190 => 
+			array (
+				'id' => 191,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'agencia ficohsa centro',
+				'address' => 'Barrio el centro ',
+			),
+			191 => 
+			array (
+				'id' => 192,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Correo Nacional',
+				'address' => 'instalaciones del Aeropuerto Internacional de Toncontin',
+			),
+			192 => 
+			array (
+				'id' => 193,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Pricesmart',
+				'address' => 'Col Lomas del Mayab Contiguo al Mall multiplaza ',
+			),
+			193 => 
+			array (
+				'id' => 194,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'bryan matute',
+				'address' => 'Barrio guadalupe contigo a posta femenina',
+			),
+			194 => 
+			array (
+				'id' => 195,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'ihss',
+				'address' => 'barrio abajo',
+			),
+			195 => 
+			array (
+				'id' => 196,
+				'empresa_id' => 2,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'enee',
+				'address' => 'blvd suyapa',
+			),
+			196 => 
+			array (
+				'id' => 197,
+				'empresa_id' => 2,
+				'departamento_id' => 15,
+				'municipio_id' => 228,
+				'name' => 'cohep',
+				'address' => 'Brio el centro por la discovery cpp 1era ave',
+			),
+			197 => 
+			array (
+				'id' => 198,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'robos y extravios ',
+				'address' => 'colonia  san miguel calle zamorano',
+			),
+			198 => 
+			array (
+				'id' => 199,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'DEI',
+				'address' => 'colonia los castaños',
+			),
+			199 => 
+			array (
+				'id' => 200,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Hondutel kennedy',
+				'address' => 'Col kennedy',
+			),
+			200 => 
+			array (
+				'id' => 201,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Hondutel kenedy',
+				'address' => '',
+			),
+			201 => 
+			array (
+				'id' => 202,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'motodar',
+				'address' => 'colonia los castaños',
+			),
+			202 => 
+			array (
+				'id' => 203,
+				'empresa_id' => 2,
+				'departamento_id' => 10,
+				'municipio_id' => 144,
+				'name' => 'Rap',
+				'address' => 'Col kennedy',
+			),
+			203 => 
+			array (
+				'id' => 204,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'unidos express',
+				'address' => 'Barrio guadalupe, ',
+			),
+			204 => 
+			array (
+				'id' => 205,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'electricos miraflores',
+				'address' => 'Col miraflores bl 39 casa 4126',
+			),
+			205 => 
+			array (
+				'id' => 206,
+				'empresa_id' => 3,
+				'departamento_id' => 3,
+				'municipio_id' => 20,
+				'name' => 'hondutel centro',
+				'address' => 'Barrio el centro frente a tiendas el benvazo',
+			),
+			206 => 
+			array (
+				'id' => 207,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'DEI centro',
+				'address' => 'Barrio el centro',
+			),
+			207 => 
+			array (
+				'id' => 208,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'electicos miraflores',
+				'address' => 'Col miraflores bl 39 casa 4126',
+			),
+			208 => 
+			array (
+				'id' => 209,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Comision Nacional de Banca y Seguros',
+				'address' => 'Col. Castaño Sur ',
+			),
+			209 => 
+			array (
+				'id' => 210,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'ventanillaficohsa',
+				'address' => 'aeropuerto',
+			),
+			210 => 
+			array (
+				'id' => 211,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'vidoe juegos vip',
+				'address' => 'Col san francisco bl a cas trece',
+			),
+			211 => 
+			array (
+				'id' => 212,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'Banco de Occidente Principal',
+				'address' => 'Col. Las Colinas ',
+			),
+			212 => 
+			array (
+				'id' => 213,
+				'empresa_id' => 3,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'portal del vosque',
+				'address' => 'calle principal despues del portal del vosque',
+			),
+			213 => 
+			array (
+				'id' => 214,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'gps',
+				'address' => 'Calle  zamorano colonia san miguel ',
+			),
+			214 => 
+			array (
+				'id' => 215,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'inverciones atlantico',
+				'address' => 'Col umuya',
+			),
+			215 => 
+			array (
+				'id' => 216,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'mercadito olvin',
+				'address' => 'Reparto bajo ',
+			),
+			216 => 
+			array (
+				'id' => 217,
+				'empresa_id' => 3,
+				'departamento_id' => 1,
+				'municipio_id' => 1,
+				'name' => 'Nodis caceres',
+				'address' => 'Agenciaprincipql de Ceiba',
+			),
+			217 => 
+			array (
+				'id' => 218,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital san felipe',
+				'address' => 'Col san felipe',
+			),
+			218 => 
+			array (
+				'id' => 219,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'hospital del torax',
+				'address' => 'Blv el torax',
+			),
+			219 => 
+			array (
+				'id' => 220,
+				'empresa_id' => 2,
+				'departamento_id' => 8,
+				'municipio_id' => 110,
+				'name' => 'BUFETE CALLEJAS ',
+				'address' => 'EDIF.UNO ATRAS DE EMISORAS UNIDAS TRES CAMINOS',
+			),
+			220 => 
+			array (
+				'id' => 221,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'AGN CENTRO CHT',
+				'address' => 'Calle ruosvell B- el centro',
+			),
+			221 => 
+			array (
+				'id' => 222,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'VTA. EMBOTELLADORA LA REYNA CHT.',
+				'address' => 'Cuidad valcanes anillo periferico ',
+			),
+			222 => 
+			array (
+				'id' => 223,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'VTA. ALCALDIA CHT',
+				'address' => 'Barrio el centro contiguo a la alcaldia de choluteca',
+			),
+			223 => 
+			array (
+				'id' => 224,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'VTA. CLARO CENTRO',
+				'address' => 'Barrio el centro dentro de Agencia claro ',
+			),
+			224 => 
+			array (
+				'id' => 225,
+				'empresa_id' => 3,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'VTA. CLARO UNIMALL',
+				'address' => 'Col. iberia dentro de centro comercial unimall',
+			),
+			225 => 
+			array (
+				'id' => 226,
+				'empresa_id' => 2,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'Deposito Catrachito',
+				'address' => 'Barrio la esperanza esquina opuesta a terminal municipal de choluteca.',
+			),
+			226 => 
+			array (
+				'id' => 227,
+				'empresa_id' => 2,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'Alcaldia municipal de choluteca',
+				'address' => 'Barrio el centro atras de catedral de choluteca.',
+			),
+			227 => 
+			array (
+				'id' => 228,
+				'empresa_id' => 2,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'Hondutel CHT',
+				'address' => 'Barrio guadalupe frente a banco central.',
+			),
+			228 => 
+			array (
+				'id' => 229,
+				'empresa_id' => 2,
+				'departamento_id' => 6,
+				'municipio_id' => 75,
+				'name' => 'I.H.S.S CHT',
+				'address' => 'Barrio los mangos frente a redondel agash.',
 			),
 		));
 	}
