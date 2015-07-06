@@ -32,8 +32,8 @@ class TransitosBolsasController extends Controller {
 		$estado = [
 			'15' => 'Entregada (Bolsa en Centros de acopio, Transito de encomiendas continua)',
 			'14' => 'Transito de bolsa regular (Entregado a terceros y transitos continuan)',
-			'11' => 'Entragado y Cerrado',
-			'12' => 'Entragado con observaciones',
+			'11' => 'Entregado y cerrado',
+			'12' => 'Entregado con observaciones',
 			'13' => 'Entregado a terceros, entrega final',
 			'8' => 'Extraviado',
 			'9' => 'Robado'
