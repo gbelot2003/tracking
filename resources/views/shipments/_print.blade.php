@@ -63,14 +63,14 @@
 				@if(!$transito->firma)
 					----
 				@else
-					<img src="{{ asset('images/transitos/firmas/'. $transito->firma) }}" width="240" />
+					<img src="{{ asset('images/transitos/firmas/'. $transito->firma) }}" width="120" />
 				@endif
 			</td>
 			<td>
 				@if(!$transito->foto)
 					----
 				@else
-					<img src="{{ asset('images/transitos/fotos/'. $transito->foto) }}" width="240" />
+					<img src="{{ asset('images/transitos/fotos/'. $transito->foto) }}" width="120" />
 
 				@endif
 			</td>
