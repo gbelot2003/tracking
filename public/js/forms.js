@@ -48,8 +48,8 @@
         $('form[data-ask-submit]').on('click', function(e){
             e.preventDefault();
             bootbox.dialog({
-                message: "Estas seguro de enviar este transito correcto??",
-                title: "Transito Correcto",
+                message: "Estas seguro de enviar este tránsito correcto??",
+                title: "Tránsito Correcto",
                 buttons: {
                     success: {
                         label: "Enviar!",
