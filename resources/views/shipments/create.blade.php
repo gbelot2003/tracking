@@ -39,7 +39,7 @@
 			$('#generate').on('click', function(e){
 				e.preventDefault();
 				bootbox.dialog({
-					message: "Estas por generar un <b>numero guia</b> para esta encomienda, estas seguro que es lo que deseas??",
+					message: "Estas por generar un <b>numero guía</b> para esta encomienda, estas seguro que es lo que deseas??",
 					title: "Generación de Codigo",
 					buttons:{
 						success:{

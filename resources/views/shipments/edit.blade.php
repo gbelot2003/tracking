@@ -30,7 +30,7 @@
 					title: "Generación de Codigo",
 					buttons:{
 						success:{
-							label: 'Crear numero de guia',
+							label: 'Crear numero de guía',
 							callback: function() {
 								var num = Math.floor(Math.random() * 900000000) + 100000000;
 								$('#code').val(num);

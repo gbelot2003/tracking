@@ -10,7 +10,7 @@
 		<li><a href="{{ url('home') }}">Inicio</a></li>
 		<li><a href="{{ url('shipments') }}">Listado de encomiendas</a></li>
 		<li><a href="{{ action('ShipmentCotroller@show', $paquete->id) }}">{{ $paquete->code }}</a></li>
-		<li><a href="#!">Nuevo transito</a></li>
+		<li><a href="#!">Nuevo tránsito</a></li>
 	</ol>
 @stop
 
