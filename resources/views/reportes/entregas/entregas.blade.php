@@ -1,6 +1,6 @@
 @extends('app-ui')
 
-@section('title', 'Reportes de encomiendas por fecha y estados')
+@section('title', 'Reportes de Encomiendas por Fecha y Estados')
 @section('link-button')
 	<div class="btn-group hidden-print">
 		<a type="button" onclick="window.print();return false;" class="btn btn-material-cyan">Imprimir</a>
@@ -10,7 +10,7 @@
 @section('breadcrumbs')
 	<ol class="breadcrumb hidden-print">
 		<li><a href="{{ url('home') }}">Inicio</a></li>
-		<li><a href="#">Reportes de encomiendas por fecha y estados</a></li>
+		<li><a href="#">Reportes de Encomiendas por Fecha y Estados</a></li>
 	</ol>
 @stop
 
