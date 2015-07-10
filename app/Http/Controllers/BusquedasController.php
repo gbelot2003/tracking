@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\bolsa;
+use App\Bolsa;
 use App\Http\Requests;
 use App\Shipment;
 use Illuminate\Http\Request;
