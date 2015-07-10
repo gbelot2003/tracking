@@ -6,7 +6,7 @@
 	@if($bolsaCerrada != true)
 		<div class="col-md-2">
 			{!! Form::open(['action' => ['TransitosController@store'], 'class' => 'form-inline', 'data-ask-submit']) !!}
-			{!! Form::submit('Transito', ['class' => 'btn btn-primary']) !!}
+			{!! Form::submit('Tránsito', ['class' => 'btn btn-primary']) !!}
 			@if(Auth::user()->hasRole(['centro-acopio']))
 				{!! Form::hidden('estado_id', 3) !!}
 			@else
@@ -17,14 +17,14 @@
 			{!! Form::close() !!}
 		</div>
 		<div class="col-md-3">
-			<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Transito observaciones</a>
+			<a id="virtual-form" class="btn btn-material-cyan" href="{{ action('TransitosController@create', $paquete->id) }}">Tránsito observaciones</a>
 		</div>
 	@endif
 </div>
 @endif
 
 <table class="table table-hover table-border">
-	<caption>Estados de transito de esta encomienda</caption>
+	<caption>Estados de tránsito de esta encomienda</caption>
 	<thead>
 	<th>Estado</th>
 	<th>Usuario</th>
