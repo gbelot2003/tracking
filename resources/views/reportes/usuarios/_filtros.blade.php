@@ -5,9 +5,9 @@
 				<div class="col-md-12">
 					<div class="col-md-12">
 						<div class="btn-group" role="group" aria-label="...">
-							<button type="button" class="btn btn-primary btn-sm" v-on="click: getShipmentsUsersStates(userId, inicio, final, estado_id)">Buscar</button>
-							<button type="button" class="btn btn-warning btn-sm" v-on="click: getShipmentsCompleate(userId, inicio, final)">Entregadas en el periodo</button>
-							<button type="button" class="btn btn-danger btn-sm" v-on="click: getShipmentsLost(userId, inicio, final)">Extraviadas o robadas en el periodo</button>
+							<button type="button" class="btn btn-primary" v-on="click: getShipmentsUsersStates(userId, inicio, final, estado_id)">Buscar</button>
+							<button type="button" class="btn btn-info" v-on="click: getShipmentsCompleate(userId, inicio, final)">Entregadas en el periodo</button>
+							<button type="button" class="btn yellow darken-1" v-on="click: getShipmentsLost(userId, inicio, final)">Extraviadas o robadas en el periodo</button>
 						</div>
 					</div>
 				</div>
