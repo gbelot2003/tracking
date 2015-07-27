@@ -19,8 +19,13 @@ class SaveBolsas extends Event {
 	public function __construct($request)
 	{
 		$this->request = $request;
-		$this->shipments_id = $request['shipment_id'];
-		$this->count = count($this->shipments_id);
+		if(isset($request['shipment_id'])){
+			$this->shipments_id = $request['shipment_id'];
+			$this->count = count($this->shipments_id);
+		}
+		else {
+			return false;
+		}
 	}
 
 }
