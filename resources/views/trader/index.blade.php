@@ -18,6 +18,7 @@
 	<table id="table" class="table table-bordered table-responsive">
 		<caption>Personal que puede enviar o recibir correspondencia</caption>
 		<thead>
+			<th>id</th>
 			<th>Nombre Completo</th>
 			<th>Establecimento</th>
 			<th>Sección</th>
@@ -37,6 +38,7 @@
 				serverSide: true,
 				ajax: '{{ URL::to("listados/personal") }}',
 				columns: [
+					{data: 'id', name: 'id'},
 					{data: 'fullname', name: 'traders.name', render: function( data, type, full, meta){
 						return "<a href='personal/"+ full.id +"' >" + full.name + "</a>"
 					}},
