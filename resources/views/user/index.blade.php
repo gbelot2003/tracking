@@ -18,6 +18,7 @@
 
 	<table id="users-table" class="table table-condensed">
 		<thead>
+		<th>id</th>
 		<th>Nombre</th>
 		<th>email</th>
 		<th>Roles</th>
@@ -31,6 +32,7 @@
 		<tbody>
 		@foreach($users as $user)
 			<tr>
+				<td>{{ $user->id }}</td>
 				<td><a href="{{ action('UserController@show', $user->id) }}">{{ $user->name }}</a></td>
 				<td>{{ $user->email }}</td>
 				<td>
