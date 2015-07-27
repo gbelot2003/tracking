@@ -38,7 +38,7 @@
 				serverSide: true,
 				ajax: '{{ URL::to("listados/personal") }}',
 				columns: [
-					{data: 'id', name: 'id'},
+					{data: 'id', name: 'traders.id'},
 					{data: 'fullname', name: 'traders.name', render: function( data, type, full, meta){
 						return "<a href='personal/"+ full.id +"' >" + full.name + "</a>"
 					}},
