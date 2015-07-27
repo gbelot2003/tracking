@@ -34,7 +34,7 @@
 			<hr />
 		</div>
 
-		<div class="col-md-12" v-if="completions.length">
+		<div class="col-md-12">
 			<table id="bolsas" class="table table-hovered table-bordered">
 				<theader>
 					<th>No. Guia</th>
