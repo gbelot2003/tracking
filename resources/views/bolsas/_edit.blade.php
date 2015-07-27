@@ -8,6 +8,15 @@
 				{!! Form::text("code", null, ['class' => 'form-control', 'readonly' => 'readonly']) !!}
 			</div>
 		</div>
+
+		<div class="col-md-3">
+			<!-- remitente_id Form Input -->
+			<div class="form-group">
+				{!! Form::label('remitente_id', "Remitente(Bolsa) :") !!}
+				{!! Form::select('remitente_id', $establecimientos, $envio, ['class' => 'select form-control', 'id' => '']) !!}
+			</div>
+		</div>
+
 		<div class="col-md-3">
 			<!-- sender Form Input -->
 			<div class="form-group">
@@ -15,6 +24,7 @@
 				{!! Form::select('destino_id', $establecimientos, $bolsas->establecimiento_recive_id, ['class' => 'select form-control']) !!}
 			</div>
 		</div>
+
 		<div class="col-md-2">
 			<div><label>Fecha: </label></div>
 			{{ $bolsas->created_at }}

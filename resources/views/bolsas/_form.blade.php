@@ -10,11 +10,20 @@
 		<div class="col-md-2">
 			<button id="generate" class="btn btn btn btn-material-indigo">Generar</button>
 		</div>
-		<div class="col-md-6">
+
+		<div class="col-md-3">
+			<!-- sender Form Input -->
+			<div class="form-group">
+				{!! Form::label('remitente_id', "Remitente(Bolsa) :") !!}
+				{!! Form::select('remitente_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_envio_id']) !!}
+			</div>
+		</div>
+
+		<div class="col-md-3">
 			<!-- sender Form Input -->
 			<div class="form-group">
 				{!! Form::label('destino_id', "Destino(Bolsa) :") !!}
-				{!! Form::select('destino_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'sender-select']) !!}
+				{!! Form::select('destino_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_recive_id']) !!}
 			</div>
 		</div>
 
