@@ -116,9 +116,7 @@ class BolsasController extends Controller {
 	{
 		$shipments_id = $request->input('shipment_id');
 		$bolsas = Bolsa::findOrFail($id);
-		$bolsas->update([
-			'establecimiento_recive_id' => $request->input('destino_id'),
-		]);
+		$bolsas->update($request->all());
 
 		if($request->input('removed-items')){
 			foreach($request->input('removed-items') as $shipments => $id)

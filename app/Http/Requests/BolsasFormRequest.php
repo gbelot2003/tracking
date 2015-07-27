@@ -24,9 +24,8 @@ class BolsasFormRequest extends Request {
 
 		if($this->method == 'PUT'){
 			$edit = [
-
-				'envios_establecimiento_id' => 'interger',
-				'destino_id' => 'integer',
+				'establecimiento_envio_id' => 'integer',
+				'establecimiento_recive_id' => 'integer',
 				'establecimiento_id' => 'integer'
 			];
 
@@ -35,8 +34,8 @@ class BolsasFormRequest extends Request {
 
 			$create = [
 				'code' => "required|integer|unique:bolsas",
-				'envios_establecimiento_id' => 'interger',
-				'destino_id' => 'integer',
+				'establecimiento_envio_id' => 'integer',
+				'establecimiento_recive_id' => 'integer',
 				'establecimiento_id' => 'integer'
 			];
 

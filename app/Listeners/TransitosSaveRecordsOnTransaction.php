@@ -19,24 +19,28 @@ class TransitosSaveRecordsOnTransaction {
 	 */
 	public function handle(SaveTransitos $event)
 	{
-		DB::transaction(function() use ($event, &$data){
+		if(isset($event->request['shipment_id'])){
+			DB::transaction(function() use ($event, &$data){
 
-			$transitos = Transito::create([
-				'shipment_id' => $event->request['shipment_id'],
-				'estado_id' => $event->request['estado_id'],
-				'establecimiento_id' => $event->establecimiento,
-				'user_id' => Auth::id(),
-				'details' => $event->request['details'],
-				'firma' => $event->firma,
-				'foto' => $event->foto
-			]);
+				$transitos = Transito::create([
+					'shipment_id' => $event->request['shipment_id'],
+					'estado_id' => $event->request['estado_id'],
+					'establecimiento_id' => $event->establecimiento,
+					'user_id' => Auth::id(),
+					'details' => $event->request['details'],
+					'firma' => $event->firma,
+					'foto' => $event->foto
+				]);
 
-			$event->shipment->estado_id = $event->request['estado_id'];
-			$event->shipment->user_id = Auth::id();
-			$event->shipment->transito_id = $transitos->id;
-			$event->shipment->firma = $event->firma;
-			$event->shipment->save();
-		});
+				$event->shipment->estado_id = $event->request['estado_id'];
+				$event->shipment->user_id = Auth::id();
+				$event->shipment->transito_id = $transitos->id;
+				$event->shipment->firma = $event->firma;
+				$event->shipment->save();
+			});
+		} else {
+			return false;
+		}
 	}
 
 }

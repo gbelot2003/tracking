@@ -25,8 +25,8 @@ class BolsasSaveRecordsOnTransaction {
 
 			$event->bolsas = Bolsa::create([
 				'code' => $event->request['code'],
-				'establecimiento_envio_id' =>  Auth::user()->establecimiento_id,
-				'establecimiento_recive_id' => $event->request['destino_id'],
+				'establecimiento_envio_id' =>  $event->request['establecimiento_envio_id'],
+				'establecimiento_recive_id' => $event->request['establecimiento_recive_id'],
 				'estado_id'	=> 3,
 				'user_id'	=>Auth::id(),
 			]);
@@ -35,7 +35,7 @@ class BolsasSaveRecordsOnTransaction {
 			$event->transitoBolsas = TransitoBolsa::create([
 				'bolsa_id' => $event->bolsas->id,
 				'estado_id' => 3,
-				'establecimiento_id' => Auth::user()->establecimiento_id,
+				'establecimiento_id' => $event->request['establecimiento_envio_id'],
 				'user_id' => Auth::id(),
 				'details' => 'Bolsa creada'
 			]);
@@ -44,7 +44,7 @@ class BolsasSaveRecordsOnTransaction {
 				$event->transito = Transito::create([
 					'shipment_id' => $event->shipments_id[$i],
 					'estado_id' => 4,
-					'establecimiento_id' => Auth::user()->establecimiento_id,
+					'establecimiento_id' => $event->request['establecimiento_envio_id'],
 					'user_id'	=> Auth::id()
 				]);
 				DB::table('shipments')->where('id', $event->shipments_id[$i])->update([

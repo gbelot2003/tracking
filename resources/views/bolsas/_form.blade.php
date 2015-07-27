@@ -15,15 +15,15 @@
 			<!-- sender Form Input -->
 			<div class="form-group">
 				{!! Form::label('remitente_id', "Remitente(Bolsa) :") !!}
-				{!! Form::select('remitente_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_envio_id']) !!}
+				{!! Form::select('establecimiento_envio_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_envio_id']) !!}
 			</div>
 		</div>
 
 		<div class="col-md-3">
 			<!-- sender Form Input -->
 			<div class="form-group">
-				{!! Form::label('destino_id', "Destino(Bolsa) :") !!}
-				{!! Form::select('destino_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_recive_id']) !!}
+				{!! Form::label('establecimiento_recive_id', "Destino(Bolsa) :") !!}
+				{!! Form::select('establecimiento_recive_id', $establecimientos, null, ['class' => 'select form-control', 'id' => 'establecimiento_recive_id']) !!}
 			</div>
 		</div>
 
