@@ -101,9 +101,9 @@ class BolsasController extends Controller {
 
 		$remitente = Auth::user()->establecimiento->name;
 		$remitente_id = Auth::user()->establecimiento_id;
-		$establecimientos = Establecimiento::where('id', '!=', $remitente_id)->lists('name', 'id');
-
-		return View('bolsas.edit', compact('bolsas', 'establecimientos', 'bolsaCerrada'));
+		$envio = $bolsas->establecimiento_envio_id;
+		$establecimientos = Establecimiento::lists('name', 'id');
+		return View('bolsas.edit', compact('bolsas', 'establecimientos', 'bolsaCerrada', 'envio'));
 	}
 
 	/**
@@ -127,7 +127,6 @@ class BolsasController extends Controller {
 				$transito->update([
 					'estado_id' => 3
 				]);
-
 			}
 		}
 
