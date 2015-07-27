@@ -15,6 +15,8 @@
         $('#secciones-select').select2({ placeholder: 'Escoge una Sección' });
         $('#cargo-select').select2({ placeholder: 'Escoge una Sección' });
         $('#dept-select').select2();
+        $('#establecimiento_recive_id').select2();
+        $('#establecimiento_envio_id').select2();
         $('#tipo-select').select2();
         $('#sender-select').select2({ placeholder: "Select a state" });
         $('#rol-select').select2({placeholder: 'Escoge un permiso'});
