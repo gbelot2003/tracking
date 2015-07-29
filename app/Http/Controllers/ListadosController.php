@@ -132,12 +132,13 @@ class ListadosController extends Controller {
 	 */
 	public function getEstablecimientos($empresa_id)
 	{
-
+		/*** Pendiente replanteamiento de este comportamiento en general **/
 		$empresa = (int) $empresa_id;
-		if($empresa === 1){ //si la empresa es unidos expres
+		if($empresa === 1){ //si la empresa es unidos express
 			$establecimiento = Establecimiento::where('empresa_id', '!=', 2);
 		} else {
-			$establecimiento = Establecimiento::where('empresa_id', '=', $empresa);
+			//$establecimiento = Establecimiento::where('empresa_id', '=', $empresa);
+			$establecimiento = Establecimiento::where('empresa_id', '!=', 1);
 		}
 
 		$listado = $establecimiento->Lists('name', 'id');
