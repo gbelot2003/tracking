@@ -166,6 +166,7 @@ class ListadosController extends Controller {
 									'bestab.name as reciber_agen',
 									'bseccion.name as reciber_section',
 									'shipments.description as description',
+									'shipments.created_at as created_at',
 									])
 									->distinct()
 									->Join('traders as sender', 'sender_id', '=', 'sender.id')
@@ -174,7 +175,8 @@ class ListadosController extends Controller {
 									->Join('establecimientos as bestab', 'reciber.establecimiento_id', '=', 'bestab.id')
 									->Join('seccions as aseccion', 'aseccion.id', '=', 'sender.seccion_id')
 									->Join('seccions as bseccion', 'bseccion.id', '=', 'reciber.seccion_id')
-									->orderBy('shipments.id', '=', 'ASC')
+									->orderBy('shipments.created_at', '=', 'DESC')
+									->limit(3500)
 									->get();
 		return Datatables::of($traders)
 			->make(true);
