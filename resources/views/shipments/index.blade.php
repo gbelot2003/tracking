@@ -32,6 +32,7 @@
 			<th>sender_agen</th>
 			<th>reciber_agen</th>
 			<th>reciber_section</th>
+			<th>Creado</th>
 			<th>No. Guia</th>
 			<th>Remitente</th>
 			<th>Destinatario</th>
@@ -48,7 +49,7 @@
 			$(document).ready(function(){
 				var table = $('#shipmentsTable').DataTable({
 					"pageLength": 10,
-					"order": [[ 0, "desc" ]],
+					"order": [[ 6, "desc" ]],
 					processing: true,
 					serverSide: true,
 					ajax: '{{ URL::to("listados/shipments") }}',
@@ -59,6 +60,7 @@
 						{data: 'reciber_agen', name: 'reciber_agen', "visible": false, searchable: true},
 						{data: 'sender_section', name: 'sender_section', "visible": false, searchable: true},
 						{data: 'reciber_section', name: 'reciber_section', "visible": false, searchable: true},
+						{data: 'created_at', name: 'created_at', "visible": false, searchable: false},
 						{data: 'code', name: "code",
 							render: function(data, type, full, meta){
 								return "<a href='shipments/" + full.id + "' >" + full.code + "</a>"
