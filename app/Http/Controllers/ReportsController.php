@@ -36,22 +36,26 @@ class ReportsController extends Controller {
 		if($state != 0 and $stablish == 0){
 
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
+				->whereBetween('updated_at', [$bdate, $edate])
 				->where('estado_id', '=', $state)
-				->whereBetween('updated_at', [$bdate, $edate])->get();
+				->get();
 
 		} elseif($state != 0 and $stablish != 0){
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
+				->whereBetween('updated_at', [$bdate, $edate])
 				->whereHas('recivers', function($q) use (&$data, $stablish) {
 					$q->where('establecimiento_id', '=', $stablish);
 				})
-				->where('estado_id', '=', $state)
-				->whereBetween('updated_at', [$bdate, $edate])->get();
+				->where('estado_id', '=', $state)->get();
 
 		} elseif($state == 0 and $stablish != 0){
 
 			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
-				->where('establecimiento', '=', $stablish)
-				->whereBetween('updated_at', [$bdate, $edate])->get();
+				->whereBetween('updated_at', [$bdate, $edate])
+				->whereHas('recivers', function($q) use (&$data, $stablish) {
+					$q->where('establecimiento_id', '=', $stablish);
+				})->get();
+
 
 		} else{
 
@@ -68,12 +72,13 @@ class ReportsController extends Controller {
 	{
 		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
+		$range = [$bdate, $edate];
 
+		//dd($bdate ." " . $edate);
 		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
-			->where('estado_id', '=', 11)
-			->orWhere('estado_id', '=', 12)
-			->orWhere('estado_id', '=', 13)
-			->whereBetween('updated_at', [$bdate, $edate])->get();
+			->whereBetween('updated_at', [$bdate, $edate])
+			->whereIn('estado_id', array(11, 12, 13))
+			->get();
 
 		return $shipments;
 	}
@@ -84,10 +89,9 @@ class ReportsController extends Controller {
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
 		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
-			->where('estado_id', '=', 8)
-			->orWhere('estado_id', '=', 9)
-			->orWhere('estado_id', '=', 10)
-			->whereBetween('updated_at', [$bdate, $edate])->get();
+			->whereBetween('updated_at', [$bdate, $edate])
+			->whereIn('estado_id', array(8, 9, 10))
+			->get();
 
 		return $shipments;
 	}
