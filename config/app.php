@@ -150,6 +150,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'yajra\Datatables\DatatablesServiceProvider',
+		'Spatie\Backup\BackupServiceProvider'
 	],
 
 	/*
