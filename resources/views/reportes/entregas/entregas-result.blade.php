@@ -15,11 +15,11 @@
 					<th>Remitente</th>
 					<th>Destinatario</th>
 					<th>Fecha/inicio</th>
-					<th v-if="entregados | rows.length">Fecha/entrega</th>
+					<th v-if="entregados">Fecha/entrega</th>
 					<th>Estado</th>
-					<th v-if="entregados | rows.length">Firma</th>
+					<th v-if="entregados">Firma</th>
 					<th>Detalles</th>
-					<th v-if="entregados | rows.length">Tiempo de entrega</th>
+					<th v-if="entregados">Tiempo de entrega</th>
 					</thead>
 					<tbody>
 						<tr v-if="! rows.length">
@@ -40,15 +40,15 @@
 								@{{ row.recivers.establecimiento.name }}
 							</td>
 							<td class="smaller">@{{ row.created_at }}</td>
-							<td class="smaller" v-if="entregados | rows.length">@{{ row.updated_at }}</td>
+							<td class="smaller" v-if="entregados">@{{ row.updated_at }}</td>
 							<td class="smaller">@{{ row.estados.name }}</td>
-							<td class="" v-if="entregados | rows.length">
+							<td class="" v-if="entregados">
 								<img width="70px" src="{{ URL::asset('images/transitos/firmas') }}/@{{ row.firma }} " alt=""/>
 							</td>
 							<td class="smaller">
 								@{{ row.btransitos.details }}
 							</td>
-							<td class="smaller" v-if="entregados | rows.length">@{{ row.differ }}</td>
+							<td class="smaller" v-if="entregados">@{{ row.differ }}</td>
 						</tr>
 					</tbody>
 					<tfooter v-if="rows.length">
