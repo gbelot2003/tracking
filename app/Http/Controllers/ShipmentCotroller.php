@@ -118,8 +118,12 @@ class ShipmentCotroller extends Controller {
 		$paquete->with(['transitos' => function($q){
 			$q->orderBy('id', 'desc')->get();
 		}]);
+		
+		$transitos = Transito::where('shipment_id', '=', $id)
+						->order('id', 'desc')
+						->get();
 
-		return View('shipments.show', compact('paquete', 'bolsaCerrada'));
+		return View('shipments.show', compact('paquete', 'bolsaCerrada', 'transitos'));
 	}
 
 	/**
