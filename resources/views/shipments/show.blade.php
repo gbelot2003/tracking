@@ -37,7 +37,7 @@
 			</div>
 
 			<div class="col-md-6 hidden-print">
-				
+				@include('shipments._sender')
 			</div>
 
 			<div class="col-md-6 hidden-print">
