@@ -43,7 +43,7 @@
 			<div class="col-md-6 hidden-print">
 				@include('shipments._reciver')
 			</div>
-			
+			@include('shipments._print')
 		</div>
 	</div>
 	<div class="col-md-12 hidden-print">
