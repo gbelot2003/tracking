@@ -35,7 +35,7 @@
 	<th>Hora</th>
 	</thead>
 	<tbody>
-	@foreach($paquete->transitos as $transito)
+	@foreach($transitos as $transito)
 		<tr>
 			<td>{{ $transito->estados->name }}</td>
 			<td>{{ $transito->user->name }}</td>
