@@ -47,7 +47,7 @@
 		</div>
 	</div>
 	<div class="col-md-12 hidden-print">
-		
+		@include('shipments._rel_transitos')
 	</div>
 @stop
 @section('post-script')
