@@ -57,7 +57,9 @@ class ListadosController extends Controller {
 					'establecimientos.name as establecimiento',
 					'seccions.name as seccion',
 					'userstatuses.name as estado'
-				])->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
+				])
+				->where('userstatus_id', '=', 1)
+				->Join('establecimientos', 'establecimiento_id', '=', 'establecimientos.id')
 				->join('seccions', 'seccion_id', '=', 'seccions.id')
 				->Join('userstatuses', 'userstatus_id', '=', 'userstatuses.id');
 
