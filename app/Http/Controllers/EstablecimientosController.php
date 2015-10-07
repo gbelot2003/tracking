@@ -30,7 +30,6 @@ class EstablecimientosController extends Controller {
 	public function index()
 	{
 		$establecimientos = Establecimiento::all();
-		dd($establecimientos->all());
 		return View('establecimientos.index', compact('establecimientos'));
 	}
 
