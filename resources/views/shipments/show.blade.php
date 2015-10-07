@@ -37,17 +37,17 @@
 			</div>
 
 			<div class="col-md-6 hidden-print">
-				@include('shipments._sender')
+				
 			</div>
 
 			<div class="col-md-6 hidden-print">
-				@include('shipments._reciver')
+				
 			</div>
-			@include('shipments._print')
+			
 		</div>
 	</div>
 	<div class="col-md-12 hidden-print">
-		@include('shipments._rel_transitos')
+		
 	</div>
 @stop
 @section('post-script')
