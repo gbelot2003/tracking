@@ -120,7 +120,7 @@ class ShipmentCotroller extends Controller {
 		}]);
 		
 		$transitos = Transito::where('shipment_id', '=', $id)
-						->order('id', 'desc')
+						->orderBy('id', 'desc')
 						->get();
 
 		return View('shipments.show', compact('paquete', 'bolsaCerrada', 'transitos'));
