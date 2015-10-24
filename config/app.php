@@ -138,7 +138,6 @@ return [
 		'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
 		'Orangehill\Iseed\IseedServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
-		'Dinesh\Barcode\BarcodeServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -203,9 +202,6 @@ return [
 		'Entrust' 		=> 'Zizaco\Entrust\EntrustFacade',
 		'Datatables' 	=> 'yajra\Datatables\Datatables',
 		'PDF' => 'Barryvdh\DomPDF\Facade',
-		'DNS1D' => 'Dinesh\Barcode\Facades\DNS1DFacade',
-		'DNS2D' => 'Dinesh\Barcode\Facades\DNS2DFacade',
-
 	],
 
 ];
