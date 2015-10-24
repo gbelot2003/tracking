@@ -14,7 +14,7 @@
 			<tr>
 				<td>
 					<div class="visible-print-block">
-						{!! \DNS2D::getBarcodeSVG($bolsas->code, "QRCODE",4,4); !!}
+
 					</div>
 				</td>
 				<td>
@@ -22,7 +22,7 @@
 				</td>
 				<td>
 					<div class="visible-print-block">
-						{!! \DNS1D::getBarcodeSVG($bolsas->code, "C39",1,70); !!}
+
 					</div>
 				</td>
 			</tr>
