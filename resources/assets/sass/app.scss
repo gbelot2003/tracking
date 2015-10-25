@@ -29,3 +29,15 @@
   margin-left: -32px; /* -1 * image width / 2 */
   margin-top: -32px; /* -1 * image height / 2 */
 }
+
+/*btn fix para font-awsome*/
+.btn-sm{
+  width: 35px !important;
+  height: 35px !important;
+  font-size: 18px !important;
+  .fa{
+    position: relative;
+    top: -10px;
+    left:-5px;
+  }
+}
