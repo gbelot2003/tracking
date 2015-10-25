@@ -52,6 +52,7 @@
 			</div>
 		</div>
 	</div>
+	@yield('modal')
 	@include('partials._form-search')
 	<!-- Scripts -->
 	<script src="{{ URL::asset("js/app.js") }}"></script>
