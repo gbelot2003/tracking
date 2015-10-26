@@ -17,7 +17,7 @@
 			<label class="final" for="">Final</label>
 			<select name="final" id="final" v-model="final">
 				@foreach($dates as $item)
-					<option value="{{ $item->year }}-{{ $item->mes  }}-1">{{ $item->year }}-{{ $item->mes  }}</option>
+					<option value="{{ $item->year }}-{{ $item->mes  }}-31">{{ $item->year }}-{{ $item->mes  }}</option>
 				@endforeach
 			</select>
 		</div>
