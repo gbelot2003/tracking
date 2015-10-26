@@ -112,7 +112,7 @@ class ReportsController extends Controller {
 							SUM(IF(estado_id = 9,1,0)) robados, SUM(IF(estado_id = 10,1,0)) danocompleto,
 							SUM(IF(estado_id = 11,1,0)) entregadocerrado, SUM(IF(estado_id = 12,1,0)) entregadobs,
 							SUM(IF(estado_id = 13,1,0)) entregadocerradofinal,
-							MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
+							YEAR(updated_at) as year, MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
 							"
 				)
 			)

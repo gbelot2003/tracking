@@ -36,67 +36,67 @@
 		<tr>
 			<td>{{ $item->dia }}</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/1">
 					{{ number_format($item->espera) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/2">
 					{{ number_format($item->regular) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/3">
 					{{ number_format($item->acopio) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/4">
 					{{ number_format($item->transporte) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/5">
 					{{ number_format($item->dligero) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/6">
 					{{ number_format($item->dgrave) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/8">
 					{{ number_format($item->extrabiado) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/9">
 					{{ number_format($item->robados) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/10">
 					{{ number_format($item->danocompleto) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/11">
 					{{ number_format($item->entregadocerrado) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/12">
 					{{ number_format($item->entregadobs) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/7">
 					{{ number_format($item->eterceroscontinua) }}
 				</a>
 			</td>
 			<td>
-				<a href="">
+				<a target="_blank" href="/reportes/reporte-listado-mensual-por-estado/{{ $item->year }}-{{ $item->mes }}-{{ $item->dia }}/13">
 					{{ number_format($item->entregadocerradofinal) }}
 				</a>
 			</td>

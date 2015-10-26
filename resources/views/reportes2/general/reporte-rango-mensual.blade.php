@@ -108,7 +108,7 @@
 							</a>
 						</td>
 						<td>
-							<a target="_blank" target="_blank" href="/reportes/reporte-listado-mes/{{ \Carbon\Carbon::parse($item->fecha)->year }}-{{ \Carbon\Carbon::parse($item->fecha)->month }}-1">
+							<a target="_blank" target="_blank" href="/reportes/reporte-listado-mes/{{ $item->year }}-{{ $item->mes }}-1">
 								<strong>{{ number_format($item->subtotal) }}</strong>
 							</a>
 						</td>
