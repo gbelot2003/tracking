@@ -3,15 +3,23 @@
 
 	<div class="col-md-2">
 		<div class="form-group">
-			<label class="" for="">Fecha de inicio</label>
-			{!! Form::input('date', 'created_at', $date_init, ['class' => 'fecha', 'max' => date('Y-m-d'), 'v-model' => 'inicio']) !!}
+			<label class="inicio" for="">Inicio</label>
+			<select name="inicio" id="inicio" v-model="inicio">
+				@foreach($dates as $item)
+				<option value="{{ $item->year }}-{{ $item->mes  }}-1">{{ $item->year }}-{{ $item->mes  }}</option>
+				@endforeach
+			</select>
 		</div>
 	</div>
 
 	<div class="col-md-2">
 		<div class="form-group">
-			<label class="" for="">Fecha final</label>
-			{!! Form::input('date', 'created_at', $date_finale, ['class' => 'fecha', 'max' => date('Y-m-d'), 'v-model' => 'final']) !!}
+			<label class="final" for="">Final</label>
+			<select name="final" id="final" v-model="final">
+				@foreach($dates as $item)
+					<option value="{{ $item->year }}-{{ $item->mes  }}-1">{{ $item->year }}-{{ $item->mes  }}</option>
+				@endforeach
+			</select>
 		</div>
 	</div>
 </div>

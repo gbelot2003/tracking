@@ -22,15 +22,13 @@ class ReportsController extends Controller {
 	 * Reporte Rango Mensual
 	 * @param null $date_init
 	 * @param null $date_finale
-	 * @param null $establecimientos
-	 * @return \BladeView|bool|\Illuminate\View\View
+	 * @return \BladeView|bool|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
 	 */
-	public function getReporteRangoMensual($date_init = null, $date_finale = null, $establecimientos = null){
+	public function getReporteRangoMensual($date_init = null, $date_finale = null){
 
-		$establecimientoList = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
-		$estadosList = Estado::where('id', '!=', 14 )
-			->where('id', '!=', 15)
-			->lists('name', 'id');
+		if($date_init < $date_finale){
+			return redirect()->back()->with('message', 'La fecha de incio no puede ser menor a la fecha final');
+		}
 
 		if(is_null($date_init)){
 			$date_init = Date('Y-m-d');
@@ -42,9 +40,10 @@ class ReportsController extends Controller {
 		}
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
-		$establecimiento = null;
-		if(!is_null($establecimientos)){
-			$establecimiento = explode(",", $establecimientos);
+		$dates = Shipment::select(DB::raw("YEAR(updated_at) as year, MONTH(updated_at) as mes"))
+			->groupBy(DB::raw("MONTH(updated_at)"))
+			->orderBy("updated_at", "desc")
+			->get();
 
 			$shipments = Shipment::with('btransitos')
 				->select('updated_at as fecha, estado_id',
@@ -62,9 +61,6 @@ class ReportsController extends Controller {
 					)
 				)
 				->whereBetween('updated_at', [$bdate, $edate])
-				->whereHas('btransitos', function($q) use (&$data, $establecimiento) {
-					$q->whereIn('establecimiento_id', $establecimiento);
-				})
 				->groupBy(DB::raw("MONTH(updated_at)"))
 				->orderBy("updated_at", "desc")
 				->Paginate(20);
@@ -84,48 +80,11 @@ class ReportsController extends Controller {
 			$entregadobs = $shipments->sum("entregadobs");
 			$entregadocerradofinal = $shipments->sum("entregadocerradofinal");
 
-		} else {
-			$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
-				->select('updated_at as fecha, estado_id',
-					DB::raw(
-						"
-							SUM(IF(estado_id = 1,1,0)) espera, SUM(IF(estado_id = 2,1,0)) regular,
-							SUM(IF(estado_id = 3,1,0)) acopio, SUM(IF(estado_id = 4,1,0)) transporte,
-							SUM(IF(estado_id = 5,1,0)) dligero, SUM(IF(estado_id = 6,1,0)) dgrave,
-							SUM(IF(estado_id = 7,1,0)) eterceroscontinua, SUM(IF(estado_id = 8,1,0)) extrabiado,
-							SUM(IF(estado_id = 9,1,0)) robados, SUM(IF(estado_id = 10,1,0)) danocompleto,
-							SUM(IF(estado_id = 11,1,0)) entregadocerrado, SUM(IF(estado_id = 12,1,0)) entregadobs,
-							SUM(IF(estado_id = 13,1,0)) entregadocerradofinal,
-							YEAR(updated_at) as year,MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
-							"
-					)
-				)
-				->groupBy(DB::raw("MONTH(updated_at)"))
-				->orderBy("updated_at", "desc")
-				->Paginate(20);
-
-			$total = $shipments->sum("subtotal");
-			$espera = $shipments->sum("espera");
-			$regular = $shipments->sum("regular");
-			$acopio = $shipments->sum("acopio");
-			$transporte = $shipments->sum("transporte");
-			$dligero = $shipments->sum("dligero");
-			$dgrave = $shipments->sum("dgrave");
-			$eterceroscontinua = $shipments->sum("eterceroscontinua");
-			$extrabiado = $shipments->sum("extrabiado");
-			$robados = $shipments->sum("robados");
-			$danocompleto = $shipments->sum("danocompleto");
-			$entregadocerrado = $shipments->sum("entregadocerrado");
-			$entregadobs = $shipments->sum("entregadobs");
-			$entregadocerradofinal = $shipments->sum("entregadocerradofinal");
-		}
 
 		//dd($shipments->all());
 		return View('reportes2.general.reporte-rango-mensual', compact(
-			'estadosList', 'establecimientoList', 'shipments', 'total', 'date_init', 'date_finale',
-			'espera', 'regular', 'acopio', 'transporte', 'dligero', 'dgrave', 'eterceroscontinua',
-			'extrabiado', 'robados', 'danocompleto', 'entregadocerrado', 'entregadobs', 'entregadocerradofinal',
-			'establecimiento'
+			'shipments', 'total', 'date_init', 'date_finale', 'espera', 'regular', 'acopio', 'transporte', 'dligero', 'dgrave', 'eterceroscontinua',
+			'extrabiado', 'robados', 'danocompleto', 'entregadocerrado', 'entregadobs', 'entregadocerradofinal','establecimiento', 'dates'
 		));
 	}
 
