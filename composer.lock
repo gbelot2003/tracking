@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d45df5bf223941cf914143dcd367b950",
+    "hash": "00388a4ef309dc39d1b757ed905f7a5d",
+    "content-hash": "8ed0136d545b08442f255c84a473b826",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -169,58 +170,6 @@
                 "utils"
             ],
             "time": "2015-07-23 00:54:12"
-        },
-        {
-            "name": "dinesh/barcode",
-            "version": "5.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dineshrabara/barcode.git",
-                "reference": "bf5805731d3f5ee026fe12adeb8feced7d2ff48e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dineshrabara/barcode/zipball/bf5805731d3f5ee026fe12adeb8feced7d2ff48e",
-                "reference": "bf5805731d3f5ee026fe12adeb8feced7d2ff48e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.0.x",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Dinesh\\Barcode": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dinesh Rabara",
-                    "email": "dinesh.rabara@gmail.com"
-                }
-            ],
-            "description": "Barcode generator like Qr Code , PDF417,C39, C39+,C39E,C39E+,C93,S25,S25+,I25,I25+,C128,C128A,C128B,C128C,2-Digits UPC-Based Extention,5-Digits UPC-Based Extention,EAN 8,EAN 13,UPC-A,UPC-E,MSI (Variation of Plessey code) ",
-            "keywords": [
-                "CODABAR",
-                "CODE 128",
-                "CODE 39",
-                "barcode",
-                "datamatrix",
-                "ean",
-                "laravel",
-                "pdf417",
-                "qr code",
-                "qrcode"
-            ],
-            "time": "2015-04-17 04:46:41"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2566,55 +2515,6 @@
             "time": "2015-08-19 14:29:06"
         },
         {
-            "name": "orangehill/iseed",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/orangehill/iseed.git",
-                "reference": "0886919f3f0f7513ec334af22beeddcb3f28b7e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/orangehill/iseed/zipball/0886919f3f0f7513ec334af22beeddcb3f28b7e2",
-                "reference": "0886919f3f0f7513ec334af22beeddcb3f28b7e2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "illuminate/filesystem": "5.x",
-                "mockery/mockery": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Orangehill\\Iseed": "src/"
-                },
-                "classmap": [
-                    "src/Orangehill/Iseed/Exceptions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Tihomir Opacic",
-                    "email": "tihomir.opacic@orangehilldev.com"
-                }
-            ],
-            "description": "Generate a new Laravel database seed file based on data from the existing database table.",
-            "keywords": [
-                "artisan",
-                "generators",
-                "laravel",
-                "seed"
-            ],
-            "time": "2015-03-19 09:48:32"
-        },
-        {
             "name": "phpdocumentor/reflection-docblock",
             "version": "2.0.4",
             "source": {
@@ -3626,9 +3526,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "zizaco/entrust": 20,
-        "dinesh/barcode": 20,
-        "orangehill/iseed": 20
+        "zizaco/entrust": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -18,22 +18,19 @@ class ReportsController extends Controller {
 		$this->middleware('auth');
 	}
 
-	public function getReporteGeneral($date_init = null, $date_finale = null, $estadoR = null, $establecimientoR = null){
+	/**
+	 * Reporte Rango Mensual
+	 * @param null $date_init
+	 * @param null $date_finale
+	 * @param null $establecimientos
+	 * @return \BladeView|bool|\Illuminate\View\View
+	 */
+	public function getReporteRangoMensual($date_init = null, $date_finale = null, $establecimientos = null){
 
 		$establecimientoList = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
 		$estadosList = Estado::where('id', '!=', 14 )
 			->where('id', '!=', 15)
 			->lists('name', 'id');
-
-		$estados = null;
-		if(!is_null($estadoR)){
-			$estados = explode(",", $estadoR);
-		}
-
-		$establecimientos = null;
-		if(!is_null($establecimientoR)){
-			$establecimientos = explode(",", $establecimientoR);
-		}
 
 		if(is_null($date_init)){
 			$date_init = Date('Y-m-d');
@@ -45,117 +42,190 @@ class ReportsController extends Controller {
 		}
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
-		if(!is_null($date_init) && !is_null($bdate)){
-			if(is_null($estados) && is_null($establecimientos)){
+		$establecimiento = null;
+		if(!is_null($establecimientos)){
+			$establecimiento = explode(",", $establecimientos);
 
-				$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
-					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
-					->groupBy(DB::raw("MONTH(updated_at)"))
-					->orderBy("updated_at", "desc")
-					->Paginate(20);
-				$total = $shipments->sum("subtotal");
+			$shipments = Shipment::with('btransitos')
+				->select('updated_at as fecha, estado_id',
+					DB::raw(
+						"
+							SUM(IF(estado_id = 1,1,0)) espera, SUM(IF(estado_id = 2,1,0)) regular,
+							SUM(IF(estado_id = 3,1,0)) acopio, SUM(IF(estado_id = 4,1,0)) transporte,
+							SUM(IF(estado_id = 5,1,0)) dligero, SUM(IF(estado_id = 6,1,0)) dgrave,
+							SUM(IF(estado_id = 7,1,0)) eterceroscontinua, SUM(IF(estado_id = 8,1,0)) extrabiado,
+							SUM(IF(estado_id = 9,1,0)) robados, SUM(IF(estado_id = 10,1,0)) danocompleto,
+							SUM(IF(estado_id = 11,1,0)) entregadocerrado, SUM(IF(estado_id = 12,1,0)) entregadobs,
+							SUM(IF(estado_id = 13,1,0)) entregadocerradofinal,
+							YEAR(updated_at) as year, MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
+							"
+					)
+				)
+				->whereBetween('updated_at', [$bdate, $edate])
+				->whereHas('btransitos', function($q) use (&$data, $establecimiento) {
+					$q->whereIn('establecimiento_id', $establecimiento);
+				})
+				->groupBy(DB::raw("MONTH(updated_at)"))
+				->orderBy("updated_at", "desc")
+				->Paginate(20);
 
-			} elseif(isset($estados) && is_null($establecimientos)) {
+			$total = $shipments->sum("subtotal");
+			$espera = $shipments->sum("espera");
+			$regular = $shipments->sum("regular");
+			$acopio = $shipments->sum("acopio");
+			$transporte = $shipments->sum("transporte");
+			$dligero = $shipments->sum("dligero");
+			$dgrave = $shipments->sum("dgrave");
+			$eterceroscontinua = $shipments->sum("eterceroscontinua");
+			$extrabiado = $shipments->sum("extrabiado");
+			$robados = $shipments->sum("robados");
+			$danocompleto = $shipments->sum("danocompleto");
+			$entregadocerrado = $shipments->sum("entregadocerrado");
+			$entregadobs = $shipments->sum("entregadobs");
+			$entregadocerradofinal = $shipments->sum("entregadocerradofinal");
 
-				$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
-					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
-					->whereIn("estado_id", $estados)
-					->groupBy(DB::raw("MONTH(updated_at)"))
-					->orderBy("updated_at", "desc")
-					->Paginate(20);
+		} else {
+			$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
+				->select('updated_at as fecha, estado_id',
+					DB::raw(
+						"
+							SUM(IF(estado_id = 1,1,0)) espera, SUM(IF(estado_id = 2,1,0)) regular,
+							SUM(IF(estado_id = 3,1,0)) acopio, SUM(IF(estado_id = 4,1,0)) transporte,
+							SUM(IF(estado_id = 5,1,0)) dligero, SUM(IF(estado_id = 6,1,0)) dgrave,
+							SUM(IF(estado_id = 7,1,0)) eterceroscontinua, SUM(IF(estado_id = 8,1,0)) extrabiado,
+							SUM(IF(estado_id = 9,1,0)) robados, SUM(IF(estado_id = 10,1,0)) danocompleto,
+							SUM(IF(estado_id = 11,1,0)) entregadocerrado, SUM(IF(estado_id = 12,1,0)) entregadobs,
+							SUM(IF(estado_id = 13,1,0)) entregadocerradofinal,
+							YEAR(updated_at) as year,MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
+							"
+					)
+				)
+				->groupBy(DB::raw("MONTH(updated_at)"))
+				->orderBy("updated_at", "desc")
+				->Paginate(20);
 
-				$total = $shipments->sum("subtotal");
-			} elseif(is_null($estados) && isset($establecimientos)){
-
-				$shipments = Shipment::with('btransitos')
-					->whereBetween('updated_at', [$bdate, $edate])
-					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
-					->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
-						$q->whereIn('establecimiento_id', $establecimientos);
-					})
-					->groupBy(DB::raw("MONTH(updated_at)"))
-					->orderBy("updated_at", "desc")
-					->Paginate(20);
-				$total = $shipments->sum("subtotal");
-
-			} else {
-
-				$shipments = Shipment::with('btransitos')
-					->whereBetween('updated_at', [$bdate, $edate])
-					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
-					->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
-						$q->whereIn('establecimiento_id', $establecimientos);
-					})
-					->whereIn("estado_id", $estados)
-					->groupBy(DB::raw("MONTH(updated_at)"))
-					->orderBy("updated_at", "desc")
-					->Paginate(20);
-				$total = $shipments->sum("subtotal");
-
-			}
+			$total = $shipments->sum("subtotal");
+			$espera = $shipments->sum("espera");
+			$regular = $shipments->sum("regular");
+			$acopio = $shipments->sum("acopio");
+			$transporte = $shipments->sum("transporte");
+			$dligero = $shipments->sum("dligero");
+			$dgrave = $shipments->sum("dgrave");
+			$eterceroscontinua = $shipments->sum("eterceroscontinua");
+			$extrabiado = $shipments->sum("extrabiado");
+			$robados = $shipments->sum("robados");
+			$danocompleto = $shipments->sum("danocompleto");
+			$entregadocerrado = $shipments->sum("entregadocerrado");
+			$entregadobs = $shipments->sum("entregadobs");
+			$entregadocerradofinal = $shipments->sum("entregadocerradofinal");
 		}
 
-		return View('reportes2.general.reporte-general', compact('estadosList', 'establecimientoList','estadoR' ,'estados', 'shipments', 'total', 'date_init', 'date_finale'));
+		//dd($shipments->all());
+		return View('reportes2.general.reporte-rango-mensual', compact(
+			'estadosList', 'establecimientoList', 'shipments', 'total', 'date_init', 'date_finale',
+			'espera', 'regular', 'acopio', 'transporte', 'dligero', 'dgrave', 'eterceroscontinua',
+			'extrabiado', 'robados', 'danocompleto', 'entregadocerrado', 'entregadobs', 'entregadocerradofinal',
+			'establecimiento'
+		));
 	}
 
-	public function getReporteGeneralListadoMes($inicio, $estado = null, $establecimiento = null){
+	/**
+	 * Reporte Listado Mensual
+	 * @param $inicio
+	 * @param null $estado
+	 * @return \BladeView|bool|\Illuminate\View\View
+	 */
+	public function getReporteListadoMes($inicio, $estado = null){
 
 		$bdate =  Carbon::createFromFormat('Y-m-d', $inicio)->startOfMonth();
 		$edate =  Carbon::createFromFormat('Y-m-d', $inicio)->endOfMonth();
 
-		$estados = null;
-		$establecimientos = null;
 
-		if(!is_null($estado) && is_null($establecimiento)){
-			$estados = explode(",", $estado);
 
-			$shipments = Shipment::with('btransitos')
-				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
-				->whereBetween('updated_at', [$bdate, $edate])
-				->whereIn('estado_id', $estados)
-				->groupBy(DB::raw("DAY(updated_at)"))
-				->orderBy('updated_at', 'DESC')
-				->Paginate(30);
-		} elseif(is_null($estado) && !is_null($establecimiento)){
-			$establecimientos = explode(",", $establecimiento);
+		$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
+			->select('updated_at as fecha', 'estado_id',
+				DB::raw(
+					"
+							SUM(IF(estado_id = 1,1,0)) espera, SUM(IF(estado_id = 2,1,0)) regular,
+							SUM(IF(estado_id = 3,1,0)) acopio, SUM(IF(estado_id = 4,1,0)) transporte,
+							SUM(IF(estado_id = 5,1,0)) dligero, SUM(IF(estado_id = 6,1,0)) dgrave,
+							SUM(IF(estado_id = 7,1,0)) eterceroscontinua, SUM(IF(estado_id = 8,1,0)) extrabiado,
+							SUM(IF(estado_id = 9,1,0)) robados, SUM(IF(estado_id = 10,1,0)) danocompleto,
+							SUM(IF(estado_id = 11,1,0)) entregadocerrado, SUM(IF(estado_id = 12,1,0)) entregadobs,
+							SUM(IF(estado_id = 13,1,0)) entregadocerradofinal,
+							MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal
+							"
+				)
+			)
+			->groupBy(DB::raw("DAY(updated_at)"))
+			->orderBy("updated_at", "desc")
+			->Paginate(31);
 
-			$shipments = Shipment::with('btransitos')
-				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
-				->whereBetween('updated_at', [$bdate, $edate])
-				->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
-					$q->whereIn('establecimiento_id', $establecimientos);
-				})
-				->groupBy(DB::raw("DAY(updated_at)"))
-				->orderBy('updated_at', 'DESC')
-				->Paginate(30);
-		} elseif(!is_null($estado) && !is_null($establecimiento)){
-			$estados = explode(",", $estado);
-			$establecimientos = explode(",", $establecimiento);
+		$total = $shipments->sum("subtotal");
+		$espera = $shipments->sum("espera");
+		$regular = $shipments->sum("regular");
+		$acopio = $shipments->sum("acopio");
+		$transporte = $shipments->sum("transporte");
+		$dligero = $shipments->sum("dligero");
+		$dgrave = $shipments->sum("dgrave");
+		$eterceroscontinua = $shipments->sum("eterceroscontinua");
+		$extrabiado = $shipments->sum("extrabiado");
+		$robados = $shipments->sum("robados");
+		$danocompleto = $shipments->sum("danocompleto");
+		$entregadocerrado = $shipments->sum("entregadocerrado");
+		$entregadobs = $shipments->sum("entregadobs");
+		$entregadocerradofinal = $shipments->sum("entregadocerradofinal");
 
-			$shipments = Shipment::with('btransitos')
-				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
-				->whereBetween('updated_at', [$bdate, $edate])
-				->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
-					$q->whereIn('establecimiento_id', $establecimientos);
-				})
-				->whereIn('estado_id', $estados)
-				->groupBy(DB::raw("DAY(updated_at)"))
-				->orderBy('updated_at', 'DESC')
-				->Paginate(30);
-		} else {
-			$shipments = Shipment::with('btransitos')
-				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia,  MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
-				->whereBetween('updated_at', [$bdate, $edate])
-				->groupBy(DB::raw("DAY(updated_at)"))
-				->orderBy('updated_at', 'DESC')
-				->Paginate(30);
-		}
-		$total = $shipments->sum('subtotal');
 		//dd($shipments->all());
-		return View('reportes2.general.listado-mes', compact('inicio', 'shipments', 'bdate', 'total'));
+		return View('reportes2.general.listado-mes',
+			compact(
+				'inicio', 'shipments',  'shipments', 'total', 'date_init', 'date_finale', 'espera', 'regular',
+				'acopio', 'transporte', 'dligero', 'dgrave', 'eterceroscontinua', 'extrabiado', 'robados',
+				'danocompleto', 'entregadocerrado', 'entregadobs', 'entregadocerradofinal',	'establecimiento'
+			)
+		);
 	}
 
-	public function getReporteGeneralListadoDia($inicio, $estado = null, $establecimiento = null){
+	/**
+	 * Listado Mensual por Estado
+	 * @param $inicio
+	 * @param $estado
+	 * @return \BladeView|bool|\Illuminate\View\View
+	 */
+	public function getReporteListadoMensualPorEstado($inicio, $estado){
+
+		$bdate =  Carbon::createFromFormat('Y-m-d', $inicio)->startOfMonth();
+		$edate =  Carbon::createFromFormat('Y-m-d', $inicio)->endOfMonth();
+
+		$tMes = Carbon::createFromFormat('Y-m-d', $inicio)->month;
+		$tAnio = Carbon::createFromFormat('Y-m-d', $inicio)->year;
+
+		$tEstado = Estado::where('id', '=', $estado)->first();
+
+		$shipments = Shipment::with('btransitos')
+			->whereBetween('updated_at', [$bdate, $edate])
+			->where('estado_id', '=', $estado)
+			->orderBy('updated_at', 'DESC')
+			->Paginate(25);
+
+		$total = Shipment::with('btransitos')
+			->whereBetween('updated_at', [$bdate, $edate])
+			->where('estado_id', '=', $estado)
+			->orderBy('updated_at', 'DESC')
+			->count();
+
+		//dd($tEstado->name);
+		return View('reportes2.general.listado-mes-estado', compact('shipments', 'total', 'tEstado', 'tMes', 'tAnio'));
+	}
+
+	/**
+	 * Reporte Listado Diario
+	 * @param $inicio
+	 * @param null $estado
+	 * @param null $establecimiento
+	 * @return \BladeView|bool|\Illuminate\View\View
+	 */
+	public function getReporteListadoDia($inicio, $estado = null, $establecimiento = null){
 
 		$bdate =  Carbon::createFromFormat('Y-m-d', $inicio)->startOfDay();
 		$edate =  Carbon::createFromFormat('Y-m-d', $inicio)->endOfDay();
