@@ -16,6 +16,12 @@ class Shipment extends Model {
 	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'completed', 'estado_id', 'firma', 'user_id'];
 
 	/**
+	 * protected dates
+	 * @var array
+	 */
+	protected $dates = ['created_at', 'updated_at'];
+
+	/**
 	 * Un sender pertenece a un Trader
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
@@ -87,4 +93,5 @@ class Shipment extends Model {
 	{
 		return $this->belongsTo('App\Estado', 'estado_id');
 	}
+
 }

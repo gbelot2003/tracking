@@ -12856,5 +12856,15 @@ ul.nav-tabs li.active {
   margin-top: -32px;
   /* -1 * image height / 2 */ }
 
+/*btn fix para font-awsome*/
+.btn-sm, .btn-group-sm > .btn {
+  width: 35px !important;
+  height: 35px !important;
+  font-size: 18px !important; }
+  .btn-sm .fa, .btn-group-sm > .btn .fa {
+    position: relative;
+    top: -10px;
+    left: -5px; }
+
 
 /*# sourceMappingURL=app.css.map */

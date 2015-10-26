@@ -9,6 +9,7 @@ use App\Shipment;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReportsController extends Controller {
 
@@ -17,150 +18,153 @@ class ReportsController extends Controller {
 		$this->middleware('auth');
 	}
 
-	public function getReportesEntregas()
-	{
+	public function getReporteGeneral($date_init = null, $date_finale = null, $estadoR = null, $establecimientoR = null){
 
-		$establecimiento = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
-		$estados = Estado::take(12)->skip(1)->lists('name', 'id');
+		$establecimientoList = Establecimiento::where('empresa_id', '!=', '1')->lists('name', 'id');
+		$estadosList = Estado::where('id', '!=', 14 )
+			->where('id', '!=', 15)
+			->lists('name', 'id');
 
-		return View('reportes.entregas.entregas', compact('establecimiento', 'estados', 'shipments', 'btransitos'));
-	}
+		$estados = null;
+		if(!is_null($estadoR)){
+			$estados = explode(",", $estadoR);
+		}
 
-	public function getRowsReporte($date_init, $date_finale, $state = 0, $stablish = 0)
-	{
+		$establecimientos = null;
+		if(!is_null($establecimientoR)){
+			$establecimientos = explode(",", $establecimientoR);
+		}
 
+		if(is_null($date_init)){
+			$date_init = Date('Y-m-d');
+		}
 		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
+
+		if(is_null($date_finale)){
+			$date_finale = Date('Y-m-d');
+		}
 		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
 
+		if(!is_null($date_init) && !is_null($bdate)){
+			if(is_null($estados) && is_null($establecimientos)){
 
-		if($state != 0 and $stablish == 0){
+				$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
+					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
+					->groupBy(DB::raw("MONTH(updated_at)"))
+					->orderBy("updated_at", "desc")
+					->Paginate(20);
+				$total = $shipments->sum("subtotal");
 
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
+			} elseif(isset($estados) && is_null($establecimientos)) {
+
+				$shipments = Shipment::whereBetween('updated_at', [$bdate, $edate])
+					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
+					->whereIn("estado_id", $estados)
+					->groupBy(DB::raw("MONTH(updated_at)"))
+					->orderBy("updated_at", "desc")
+					->Paginate(20);
+
+				$total = $shipments->sum("subtotal");
+			} elseif(is_null($estados) && isset($establecimientos)){
+
+				$shipments = Shipment::with('btransitos')
+					->whereBetween('updated_at', [$bdate, $edate])
+					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
+					->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
+						$q->whereIn('establecimiento_id', $establecimientos);
+					})
+					->groupBy(DB::raw("MONTH(updated_at)"))
+					->orderBy("updated_at", "desc")
+					->Paginate(20);
+				$total = $shipments->sum("subtotal");
+
+			} else {
+
+				$shipments = Shipment::with('btransitos')
+					->whereBetween('updated_at', [$bdate, $edate])
+					->select('updated_at as fecha', DB::raw("MONTH(updated_at) as mes, DAY(updated_at) as dia,  count(estado_id) AS subtotal"))
+					->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
+						$q->whereIn('establecimiento_id', $establecimientos);
+					})
+					->whereIn("estado_id", $estados)
+					->groupBy(DB::raw("MONTH(updated_at)"))
+					->orderBy("updated_at", "desc")
+					->Paginate(20);
+				$total = $shipments->sum("subtotal");
+
+			}
+		}
+
+		return View('reportes2.general.reporte-general', compact('estadosList', 'establecimientoList','estadoR' ,'estados', 'shipments', 'total', 'date_init', 'date_finale'));
+	}
+
+	public function getReporteGeneralListadoMes($inicio, $estado = null, $establecimiento = null){
+
+		$bdate =  Carbon::createFromFormat('Y-m-d', $inicio)->startOfMonth();
+		$edate =  Carbon::createFromFormat('Y-m-d', $inicio)->endOfMonth();
+
+		$estados = null;
+		$establecimientos = null;
+
+		if(!is_null($estado) && is_null($establecimiento)){
+			$estados = explode(",", $estado);
+
+			$shipments = Shipment::with('btransitos')
+				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
 				->whereBetween('updated_at', [$bdate, $edate])
-				->where('estado_id', '=', $state)
-				->get();
+				->whereIn('estado_id', $estados)
+				->groupBy(DB::raw("DAY(updated_at)"))
+				->orderBy('updated_at', 'DESC')
+				->Paginate(30);
+		} elseif(is_null($estado) && !is_null($establecimiento)){
+			$establecimientos = explode(",", $establecimiento);
 
-		} elseif($state != 0 and $stablish != 0){
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
+			$shipments = Shipment::with('btransitos')
+				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
 				->whereBetween('updated_at', [$bdate, $edate])
-				->whereHas('recivers', function($q) use (&$data, $stablish) {
-					$q->where('establecimiento_id', '=', $stablish);
+				->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
+					$q->whereIn('establecimiento_id', $establecimientos);
 				})
-				->where('estado_id', '=', $state)->get();
+				->groupBy(DB::raw("DAY(updated_at)"))
+				->orderBy('updated_at', 'DESC')
+				->Paginate(30);
+		} elseif(!is_null($estado) && !is_null($establecimiento)){
+			$estados = explode(",", $estado);
+			$establecimientos = explode(",", $establecimiento);
 
-		} elseif($state == 0 and $stablish != 0){
-
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
+			$shipments = Shipment::with('btransitos')
+				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia, MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
 				->whereBetween('updated_at', [$bdate, $edate])
-				->whereHas('recivers', function($q) use (&$data, $stablish) {
-					$q->where('establecimiento_id', '=', $stablish);
-				})->get();
-
-
-		} else{
-
-			$shipments = Shipment::with( 'estados', 'recivers.establecimiento', 'senders.establecimiento', 'btransitos')
-				->whereBetween('updated_at', [$bdate, $edate])->get();
-
-		}
-
-		return $shipments;
-
-	}
-
-	public function getRowReportesEntregados($date_init, $date_finale)
-	{
-		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
-		$range = [$bdate, $edate];
-
-		//dd($bdate ." " . $edate);
-		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
-			->whereBetween('updated_at', [$bdate, $edate])
-			->whereIn('estado_id', array(11, 12, 13))
-			->get();
-
-		return $shipments;
-	}
-
-	public function getRowReportesErrores($date_init, $date_finale)
-	{
-		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
-
-		$shipments = Shipment::with('estados', 'recivers.establecimiento', 'senders.establecimiento',  'btransitos')
-			->whereBetween('updated_at', [$bdate, $edate])
-			->whereIn('estado_id', array(8, 9, 10))
-			->get();
-
-		return $shipments;
-	}
-
-	public function getReporteUsuarios()
-	{
-		$user = User::where('userstatus_id', '=', 1)
-			->whereHas('roles', function($query){
-				$query->where('id', '!=', 1);
-			})
-			->where('empresa_id', '=', 1)
-			->get();
-		return View('reportes.usuarios.usuarios', compact('user'));
-	}
-
-	public function getReporteUsuariosDetalle($id)
-	{
-		$user = User::findOrFail($id);
-		$estados = Estado::take(12)->skip(1)->lists('name', 'id');
-
-		return View('reportes.usuarios.detalle', compact('user', 'estados'));
-	}
-
-	public function getReportesUsuariosRows($id, $date_init, $date_finale)
-	{
-		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
-
-		$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
-			->whereBetween('estado_id', [11, 13])
-			->where('user_id', '=', $id)
-			->whereBetween('updated_at', [$bdate, $edate])->get();
-
-		return $shipments;
-	}
-
-	public function getReportesUsuariosLostRows($id, $date_init, $date_finale)
-	{
-		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
-
-		$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
-			->whereBetween('estado_id', [8, 10])
-			->where('user_id', '=', $id)
-			->whereBetween('updated_at', [$bdate, $edate])->get();
-
-		return $shipments;
-	}
-
-	public function getReportesUsuariosStatesRows($id, $date_init, $date_finale, $state)
-	{
-		$bdate = Carbon::createFromFormat('Y-m-d', $date_init)->startOfDay();
-		$edate = Carbon::createFromFormat('Y-m-d', $date_finale)->endOfDay();
-
-		if($state == 0 or $state == null){
-			$shipments = Shipment::with('estados', 'senders.establecimiento', 'recivers.establecimiento', 'btransitos')
-				->where('user_id', '=', $id)
-				->whereBetween('updated_at', [$bdate, $edate])->get();
+				->whereHas('btransitos', function($q) use (&$data, $establecimientos) {
+					$q->whereIn('establecimiento_id', $establecimientos);
+				})
+				->whereIn('estado_id', $estados)
+				->groupBy(DB::raw("DAY(updated_at)"))
+				->orderBy('updated_at', 'DESC')
+				->Paginate(30);
 		} else {
-			$shipments = Shipment::with('estados', 'senders', 'recivers', 'btransitos')
-				->where('estado_id', '=', $state)
-				->where('user_id', '=', $id)
-				->whereBetween('updated_at', [$bdate, $edate])->get();
+			$shipments = Shipment::with('btransitos')
+				->select('updated_at as fecha', DB::raw("updated_at, DAY(updated_at) as dia,  MONTH(updated_at) as mes, YEAR(updated_at) as year, count(estado_id) AS subtotal"))
+				->whereBetween('updated_at', [$bdate, $edate])
+				->groupBy(DB::raw("DAY(updated_at)"))
+				->orderBy('updated_at', 'DESC')
+				->Paginate(30);
 		}
-		return $shipments;
+		$total = $shipments->sum('subtotal');
+		//dd($shipments->all());
+		return View('reportes2.general.listado-mes', compact('inicio', 'shipments', 'bdate', 'total'));
 	}
 
-	public function getReportesHistorial()
-	{
-		return View('reportes.historial.index');
+	public function getReporteGeneralListadoDia($inicio, $estado = null, $establecimiento = null){
+
+		$bdate =  Carbon::createFromFormat('Y-m-d', $inicio)->startOfDay();
+		$edate =  Carbon::createFromFormat('Y-m-d', $inicio)->endOfDay();
+
+		$shipments = Shipment::with('btransitos')
+			->whereBetween('updated_at', [$bdate, $edate])
+			->orderBy('updated_at', 'DESC')
+			->Paginate(20);
+		//dd($shipments->all());
+		return View('reportes2.general.listado-dia', compact('shipments'));
 	}
 }

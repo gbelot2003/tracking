@@ -8,7 +8,7 @@
 		</li>
 
 		<li v-repeat="
-				pageNumber: totalPage
+				pageNumber: totalPage | limit 10
 				"
 		    v-class="
 				active: currentPage == pageNumber,

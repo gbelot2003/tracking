@@ -22,8 +22,8 @@
 					<li class="dropdown">
 						<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Reportes<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="{{ url('/reportes/reportes-entregas/') }}">Reporte por Fechas y Estados</a></li>
-							<li><a href="{{ url('/reportes/reporte-usuarios/') }}">Reporte por Usuarios</a></li>
+							<li><a href="{{ url('/reportes/reporte-general/') }}">Reportes General de Encomientas</a></li>
+							<!--<li><a href="{{ url('/reportes/reporte-usuarios/') }}">Reporte por Usuarios</a></li>-->
 						</ul>
 					</li>
 				@endif

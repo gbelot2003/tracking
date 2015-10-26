@@ -65,5 +65,6 @@ Route::controllers([
 	'listados' 	=> 'ListadosController',
 	'querys' => 'QueryController',
 	'busquedas' => 'BusquedasController',
-	'reportes' => 'ReportsController'
+	'reportes' => 'ReportsController',
+	'consultas/reportes' => 'ReportesQueryController'
 ]);
