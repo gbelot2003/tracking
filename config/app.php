@@ -136,7 +136,6 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Felixkiss\UniqueWithValidator\UniqueWithValidatorServiceProvider',
-		'Orangehill\Iseed\IseedServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
 		/*
 		 * Application Service Providers...
@@ -201,7 +200,7 @@ return [
 		'Html' 			=> 'Illuminate\Html\HtmlFacade',
 		'Entrust' 		=> 'Zizaco\Entrust\EntrustFacade',
 		'Datatables' 	=> 'yajra\Datatables\Datatables',
-		'PDF' => 'Barryvdh\DomPDF\Facade',
+		'PDF' 			=> 'Barryvdh\DomPDF\Facade',
 	],
 
 ];
