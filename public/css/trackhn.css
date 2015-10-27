@@ -1,4 +1,4 @@
-@import url('http://fonts.googleapis.com/css?family=Raleway|Merriweather+Sans');
+@import url("http://fonts.googleapis.com/css?family=Raleway|Merriweather+Sans");
 /*
 font-family: 'Raleway', sans-serif;
 font-family: 'Merriweather Sans', sans-serif;
@@ -38,8 +38,7 @@ body {
 .main-title:hover div {
   opacity: 0.8;
   -webkit-transform: translate(0px, 0px);
-      -ms-transform: translate(0px, 0px);
-          transform: translate(0px, 0px); }
+  transform: translate(0px, 0px); }
 
 .text-center {
   text-align: center; }
@@ -235,6 +234,5 @@ body {
 @media screen and (max-width: 480px) {
   .gall-img {
     width: 90%; } }
-
 
 /*# sourceMappingURL=trackhn.css.map */

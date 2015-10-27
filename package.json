@@ -3,6 +3,10 @@
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "*",
-    "bower" : "*"
+    "bower": "*"
+  },
+  "dependencies": {
+    "vue": "^1.0.1",
+    "vue-resource": "^0.1.16"
   }
 }

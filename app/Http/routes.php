@@ -66,5 +66,6 @@ Route::controllers([
 	'querys' => 'QueryController',
 	'busquedas' => 'BusquedasController',
 	'reportes' => 'ReportsController',
-	'consultas/reportes' => 'ReportesQueryController'
+	'consultas/reportes' => 'ReportesQueryController',
+	'dash' => 'DashboarController'
 ]);
