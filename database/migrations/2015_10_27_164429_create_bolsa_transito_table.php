@@ -23,6 +23,10 @@ class CreateBolsaTransitoTable extends Migration {
 			$table->string('firma')->nullable();
 			$table->string('foto')->nullable();
 			$table->timestamps();
+			$table->foreign('bolsa_id')
+				->references('id')
+				->on('bolsas')
+				->onDelete('cascade');
 		});
 	}
 
