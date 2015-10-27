@@ -12,6 +12,7 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
+
     mix.copy('bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js', 'resources/assets/js/bootstrap.min.js');
     mix.copy('bower_components/arrive/src/arrive.js', 'resources/assets/js/arrive.js');
     mix.copy('bower_components/select2-dist/dist/js/select2.full.min.js', 'resources/assets/js/select2.full.min.js');
@@ -28,24 +29,33 @@ elixir(function(mix) {
             'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'wow.min.js', 'materialbox.js', 'trackhn.js', 'init.js', 'myscripts.js'],
         'public/js/wapp.js');;
 
+    /**
+     * js scripts
+     */
     mix.scripts(['forms.js'], 'public/js/forms.js');
     mix.scripts(['bolsas.js'], 'public/js/bolsas.js');
     mix.scripts(['underscore.js'], 'public/js/underscore.js');
     mix.scripts(['moment.js'], 'public/js/moment.js');
-});
 
-elixir(function(mix){
+
+    /**
+     *  vuejs old scripts
+     */
     mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes-usuarios.js'], 'public/js/vue-reportes-usuaios.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reporte-general.js'], 'public/js/vue-reporte-general.js');
     mix.scripts(['jquery-ui.js'], 'public/js/jquery-ui.js');
 
-});
-
-elixir(function(mix) {
+    /**
+     * Sass scripts
+     */
     mix.sass('app.scss');
     mix.sass('colorbox.scss');
     mix.sass('trackhn.scss');
     mix.sass('jquery-ui-styles.scss');
+
+
+    mix.browserify('app/dash.js', 'public/js/dash/dash.js');
+
 });
