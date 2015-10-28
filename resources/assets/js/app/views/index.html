@@ -1,0 +1,28 @@
+<h2>Encomiendas</h2>
+<div class="row">
+    <div class="col-md-8">
+        <input class="form-control" type="text" placeholder="Search" ng-model="query"/>
+    </div>
+    <div class="col-md-4">
+        <input type="date" id="dates" class="form-control" name="input" ng-model="dates.value" value="{{dates.value | date:'yyyy-MM-dd' }}" placeholder="yyyy-MM-dd" ng-change="searchByDate(dates.value)" required />
+    </div>
+</div>
+</p>
+<P>
+    <a href="#">Crear Encomienda</a>
+</P>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th  ng-repeat="field in fields" ng-click="sort(field)">
+                {{ field }}
+                <span class=""></span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-click="show(item.id)" ng-repeat="item in shipments | filter: query | orderBy: sort.field : sort.order">
+            <td ng-repeat="field in fields">{{ item[field] }}</td>
+        </tr>
+    </tbody>
+</table>

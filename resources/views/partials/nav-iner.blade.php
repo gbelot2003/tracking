@@ -33,7 +33,7 @@
 						<li class="dropdown">
 							<a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false">Encomiendas<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/dash') }}">Administración de Encomiendas y Bolsas</a></li>
+								<li><a href="{{ url('/dash/') }}">Administración de Encomiendas y Bolsas</a></li>
 							</ul>
 						</li>
 					@endif

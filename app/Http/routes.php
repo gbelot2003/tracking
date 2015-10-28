@@ -58,6 +58,7 @@ Route::get('bolsas/transitos/create/{id}', 'TransitosBolsasController@create');
 Route::post('bolsas/transitos/store', 'TransitosBolsasController@store');
 Route::get('bolsas/reporte/{id}', 'BolsasController@reporte');
 
+Route::resource('api/shipments', 'ApiShipmentController');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
@@ -67,5 +68,6 @@ Route::controllers([
 	'busquedas' => 'BusquedasController',
 	'reportes' => 'ReportsController',
 	'consultas/reportes' => 'ReportesQueryController',
-	'dash' => 'DashboarController'
+	'dash' => 'DashboarController',
+	'api/consultas' => 'DashQueryController'
 ]);

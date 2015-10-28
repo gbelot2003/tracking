@@ -22,6 +22,11 @@ elixir(function(mix) {
     mix.copy('bower_components/underscore/underscore.js', 'resources/assets/js/underscore.js');
     mix.copy('bower_components/moment/moment.js', 'resources/assets/js/moment.js');
 
+    mix.copy('bower_components/angular/angular.js', 'resources/assets/js/app/angular.js');
+    mix.copy('bower_components/angular-route/angular-route.js', 'resources/assets/js/app/angular-route.js');
+    mix.copy('bower_components/angular-resource/angular-resource.js', 'resources/assets/js/app/angular-resource.js');
+
+
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
         'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js');;
 
@@ -36,7 +41,6 @@ elixir(function(mix) {
     mix.scripts(['bolsas.js'], 'public/js/bolsas.js');
     mix.scripts(['underscore.js'], 'public/js/underscore.js');
     mix.scripts(['moment.js'], 'public/js/moment.js');
-
 
     /**
      *  vuejs old scripts
@@ -55,7 +59,15 @@ elixir(function(mix) {
     mix.sass('trackhn.scss');
     mix.sass('jquery-ui-styles.scss');
 
+});
 
-    mix.browserify('app/dash.js', 'public/js/dash/dash.js');
+elixir(function(mix){
+    mix.copy('resources/assets/js/app/views', 'public/js/dash/views/');
 
+    mix.scripts(
+        [
+            'app/angular.js',
+            'app/angular-route.js',
+            'app/angular-resource.js',
+            'app/dash.js'], 'public/js/dash/dash.js');
 });
