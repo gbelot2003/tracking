@@ -25,6 +25,7 @@ elixir(function(mix) {
     mix.copy('bower_components/angular/angular.js', 'resources/assets/js/app/angular.js');
     mix.copy('bower_components/angular-route/angular-route.js', 'resources/assets/js/app/angular-route.js');
     mix.copy('bower_components/angular-resource/angular-resource.js', 'resources/assets/js/app/angular-resource.js');
+    mix.copy('bower_components/angular-morph/dist/angular-morph.js', 'resources/assets/js/app/aangular-morph.js');
 
 
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
@@ -69,5 +70,6 @@ elixir(function(mix){
             'app/angular.js',
             'app/angular-route.js',
             'app/angular-resource.js',
+            'app/angular-morph.js',
             'app/dash.js'], 'public/js/dash/dash.js');
 });
