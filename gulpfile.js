@@ -25,15 +25,15 @@ elixir(function(mix) {
     mix.copy('bower_components/angular/angular.js', 'resources/assets/js/app/angular.js');
     mix.copy('bower_components/angular-route/angular-route.js', 'resources/assets/js/app/angular-route.js');
     mix.copy('bower_components/angular-resource/angular-resource.js', 'resources/assets/js/app/angular-resource.js');
-    mix.copy('bower_components/angular-morph/dist/angular-morph.js', 'resources/assets/js/app/aangular-morph.js');
+    mix.copy('bower_components/angular-morph/dist/angular-morph.js', 'resources/assets/js/app/angular-morph.js');
 
 
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
-        'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js');;
+        'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js');
 
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
             'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'wow.min.js', 'materialbox.js', 'trackhn.js', 'init.js', 'myscripts.js'],
-        'public/js/wapp.js');;
+        'public/js/wapp.js');
 
     /**
      * js scripts
@@ -50,7 +50,7 @@ elixir(function(mix) {
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes-usuarios.js'], 'public/js/vue-reportes-usuaios.js');
     mix.scripts(['vue.js', 'vue-resource.js', 'vue-reporte-general.js'], 'public/js/vue-reporte-general.js');
-    mix.scripts(['jquery-ui.js'], 'public/js/jquery-ui.js');
+    mix.scripts(['vue.js', 'vue-resource.js', 'vue/app.js'], 'public/js/app/vue-app.js');
 
     /**
      * Sass scripts

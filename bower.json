@@ -23,6 +23,10 @@
     "moment": "~2.10.6",
     "angular-ui-router": "~0.2.15",
     "angular-route": "~1.4.7",
-    "angular-resource": "~1.4.7"
+    "angular-resource": "~1.4.7",
+    "angular-morph": "~0.1.0",
+    "angular-animate": "~1.4.7",
+    "angular-sanitize": "~1.4.7",
+    "ngtoast": "~1.5.6"
   }
 }

@@ -14,7 +14,7 @@ class DashQueryController extends Controller {
 		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
-		$shipments = Shipment::with('btransitos')
+		$shipments = Shipment::with('senders.establecimiento', 'recivers.establecimiento', 'btransitos.estados')
 		->whereBetween('updated_at', [$bdate, $edate])
 		->orderBy('updated_at', 'DESC')
 		->get();

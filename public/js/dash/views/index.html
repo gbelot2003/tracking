@@ -4,7 +4,7 @@
         <input class="form-control" type="text" placeholder="Search" ng-model="query"/>
     </div>
     <div class="col-md-4">
-        <input type="date" id="dates" class="form-control" name="input" ng-model="dates.value" value="{{dates.value | date:'yyyy-MM-dd' }}" placeholder="yyyy-MM-dd" ng-change="searchByDate(dates.value)" required />
+        <input type="date" id="dates" class="form-control" name="input" ng-model="dates" value="{{dates | date:'yyyy-MM-dd' }}" placeholder="" ng-change="searchByDate(dates)" required />
     </div>
 </div>
 </p>
@@ -22,7 +22,18 @@
     </thead>
     <tbody>
         <tr ng-click="show(item.id)" ng-repeat="item in shipments | filter: query | orderBy: sort.field : sort.order">
-            <td ng-repeat="field in fields">{{ item[field] }}</td>
+            <td>{{ item.code }}</td>
+            <td>
+                <strong><span style="display: block">{{ item.senders.name }}</span></strong>
+                <span style="display: block">{{ item.senders.establecimiento.name}}</span>
+            </td>
+            <td>
+                <strong><span style="display: block">{{ item.recivers.name }}</span></strong>
+                <span style="display: block">{{ item.recivers.establecimiento.name }}</span>
+            </td>
+            <td>{{ item.created_at }}</td>
+            <td>{{ item.btransitos.updated_at }}</td>
+            <td>{{ item.btransitos.estados.name }}</td>
         </tr>
     </tbody>
 </table>

@@ -1,5 +1,5 @@
 "use strict";
-var dash = angular.module('dashApp', ['ngRoute', 'ngResource']);
+var dash = angular.module('dashApp', ['ngRoute', 'ngResource', 'ngMorph']);
 
 dash.config(function($routeProvider, $locationProvider){
     $routeProvider
@@ -29,13 +29,9 @@ dash.controller('ShipmentShowController', function($scope, shipments, $location,
 
 
 dash.controller('dashController', function($scope, $location, $http, $filter){
+    $scope.dates = new Date();
 
-
-    $scope.dates = {
-        value: new Date(2015, 10, 15)
-    };
-
-    $scope.fields = ['code', 'updated_at'];
+    $scope.fields = ['No. Guía', 'Origen', 'Destino', 'Fecha Creación' , 'Ultima Modificación', 'Estado'];
 
     $scope.sort = function(field){
         $scope.sort.field = field;
@@ -43,19 +39,19 @@ dash.controller('dashController', function($scope, $location, $http, $filter){
     };
 
     $scope.sort.field = 'code';
+
     $scope.sort.order = false;
 
     $scope.show = function(id){
         $location.url('/shipment/' + id);
-    }
+    };
 
     $scope.searchByDate = function (dates){
         var tdate = dates;
-
         var item = $filter('date')(tdate, "yyyy-MM-dd");
-
         $http.get("api/consultas/shipment-by-date/" + item).success(function(data){
             $scope.shipments = data;
+
         });
     };
 });
