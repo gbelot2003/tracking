@@ -28535,12 +28535,18 @@ var dash = angular.module('dashApp', ['ngRoute', 'ngResource', 'ngMorph']);
 dash.config(function($routeProvider, $locationProvider){
     $routeProvider
         .when('/', {
-           controller: 'dashController',
-           templateUrl: '/js/dash/views/index.html'
+            controller: 'dashController',
+            templateUrl: '/js/dash/views/index.html',
+            activeTab: 'dashboard'
         })
         .when('/shipment/:id', {
             controller: 'ShipmentShowController',
             templateUrl: '/js/dash/views/show.html'
+        })
+        .when('/bolsas',{
+            controller: 'bolsasController',
+            templateUrl: '/js/dash/views/bolsas.html',
+            activeTab: 'bolsas'
         })
     ;
 
@@ -28552,38 +28558,40 @@ dash.factory('shipments', function($resource){
         'update': {method: 'PUT'}
     });
 });
-
-
-dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
-    $scope.shipment = shipments.get({id: $routeParams.id });
-});
-
-
-dash.controller('dashController', function($scope, $location, $http, $filter){
+dash.controller('dashController', function($scope, $location, $http, $filter, $route){
+    $scope.loading = false;
     $scope.dates = new Date();
-
-    $scope.fields = ['No. Guía', 'Origen', 'Destino', 'Fecha Creación' , 'Ultima Modificación', 'Estado'];
-
-    $scope.sort = function(field){
-        $scope.sort.field = field;
-        $scope.sort.order = !$scope.sort.order;
-    };
-
-    $scope.sort.field = 'code';
-
-    $scope.sort.order = false;
+    $scope.route = $route;
 
     $scope.show = function(id){
         $location.url('/shipment/' + id);
     };
 
     $scope.searchByDate = function (dates){
+        $scope.loading = true;
         var tdate = dates;
         var item = $filter('date')(tdate, "yyyy-MM-dd");
-        $http.get("api/consultas/shipment-by-date/" + item).success(function(data){
-            $scope.shipments = data;
-
-        });
+        $http.get("api/consultas/shipment-by-date/" + item).then(
+            function(responce){
+                $scope.shipments = responce.data;
+            }).finally(
+            function(){
+                $scope.loading = false;
+            }
+        );
     };
+
+    $scope.predicate = 'estado';
+    $scope.reverse = true;
+    $scope.order = function(predicate) {
+        $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+        $scope.predicate = predicate;
+    };
+});
+dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
+    $scope.shipment = shipments.get({id: $routeParams.id });
+});
+dash.controller('bolsasController', function($scope, $location, $routeParams){
+    $scope.name = 'Bolsas'
 });
 //# sourceMappingURL=dash.js.map

@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav nav-pills">
-					<li role="presentation" ><a href="#/">Encomiendas</a></li>
+					<li role="presentation" ng-class="{active: activeTab === 'dashboard'}"><a href="#/">Encomiendas</a></li>
 					<li role="presentation" ><a href="#/bolsas">Bolsas</a></li>
 				</ul>
 			</div>

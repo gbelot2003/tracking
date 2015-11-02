@@ -71,5 +71,11 @@ elixir(function(mix){
             'app/angular-route.js',
             'app/angular-resource.js',
             'app/angular-morph.js',
-            'app/dash.js'], 'public/js/dash/dash.js');
+
+            'app/dash.js',
+            'app/controllers/dashController.js',
+            'app/controllers/ShipmentShowController.js',
+            'app/controllers/bolsasController.js'
+
+        ], 'public/js/dash/dash.js');
 });
