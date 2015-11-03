@@ -28874,10 +28874,18 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         estado_id:1
     };
 
+    $scope.closeEstablecimientos = function(){
+        $element.modal('hide');
+    };
+
     $scope.submitTrader = function(){
-        console.log('clicked');
         console.log($scope.profile);
-        $http.post("personas");
+        $http.post("personas", $scope.profile).then(function successCallback(response){
+            console.log(response);
+        }, function errorCallback(response){
+            console.log(response);
+        });
+        $scope.closeEstablecimientos();
     };
 });
 
