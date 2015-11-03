@@ -1,0 +1,66 @@
+<div id="newShip">
+        <div class="row">
+            <div class="col-md-9">
+                <h3>{{ name }}</h3>
+            </div>
+            <div class="col-md-2">
+                <a class="inline btn btn-flat" href="" ng-click="newUserModal()"><i class="fa fa-user-plus fa-2x"></i> Nuevo Perfil</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">No. Guia</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <!-- code Form Input -->
+                                <div class="form-group">
+                                    <input class="select form-control" id="code" name="code" type="text">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <button id="generate" class="btn btn btn btn-material-indigo">Generar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pane panel-info">
+                    <div class="panel-heading">Remitente </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="pane panel-primary">
+                    <div class="panel-heading">Destinatario</div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciver">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                
+            </div>
+        </div>
+
+
+</div>

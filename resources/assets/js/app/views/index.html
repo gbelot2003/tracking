@@ -1,19 +1,12 @@
-<style type="text/css">
-    .spinner{
-        width: 100%;
-        height: 50%;
-        background: aliceblue;
-        position: absolute;
-        display: block;
-    }
-    .sortorder:after {
-        content: '\25b2';
-    }
-    .sortorder.reverse:after {
-        content: '\25bc';
-    }
-</style>
-<h2>Encomiendas</h2>
+<div class="row">
+    <div class="col-md-11">
+        <h2>Encomiendas</h2>
+    </div>
+    <div class="col-md-1">
+        <a href="" ng-click="creating()"><i class="fa fa-plus-circle fa-3x"></i></a>
+    </div>
+
+</div>
 <div class="row">
     <div class="col-md-4">
         <input type="date" id="dates" class="form-control" name="input" ng-model="dates" value="{{dates | date:'yyyy-MM-dd' }}" placeholder="" ng-change="searchByDate(dates)" required />
@@ -53,8 +46,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-click="show(item.id)" ng-repeat="item in shipments | orderBy:predicate:reverse">
-            <td><span style="color: blue">{{ item.code }}</span></td>
+        <tr ng-repeat="item in shipments | orderBy:predicate:reverse">
+            <td><span><a href="" ng-click="show(item.id)" >{{ item.code }}</a></span></td>
             <td>
                 <strong><span style="display: block">{{ item.senders.name }}</span></strong>
                 <span style="display: block">{{ item.senders.establecimiento.name}}</span>

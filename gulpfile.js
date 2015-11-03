@@ -26,6 +26,9 @@ elixir(function(mix) {
     mix.copy('bower_components/angular-route/angular-route.js', 'resources/assets/js/app/angular-route.js');
     mix.copy('bower_components/angular-resource/angular-resource.js', 'resources/assets/js/app/angular-resource.js');
     mix.copy('bower_components/angular-morph/dist/angular-morph.js', 'resources/assets/js/app/angular-morph.js');
+    mix.copy('bower_components/angular-sanitize/angular-sanitize.min.js', 'resources/assets/js/app/angular-sanitize.min.js');
+    mix.copy('bower_components/angular-ui-select3/src/select3.js', 'resources/assets/js/app/select3.js');
+    mix.copy('bower_components/angular-modal-service/dst/angular-modal-service.min.js', 'resources/assets/js/app/angular-modal-service.min.js');
 
 
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
@@ -68,13 +71,19 @@ elixir(function(mix){
     mix.scripts(
         [
             'app/angular.js',
+            'app/angular-sanitize.min.js',
             'app/angular-route.js',
             'app/angular-resource.js',
             'app/angular-morph.js',
-
+            'app/select3.js',
             'app/dash.js',
+            'app/angular-modal-service.min.js',
+
             'app/controllers/dashController.js',
             'app/controllers/ShipmentShowController.js',
+            'app/controllers/newShipmentController.js',
+            'app/controllers/modals/NewUserModalController.js',
+            'app/controllers/modals/CrearEstablecimientoController.js',
             'app/controllers/bolsasController.js'
 
         ], 'public/js/dash/dash.js');

@@ -26307,6 +26307,23 @@ var minlengthDirective = function() {
 })(window, document);
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
+/*
+ AngularJS v1.4.7
+ (c) 2010-2015 Google, Inc. http://angularjs.org
+ License: MIT
+*/
+(function(n,h,p){'use strict';function E(a){var f=[];r(f,h.noop).chars(a);return f.join("")}function g(a,f){var d={},c=a.split(","),b;for(b=0;b<c.length;b++)d[f?h.lowercase(c[b]):c[b]]=!0;return d}function F(a,f){function d(a,b,d,l){b=h.lowercase(b);if(s[b])for(;e.last()&&t[e.last()];)c("",e.last());u[b]&&e.last()==b&&c("",b);(l=v[b]||!!l)||e.push(b);var m={};d.replace(G,function(b,a,f,c,d){m[a]=q(f||c||d||"")});f.start&&f.start(b,m,l)}function c(b,a){var c=0,d;if(a=h.lowercase(a))for(c=e.length-
+1;0<=c&&e[c]!=a;c--);if(0<=c){for(d=e.length-1;d>=c;d--)f.end&&f.end(e[d]);e.length=c}}"string"!==typeof a&&(a=null===a||"undefined"===typeof a?"":""+a);var b,k,e=[],m=a,l;for(e.last=function(){return e[e.length-1]};a;){l="";k=!0;if(e.last()&&w[e.last()])a=a.replace(new RegExp("([\\W\\w]*)<\\s*\\/\\s*"+e.last()+"[^>]*>","i"),function(a,b){b=b.replace(H,"$1").replace(I,"$1");f.chars&&f.chars(q(b));return""}),c("",e.last());else{if(0===a.indexOf("\x3c!--"))b=a.indexOf("--",4),0<=b&&a.lastIndexOf("--\x3e",
+b)===b&&(f.comment&&f.comment(a.substring(4,b)),a=a.substring(b+3),k=!1);else if(x.test(a)){if(b=a.match(x))a=a.replace(b[0],""),k=!1}else if(J.test(a)){if(b=a.match(y))a=a.substring(b[0].length),b[0].replace(y,c),k=!1}else K.test(a)&&((b=a.match(z))?(b[4]&&(a=a.substring(b[0].length),b[0].replace(z,d)),k=!1):(l+="<",a=a.substring(1)));k&&(b=a.indexOf("<"),l+=0>b?a:a.substring(0,b),a=0>b?"":a.substring(b),f.chars&&f.chars(q(l)))}if(a==m)throw L("badparse",a);m=a}c()}function q(a){if(!a)return"";A.innerHTML=
+a.replace(/</g,"&lt;");return A.textContent}function B(a){return a.replace(/&/g,"&amp;").replace(M,function(a){var d=a.charCodeAt(0);a=a.charCodeAt(1);return"&#"+(1024*(d-55296)+(a-56320)+65536)+";"}).replace(N,function(a){return"&#"+a.charCodeAt(0)+";"}).replace(/</g,"&lt;").replace(/>/g,"&gt;")}function r(a,f){var d=!1,c=h.bind(a,a.push);return{start:function(a,k,e){a=h.lowercase(a);!d&&w[a]&&(d=a);d||!0!==C[a]||(c("<"),c(a),h.forEach(k,function(d,e){var k=h.lowercase(e),g="img"===a&&"src"===k||
+"background"===k;!0!==O[k]||!0===D[k]&&!f(d,g)||(c(" "),c(e),c('="'),c(B(d)),c('"'))}),c(e?"/>":">"))},end:function(a){a=h.lowercase(a);d||!0!==C[a]||(c("</"),c(a),c(">"));a==d&&(d=!1)},chars:function(a){d||c(B(a))}}}var L=h.$$minErr("$sanitize"),z=/^<((?:[a-zA-Z])[\w:-]*)((?:\s+[\w:-]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)\s*(>?)/,y=/^<\/\s*([\w:-]+)[^>]*>/,G=/([\w:-]+)(?:\s*=\s*(?:(?:"((?:[^"])*)")|(?:'((?:[^'])*)')|([^>\s]+)))?/g,K=/^</,J=/^<\//,H=/\x3c!--(.*?)--\x3e/g,x=/<!DOCTYPE([^>]*?)>/i,
+I=/<!\[CDATA\[(.*?)]]\x3e/g,M=/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,N=/([^\#-~| |!])/g,v=g("area,br,col,hr,img,wbr");n=g("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr");p=g("rp,rt");var u=h.extend({},p,n),s=h.extend({},n,g("address,article,aside,blockquote,caption,center,del,dir,div,dl,figure,figcaption,footer,h1,h2,h3,h4,h5,h6,header,hgroup,hr,ins,map,menu,nav,ol,pre,script,section,table,ul")),t=h.extend({},p,g("a,abbr,acronym,b,bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,q,ruby,rp,rt,s,samp,small,span,strike,strong,sub,sup,time,tt,u,var"));
+n=g("circle,defs,desc,ellipse,font-face,font-face-name,font-face-src,g,glyph,hkern,image,linearGradient,line,marker,metadata,missing-glyph,mpath,path,polygon,polyline,radialGradient,rect,stop,svg,switch,text,title,tspan,use");var w=g("script,style"),C=h.extend({},v,s,t,u,n),D=g("background,cite,href,longdesc,src,usemap,xlink:href");n=g("abbr,align,alt,axis,bgcolor,border,cellpadding,cellspacing,class,clear,color,cols,colspan,compact,coords,dir,face,headers,height,hreflang,hspace,ismap,lang,language,nohref,nowrap,rel,rev,rows,rowspan,rules,scope,scrolling,shape,size,span,start,summary,tabindex,target,title,type,valign,value,vspace,width");
+p=g("accent-height,accumulate,additive,alphabetic,arabic-form,ascent,baseProfile,bbox,begin,by,calcMode,cap-height,class,color,color-rendering,content,cx,cy,d,dx,dy,descent,display,dur,end,fill,fill-rule,font-family,font-size,font-stretch,font-style,font-variant,font-weight,from,fx,fy,g1,g2,glyph-name,gradientUnits,hanging,height,horiz-adv-x,horiz-origin-x,ideographic,k,keyPoints,keySplines,keyTimes,lang,marker-end,marker-mid,marker-start,markerHeight,markerUnits,markerWidth,mathematical,max,min,offset,opacity,orient,origin,overline-position,overline-thickness,panose-1,path,pathLength,points,preserveAspectRatio,r,refX,refY,repeatCount,repeatDur,requiredExtensions,requiredFeatures,restart,rotate,rx,ry,slope,stemh,stemv,stop-color,stop-opacity,strikethrough-position,strikethrough-thickness,stroke,stroke-dasharray,stroke-dashoffset,stroke-linecap,stroke-linejoin,stroke-miterlimit,stroke-opacity,stroke-width,systemLanguage,target,text-anchor,to,transform,type,u1,u2,underline-position,underline-thickness,unicode,unicode-range,units-per-em,values,version,viewBox,visibility,width,widths,x,x-height,x1,x2,xlink:actuate,xlink:arcrole,xlink:role,xlink:show,xlink:title,xlink:type,xml:base,xml:lang,xml:space,xmlns,xmlns:xlink,y,y1,y2,zoomAndPan",
+!0);var O=h.extend({},D,p,n),A=document.createElement("pre");h.module("ngSanitize",[]).provider("$sanitize",function(){this.$get=["$$sanitizeUri",function(a){return function(f){var d=[];F(f,r(d,function(c,b){return!/^unsafe/.test(a(c,b))}));return d.join("")}}]});h.module("ngSanitize").filter("linky",["$sanitize",function(a){var f=/((ftp|https?):\/\/|(www\.)|(mailto:)?[A-Za-z0-9._%+-]+@)\S*[^\s.;,(){}<>"\u201d\u2019]/i,d=/^mailto:/i;return function(c,b){function k(a){a&&g.push(E(a))}function e(a,
+c){g.push("<a ");h.isDefined(b)&&g.push('target="',b,'" ');g.push('href="',a.replace(/"/g,"&quot;"),'">');k(c);g.push("</a>")}if(!c)return c;for(var m,l=c,g=[],n,p;m=l.match(f);)n=m[0],m[2]||m[4]||(n=(m[3]?"http://":"mailto:")+n),p=m.index,k(l.substr(0,p)),e(n,m[0].replace(d,"")),l=l.substring(p+m[0].length);k(l);return a(g.join(""))}}])})(window,window.angular);
+//# sourceMappingURL=angular-sanitize.min.js.map
+
 /**
  * @license AngularJS v1.4.7
  * (c) 2010-2015 Google, Inc. http://angularjs.org
@@ -28529,8 +28546,178 @@ angular.module('ngResource', ['ng']).
   ]);
 
 })(angular);
+/**
+ * Enhanced Select2 Dropmenus
+ *
+ * @AJAX Mode - When in this mode, your value will be an object (or array of objects) of the data used by Select2
+ *     This change is so that you do not have to do an additional query yourself on top of Select2's own query
+ * @params [options] {object} The configuration options passed to $.fn.select2(). Refer to the documentation
+ */
+angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelect2', ['uiSelect2Config', '$timeout', function (uiSelect2Config, $timeout) {
+  var options = {};
+  if (uiSelect2Config) {
+    angular.extend(options, uiSelect2Config);
+  }
+  return {
+    require: '?ngModel',
+    compile: function (tElm, tAttrs) {
+      var watch,
+        repeatOption,
+        repeatAttr,
+        isSelect = tElm.is('select'),
+        isMultiple = (tAttrs.multiple !== undefined);
+
+      // Enable watching of the options dataset if in use
+      if (tElm.is('select')) {
+        repeatOption = tElm.find('option[ng-repeat], option[data-ng-repeat]');
+
+        if (repeatOption.length) {
+          repeatAttr = repeatOption.attr('ng-repeat') || repeatOption.attr('data-ng-repeat');
+          watch = jQuery.trim(repeatAttr.split('|')[0]).split(' ').pop();
+        }
+      }
+
+      return function (scope, elm, attrs, controller) {
+
+        var setPristine = function() {
+          var form = scope.$eval(elm.closest('form').attr('name'));
+          form.$dirty          = false;
+          form.$pristine       = true;
+          controller.$dirty    = false;
+          controller.$pristine = true;
+          elm.removeClass('ng-dirty').addClass('ng-pristine');
+          elm.closest('form').removeClass('ng-dirty').addClass('ng-pristine');
+        };
+
+        // instance-specific options
+        var opts = angular.extend({}, options, scope.$eval(attrs.uiSelect2));
+
+        if (isSelect) {
+          // Use <select multiple> instead
+          delete opts.multiple;
+          delete opts.initSelection;
+        } else if (isMultiple) {
+          opts.multiple = true;
+        }
+
+        if (controller) {
+          // Watch the model for programmatic changes
+          controller.$render = function () {
+            if (isSelect) {
+              elm.select2('val', controller.$viewValue);
+            } else {
+              if (isMultiple) {
+                if (!controller.$viewValue) {
+                  elm.select2('data', []);
+                } else if (angular.isArray(controller.$viewValue)) {
+                  elm.select2('data', controller.$viewValue);
+                } else {
+                  elm.select2('val', controller.$viewValue);
+                }
+              } else {
+                if (angular.isObject(controller.$viewValue)) {
+                  elm.select2('data', controller.$viewValue);
+                } else if (!controller.$viewValue) {
+                  elm.select2('data', null);
+                } else {
+                  elm.select2('val', controller.$viewValue);
+                }
+              }
+            }
+          };
+
+          // Watch the options dataset for changes
+          if (watch) {
+            scope.$watch(watch, function (newVal, oldVal, scope) {
+              if (!newVal) return;
+              // Delayed so that the options have time to be rendered
+              $timeout(function () {
+                elm.select2('val', controller.$viewValue);
+                // Refresh angular to remove the superfluous option
+                elm.trigger('change');
+              });
+            });
+          }
+
+          // Update valid and dirty statuses
+          controller.$parsers.push(function (value) {
+            var div = elm.prev()
+            div
+              .toggleClass('ng-invalid', !controller.$valid)
+              .toggleClass('ng-valid', controller.$valid)
+              .toggleClass('ng-invalid-required', !controller.$valid)
+              .toggleClass('ng-valid-required', controller.$valid)
+              .toggleClass('ng-dirty', controller.$dirty)
+              .toggleClass('ng-pristine', controller.$pristine);
+            return value;
+          });
+
+          if (!isSelect) {
+            // Set the view and model value and update the angular template manually for the ajax/multiple select2.
+            elm.bind("change", function () {
+              if (scope.$$phase) return;
+              scope.$apply(function () {
+                controller.$setViewValue(elm.select2('data'));
+              });
+            });
+            
+            if (opts.initSelection) {
+              var initSelection = opts.initSelection;
+              opts.initSelection = function (element, callback) {
+                initSelection(element, function (value) {
+                  controller.$setViewValue(value);
+                  setPristine();
+                  callback(value);
+                });
+              };
+            }
+          }
+        }
+
+        attrs.$observe('disabled', function (value) {
+          elm.select2('enable', !value);
+        });
+
+        attrs.$observe('readonly', function (value) {
+          elm.select2('readonly', !!value);
+        });
+
+        if (attrs.ngMultiple) {
+          scope.$watch(attrs.ngMultiple, function(newVal) {
+            elm.select2(opts);
+          });
+        }
+
+        // Initialize the plugin late so that the injected DOM does not disrupt the template compiler
+        $timeout(function () {
+          elm.select2(opts);
+
+          // Set initial value - I'm not sure about this but it seems to need to be there
+          elm.val(controller.$viewValue);
+          // important!
+          controller.$render();
+
+          // Not sure if I should just check for !isSelect OR if I should check for 'tags' key
+          if (!opts.initSelection && !isSelect) {
+            controller.$setViewValue(elm.select2('data'));
+            setPristine();
+          }
+            
+        });
+      };
+    }
+  };
+}]);
+
 "use strict";
-var dash = angular.module('dashApp', ['ngRoute', 'ngResource', 'ngMorph']);
+var dash = angular.module('dashApp', [
+    'ngSanitize',
+    'ngRoute',
+    'angularModalService',
+    'ngResource',
+    'ngMorph',
+    'ui.select2',
+]);
 
 dash.config(function($routeProvider, $locationProvider){
     $routeProvider
@@ -28542,6 +28729,10 @@ dash.config(function($routeProvider, $locationProvider){
         .when('/shipment/:id', {
             controller: 'ShipmentShowController',
             templateUrl: '/js/dash/views/show.html'
+        })
+        .when('/newShipment', {
+            controller: 'newShipmentController',
+            templateUrl: '/js/dash/views/newShipment.html'
         })
         .when('/bolsas',{
             controller: 'bolsasController',
@@ -28558,14 +28749,16 @@ dash.factory('shipments', function($resource){
         'update': {method: 'PUT'}
     });
 });
+
+
+/*angular-modal-service v0.6.8 - https://github.com/dwmkerr/angular-modal-service */
+!function(){"use strict";var e=angular.module("angularModalService",[]);e.factory("ModalService",["$document","$compile","$controller","$http","$rootScope","$q","$templateCache",function(e,n,l,o,t,r,c){function a(){var e=this,a=function(e,n){var l=r.defer();return e?l.resolve(e):n?o.get(n,{cache:c}).then(function(e){l.resolve(e.data)},function(e){l.reject(e)}):l.reject("No template or templateUrl has been specified."),l.promise};e.showModal=function(e){var o=r.defer(),c=e.controller;return c?(a(e.template,e.templateUrl).then(function(c){var a=t.$new(),i=r.defer(),s={$scope:a,close:function(e,n){(void 0===n||null===n)&&(n=0),window.setTimeout(function(){i.resolve(e),a.$destroy(),d.remove(),s.close=null,o=null,i=null,m=null,s=null,d=null,a=null},n)}};e.inputs&&angular.extend(s,e.inputs);var p=n(c),d=p(a);s.$element=d;var f=l(e.controller,s);e.controllerAs&&(a[e.controllerAs]=f),e.appendElement?e.appendElement.append(d):u.append(d);var m={controller:f,scope:a,element:d,close:i.promise};o.resolve(m)}).then(null,function(e){o.reject(e)}),o.promise):(o.reject("No controller has been specified."),o.promise)}}var u=e.find("body");return new a}])}();
+//# sourceMappingURL=angular-modal-service.min.js.map
+
 dash.controller('dashController', function($scope, $location, $http, $filter, $route){
     $scope.loading = false;
     $scope.dates = new Date();
     $scope.route = $route;
-
-    $scope.show = function(id){
-        $location.url('/shipment/' + id);
-    };
 
     $scope.searchByDate = function (dates){
         $scope.loading = true;
@@ -28587,9 +28780,121 @@ dash.controller('dashController', function($scope, $location, $http, $filter, $r
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
         $scope.predicate = predicate;
     };
+
+    $scope.creating = function(){
+      $location.url('/newShipment');
+    };
+
+    $scope.show = function(id){
+        $location.url('/shipment/' + id);
+    };
 });
+
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });
+});
+dash.controller('newShipmentController', function ($scope, $http, $location, ModalService){
+
+    $scope.name = 'Nueva encomienda';
+
+    $scope.shipment = {};
+
+    $scope.selectTradersSender = {
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/trader',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.selectTradersReciver = {
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/trader',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.selectEstablecimientos = {
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/establecimiento',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.selectSeccion = {
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/seccion',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.newUserModal = function(){
+      ModalService.showModal({
+          templateUrl: '/js/dash/views/newUserModal.html',
+          controller: 'NewUserModalController'
+      }).then(function(modal){
+          modal.element.modal();
+          modal.close.then(function(result){
+             console.log(result);
+          });
+      });
+    };
+
+    $scope.establecimientoModal = function(){
+        ModalService.showModal({
+            templateUrl: '/js/dash/views/crearEstablecimiento.html',
+            controler: "CrearEstablecimientoController"
+        }).then(function(modal){
+            modal.element.modal();
+            modal.close.then(function(result){
+                $scope.message = "You said " + result;
+            })
+        });
+    };
+
+    $scope.profile = {
+        name: '',
+        establecimiento_id: '',
+        seccion_id:'',
+        estado_id:1
+    };
+
+    $scope.submitTrader = function(){
+        console.log('clicked');
+        console.log($scope.profile);
+        $http.post("personas");
+    };
+});
+
+
+dash.controller('NewUserModalController', function($scope, $http, close){
+
+    $scope.close = function(result) {
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
+
+    $scope.name = 'Nuevo Perfil';
+
+});
+dash.controller('CrearEstablecimientoController', function($scope, close){
+    $scope.close = function(result) {
+        close(result, 500); // close, but give 500ms for bootstrap to animate
+    };
 });
 dash.controller('bolsasController', function($scope, $location, $routeParams){
     $scope.name = 'Bolsas'

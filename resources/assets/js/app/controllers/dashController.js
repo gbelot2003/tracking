@@ -1,11 +1,8 @@
+
 dash.controller('dashController', function($scope, $location, $http, $filter, $route){
     $scope.loading = false;
     $scope.dates = new Date();
     $scope.route = $route;
-
-    $scope.show = function(id){
-        $location.url('/shipment/' + id);
-    };
 
     $scope.searchByDate = function (dates){
         $scope.loading = true;
@@ -26,5 +23,13 @@ dash.controller('dashController', function($scope, $location, $http, $filter, $r
     $scope.order = function(predicate) {
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
         $scope.predicate = predicate;
+    };
+
+    $scope.creating = function(){
+      $location.url('/newShipment');
+    };
+
+    $scope.show = function(id){
+        $location.url('/shipment/' + id);
     };
 });

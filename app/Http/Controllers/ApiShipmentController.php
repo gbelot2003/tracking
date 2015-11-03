@@ -28,7 +28,7 @@ class ApiShipmentController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return 'Done';
 	}
 
 	/**

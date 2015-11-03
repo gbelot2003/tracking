@@ -1,5 +1,12 @@
 "use strict";
-var dash = angular.module('dashApp', ['ngRoute', 'ngResource', 'ngMorph']);
+var dash = angular.module('dashApp', [
+    'ngSanitize',
+    'ngRoute',
+    'angularModalService',
+    'ngResource',
+    'ngMorph',
+    'ui.select2',
+]);
 
 dash.config(function($routeProvider, $locationProvider){
     $routeProvider
@@ -11,6 +18,10 @@ dash.config(function($routeProvider, $locationProvider){
         .when('/shipment/:id', {
             controller: 'ShipmentShowController',
             templateUrl: '/js/dash/views/show.html'
+        })
+        .when('/newShipment', {
+            controller: 'newShipmentController',
+            templateUrl: '/js/dash/views/newShipment.html'
         })
         .when('/bolsas',{
             controller: 'bolsasController',
@@ -27,3 +38,4 @@ dash.factory('shipments', function($resource){
         'update': {method: 'PUT'}
     });
 });
+

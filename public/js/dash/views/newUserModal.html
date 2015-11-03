@@ -1,0 +1,48 @@
+<div class="modal fade">
+    <div class="modal-dialog modal-lg" ng-controller="newShipmentController">
+        <div class="modal-content">
+            <form ng-submit="submitTrader()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h2>{{ name }}</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="name">Nombre</label>
+                                        <input type="text" class="form-control" id="name" name="name" ng-model='profile.name' />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="selectEstablecimientos">Establecimiento</label>
+                                        <select ui-select2="selectEstablecimientos" id="selectEstablecimientos" data-placeholder="Seleccione Establecimiento" ng-model="profile.establecimiento_id">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="selectSeccion">Sección</label>
+                                        <select ui-select2="selectSeccion" id="selectSeccion" data-placeholder="Seleccione Sección" ng-model="profile.seccion_id">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
