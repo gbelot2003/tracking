@@ -82,10 +82,10 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         console.log($scope.profile);
         $http.post("personas", $scope.profile).then(function successCallback(response){
             console.log(response);
+            $scope.message = "El registro se a creado correctamente";
         }, function errorCallback(response){
             console.log(response);
         });
-        $scope.closeEstablecimientos();
     };
 
 

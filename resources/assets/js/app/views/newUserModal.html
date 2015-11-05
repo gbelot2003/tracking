@@ -1,7 +1,14 @@
 <div class="modal fade">
     <div class="modal-dialog modal-lg" ng-controller="newShipmentController">
         <div class="modal-content">
-            <form ng-submit="submitTrader()">
+
+            <div ng-if="message">
+                <p>
+                    <h3>{{ message }}</h3>
+                    <button class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </p>
+            </div>
+            <form ng-submit="submitTrader()" ng-if="!message">
 
                 <div class="modal-header">
                     <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal" aria-hidden="true">&times;</button>

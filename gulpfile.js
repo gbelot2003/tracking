@@ -75,9 +75,9 @@ elixir(function(mix){
             'app/angular-route.js',
             'app/angular-resource.js',
             'app/angular-morph.js',
-            'app/select3.js',
             'app/dash.js',
             'app/angular-modal-service.min.js',
+            'app/select3.js',
 
             'app/controllers/dashController.js',
             'app/controllers/ShipmentShowController.js',
