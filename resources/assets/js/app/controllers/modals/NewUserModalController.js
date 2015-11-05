@@ -4,6 +4,4 @@ dash.controller('NewUserModalController', function($scope, $http, close){
         close(result, 500); // close, but give 500ms for bootstrap to animate
     };
 
-    $scope.name = 'Nuevo Perfil';
-
 });

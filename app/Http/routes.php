@@ -30,9 +30,10 @@ Route::resource('user', 'UserController');
 Route::resource('secciones', 'SeccionesController');
 
 Route::resource('establecimientos', 'EstablecimientosController');
+Route::resource('api/establecimientos', 'ApiEstablecimientosController', ['only' => ['index', 'store']]);
 
 Route::resource('personal', 'TraderController');
-Route::resource('personas', 'PersonalController', ['only' => ['store', 'update', 'destroy']]);
+Route::resource('personas', 'PersonalController', ['only' => ['store', 'update', 'destroy']]); //cambiar a api/personal
 
 
 Route::resource('bolsas', 'BolsasController');

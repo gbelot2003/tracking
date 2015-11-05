@@ -28795,8 +28795,6 @@ dash.controller('ShipmentShowController', function($scope, shipments, $location,
 });
 dash.controller('newShipmentController', function ($scope, $http, $location, ModalService){
 
-    $scope.name = 'Nueva encomienda';
-
     $scope.shipment = {};
 
     $scope.selectTradersSender = {
@@ -28821,6 +28819,31 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
+
+    /**
+     * cerrar modal
+     */
+
+    $scope.dismissModal = function(result) {
+        close(result, 200); // close, but give 200ms for bootstrap to animate
+    };
+
+    /**
+     * Modal Nuevos usuarios
+    */
+
+    $scope.newUserModal = function(){
+      ModalService.showModal({
+          templateUrl: '/js/dash/views/newUserModal.html',
+          controller: 'NewUserModalController'
+      }).then(function(modal){
+          modal.element.modal();
+          modal.close.then(function(result){
+             console.log(result);
+          });
+      });
+    };
+
     $scope.selectEstablecimientos = {
         ajax:{
             cache:true,
@@ -28843,39 +28866,11 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
-    $scope.newUserModal = function(){
-      ModalService.showModal({
-          templateUrl: '/js/dash/views/newUserModal.html',
-          controller: 'NewUserModalController'
-      }).then(function(modal){
-          modal.element.modal();
-          modal.close.then(function(result){
-             console.log(result);
-          });
-      });
-    };
-
-    $scope.establecimientoModal = function(){
-        ModalService.showModal({
-            templateUrl: '/js/dash/views/crearEstablecimiento.html',
-            controler: "CrearEstablecimientoController"
-        }).then(function(modal){
-            modal.element.modal();
-            modal.close.then(function(result){
-                $scope.message = "You said " + result;
-            })
-        });
-    };
-
     $scope.profile = {
         name: '',
         establecimiento_id: '',
         seccion_id:'',
         estado_id:1
-    };
-
-    $scope.closeEstablecimientos = function(){
-        $element.modal('hide');
     };
 
     $scope.submitTrader = function(){
@@ -28887,6 +28882,32 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         });
         $scope.closeEstablecimientos();
     };
+
+
+    /**
+     * Modal Establecimientos
+     */
+    $scope.establecimientoModal = function(){
+        ModalService.showModal({
+            templateUrl: '/js/dash/views/crearEstablecimiento.html',
+            controller: 'CrearEstablecimientoController',
+            inputs: {
+                title: 'Nuevo Establecimiento'
+            }
+        }).then(function(modal){
+            modal.element.modal();
+            modal.close.then(function(result){
+                if(!result.cancel){
+                    $http.post("api/establecimientos/", result.establecimiento).then(function successCallback(response){
+                        console.log(response.data);
+                    }, function errorCallback(response){
+                        console.log(response.data);
+                    });
+                }
+            });
+        });
+    };
+
 });
 
 
@@ -28896,14 +28917,43 @@ dash.controller('NewUserModalController', function($scope, $http, close){
         close(result, 500); // close, but give 500ms for bootstrap to animate
     };
 
-    $scope.name = 'Nuevo Perfil';
+});
+dash.controller('CrearEstablecimientoController', [
+    '$scope','$http', '$element', 'title', 'close',
+    function($scope, $http, $element, title,  close){
 
-});
-dash.controller('CrearEstablecimientoController', function($scope, close){
-    $scope.close = function(result) {
-        close(result, 500); // close, but give 500ms for bootstrap to animate
-    };
-});
+        $scope.title = title;
+        $scope.departamentos = [{"id": 1,"departamento": "Atlántida"}, {"id": 2,"departamento": "Colón"}, {"id": 3,"departamento": "Comayagua"}, {"id": 4,"departamento": "Copán"}, {"id": 5,"departamento": "Cortés"}, {"id": 6,"departamento": "Choluteca"}, {"id": 7,"departamento": "El Paraíso"}, {"id": 8,"departamento": "Francisco Morazán"}, {"id": 9,"departamento": "Gracias a Dios"}, {"id": 10,"departamento": "Intibucá"}, {"id": 11,"departamento": "Islas de la Bahía"}, {"id": 12,"departamento": "La Paz"}, {"id": 13,"departamento": "Lempira"}, {"id": 14,"departamento": "Ocotepeque"}, {"id": 15,"departamento": "Olancho"}, {"id": 16,"departamento": "Santa Bárbara"}, {"id": 17,"departamento": "Valle"}, {"id": 18,"departamento": "Yoro"}]
+        $http.get('listados/empresas').success(function(response){
+            $scope.empresas = response;
+        });
+
+        $scope.$watch('establecimiento.departamento_id', function (newVal, oldVal) {
+            if (oldVal == newVal) return;
+            $http.get('listados/municipios/' + newVal).success(function(response){
+                $scope.municipios = response;
+            });
+        }, true);
+
+        $scope.close = function() {
+            close({
+                establecimiento: $scope.establecimiento
+            }, 500); // close, but give 500ms for bootstrap to animate
+        };
+
+        $scope.cancel = function() {
+
+            //  Manually hide the modal.
+            $element.modal('hide');
+
+            //  Now call close, returning control to the caller.
+            close({
+                cancel: true
+            }, 500); // close, but give 500ms for bootstrap to animate
+        };
+
+    }
+]);
 dash.controller('bolsasController', function($scope, $location, $routeParams){
     $scope.name = 'Bolsas'
 });

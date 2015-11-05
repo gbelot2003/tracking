@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Empresa;
 use App\Http\Requests;
 use App\Municipio;
 use App\Role;
@@ -231,5 +232,11 @@ class ListadosController extends Controller {
 		return View('listados.shipmentstate', compact('transitos'));
 	}
 
-
+	/**
+	 * @return \Illuminate\Database\Eloquent\Collection|static[]
+	 */
+	public function getEmpresas(){
+		$empresas = Empresa::all();
+		return $empresas;
+	}
 }
