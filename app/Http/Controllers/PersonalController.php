@@ -59,7 +59,8 @@ class PersonalController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$trader = Trader::with('establecimiento.municipio.departamento', 'seccion')->where('id', '=', $id)->first();
+		return $trader;
 	}
 
 	/**

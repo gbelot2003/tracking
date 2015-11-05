@@ -1,5 +1,15 @@
 dash.controller('newShipmentController', function ($scope, $http, $location, ModalService){
 
+
+    $scope.generateCode = function(){
+      $scope.shipment.code =  Math.floor(Math.random() * 900000000) + 100000000;
+    };
+
+    $http.get('/api/consultas/estados').then(function successCallback(response){
+      $scope.estados = response.data;
+        console.log(response)
+    });
+
     $scope.shipment = {};
 
     $scope.selectTradersSender = {
@@ -13,6 +23,14 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
+    $scope.$watch('shipment.sender', function (newVal, oldVal) {
+        if (oldVal == newVal) return;
+        $http.get('personas/' + newVal).success(function(response){
+            $scope.sender = response;
+        });
+    }, true);
+
+
     $scope.selectTradersReciver = {
         ajax:{
             cache:true,
@@ -24,14 +42,12 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
-
-    /**
-     * cerrar modal
-     */
-
-    $scope.dismissModal = function(result) {
-        close(result, 200); // close, but give 200ms for bootstrap to animate
-    };
+    $scope.$watch('shipment.reciver', function (newVal, oldVal) {
+        if (oldVal == newVal) return;
+        $http.get('personas/' + newVal).success(function(response){
+            $scope.reciver = response;
+        });
+    }, true);
 
     /**
      * Modal Nuevos usuarios
@@ -87,7 +103,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
             console.log(response);
         });
     };
-
 
     /**
      * Modal Establecimientos

@@ -1,11 +1,11 @@
 <div id="newShip">
         <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-6">
                 <h3>Nueva Encomienda</h3>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <a class="inline btn btn-flat" href="" ng-click="newUserModal()"><i class="fa fa-user-plus fa-2x"></i> Nuevo Perfil</a>
-                <a class="inline btn btn-flat" href="" ng-click="establecimientoModal()"><i class="fa fa-map-signs fa-2x"></i> Nueva Sección</a>
+                <a class="inline btn btn-flat" href="" ng-click="establecimientoModal()"><i class="fa fa-map-signs fa-2x"></i> <small>Nuevo Establecimiento</small></a>
             </div>
         </div>
 
@@ -20,11 +20,11 @@
                             <div class="col-md-10">
                                 <!-- code Form Input -->
                                 <div class="form-group">
-                                    <input class="select form-control" id="code" name="code" type="text">
+                                    <input class="select form-control" id="code" name="code" type="text" ng-model="shipment.code">
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <button id="generate" class="btn btn btn btn-material-indigo">Generar</button>
+                                <button id="generate" class="btn btn btn btn-material-indigo" ng-click="generateCode()">Generar</button>
                             </div>
                         </div>
                     </div>
@@ -34,34 +34,137 @@
 
         <div class="row">
             <div class="col-md-6">
-                <div class="pane panel-info">
+                <div class="panel panel-info">
                     <div class="panel-heading">Remitente </div>
                     <div class="panel-body">
-                        <div class="form-group">
-                            <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender">
-                                <option value=""></option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12" ng-if="sender">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr><th>Nombre</th>
+                                        <th>Sección</th>
+                                        <th>Sucursal/Edificio</th>
+                                    </tr></thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><span class="info-row">{{ sender.name }}</span></td>
+                                        <td><span class="info-row"><span class="info-row">{{ sender.seccion.name }}</span></span></td>
+                                        <td>{{ sender.establecimiento.name }}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Departamento</th>
+                                        <th colspan="2">Municipio</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ sender.establecimiento.municipio.departamento.departamento }}</td>
+                                        <td colspan="2">{{ sender.establecimiento.municipio.municipio }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3">Dirección</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">{{sender.establecimiento.address }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-6">
-                <div class="pane panel-primary">
+                <div class="panel panel-primary">
                     <div class="panel-heading">Destinatario</div>
                     <div class="panel-body">
-                        <div class="form-group">
-                            <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciver">
-                                <option value=""></option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciver">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12" ng-if="reciver">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr><th>Nombre</th>
+                                        <th>Sección</th>
+                                        <th>Sucursal/Edificio</th>
+                                    </tr></thead>
+                                    <tbody>
+                                    <tr>
+                                        <td><span class="info-row">{{ reciver.name }}</span></td>
+                                        <td><span class="info-row"><span class="info-row">{{ reciver.seccion.name }}</span></span></td>
+                                        <td>{{ reciver.establecimiento.name }}</td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>Departamento</th>
+                                        <th colspan="2">Municipio</th>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ reciver.establecimiento.municipio.departamento.departamento }}</td>
+                                        <td colspan="2">{{ reciver.establecimiento.municipio.municipio }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="3">Dirección</th>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">{{reciver.establecimiento.address }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-12">
-                
+                <div class="panel">
+                    <div class="panel-heading">
+                        Descripción
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <textarea name="description" id="description" cols="30" class="form-control empty" rows="5" ng-model="shipment.description"></textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-heading">
+                    Registrar estado
+                </div>
+                <div class="panel-body">
+                    <select ui-select2 name="estado" id="estado" ng-model="shipment.estado_id">
+                        <option value="2">Transito, regular</option>
+                        <option ng-repeat="estado in estados" value="{{estado.id}}">{{estado.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" ng-click="createShipment()">Crear Encomienda</button>
+            <button type="button" class="btn btn-flat">Cancelar</button>
+        </div>
+    </div>
 </div>

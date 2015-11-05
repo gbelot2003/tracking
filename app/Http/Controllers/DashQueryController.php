@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers;
 
 use App\Establecimiento;
+use App\Estado;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Seccion;
 use App\Shipment;
 use App\Trader;
+use App\Transito;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -71,6 +73,12 @@ class DashQueryController extends Controller {
 		return [
 			'results' => $secciones
 		];
+	}
+
+	public function getEstados(){
+		$estados = Estado::whereBetween('id', [1,6])->get();
+
+		return $estados;
 	}
 
 	public function getShipmentByDate($date){
