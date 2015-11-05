@@ -26,7 +26,6 @@ class ShipmentsFormRequest extends Request {
 			'code' => 'required|Integer|unique:shipments',
 			'sender_id' => 'required|Integer',
 			'reciber_id' => 'required|Integer|different:sender_id',
-			'reciber_seccion' => 'required|Integer',
 			'description' => 'String',
 			'estado' => 'Integer'
 		];

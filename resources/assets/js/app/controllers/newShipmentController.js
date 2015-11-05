@@ -7,7 +7,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
 
     $http.get('/api/consultas/estados').then(function successCallback(response){
       $scope.estados = response.data;
-        console.log(response)
     });
 
     $scope.shipment = {};
@@ -23,7 +22,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
-    $scope.$watch('shipment.sender', function (newVal, oldVal) {
+    $scope.$watch('shipment.sender_id', function (newVal, oldVal) {
         if (oldVal == newVal) return;
         $http.get('personas/' + newVal).success(function(response){
             $scope.sender = response;
@@ -42,10 +41,10 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
-    $scope.$watch('shipment.reciver', function (newVal, oldVal) {
+    $scope.$watch('shipment.reciber_id', function (newVal, oldVal) {
         if (oldVal == newVal) return;
         $http.get('personas/' + newVal).success(function(response){
-            $scope.reciver = response;
+            $scope.reciber = response;
         });
     }, true);
 
@@ -126,6 +125,19 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
                 }
             });
         });
+    };
+
+    /**
+     * create shipment
+     */
+
+    $scope.createShipment = function(){
+        console.log($scope.shipment);
+        $scope.shipmentCancel();
+    };
+
+    $scope.shipmentCancel = function(){
+            $location.url('/');
     };
 
 });

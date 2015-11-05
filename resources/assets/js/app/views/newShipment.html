@@ -40,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender">
+                                    <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender_id">
                                         <option value=""></option>
                                     </select>
                                 </div>
@@ -88,12 +88,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciver">
+                                    <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciber_id">
                                         <option value=""></option>
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12" ng-if="reciver">
+                            <div class="col-md-12" ng-if="reciber">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr><th>Nombre</th>
@@ -102,9 +102,9 @@
                                     </tr></thead>
                                     <tbody>
                                     <tr>
-                                        <td><span class="info-row">{{ reciver.name }}</span></td>
-                                        <td><span class="info-row"><span class="info-row">{{ reciver.seccion.name }}</span></span></td>
-                                        <td>{{ reciver.establecimiento.name }}</td>
+                                        <td><span class="info-row">{{ reciber.name }}</span></td>
+                                        <td><span class="info-row"><span class="info-row">{{ reciber.seccion.name }}</span></span></td>
+                                        <td>{{ reciber.establecimiento.name }}</td>
 
                                     </tr>
                                     <tr>
@@ -112,14 +112,14 @@
                                         <th colspan="2">Municipio</th>
                                     </tr>
                                     <tr>
-                                        <td>{{ reciver.establecimiento.municipio.departamento.departamento }}</td>
-                                        <td colspan="2">{{ reciver.establecimiento.municipio.municipio }}</td>
+                                        <td>{{ reciber.establecimiento.municipio.departamento.departamento }}</td>
+                                        <td colspan="2">{{ reciber.establecimiento.municipio.municipio }}</td>
                                     </tr>
                                     <tr>
                                         <th colspan="3">Dirección</th>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">{{reciver.establecimiento.address }}</td>
+                                        <td colspan="3">{{reciber.establecimiento.address }}</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -164,7 +164,7 @@
     <div class="row">
         <div class="col-md-12">
             <button type="button" class="btn btn-primary" ng-click="createShipment()">Crear Encomienda</button>
-            <button type="button" class="btn btn-flat">Cancelar</button>
+            <button type="button" class="btn btn-flat" ng-click="shipmentCancel()">Cancelar</button>
         </div>
     </div>
 </div>
