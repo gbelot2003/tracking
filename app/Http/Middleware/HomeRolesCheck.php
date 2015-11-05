@@ -15,11 +15,11 @@ class HomeRolesCheck {
 	{
 		if($request->user()->hasRole(['owner', 'admin', 'supervisor'])){
 
-			return redirect('shipments');
+			return redirect('dash');
 
 		} elseif($request->user()->hasRole(['centro-acopio', 'currier'])){
 
-			return redirect('mis-encomiendas');
+			return redirect('dash');
 
 		} elseif($request->user()->hasRole('cliente')) {
 
