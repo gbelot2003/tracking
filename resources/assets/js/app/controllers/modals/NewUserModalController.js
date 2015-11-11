@@ -1,6 +1,11 @@
 dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService){
 
     $scope.profileCreater = profileCreater;
+    if($scope.profileCreater === 'sender'){
+        $scope.title = "Remitente";
+    } else {
+        $scope.title = "Destinatario"
+    }
 
     $scope.profile = {
         name: '',
