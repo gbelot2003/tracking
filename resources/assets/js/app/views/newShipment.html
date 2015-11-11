@@ -1,14 +1,5 @@
 <div id="newShip">
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Nueva Encomienda</h3>
-            </div>
-            <div class="col-md-6">
-                <a class="inline btn btn-flat" href="" ng-click="newUserModal()"><i class="fa fa-user-plus fa-2x"></i> Nuevo Perfil</a>
-                <a class="inline btn btn-flat" href="" ng-click="establecimientoModal()"><i class="fa fa-map-signs fa-2x"></i> <small>Nuevo Establecimiento</small></a>
-            </div>
-        </div>
-
+        <h3>Nueva Encomienda</h3>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -32,6 +23,7 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-6">
                 <div class="panel panel-info">
@@ -39,10 +31,17 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender_id">
-                                        <option value=""></option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+                                            <select ui-select2="selectTradersSender" data-placeholder="Seleccione al remitente" ng-model="shipment.sender_id">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="" ng-click="newUserModal('sender')"><i class="fa fa-plus-circle"></i></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12" ng-if="sender">
@@ -86,13 +85,22 @@
                     <div class="panel-heading">Destinatario</div>
                     <div class="panel-body">
                         <div class="row">
+
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciber_id">
-                                        <option value=""></option>
-                                    </select>
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <div class="form-group">
+                                            <select ui-select2="selectTradersReciver" data-placeholder="Seleccione al destinatario" ng-model="shipment.reciber_id">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <a href="" ng-click="newUserModal('reciber')"><i class="fa fa-plus-circle red"></i></a>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="col-md-12" ng-if="reciber">
                                 <table class="table table-bordered">
                                     <thead>

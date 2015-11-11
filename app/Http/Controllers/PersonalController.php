@@ -46,9 +46,8 @@ class PersonalController extends Controller {
 	public function store(TradersFormRequest $request)
 	{
 		$trader = Trader::create($request->all());
-		$name = $trader->name;
-		$seccion = $trader->establecimiento->name;
-		return 'El nuevo registro de "'. $name .'" en "'. $seccion .'"" a sido creado';
+		$rtrader = 	Trader::with('establecimiento.municipio.departamento', 'seccion')->where('id', '=', $trader->id)->first();
+		return $rtrader;
 	}
 
 	/**

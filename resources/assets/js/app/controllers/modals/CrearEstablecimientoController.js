@@ -22,7 +22,6 @@ dash.controller('CrearEstablecimientoController', [
         };
 
         $scope.cancel = function() {
-
             //  Manually hide the modal.
             $element.modal('hide');
 

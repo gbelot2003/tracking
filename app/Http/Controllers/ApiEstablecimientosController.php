@@ -39,7 +39,7 @@ class ApiEstablecimientosController extends Controller {
 	public function store(EstablecimientosFormRequest $request)
 	{
 		$establecimientos = Establecimiento::create($request->all());
-		return $establecimientos->name ." creado!!";
+		return $establecimientos;
 	}
 
 	/**

@@ -34,26 +34,26 @@ elixir(function(mix) {
     mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
         'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'init.js', 'myscripts.js'], 'public/js/app.js');
 
-    mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
+    /*mix.scripts(['jquery-1.11.3.min.js', 'bootstrap.min.js', 'arrive.js', 'material.min.js', 'ripples.min.js', 'bootbox.min.js',
             'select2.full.min.js', 'flexigrid.js', 'jquery.dataTables.js', 'jquery.colorbox-min.js', 'wow.min.js', 'materialbox.js', 'trackhn.js', 'init.js', 'myscripts.js'],
-        'public/js/wapp.js');
+        'public/js/wapp.js');*/
 
     /**
      * js scripts
      */
-    mix.scripts(['forms.js'], 'public/js/forms.js');
-    mix.scripts(['bolsas.js'], 'public/js/bolsas.js');
-    mix.scripts(['underscore.js'], 'public/js/underscore.js');
-    mix.scripts(['moment.js'], 'public/js/moment.js');
+    //mix.scripts(['forms.js'], 'public/js/forms.js');
+    //mix.scripts(['bolsas.js'], 'public/js/bolsas.js');
+    //mix.scripts(['underscore.js'], 'public/js/underscore.js');
+    //mix.scripts(['moment.js'], 'public/js/moment.js');
 
     /**
      *  vuejs old scripts
      */
-    mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
-    mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
-    mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes-usuarios.js'], 'public/js/vue-reportes-usuaios.js');
-    mix.scripts(['vue.js', 'vue-resource.js', 'vue-reporte-general.js'], 'public/js/vue-reporte-general.js');
-    mix.scripts(['vue.js', 'vue-resource.js', 'vue/app.js'], 'public/js/app/vue-app.js');
+    //mix.scripts(['vue.js', 'vue-resource.js', 'myvue.js'], 'public/js/vue.js');
+    //mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes.js'], 'public/js/vue-reports.js');
+    //mix.scripts(['vue.js', 'vue-resource.js', 'vue-reportes-usuarios.js'], 'public/js/vue-reportes-usuaios.js');
+    //mix.scripts(['vue.js', 'vue-resource.js', 'vue-reporte-general.js'], 'public/js/vue-reporte-general.js');
+    //mix.scripts(['vue.js', 'vue-resource.js', 'vue/app.js'], 'public/js/app/vue-app.js');
 
     /**
      * Sass scripts
