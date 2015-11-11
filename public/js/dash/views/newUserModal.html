@@ -17,9 +17,6 @@
                         <div class="col-md-8">
                             <h3> {{ profileCreater }} </h3>
                         </div>
-                        <div class="col-md-4">
-                            <a class="inline btn btn-flat" href="" ng-click="establecimientoModal()"><i class="fa fa-map-signs fa-2x"></i> <small>Agregar Establecimiento</small></a>
-                        </div>
                     </div>
                 </div>
 
@@ -40,19 +37,17 @@
 
                             <div class="form-group">
                                 <div class="row">
-
-                                    <div class="col-md-6">
-                                        <label for="selectEstablecimientos">Establecimiento</label>
+                                    <div class="col-md-6" ng-if="!establecimiento_nombre">
+                                        <label for="selectEstablecimientos"><i class="fa fa-map-signs"></i> <a href="" ng-click="createEstablecimiento()">Establecimiento</a></label>
                                         <select ui-select2="selectEstablecimientos" id="selectEstablecimientos" data-placeholder="Seleccione Establecimiento" ng-model="profile.establecimiento_id">
-
                                         </select>
                                     </div>
-
-
+                                    <div class="col-md-6" ng-if="establecimiento_nombre">
+                                        {{ establecimiento_nombre }}
+                                    </div>
                                     <div class="col-md-6">
                                         <label for="selectSeccion">Sección</label>
                                         <select ui-select2="selectSeccion" id="selectSeccion" data-placeholder="Seleccione Sección" ng-model="profile.seccion_id">
-
                                         </select>
                                     </div>
 

@@ -28903,7 +28903,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
 });
 
 
-dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close){
+dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService){
 
     $scope.profileCreater = profileCreater;
 
@@ -28914,6 +28914,29 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
         estado_id:1
     };
 
+    /**
+     * Creando modal de Establecimientos
+     */
+    $scope.establecimiento_nombre = '';
+    $scope.createEstablecimiento = function(){
+      ModalService.showModal({
+          templateUrl: '/js/dash/views/crearEstablecimiento.html',
+          controller: 'CrearEstablecimientoController'
+      }).then(function(modal){
+          modal.element.modal();
+          modal.close.then(function(result){
+              $scope.establecimiento_nombre = result.establecimiento_nombre;
+              $scope.profile.establecimiento_id = result.establecimiento_id;
+              console.log($scope.establecimiento_nombre);
+          });
+      });
+    };
+
+
+    /**
+     * Estableciendo Select2 para establecimientos y Secciones
+     * @type {{allowClear: boolean, ajax: {cache: boolean, datType: string, url: string, results: Function}}}
+     */
     $scope.selectEstablecimientos = {
         allowClear:true,
         ajax:{
@@ -28938,6 +28961,10 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
         }
     };
 
+
+    /**
+     * Submit info y enviando scope a newShipmentController
+     */
     $scope.submitTrader = function(){
         $http.post("personas", $scope.profile).then(function successCallback(response){
             $scope.message = "El registro se a creado correctamente";
@@ -28949,47 +28976,47 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     };
 
     $scope.close = function() {
+        $element.modal('hide');
         close({
             profile: $scope.profile.id
         }, 500); // close, but give 500ms for bootstrap to animate
     };
 
 });
-dash.controller('CrearEstablecimientoController', [
-    '$scope','$http', '$element', 'title', 'close',
-    function($scope, $http, $element, title,  close){
+dash.controller('CrearEstablecimientoController', function($scope, $http, $element, close){
 
-        $scope.title = title;
-        $scope.departamentos = [{"id": 1,"departamento": "Atlántida"}, {"id": 2,"departamento": "Colón"}, {"id": 3,"departamento": "Comayagua"}, {"id": 4,"departamento": "Copán"}, {"id": 5,"departamento": "Cortés"}, {"id": 6,"departamento": "Choluteca"}, {"id": 7,"departamento": "El Paraíso"}, {"id": 8,"departamento": "Francisco Morazán"}, {"id": 9,"departamento": "Gracias a Dios"}, {"id": 10,"departamento": "Intibucá"}, {"id": 11,"departamento": "Islas de la Bahía"}, {"id": 12,"departamento": "La Paz"}, {"id": 13,"departamento": "Lempira"}, {"id": 14,"departamento": "Ocotepeque"}, {"id": 15,"departamento": "Olancho"}, {"id": 16,"departamento": "Santa Bárbara"}, {"id": 17,"departamento": "Valle"}, {"id": 18,"departamento": "Yoro"}]
-        $http.get('listados/empresas').success(function(response){
-            $scope.empresas = response;
+    $scope.title = "Nuevo Establecimiento";
+    $scope.establecimiento = {};
+    $scope.departamentos = [{"id": 1,"departamento": "Atlántida"}, {"id": 2,"departamento": "Colón"}, {"id": 3,"departamento": "Comayagua"}, {"id": 4,"departamento": "Copán"}, {"id": 5,"departamento": "Cortés"}, {"id": 6,"departamento": "Choluteca"}, {"id": 7,"departamento": "El Paraíso"}, {"id": 8,"departamento": "Francisco Morazán"}, {"id": 9,"departamento": "Gracias a Dios"}, {"id": 10,"departamento": "Intibucá"}, {"id": 11,"departamento": "Islas de la Bahía"}, {"id": 12,"departamento": "La Paz"}, {"id": 13,"departamento": "Lempira"}, {"id": 14,"departamento": "Ocotepeque"}, {"id": 15,"departamento": "Olancho"}, {"id": 16,"departamento": "Santa Bárbara"}, {"id": 17,"departamento": "Valle"}, {"id": 18,"departamento": "Yoro"}]
+    $http.get('listados/empresas').success(function(response){
+        $scope.empresas = response;
+    });
+
+    $scope.$watch('establecimiento.departamento_id', function (newVal, oldVal) {
+        if (oldVal == newVal) return;
+        $http.get('listados/municipios/' + newVal).success(function(response){
+            $scope.municipios = response;
         });
+    }, true);
 
-        $scope.$watch('establecimiento.departamento_id', function (newVal, oldVal) {
-            if (oldVal == newVal) return;
-            $http.get('listados/municipios/' + newVal).success(function(response){
-                $scope.municipios = response;
-            });
-        }, true);
+    /**
+     * Submit establecimiento
+     */
+    $scope.submitEstablecimiento = function(){
+        $http.post('api/establecimientos', $scope.establecimiento).then(function successCallback(response){
+            $scope.messageEstablecimiento = "Establecimiento enviado";
+            $scope.establecimiento = response.data;
+        });
+    };
 
-        $scope.close = function() {
-            close({
-                establecimiento: $scope.establecimiento
-            }, 500); // close, but give 500ms for bootstrap to animate
-        };
-
-        $scope.cancel = function() {
-            //  Manually hide the modal.
-            $element.modal('hide');
-
-            //  Now call close, returning control to the caller.
-            close({
-                cancel: true
-            }, 500); // close, but give 500ms for bootstrap to animate
-        };
-
-    }
-]);
+    $scope.dismissModal = function() {
+        $element.modal('hide');
+        close({
+            establecimiento_id: $scope.establecimiento.id,
+            establecimiento_nombre: $scope.establecimiento.name
+        }, 200)
+    };
+});
 dash.controller('bolsasController', function($scope, $location, $routeParams){
     $scope.name = 'Bolsas'
 });
