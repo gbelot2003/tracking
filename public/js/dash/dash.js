@@ -28881,7 +28881,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
               } else {
                 $scope.shipment.reciber_id = result.profile;
               }
-
           });
       });
     };
@@ -28920,6 +28919,23 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     };
 
     /**
+     * Creando modal de Secciones
+     */
+    $scope.seccion_nombre = '';
+    $scope.createSeccion = function(){
+      ModalService.showModal({
+          templateUrl: '/js/dash/views/crearSeccion.html',
+          controller: 'crearSeccionController'
+      }).then(function(modal){
+          modal.element.modal();
+          modal.close.then(function(result){
+              $scope.seccion_nombre = result.seccion_nombre;
+              $scope.profile.seccion_id = result.seccion_id;
+          })
+      });
+    };
+
+    /**
      * Creando modal de Establecimientos
      */
     $scope.establecimiento_nombre = '';
@@ -28932,7 +28948,6 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
           modal.close.then(function(result){
               $scope.establecimiento_nombre = result.establecimiento_nombre;
               $scope.profile.establecimiento_id = result.establecimiento_id;
-              console.log($scope.establecimiento_nombre);
           });
       });
     };
@@ -28966,7 +28981,6 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
         }
     };
 
-
     /**
      * Submit info y enviando scope a newShipmentController
      */
@@ -28987,6 +29001,26 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
         }, 500); // close, but give 500ms for bootstrap to animate
     };
 
+});
+dash.controller('crearSeccionController', function($scope, $http, $element, close){
+    $scope.messageSeccion ='';
+    $scope.title = 'Nueva Sección';
+    $scope.seccion = {};
+
+    $scope.submitSeccion = function(){
+      $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
+          $scope.seccion = response.data;
+          $element.modal('hide');
+          $scope.close();
+      });
+    };
+
+    $scope.close = function(){
+        close({
+            seccion_id: $scope.seccion.id,
+            seccion_nombre: $scope.seccion.name
+        }, 500);
+    }
 });
 dash.controller('CrearEstablecimientoController', function($scope, $http, $element, close){
 

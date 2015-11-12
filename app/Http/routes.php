@@ -28,6 +28,8 @@ Route::resource('permisos', 'PermissionsController');
 Route::resource('user', 'UserController');
 
 Route::resource('secciones', 'SeccionesController');
+Route::resource('api/secciones', 'ApiSeccionesController', ['only' => ['store']]);
+
 
 Route::resource('establecimientos', 'EstablecimientosController');
 Route::resource('api/establecimientos', 'ApiEstablecimientosController', ['only' => ['index', 'store']]);

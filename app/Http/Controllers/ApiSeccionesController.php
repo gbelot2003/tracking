@@ -3,6 +3,8 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\SeccionesFormRequest;
+use App\Seccion;
 use Illuminate\Http\Request;
 
 class ApiSeccionesController extends Controller {
@@ -30,11 +32,13 @@ class ApiSeccionesController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param SeccionesFormRequest $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(SeccionesFormRequest $request)
 	{
-		//
+		$seccion = Seccion::create($request->all());
+		return $seccion;
 	}
 
 	/**

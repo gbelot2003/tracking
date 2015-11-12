@@ -86,7 +86,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
               } else {
                 $scope.shipment.reciber_id = result.profile;
               }
-
           });
       });
     };

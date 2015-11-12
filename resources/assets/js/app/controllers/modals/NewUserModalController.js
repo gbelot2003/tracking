@@ -15,6 +15,23 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     };
 
     /**
+     * Creando modal de Secciones
+     */
+    $scope.seccion_nombre = '';
+    $scope.createSeccion = function(){
+      ModalService.showModal({
+          templateUrl: '/js/dash/views/crearSeccion.html',
+          controller: 'crearSeccionController'
+      }).then(function(modal){
+          modal.element.modal();
+          modal.close.then(function(result){
+              $scope.seccion_nombre = result.seccion_nombre;
+              $scope.profile.seccion_id = result.seccion_id;
+          })
+      });
+    };
+
+    /**
      * Creando modal de Establecimientos
      */
     $scope.establecimiento_nombre = '';
@@ -27,7 +44,6 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
           modal.close.then(function(result){
               $scope.establecimiento_nombre = result.establecimiento_nombre;
               $scope.profile.establecimiento_id = result.establecimiento_id;
-              console.log($scope.establecimiento_nombre);
           });
       });
     };
@@ -60,7 +76,6 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
             }
         }
     };
-
 
     /**
      * Submit info y enviando scope a newShipmentController
