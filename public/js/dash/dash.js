@@ -28553,7 +28553,7 @@ var dash = angular.module('dashApp', [
     'angularModalService',
     'ngResource',
     'ngMorph',
-    'ui.select2',
+    'ui.select2'
 ]);
 
 dash.config(function($routeProvider, $locationProvider){
@@ -28565,15 +28565,15 @@ dash.config(function($routeProvider, $locationProvider){
         })
         .when('/shipment/:id', {
             controller: 'ShipmentShowController',
-            templateUrl: '/js/dash/views/show.html'
+            templateUrl: '/js/dash/views/shipments/show.html'
         })
         .when('/newShipment', {
             controller: 'newShipmentController',
-            templateUrl: '/js/dash/views/newShipment.html'
+            templateUrl: '/js/dash/views/shipments/newShipment.html'
         })
         .when('/bolsas',{
             controller: 'bolsasController',
-            templateUrl: '/js/dash/views/bolsas.html',
+            templateUrl: '/js/dash/views/bolsas/bolsas.html',
             activeTab: 'bolsas'
         })
     ;
@@ -28790,6 +28790,9 @@ dash.controller('dashController', function($scope, $location, $http, $filter, $r
     };
 });
 
+dash.controller('bolsasController', function($scope, $location, $routeParams){
+    $scope.name = 'Bolsas'
+});
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });
 });
@@ -28823,6 +28826,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
             }
         }
     };
+
 
     $scope.$watch('shipment.sender_id', function (newVal, oldVal) {
         if (oldVal == newVal) return;
@@ -28867,7 +28871,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
       }
 
       ModalService.showModal({
-          templateUrl: '/js/dash/views/newUserModal.html',
+          templateUrl: '/js/dash/views/shipments/modals/newUserModal.html',
           controller: 'NewUserModalController',
           inputs: {
               profileCreater: $scope.profileCreater
@@ -28884,7 +28888,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
           });
       });
     };
-
 
     /**
      * create shipment
@@ -28924,7 +28927,7 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     $scope.seccion_nombre = '';
     $scope.createSeccion = function(){
       ModalService.showModal({
-          templateUrl: '/js/dash/views/crearSeccion.html',
+          templateUrl: '/js/dash/views/shipments/modals/crearSeccion.html',
           controller: 'crearSeccionController'
       }).then(function(modal){
           modal.element.modal();
@@ -28941,7 +28944,7 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     $scope.establecimiento_nombre = '';
     $scope.createEstablecimiento = function(){
       ModalService.showModal({
-          templateUrl: '/js/dash/views/crearEstablecimiento.html',
+          templateUrl: '/js/dash/views/shipments/modals/crearEstablecimiento.html',
           controller: 'CrearEstablecimientoController'
       }).then(function(modal){
           modal.element.modal();
@@ -29055,8 +29058,5 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
             establecimiento_nombre: $scope.establecimiento.name
         }, 200)
     };
-});
-dash.controller('bolsasController', function($scope, $location, $routeParams){
-    $scope.name = 'Bolsas'
 });
 //# sourceMappingURL=dash.js.map

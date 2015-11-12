@@ -29,6 +29,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
         }
     };
 
+
     $scope.$watch('shipment.sender_id', function (newVal, oldVal) {
         if (oldVal == newVal) return;
         $http.get('personas/' + newVal).success(function(response){
@@ -72,7 +73,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
       }
 
       ModalService.showModal({
-          templateUrl: '/js/dash/views/newUserModal.html',
+          templateUrl: '/js/dash/views/shipments/modals/newUserModal.html',
           controller: 'NewUserModalController',
           inputs: {
               profileCreater: $scope.profileCreater
@@ -89,7 +90,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
           });
       });
     };
-
 
     /**
      * create shipment

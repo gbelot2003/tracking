@@ -20,7 +20,7 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     $scope.seccion_nombre = '';
     $scope.createSeccion = function(){
       ModalService.showModal({
-          templateUrl: '/js/dash/views/crearSeccion.html',
+          templateUrl: '/js/dash/views/shipments/modals/crearSeccion.html',
           controller: 'crearSeccionController'
       }).then(function(modal){
           modal.element.modal();
@@ -37,7 +37,7 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     $scope.establecimiento_nombre = '';
     $scope.createEstablecimiento = function(){
       ModalService.showModal({
-          templateUrl: '/js/dash/views/crearEstablecimiento.html',
+          templateUrl: '/js/dash/views/shipments/modals/crearEstablecimiento.html',
           controller: 'CrearEstablecimientoController'
       }).then(function(modal){
           modal.element.modal();

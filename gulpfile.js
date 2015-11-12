@@ -58,12 +58,12 @@ elixir(function(mix){
             'app/select3.js',
 
             'app/controllers/dashController.js',
-            'app/controllers/ShipmentShowController.js',
-            'app/controllers/newShipmentController.js',
-            'app/controllers/modals/NewUserModalController.js',
-            'app/controllers//modals/crearSeccionController.js',
-            'app/controllers/modals/CrearEstablecimientoController.js',
-            'app/controllers/bolsasController.js'
+            'app/controllers/bolsas/bolsasController.js',
+            'app/controllers/shipments/ShipmentShowController.js',
+            'app/controllers/shipments/newShipmentController.js',
+            'app/controllers/shipments/modals/NewUserModalController.js',
+            'app/controllers/shipments/modals/crearSeccionController.js',
+            'app/controllers/shipments/modals/CrearEstablecimientoController.js'
 
         ], 'public/js/dash/dash.js');
 });

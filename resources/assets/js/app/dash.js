@@ -5,7 +5,7 @@ var dash = angular.module('dashApp', [
     'angularModalService',
     'ngResource',
     'ngMorph',
-    'ui.select2',
+    'ui.select2'
 ]);
 
 dash.config(function($routeProvider, $locationProvider){
@@ -17,15 +17,15 @@ dash.config(function($routeProvider, $locationProvider){
         })
         .when('/shipment/:id', {
             controller: 'ShipmentShowController',
-            templateUrl: '/js/dash/views/show.html'
+            templateUrl: '/js/dash/views/shipments/show.html'
         })
         .when('/newShipment', {
             controller: 'newShipmentController',
-            templateUrl: '/js/dash/views/newShipment.html'
+            templateUrl: '/js/dash/views/shipments/newShipment.html'
         })
         .when('/bolsas',{
             controller: 'bolsasController',
-            templateUrl: '/js/dash/views/bolsas.html',
+            templateUrl: '/js/dash/views/bolsas/bolsas.html',
             activeTab: 'bolsas'
         })
     ;
