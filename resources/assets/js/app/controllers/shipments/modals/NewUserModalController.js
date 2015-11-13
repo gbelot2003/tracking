@@ -82,8 +82,8 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
      */
     $scope.submitTrader = function(){
         $http.post("personas", $scope.profile).then(function successCallback(response){
-            $scope.message = "El registro se a creado correctamente";
             $scope.profile = response.data;
+            $scope.close()
         }, function errorCallback(response){
             $scope.message = "Error en la creacion del perfil!!";
             console.log(response.data);

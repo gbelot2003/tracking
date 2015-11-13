@@ -19,8 +19,8 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
      */
     $scope.submitEstablecimiento = function(){
         $http.post('api/establecimientos', $scope.establecimiento).then(function successCallback(response){
-            $scope.messageEstablecimiento = "Establecimiento enviado";
             $scope.establecimiento = response.data;
+            $scope.dismissModal();
         });
     };
 

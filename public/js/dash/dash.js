@@ -28989,8 +28989,8 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
      */
     $scope.submitTrader = function(){
         $http.post("personas", $scope.profile).then(function successCallback(response){
-            $scope.message = "El registro se a creado correctamente";
             $scope.profile = response.data;
+            $scope.close()
         }, function errorCallback(response){
             $scope.message = "Error en la creacion del perfil!!";
             console.log(response.data);
@@ -29013,12 +29013,12 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
     $scope.submitSeccion = function(){
       $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
           $scope.seccion = response.data;
-          $element.modal('hide');
           $scope.close();
       });
     };
 
     $scope.close = function(){
+        $element.modal('hide');
         close({
             seccion_id: $scope.seccion.id,
             seccion_nombre: $scope.seccion.name
@@ -29046,8 +29046,8 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
      */
     $scope.submitEstablecimiento = function(){
         $http.post('api/establecimientos', $scope.establecimiento).then(function successCallback(response){
-            $scope.messageEstablecimiento = "Establecimiento enviado";
             $scope.establecimiento = response.data;
+            $scope.dismissModal();
         });
     };
 
