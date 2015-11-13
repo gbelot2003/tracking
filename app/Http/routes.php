@@ -76,5 +76,5 @@ Route::controllers([
 	'consultas/reportes' => 'ReportesQueryController',
 	'dash' => 'DashboarController',
 	'api/consultas' => 'DashQueryController',
-	'api/bolsas/query/' => 'BolsasQueryController'
+	'api/bolsas/query' => 'BolsasQueryController'
 ]);
