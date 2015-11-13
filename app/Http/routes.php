@@ -38,7 +38,8 @@ Route::resource('personal', 'TraderController');
 Route::resource('personas', 'PersonalController', ['only' => ['show', 'store', 'update', 'destroy']]); //cambiar a api/personal
 
 
-Route::resource('bolsas', 'BolsasController');
+Route::resource('bolsas', 'BolsasController'); //Retirar luego
+Route::resource('api/bolsas', 'ApiBolsasController');
 
 Route::resource('shipments', 'ShipmentCotroller');
 Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
@@ -74,5 +75,6 @@ Route::controllers([
 	'reportes' => 'ReportsController',
 	'consultas/reportes' => 'ReportesQueryController',
 	'dash' => 'DashboarController',
-	'api/consultas' => 'DashQueryController'
+	'api/consultas' => 'DashQueryController',
+	'api/bolsas/query/' => 'BolsasQueryController'
 ]);
