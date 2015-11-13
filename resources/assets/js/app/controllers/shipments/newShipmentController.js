@@ -92,6 +92,18 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
     };
 
     /**
+     * Validación pre envio de formulario
+     */
+
+    $scope.validacion = function(){
+
+        if(!$scope.shipment.code || !$scope.shipment.sender_id || !$scope.shipment.reciber_id){
+            return true;
+        }
+        return false;
+    };
+
+    /**
      * create shipment
      */
 

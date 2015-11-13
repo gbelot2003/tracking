@@ -43,7 +43,8 @@
                                         </select>
                                     </div>
                                     <div class="col-md-6" ng-if="establecimiento_nombre">
-                                        {{ establecimiento_nombre }}
+                                        <label for="selectEstablecimientos"><i class="fa fa-map-signs"></i> <a href="" ng-click="createEstablecimiento()">Establecimiento</a></label>
+                                        <input type="text" class="form-control" readonly value="{{ establecimiento_nombre }}"/>
                                     </div>
 
                                     <div class="col-md-6" ng-if="!seccion_nombre">
@@ -53,7 +54,8 @@
                                     </div>
 
                                     <div class="col-md-6" ng-if="seccion_nombre">
-                                        {{ seccion_nombre }}
+                                        <label for="selectSeccion"><i class="fa fa-map-pin"></i> <a href="" ng-click="createSeccion()"> Sección</a></label>
+                                        <input type="text" class="form-control" value="{{ seccion_nombre }}" readonly/>
                                     </div>
                                 </div>
                             </div>
@@ -61,10 +63,9 @@
                     </div>
                 </div>
 
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="validacion()">Crear</button>
                 </div>
 
             </form>

@@ -15,6 +15,16 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
     }, true);
 
     /**
+     * Validación
+     */
+    $scope.validacion = function(){
+        if(!$scope.establecimiento.name){
+            return true;
+        }
+        return false;
+    };
+
+    /**
      * Submit establecimiento
      */
     $scope.submitEstablecimiento = function(){

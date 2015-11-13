@@ -3,6 +3,16 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
     $scope.title = 'Nueva Sección';
     $scope.seccion = {};
 
+    /**
+     * Validación
+     */
+    $scope.validacion = function(){
+        if(!$scope.seccion.name){
+            return true;
+        }
+        return false;
+    };
+
     $scope.submitSeccion = function(){
       $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
           $scope.seccion = response.data;

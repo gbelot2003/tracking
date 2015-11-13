@@ -28890,6 +28890,18 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
     };
 
     /**
+     * Validación pre envio de formulario
+     */
+
+    $scope.validacion = function(){
+
+        if(!$scope.shipment.code || !$scope.shipment.sender_id || !$scope.shipment.reciber_id){
+            return true;
+        }
+        return false;
+    };
+
+    /**
      * create shipment
      */
 
@@ -28985,6 +28997,17 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     };
 
     /**
+     * Validación
+     */
+    $scope.validacion = function(){
+
+        if($scope.profile.name === '' || !$scope.profile.establecimiento_id || !$scope.profile.seccion_id){
+            return true;
+        }
+        return false;
+    };
+
+    /**
      * Submit info y enviando scope a newShipmentController
      */
     $scope.submitTrader = function(){
@@ -29009,6 +29032,16 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
     $scope.messageSeccion ='';
     $scope.title = 'Nueva Sección';
     $scope.seccion = {};
+
+    /**
+     * Validación
+     */
+    $scope.validacion = function(){
+        if(!$scope.seccion.name){
+            return true;
+        }
+        return false;
+    };
 
     $scope.submitSeccion = function(){
       $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
@@ -29040,6 +29073,16 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
             $scope.municipios = response;
         });
     }, true);
+
+    /**
+     * Validación
+     */
+    $scope.validacion = function(){
+        if(!$scope.establecimiento.name){
+            return true;
+        }
+        return false;
+    };
 
     /**
      * Submit establecimiento

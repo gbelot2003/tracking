@@ -78,6 +78,17 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
     };
 
     /**
+     * Validación
+     */
+    $scope.validacion = function(){
+
+        if($scope.profile.name === '' || !$scope.profile.establecimiento_id || !$scope.profile.seccion_id){
+            return true;
+        }
+        return false;
+    };
+
+    /**
      * Submit info y enviando scope a newShipmentController
      */
     $scope.submitTrader = function(){
