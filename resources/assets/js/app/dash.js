@@ -5,7 +5,8 @@ var dash = angular.module('dashApp', [
     'angularModalService',
     'ngResource',
     'ngMorph',
-    'ui.select2'
+    'ui.select2',
+    'ngToast'
 ]);
 
 dash.config(function($routeProvider, $locationProvider){

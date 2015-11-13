@@ -108,8 +108,9 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
      */
 
     $scope.createShipment = function(){
-        console.log($scope.shipment);
-        $scope.shipmentCancel();
+        $http.post('api/shipments', $scope.shipment).then(function successCallback(response){
+            $location.url('/shipment/' + $scope.shipment.id);
+        });
     };
 
     $scope.shipmentCancel = function(){
