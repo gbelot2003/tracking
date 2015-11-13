@@ -31,7 +31,7 @@ class ApiShipmentController extends Controller {
 	 */
 	public function create()
 	{
-		return 'Done';
+		//
 	}
 
 	/**
@@ -69,7 +69,13 @@ class ApiShipmentController extends Controller {
 	 */
 	public function show($id)
 	{
-		$shipment = Shipment::with('senders.establecimiento.municipio.departamento', 'senders.seccion', 'recivers.establecimiento.municipio.departamento', 'recivers.seccion', 'transitos.estados')
+		$shipment = Shipment::with(
+			'senders.establecimiento.municipio.departamento',
+			'senders.seccion',
+			'recivers.establecimiento.municipio.departamento',
+			'recivers.seccion',
+			'transitos.estados'
+		)
 		->findOrFail($id);
 		return $shipment;
 	}

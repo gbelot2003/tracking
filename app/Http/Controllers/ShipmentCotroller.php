@@ -76,11 +76,19 @@ class ShipmentCotroller extends Controller {
 	 */
 	public function store(ShipmentsFormRequest $request)
 	{
+		//Comenzamos transacción
 		DB::transaction(function() use ($request, &$data){
+
+			// Conseguimos el establecimiento del usuario
 			$establecimiento = Auth::user()->establecimiento_id;
+
+			// creamos la nueva encomienda
+			// Cambiar este parametro por DB::('shipments')->create
 			$shipments = Shipment::create($request->all());
+
 			$shipments->estado_id = $request->estado_id;
 			$shipments->user_id = Auth::id();
+
 			$transito = Transito::create([
 				'shipment_id'	=> $shipments->id,
 				'estado_id'	 	=> $request->estado_id,
@@ -88,10 +96,12 @@ class ShipmentCotroller extends Controller {
 				'user_id'	 	=> Auth::id(),
 				'details'		=> 'Sin detalles'
 			]);
+
 			$shipments->transito_id = $transito->id;
 			$shipments->update();
 
 		});
+
 		Session::flash('flash_message', 'El nuevo registro a sido creado');
 		return redirect()->route('shipments.index');
 
