@@ -1,0 +1,74 @@
+<div class="modal fade" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div ng-if="messageEstablecimiento">
+                <p>
+                <h3>{{ messageEstablecimiento }}</h3>
+                <button class="btn btn-primary" ng-click="dismissModal()" >Cerrar Establecimiento</button>
+                </p>
+            </div>
+
+            <form ng-submit="submitEstablecimiento()" ng-if="!messageEstablecimiento">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" ng-click="cancel()" aria-hidden="true">&times;</button>
+                    <h3>{{title}}</h3>
+                </div>
+
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label for="name">Nombre del Establecimiento</label>
+                                        <input type="text" class="form-control" id="name" name="name" ng-model="establecimiento.name" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                        <label for="SelectDepartamento">Departamento político</label>
+                                        <select id="SelectDepartamento" ui-select2 ng-model="establecimiento.departamento_id" data-placeholder="Pick a number">
+                                            <option ng-repeat="departamento in departamentos" value="{{ departamento.id }}">{{ departamento.departamento }}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-5">
+
+                                        <label for="selectSeccion">Municipio</label>
+                                        <select id="selectSeccion" ui-select2 ng-model="establecimiento.municipio_id" data-placeholder="Pick a number">
+                                            <option ng-repeat="municipio in municipios" value="{{ municipio.id}}">{{ municipio.municipio }}</option>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="selectEmpresa">Empresa</label>
+                                        <select id="selectEmpresa" ui-select2 ng-model="establecimiento.empresa_id" data-placeholder="Pick a number">
+                                            <option ng-repeat="empresa in empresas" value="{{ empresa.id }}">{{ empresa.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <textarea name="address" id="address"  class="form-control"  rows="5" ng-model="establecimiento.address" style="background-color: silver"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" ng-click="cancel()" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="submit"  class="btn btn-primary" >Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
