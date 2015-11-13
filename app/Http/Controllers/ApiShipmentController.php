@@ -44,7 +44,10 @@ class ApiShipmentController extends Controller {
 	public function store(ShipmentsFormRequest $request)
 	{
 		DB::transaction(function() use ($request, &$data){
+
 			$shipments = Shipment::create($request->all());
+			$shipments->user_id = Auth::id();
+			$shipments->user_id = Auth::id();
 			$establecimiento = Auth::user()->establecimiento_id;
 			$shipments->estado_id = $request->estado_id;
 			$transito = Transito::create([
