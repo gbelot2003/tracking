@@ -4,6 +4,7 @@
 
 @section('content')
 	<div id="dashboar" ng-app="dashApp">
+		<toast></toast>
 		<div class="row">
 			<div class="col-md-12">
 				<ul class="nav nav-pills">
@@ -12,6 +13,7 @@
 				</ul>
 			</div>
 		</div>
+
 		<div class="col-md-12" ng-view></div>
 	</div>
 @stop

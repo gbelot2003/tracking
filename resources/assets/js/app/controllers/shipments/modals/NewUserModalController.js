@@ -1,4 +1,4 @@
-dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService){
+dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService, ngToast){
 
     $scope.profileCreater = profileCreater;
     if($scope.profileCreater === 'sender'){
@@ -93,11 +93,16 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
      */
     $scope.submitTrader = function(){
         $http.post("personas", $scope.profile).then(function successCallback(response){
+            ngToast.success({
+                content: 'El perfil se a creado exitosamente!!'
+            });
             $scope.profile = response.data;
-            $scope.close()
+            $scope.close();
         }, function errorCallback(response){
-            $scope.message = "Error en la creacion del perfil!!";
-            console.log(response.data);
+            ngToast.warning({
+                content: 'Se a producido un error en la introducción de esta información'
+            });
+            $element.modal('hide');
         });
     };
 

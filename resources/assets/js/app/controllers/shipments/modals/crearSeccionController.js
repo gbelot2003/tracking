@@ -15,8 +15,16 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
 
     $scope.submitSeccion = function(){
       $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
+          ngToast.success({
+              content: 'La sección se a creado exitosamente!!'
+          });
           $scope.seccion = response.data;
           $scope.close();
+      }, function errorCallback(response){
+          $element.modal('hide');
+          ngToast.warning({
+              content: 'Se a producido un error en la introducción de esta información'
+          });
       });
     };
 

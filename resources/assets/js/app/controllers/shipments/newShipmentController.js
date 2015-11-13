@@ -1,4 +1,4 @@
-dash.controller('newShipmentController', function ($scope, $http, $location, ModalService){
+dash.controller('newShipmentController', function ($scope, $http, $location, ModalService, ngToast){
 
     $scope.profileCreater = null;
 
@@ -83,7 +83,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
           modal.close.then(function(result){
               if($scope.profileCreater === 'sender'){
                 $scope.shipment.sender_id = result.profile;
-                  console.log($scope.shipment.sender_id)
               } else {
                 $scope.shipment.reciber_id = result.profile;
               }
@@ -109,7 +108,15 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
 
     $scope.createShipment = function(){
         $http.post('api/shipments', $scope.shipment).then(function successCallback(response){
-            $location.url('/shipment/' + $scope.shipment.id);
+            $location.url('/');
+            ngToast.success({
+                content: '<a href="#">La encomieda se a creado exitosamente</a>'
+            });
+
+        }, function errorCallback(response){
+            ngToast.warning({
+                content: '<a href="#" class="">Se a producido un error en la introducción de esta información</a>'
+            });
         });
     };
 

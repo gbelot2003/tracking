@@ -33,3 +33,10 @@ dash.controller('dashController', function($scope, $location, $http, $filter, $r
         $location.url('/shipment/' + id);
     };
 });
+dash.config(['ngToastProvider', function(ngToast){
+    ngToast.configure({
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left',
+        animation: 'fade'
+    });
+}]);

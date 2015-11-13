@@ -29069,14 +29069,20 @@ dash.controller('dashController', function($scope, $location, $http, $filter, $r
         $location.url('/shipment/' + id);
     };
 });
-
+dash.config(['ngToastProvider', function(ngToast){
+    ngToast.configure({
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left',
+        animation: 'fade'
+    });
+}]);
 dash.controller('bolsasController', function($scope, $location, $routeParams){
     $scope.name = 'Bolsas'
 });
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });
 });
-dash.controller('newShipmentController', function ($scope, $http, $location, ModalService){
+dash.controller('newShipmentController', function ($scope, $http, $location, ModalService, ngToast){
 
     $scope.profileCreater = null;
 
@@ -29161,7 +29167,6 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
           modal.close.then(function(result){
               if($scope.profileCreater === 'sender'){
                 $scope.shipment.sender_id = result.profile;
-                  console.log($scope.shipment.sender_id)
               } else {
                 $scope.shipment.reciber_id = result.profile;
               }
@@ -29187,7 +29192,15 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
 
     $scope.createShipment = function(){
         $http.post('api/shipments', $scope.shipment).then(function successCallback(response){
-            $location.url('/shipment/' + $scope.shipment.id);
+            $location.url('/');
+            ngToast.success({
+                content: '<a href="#">La encomieda se a creado exitosamente</a>'
+            });
+
+        }, function errorCallback(response){
+            ngToast.warning({
+                content: '<a href="#" class="">Se a producido un error en la introducción de esta información</a>'
+            });
         });
     };
 
@@ -29198,7 +29211,7 @@ dash.controller('newShipmentController', function ($scope, $http, $location, Mod
 });
 
 
-dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService){
+dash.controller('NewUserModalController', function($scope, $http, $element, profileCreater, close, ModalService, ngToast){
 
     $scope.profileCreater = profileCreater;
     if($scope.profileCreater === 'sender'){
@@ -29293,11 +29306,16 @@ dash.controller('NewUserModalController', function($scope, $http, $element, prof
      */
     $scope.submitTrader = function(){
         $http.post("personas", $scope.profile).then(function successCallback(response){
+            ngToast.success({
+                content: 'El perfil se a creado exitosamente!!'
+            });
             $scope.profile = response.data;
-            $scope.close()
+            $scope.close();
         }, function errorCallback(response){
-            $scope.message = "Error en la creacion del perfil!!";
-            console.log(response.data);
+            ngToast.warning({
+                content: 'Se a producido un error en la introducción de esta información'
+            });
+            $element.modal('hide');
         });
     };
 
@@ -29326,8 +29344,16 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
 
     $scope.submitSeccion = function(){
       $http.post('api/secciones', $scope.seccion).then(function successCallback(response){
+          ngToast.success({
+              content: 'La sección se a creado exitosamente!!'
+          });
           $scope.seccion = response.data;
           $scope.close();
+      }, function errorCallback(response){
+          $element.modal('hide');
+          ngToast.warning({
+              content: 'Se a producido un error en la introducción de esta información'
+          });
       });
     };
 
@@ -29339,19 +29365,27 @@ dash.controller('crearSeccionController', function($scope, $http, $element, clos
         }, 500);
     }
 });
-dash.controller('CrearEstablecimientoController', function($scope, $http, $element, close){
+dash.controller('CrearEstablecimientoController', function($scope, $http, $element, close, ngToast){
 
     $scope.title = "Nuevo Establecimiento";
     $scope.establecimiento = {};
     $scope.departamentos = [{"id": 1,"departamento": "Atlántida"}, {"id": 2,"departamento": "Colón"}, {"id": 3,"departamento": "Comayagua"}, {"id": 4,"departamento": "Copán"}, {"id": 5,"departamento": "Cortés"}, {"id": 6,"departamento": "Choluteca"}, {"id": 7,"departamento": "El Paraíso"}, {"id": 8,"departamento": "Francisco Morazán"}, {"id": 9,"departamento": "Gracias a Dios"}, {"id": 10,"departamento": "Intibucá"}, {"id": 11,"departamento": "Islas de la Bahía"}, {"id": 12,"departamento": "La Paz"}, {"id": 13,"departamento": "Lempira"}, {"id": 14,"departamento": "Ocotepeque"}, {"id": 15,"departamento": "Olancho"}, {"id": 16,"departamento": "Santa Bárbara"}, {"id": 17,"departamento": "Valle"}, {"id": 18,"departamento": "Yoro"}]
     $http.get('listados/empresas').success(function(response){
         $scope.empresas = response;
+    }).error(function(response){
+        ngToast.warning({
+            content: 'A habido un error al tratar de cargar el listado de empresas'
+        });
     });
 
     $scope.$watch('establecimiento.departamento_id', function (newVal, oldVal) {
         if (oldVal == newVal) return;
         $http.get('listados/municipios/' + newVal).success(function(response){
             $scope.municipios = response;
+        }).error(function(response){
+            ngToast.warning({
+                content: 'A habido un error al tratar de cargar el listado de municipios'
+            });
         });
     }, true);
 
@@ -29370,8 +29404,17 @@ dash.controller('CrearEstablecimientoController', function($scope, $http, $eleme
      */
     $scope.submitEstablecimiento = function(){
         $http.post('api/establecimientos', $scope.establecimiento).then(function successCallback(response){
+            ngToast.success({
+                content: 'El establecimiento se a creado exitosamente!!'
+            });
             $scope.establecimiento = response.data;
             $scope.dismissModal();
+
+        }, function errorCallback(response){
+            $element.modal('hide');
+            ngToast.warning({
+                content: 'Se a producido un error en la introducción de esta información'
+            });
         });
     };
 
