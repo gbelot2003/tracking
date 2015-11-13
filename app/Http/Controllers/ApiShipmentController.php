@@ -7,6 +7,7 @@ use App\Http\Requests\ShipmentsFormRequest;
 use App\Shipment;
 use App\Transito;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ApiShipmentController extends Controller {
@@ -43,22 +44,19 @@ class ApiShipmentController extends Controller {
 	public function store(ShipmentsFormRequest $request)
 	{
 		DB::transaction(function() use ($request, &$data){
-			$establecimiento = Auth::user()->establecimiento_id;
 			$shipments = Shipment::create($request->all());
+			$establecimiento = Auth::user()->establecimiento_id;
 			$shipments->estado_id = $request->estado_id;
-			$shipments->user_id = Auth::id();
 			$transito = Transito::create([
 				'shipment_id'	=> $shipments->id,
 				'estado_id'	 	=> $request->estado_id,
 				'establecimiento_id' => $establecimiento,
-				'user_id'	 	=> Auth::id(),
-				'details'		=> 'Sin detalles'
+				'user_id'	 	=> $shipments->user_id,
+				'details'		=> 'Transito regular, no hay detalles'
 			]);
 			$shipments->transito_id = $transito->id;
 			$shipments->update();
 		});
-
-		return "La encomienda se a creado exitosamente";
 	}
 
 	/**

@@ -14,13 +14,17 @@ class ShipmentsFormRequest extends Request {
 		return true;
 	}
 
-
+	/**
+	 * rewritte all function
+	 * @return array
+	 */
 	public function all()
 	{
 		$request = parent::all();
 		$request['code'] = ltrim($request['code'], '0');
 		return $request;
 	}
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
