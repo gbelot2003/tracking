@@ -29022,6 +29022,10 @@ dash.config(function($routeProvider, $locationProvider){
             templateUrl: '/js/dash/views/bolsas/bolsas.html',
             activeTab: 'bolsas'
         })
+        .when('/bolsas/create', {
+            controller: 'BolsasCreateController',
+            templateUrl: '/js/dash/views/bolsas/create.html'
+        })
     ;
 
     $locationProvider.html5Mode(false);
@@ -29077,7 +29081,18 @@ dash.config(['ngToastProvider', function(ngToast){
     });
 }]);
 dash.controller('bolsasController', function($scope, $location, $routeParams){
-    $scope.name = 'Bolsas'
+
+    $scope.creating = function(){
+        $location.url('/bolsas/create');
+    };
+});
+dash.controller('BolsasCreateController', function($scope, $http, $location, ModalService, ngToast){
+    $scope.bolsa = {};
+    $scope.generateCode = function(){
+        $scope.bolsa.code =  Math.floor(Math.random() * 900000000) + 100000000;
+    };
+
+
 });
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });

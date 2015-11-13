@@ -29,6 +29,10 @@ dash.config(function($routeProvider, $locationProvider){
             templateUrl: '/js/dash/views/bolsas/bolsas.html',
             activeTab: 'bolsas'
         })
+        .when('/bolsas/create', {
+            controller: 'BolsasCreateController',
+            templateUrl: '/js/dash/views/bolsas/create.html'
+        })
     ;
 
     $locationProvider.html5Mode(false);

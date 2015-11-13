@@ -1,20 +1,16 @@
 <?php namespace App\Http\Controllers;
 
-use App\Empresa;
-use App\Establecimiento;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Http\Requests\EstablecimientosFormRequest;
 use Illuminate\Http\Request;
 
-class ApiEstablecimientosController extends Controller {
+class ApiBolsasController extends Controller {
 
 	public function __construct()
 	{
 		$this->middleware('auth');
 	}
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -22,8 +18,7 @@ class ApiEstablecimientosController extends Controller {
 	 */
 	public function index()
 	{
-		$establecimientos = Establecimiento::all();
-		return $establecimientos;
+		//
 	}
 
 	/**
@@ -41,10 +36,9 @@ class ApiEstablecimientosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(EstablecimientosFormRequest $request)
+	public function store()
 	{
-		$establecimientos = Establecimiento::create($request->all());
-		return $establecimientos;
+		//
 	}
 
 	/**

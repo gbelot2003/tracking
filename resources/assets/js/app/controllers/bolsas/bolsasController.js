@@ -1,3 +1,6 @@
 dash.controller('bolsasController', function($scope, $location, $routeParams){
-    $scope.name = 'Bolsas'
+
+    $scope.creating = function(){
+        $location.url('/bolsas/create');
+    };
 });

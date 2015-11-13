@@ -52,6 +52,7 @@ elixir(function(mix){
             'app/dash.js',
             'app/controllers/dashController.js',
             'app/controllers/bolsas/bolsasController.js',
+            'app/controllers/bolsas/BolsasCreateController.js',
             'app/controllers/shipments/ShipmentShowController.js',
             'app/controllers/shipments/newShipmentController.js',
             'app/controllers/shipments/modals/NewUserModalController.js',
