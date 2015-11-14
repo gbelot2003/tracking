@@ -29095,7 +29095,7 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
     $scope.bolsa.shipments = [];
 
     $scope.$watch('shipment.code', function (newVal, oldVal) {
-        if (oldVal == newVal || newVal === null) return;
+        if (oldVal == newVal || newVal === null || newVal == '') return;
         $scope.addShipmentToBag(newVal);
     }, true);
 
@@ -29107,19 +29107,25 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
                     content: 'Error!! Esta encomianda no se puede ingresar a bolsa, parece que ya a sido entregada o se encuentra registrada en otra bolsa, revise el numero de la misma para verificar el error'
                 });
                 return;
+            } else {
+                $scope.bolsa.shipments.push(response.data.shipment);
+                $scope.sizes = $scope.bolsa.shipments.length;
+                $scope.shipment.code = '';
             }
-
-            $scope.bolsa.shipments.push(response.data.shipment);
-            $scope.sizes = $scope.bolsa.shipments.length;
-            $scope.shipment.code = '';
 
         }, function errorCallback(response){
             console.log(response);
-            ngToast.warning({
+            ngToast.danger({
                 content: 'Error!! Posiblemente el codigo de shipment esta mal introducido, o no tienes acceso a las consultas del lado del servidor'
             });
         });
     };
+
+    $scope.removeShipmente = function(code){
+        $scope.bolsa.shipments.splice($scope.bolsa.shipments[code], 1);
+        $scope.sizes = $scope.bolsa.shipments.length;
+    }
+
 });
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });

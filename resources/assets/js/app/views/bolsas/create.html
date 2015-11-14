@@ -66,16 +66,22 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
-            <span>Total de encomiendas</span><br/>
-                <p>{{ sizes }}</p>
+        <div class="col-md-3">
+            <div class="panel panel-info" ng-if="sizes">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Total de encomiendas </h3>
+                </div>
+                <div class="panel-body">
+                    <p class="text-center text-success"><strong>{{ sizes }}</strong></p>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="row">
 
         <div class="col-md-12">
-            <table class="table table-bordered">
+            <table class="table table-bordered" ng-if="bolsa.shipments">
                 <thead>
                     <tr>
                         <th>No. Guía</th>
@@ -91,7 +97,7 @@
                         <td>{{ item.senders.name }}</td>
                         <td>{{ item.recivers.name }}</td>
                         <td>{{ item.created_at }}</td>
-                        <td>Acciones</td>
+                        <td><a href="" ng-click="removeShipmente($index)"><i class="fa fa-trash-o fa-2x"></i></a></td>
                     </tr>
                 </tbody>
             </table>
