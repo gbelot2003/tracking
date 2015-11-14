@@ -51,18 +51,50 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
             <div class="form-group">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h3 class="panel-title">Ingrese Guías de encomiendas</h3>
                     </div>
                     <div class="panel-body">
-                        <input type="text" class="form-control" id="code" ng-model="code"/>
+                        <input type="number" class="form-control" id="code" ng-model="shipment.code" ng-model-options="{ debounce: 500 }"/>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="col-md-1">
+            <span>Total de encomiendas</span><br/>
+                <p>{{ sizes }}</p>
+        </div>
+    </div>
 
+    <div class="row">
+
+        <div class="col-md-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>No. Guía</th>
+                        <th>Remitente</th>
+                        <th>Destino</th>
+                        <th>Fecha</th>
+                        <th>Agregar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in bolsa.shipments">
+                        <td>{{ item.code}}</td>
+                        <td>{{ item.senders.name }}</td>
+                        <td>{{ item.recivers.name }}</td>
+                        <td>{{ item.created_at }}</td>
+                        <td>Acciones</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
