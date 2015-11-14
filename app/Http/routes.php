@@ -37,10 +37,6 @@ Route::resource('api/establecimientos', 'ApiEstablecimientosController', ['only'
 Route::resource('personal', 'TraderController');
 Route::resource('personas', 'PersonalController', ['only' => ['show', 'store', 'update', 'destroy']]); //cambiar a api/personal
 
-
-Route::resource('bolsas', 'BolsasController'); //Retirar luego
-Route::resource('api/bolsas', 'ApiBolsasController');
-
 Route::resource('shipments', 'ShipmentCotroller');
 Route::get('shipments/create/{fid}', 'ShipmentCotroller@create');
 
@@ -58,6 +54,9 @@ Route::get('home', 'HomeController@index');
 
 Route::get('transitos/create/{id}', 'TransitosController@create');
 Route::post('transitos/store', 'TransitosController@store');
+
+Route::resource('bolsas', 'BolsasController'); //Retirar luego
+Route::resource('api/bolsas', 'ApiBolsasController');
 
 Route::get('bolsas/transitos/{id}', 'TransitosBolsasController@index');
 Route::get('bolsas/transitos/create/{id}', 'TransitosBolsasController@create');

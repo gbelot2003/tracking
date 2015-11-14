@@ -12,7 +12,8 @@
       "felixkiss/uniquewith-validator": "2.*",
       "barryvdh/laravel-dompdf": "0.6.*",
 		"spatie/laravel-backup": "^2.6",
-      "jacobbennett/pjax": "0.*"
+      "jacobbennett/pjax": "0.*",
+		"kryptonit3/pusher": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

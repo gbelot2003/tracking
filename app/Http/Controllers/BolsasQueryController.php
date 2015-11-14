@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BolsasQueryController extends Controller {
 
+
 	/**
 	 * Constructor de Permisos
 	 */
@@ -16,6 +17,10 @@ class BolsasQueryController extends Controller {
 		$this->middleware('auth');
 	}
 
+	/**
+	 * @param $code
+	 * @return array
+	 */
 	public function getShipmentStates($code){
 		$code = ltrim($code, '0');
 		$shipment = Shipment::with(
@@ -26,11 +31,11 @@ class BolsasQueryController extends Controller {
 			)
 			->where('code', '=', $code)
 			->first();
-		//Nesecitamos saber si la encomienda ya esta en alguna bolsa(), o a sido cerrada.
 
-		return $shipment = [
-			'estado' => $shipment->estado_id,
-			'shipment' => $shipment
+		$passShips = [
+
 		];
+
+		pusher()->trigger('channel', 'event', ['shipment' => $shipment, 'estado' => $shipment->estado_id]);
 	}
 }

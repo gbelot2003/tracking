@@ -19,5 +19,6 @@
 @stop
 
 @section('post-script')
+	<script src="//js.pusher.com/3.0/pusher.min.js"></script>
 	<script src="/js/dash/dash.js"></script>
 @stop

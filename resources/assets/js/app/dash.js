@@ -33,6 +33,10 @@ dash.config(function($routeProvider, $locationProvider){
             controller: 'BolsasCreateController',
             templateUrl: '/js/dash/views/bolsas/create.html'
         })
+        .when('/bolsas/:id', {
+            controller: 'BolsasShowController',
+            templateUrl: '/js/dash/views/bolsas/edit.html'
+        })
     ;
 
     $locationProvider.html5Mode(false);
@@ -44,3 +48,8 @@ dash.factory('shipments', function($resource){
     });
 });
 
+dash.factory('bolsas', function($resource){
+   return $resource('api/bolsa/:id', {id:'@id'}, {
+       'update': {method: 'PUT'}
+   });
+});

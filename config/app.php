@@ -148,7 +148,9 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'yajra\Datatables\DatatablesServiceProvider',
-		'Spatie\Backup\BackupServiceProvider'
+		'Spatie\Backup\BackupServiceProvider',
+		'Kryptonit3\Pusher\PusherServiceProvider'
+
 	],
 
 	/*
@@ -200,7 +202,7 @@ return [
 		'Html' 			=> 'Illuminate\Html\HtmlFacade',
 		'Entrust' 		=> 'Zizaco\Entrust\EntrustFacade',
 		'Datatables' 	=> 'yajra\Datatables\Datatables',
-		'PDF' 			=> 'Barryvdh\DomPDF\Facade',
+		'PDF' 			=> 'Barryvdh\DomPDF\Facade'
 	],
 
 ];
