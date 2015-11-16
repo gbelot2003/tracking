@@ -42,14 +42,20 @@ dash.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(false);
 });
 
+/**
+ *
+ */
 dash.factory('shipments', function($resource){
-    return $resource('/api/shipments/:id', { id:'@id'}, {
+    return $resource('/api/shipments/:id', { id:'@id' }, {
         'update': {method: 'PUT'}
     });
 });
 
+/**
+ *
+ */
 dash.factory('bolsas', function($resource){
-   return $resource('api/bolsa/:id', {id:'@id'}, {
+   return $resource('/api/bolsas/:id', {id:'@id'}, {
        'update': {method: 'PUT'}
    });
 });

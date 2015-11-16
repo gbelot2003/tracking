@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <select ui-select2="selectTradersSender" data-placeholder="Establecimiento Remitente" ng-model="bolsa.sender_id">
+                                <select ui-select2="SelectEstablecimientoSender" data-placeholder="Establecimiento Remitente" ng-model="bolsa.sender_id">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -41,7 +41,7 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <select ui-select2="selectTradersSender" data-placeholder="Establecimiento Destino" ng-model="bolsa.sender_id">
+                                <select ui-select2="selectEstablecimientoReciber" data-placeholder="Establecimiento Destino" ng-model="bolsa.reciber_id">
                                     <option value=""></option>
                                 </select>
                             </div>
@@ -50,57 +50,12 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Ingrese Guías de encomiendas</h3>
-                    </div>
-                    <div class="panel-body">
-                        <input type="number" class="form-control" id="code" ng-model="shipment.code" ng-model-options="{ debounce: 500 }"/>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="panel panel-info" ng-if="sizes">
-                <div class="panel-heading">
-                    <h3 class="panel-title text-center">Total de encomiendas </h3>
-                </div>
-                <div class="panel-body">
-                    <p class="text-center text-success"><strong>{{ sizes }}</strong></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-
         <div class="col-md-12">
-            <table class="table table-bordered" ng-if="bolsa.shipments">
-                <thead>
-                    <tr>
-                        <th>No. Guía</th>
-                        <th>Remitente</th>
-                        <th>Destino</th>
-                        <th>Fecha</th>
-                        <th>Agregar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in bolsa.shipments">
-                        <td>{{ item.code}}</td>
-                        <td>{{ item.senders.name }}</td>
-                        <td>{{ item.recivers.name }}</td>
-                        <td>{{ item.created_at }}</td>
-                        <td><a href="" ng-click="removeShipmente($index)"><i class="fa fa-trash-o fa-2x"></i></a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <button type="button" class="btn btn-primary" ng-click="createBag()">Crear Encomienda</button>
+            <button type="button" class="btn btn-flat" ng-click="bagCancel()">Cancelar</button>
         </div>
+        <pre>{{ bolsa }}</pre>
     </div>
 </div>

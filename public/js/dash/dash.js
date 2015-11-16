@@ -29035,14 +29035,20 @@ dash.config(function($routeProvider, $locationProvider){
     $locationProvider.html5Mode(false);
 });
 
+/**
+ *
+ */
 dash.factory('shipments', function($resource){
-    return $resource('/api/shipments/:id', { id:'@id'}, {
+    return $resource('/api/shipments/:id', { id:'@id' }, {
         'update': {method: 'PUT'}
     });
 });
 
+/**
+ *
+ */
 dash.factory('bolsas', function($resource){
-   return $resource('api/bolsa/:id', {id:'@id'}, {
+   return $resource('/api/bolsas/:id', {id:'@id'}, {
        'update': {method: 'PUT'}
    });
 });
@@ -29097,12 +29103,60 @@ dash.controller('bolsasController', function($scope, $location, $routeParams){
 });
 dash.controller('BolsasCreateController', function($scope, $http, $location, ModalService, ngToast){
     $scope.bolsa = {};
+    //establecimiento_envio_id, establecimiento:reciber_id, estado_id, user_id, firma, details
+
+    $scope.bolsa.estado_id = 1;
 
     $scope.generateCode = function(){
         $scope.bolsa.code =  Math.floor(Math.random() * 900000000) + 100000000;
     };
 
+    $scope.SelectEstablecimientoSender = {
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/establecimiento',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.selectEstablecimientoReciber ={
+        ajax:{
+            cache:true,
+            datType: 'json',
+            url: '/api/consultas/establecimiento',
+            results: function(data){
+                return {results: data}
+            }
+        }
+    };
+
+    $scope.createBag = function(){
+        //Enviamos la bolsa y esperamos la
+        // respuesta del objeto que tendra
+        // el id de dicha bolsa
+
+        //Enviamos a la vista bolsas/id:
+        console.log($scope.bolsa);
+    };
+
+    $scope.bagCancel = function(){
+        $location.url('/bolsas');
+    };
+
+});
+dash.controller('BolsasShowController', function($scope, bolsas, $location, $routeParams){
+    $scope.bolsa = {};
     $scope.bolsa.shipments = [];
+
+    // Esto llena la tabla al cargar!!
+    $scope.bolsa = bolsas.get({id: $routeParams.id});
+    if($scope.bolsa.shipments && $scope.bolsa.shipment.length){
+        $scope.sizes = $scope.bolsa.shipments.length;
+        console.log($scope.sizes);
+    }
 
     var pusher = new Pusher('191a9d488c180451b633');
     var channel = pusher.subscribe('channel');
@@ -29129,7 +29183,7 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
 
     $scope.addShipmentToBag = function(shipmentCode){
         $http.get('api/bolsas/query/shipment-states/' + shipmentCode).then(function successCallback(response){
-               $scope.shipment.code = '';
+            $scope.shipment.code = '';
         }, function errorCallback(response){
             console.log(response);
             ngToast.danger({
@@ -29143,9 +29197,6 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
         $scope.sizes = $scope.bolsa.shipments.length;
     }
 
-});
-dash.controller('BolsasShowController', function($scope, shipments, $location, $routeParams){
-    $scope.title = 'Bolsa';
 });
 dash.controller('ShipmentShowController', function($scope, shipments, $location, $routeParams){
     $scope.shipment = shipments.get({id: $routeParams.id });

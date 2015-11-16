@@ -23,6 +23,7 @@ class BolsasQueryController extends Controller {
 	 */
 	public function getShipmentStates($code){
 		$code = ltrim($code, '0');
+
 		$shipment = Shipment::with(
 			'senders.establecimiento.municipio.departamento',
 			'senders.seccion',
@@ -31,10 +32,6 @@ class BolsasQueryController extends Controller {
 			)
 			->where('code', '=', $code)
 			->first();
-
-		$passShips = [
-
-		];
 
 		pusher()->trigger('channel', 'event', ['shipment' => $shipment, 'estado' => $shipment->estado_id]);
 	}

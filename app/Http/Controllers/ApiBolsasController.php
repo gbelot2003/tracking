@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Bolsa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -18,7 +19,8 @@ class ApiBolsasController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$bolsa = Bolsa::all();
+		return $bolsa;
 	}
 
 	/**
@@ -49,7 +51,9 @@ class ApiBolsasController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$bolsa = Bolsa::with('shipments', 'sender', 'reciber', 'shipments.recivers.establecimiento', 'shipments.senders.establecimiento')
+		->findOrFail($id);
+		return $bolsa;
 	}
 
 	/**
