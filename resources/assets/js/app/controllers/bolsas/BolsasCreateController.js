@@ -31,20 +31,27 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
     };
 
     $scope.validacion = function(){
-        if(!$scope.bolsa.code || !$scope.bolsa.establecimiento_envio_id || !$scope.bolsa.establecimiento_reciber_id){
+        if(!$scope.bolsa.code || !$scope.bolsa.establecimiento_envio_id || !$scope.bolsa.establecimiento_recive_id){
             return true;
         }
         return false;
     };
 
     $scope.createBag = function(){
-        //Enviamos la bolsa y esperamos la
-        // respuesta del objeto que tendra
-        // el id de dicha bolsa
-
-        //Enviamos a la vista bolsas/id:
-        console.log($scope.bolsa);
+        $http.post('api/bolsas', $scope.bolsa).then(function successCallback(response){
+            var bolsa = response.data;
+            $location.url('/bolsas/' + bolsa.id);
+            ngToast.success({
+                content: "se a creado exitosamente la bolsa, proceda a actualizar contenido"
+            })
+        }, function errorCallback(){
+            ngToast.warning({
+                content: 'Se a producido un error en la introducción de esta información'
+            });
+        });
     };
+
+
 
     $scope.bagCancel = function(){
         $location.url('/bolsas');
