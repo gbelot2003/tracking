@@ -29103,7 +29103,7 @@ dash.controller('bolsasController', function($scope, $location, $routeParams){
 });
 dash.controller('BolsasCreateController', function($scope, $http, $location, ModalService, ngToast){
     $scope.bolsa = {};
-    //establecimiento_envio_id, establecimiento:reciber_id, estado_id, user_id, firma, details
+    //establecimiento_envio_id, establecimiento_reciber_id, estado_id, user_id, firma, details
 
     $scope.bolsa.estado_id = 1;
 
@@ -29131,6 +29131,13 @@ dash.controller('BolsasCreateController', function($scope, $http, $location, Mod
                 return {results: data}
             }
         }
+    };
+
+    $scope.validacion = function(){
+        if(!$scope.bolsa.code || !$scope.bolsa.establecimiento_envio_id || !$scope.bolsa.establecimiento_reciber_id){
+            return true;
+        }
+        return false;
     };
 
     $scope.createBag = function(){
