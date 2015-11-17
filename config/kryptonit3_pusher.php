@@ -28,7 +28,7 @@ return [
         'host' => 'api.pusherapp.com', // the host e.g. api.pusherapp.com. No trailing forward slash.
         'port' => 80, // the http port
         'timeout' => 30, // the HTTP timeout
-        'encrypted' => true, // quick option to use scheme of https and port 443.
+        'encrypted' => false, // quick option to use scheme of https and port 443.
         'debug' => true, // You can optionally turn on debugging for all requests by setting debug to true.
 
     ],

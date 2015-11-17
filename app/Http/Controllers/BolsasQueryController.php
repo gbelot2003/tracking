@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Bolsa;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -21,8 +22,10 @@ class BolsasQueryController extends Controller {
 	 * @param $code
 	 * @return array
 	 */
-	public function getShipmentStates($code){
+	public function getShipmentStates($code, $bcode){
 		$code = ltrim($code, '0');
+
+		$bolsa = Bolsa::where('code', '=', $bcode)->first();
 
 		$shipment = Shipment::with(
 			'senders.establecimiento.municipio.departamento',
@@ -33,6 +36,22 @@ class BolsasQueryController extends Controller {
 			->where('code', '=', $code)
 			->first();
 
-		pusher()->trigger('channel', 'event', ['shipment' => $shipment, 'estado' => $shipment->estado_id]);
+		if($shipment->estado_id === 4 || $shipment->estado_id === 7 || $shipment->estado_id === 8 || $shipment->estado_id === 9 || $shipment->estado_id === 10 || $shipment->estado_id === 11 || $shipment->estado_id === 12 || $shipment->estado_id === 13){
+			pusher()->trigger('channel-' . $bolsa->id, 'event', ['shipment' => $shipment, 'estado' => $shipment->estado_id]);
+		} else {
+			pusher()->trigger('channel-' . $bolsa->id, 'event', ['shipment' => $shipment, 'estado' => $shipment->estado_id]);
+			$bolsa->shipments()->attach($shipment->id);
+		}
+
+	}
+
+	public function getShipmentRemove($code, $bcode){
+		$code = ltrim($code, '0');
+		$shipment = Shipment::where('code', '=', $code)->first();
+		$bolsa = Bolsa::where('code', '=', $bcode)->first();
+
+		pusher()->trigger('channel-' . $bolsa->id, 'delete', ['shipment_id' => $shipment->id]);
+		$bolsa->shipments()->detach($shipment->id);
+
 	}
 }
