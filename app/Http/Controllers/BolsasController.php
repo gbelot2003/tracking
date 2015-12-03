@@ -27,7 +27,7 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
-		$bolsas = Bolsa::limit(500)->get();
+		$bolsas = Bolsa::limit(500)->orderBy('created_at', 'desc')->get();
 		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
 
