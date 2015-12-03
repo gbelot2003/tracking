@@ -27,7 +27,7 @@ class BolsasController extends Controller {
 	 */
 	public function index()
 	{
-		$bolsas = Bolsa::all();
+		$bolsas = Bolsa::limit(500)->get();
 		return View('bolsas.index', compact('bolsas', 'sinBolsa'));
 	}
 
