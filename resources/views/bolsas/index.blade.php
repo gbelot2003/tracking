@@ -57,6 +57,7 @@
 			});
 			$('#table').DataTable({
 				"pageLength": 10,
+				"order": [[ 0, "desc" ]]
 				"language": {
 					"lengthMenu": "Mostrar _MENU_ registros por página",
 					"zeroRecords": "Registro no encotrado - lo sentimos",
