@@ -1,47 +1,53 @@
-<?php namespace App\Http;
+<?php
+
+namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel {
+class Kernel extends HttpKernel
+{
+    /**
+     * The application's global HTTP middleware stack.
+     *
+     * These middleware are run during every request to your application.
+     *
+     * @var array
+     */
+    protected $middleware = [
+        \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+    ];
 
-	/**
-	 * The application's global HTTP middleware stack.
-	 *
-	 * @var array
-	 */
-	protected $middleware = [
-		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-		'Illuminate\Cookie\Middleware\EncryptCookies',
-		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'App\Http\Middleware\VerifyCsrfToken',
-		'JacobBennett\Pjax\PjaxMiddleware',
-	];
+    /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+        ],
 
-	/**
-	 * The application's route middleware.
-	 *
-	 * @var array
-	 */
-	protected $routeMiddleware = [
-		'auth' 							=> 'App\Http\Middleware\Authenticate',
-		'auth.basic' 					=> 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' 						=> 'App\Http\Middleware\RedirectIfAuthenticated',
-		'CargosCheckPerms' 				=> 'App\Http\Middleware\CargosCheckPerms',
-		'EstablecimientosCheckPerms'	=> 'App\Http\Middleware\EstablecimientosCheckPerms',
-		'SeccionsCheckPerms'			=> 'App\Http\Middleware\SeccionsCheckPerms',
-		'UserCheckPerms' 				=> 'App\Http\Middleware\UserCheckPerms',
-		'UserUserCheckPerms' 			=> 'App\Http\Middleware\UserUserCheckPerms',
-		'RoleCheckPerms' 				=> 'App\Http\Middleware\RoleCheckPerms',
-		'PermissionCheckPerms'			=> 'App\Http\Middleware\PermissionCheckPerms',
-		'TraderCheckPerms'				=> 'App\Http\Middleware\TraderCheckPerms',
-		'TraderUserCheckPerms'			=> 'App\Http\Middleware\TraderUserCheckPerms',
-		'PaquetesCheckPerms'			=> 'App\Http\Middleware\PaquetesCheckPerms',
-		'ShipmentsCheckPerms'			=> 'App\Http\Middleware\ShipmentsCheckPerms',
-		'ShipmentsUserCheckPerms'		=> 'App\Http\Middleware\ShipmentsUserCheckPerms',
-		'BolsasCheckPerms'				=> 'App\Http\Middleware\BolsasCheckPerms',
-		'homecheck'						=> 'App\Http\Middleware\HomeRolesCheck',
-	];
+        'api' => [
+            'throttle:60,1',
+        ],
+    ];
 
+    /**
+     * The application's route middleware.
+     *
+     * These middleware may be assigned to groups or used individually.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+    ];
 }

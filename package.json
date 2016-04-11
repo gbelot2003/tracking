@@ -1,17 +1,10 @@
 {
   "private": true,
   "devDependencies": {
-    "bower": "*",
-    "gulp": "^3.8.8",
-    "laravel-elixir": "*",
-    "vueify": "^4.0.1"
+    "gulp": "^3.9.1"
   },
   "dependencies": {
-    "babel-runtime": "^5.8.29",
-    "vue": "^1.0.1",
-    "vue-hot-reload-api": "^1.2.1",
-    "vue-resource": "^0.1.16",
-    "vue-route": "^1.5.1",
-    "vue-router": "^0.7.5"
+    "laravel-elixir": "^5.0.0",
+    "bootstrap-sass": "^3.0.0"
   }
 }
