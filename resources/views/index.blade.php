@@ -8,7 +8,9 @@
 </head>
 
 <body>
-<band-info></band-info>
+    <div class="container">
+        <div ui-view></div>
+    </div>
 <script src="js/main.min.js"></script>
 </body>
 </html>

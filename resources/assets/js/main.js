@@ -1,3 +1,10 @@
 var angular = require('angular');
 var uiRouter = require('angular-ui-router');
-var app = angular.module('app', [uiRouter]);
+require('satellizer');
+var app = angular.module('app', [uiRouter, 'satellizer']);
+
+require('./config')(app);
+require('./auth/AuthController')(app);
+require('./users/userController')(app);
+
+

@@ -24,7 +24,7 @@ module.exports = {
             {
                 test:/\.html$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'raw-loader'
+                loader: 'raw'
             }
         ]
     },
