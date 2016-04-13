@@ -1,0 +1,6 @@
+<ul class="nav nav-pills">
+    <li ng-repeat="menu in menus" role="presentation"><a href="{{ menu.url }}">{{ menu.title }}</a></li>
+    <li ng-show="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
+    <li ng-show="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
+    <li ng-show="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
+</ul>

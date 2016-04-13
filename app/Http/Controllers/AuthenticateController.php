@@ -44,7 +44,10 @@ class AuthenticateController extends Controller
         return $users;
     }
 
-
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     * @route "api/authenticate/user" @get
+     */
     public function getAuthenticatedUser()
     {
         try {

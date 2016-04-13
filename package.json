@@ -4,6 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "dependencies": {
+    "angular": "^1.5.0-rc.0",
     "angular-ui-router": "^0.2.18",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
