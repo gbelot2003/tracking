@@ -11,13 +11,23 @@ module.exports = function(app){
                 if(localStorage.token){
                     config.headers.token = localStorage.token
                 }
+
                 return config;
             },
-            responseError: function(response){
-                if(response.status === 401 || response.status === 400){
+            responseError: function(rejection){
+                if(rejection.status === 401){
                     $location.path('/login');
                 }
-                return $q.reject
+
+                if(rejection.status === 402){
+                    $location.path('/login');
+                }
+
+                if(rejection.status === 403){
+                    $location.path('/');
+                }
+
+                return $q.reject(rejection);
             }
         };
     })

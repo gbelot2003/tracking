@@ -8,9 +8,6 @@ var login = function($scope, $location, auth){
     };
 
     var success = function(response){
-        if(response.status === 401){
-            console.log('yooooo' + respose);
-        }
         localStorage.setItem('satellizer_token', response.data.token);
         $location.path('/dashboard');
 
