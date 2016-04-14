@@ -2,5 +2,7 @@ module.exports = function(app){
     require('./auth/authInterceptor')(app);
     require('./auth/configInterceptor')(app);
     require('./auth/auth')(app);
+    require('./auth/credentials')(app);
+
     require('./config')(app);
 };

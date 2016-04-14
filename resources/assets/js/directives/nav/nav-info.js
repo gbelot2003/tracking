@@ -9,6 +9,7 @@ module.exports = function(app){
 
                 $scope.logout = function(){
                     localStorage.removeItem('satellizer_token');
+                    localStorage.removeItem('user');
                     $location.path('/login');
                 }
             }

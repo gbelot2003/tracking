@@ -1,4 +1,4 @@
-var login = function($scope, $location, auth){
+var login = function($scope, $location, auth, credent){
 
     $scope.login = function(){
         if($scope.loginForm.$valid){
@@ -10,7 +10,11 @@ var login = function($scope, $location, auth){
     var success = function(response){
         localStorage.setItem('satellizer_token', response.data.token);
         $location.path('/dashboard');
-
+        var promise = credent.getCredentials();
+        promise.then(function success(response){
+            var user = JSON.stringify(response.data.user);
+            localStorage.setItem('user', user);
+        })
     };
 
     var error = function(response){
@@ -22,7 +26,7 @@ var login = function($scope, $location, auth){
 };
 
 module.exports = function(app){
-    app.controller('loginController', function($scope, $location, auth){
-        return login($scope, $location, auth);
+    app.controller('loginController', function($scope, $location, auth, credent){
+        return login($scope, $location, auth, credent);
     });
 };
