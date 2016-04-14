@@ -2,7 +2,12 @@ module.exports = function(app){
     app.factory('authInterceptor', function($q, $location){
         return {
             request: function(config){
+                //added
+                config = config || {};
+                //added
+
                 config.headers = config.headers || {};
+
                 if(localStorage.token){
                     config.headers.token = localStorage.token
                 }
@@ -17,3 +22,4 @@ module.exports = function(app){
         };
     })
 };
+

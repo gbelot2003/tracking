@@ -1,5 +1,6 @@
 module.exports = function(app){
-    require('../services/auth/authInterceptor')(app);
-    require('../services/auth/configInterceptor')(app);
+    require('./auth/authInterceptor')(app);
+    //require('./auth/configInterceptor')(app);
+    require('./auth/auth')(app);
     require('./config')(app);
 };

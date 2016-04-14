@@ -1,6 +1,16 @@
 var login = function($scope, $location, auth){
 
+    $scope.login = function(){
+        if($scope.loginForm.$valid){
+         var promise = auth.login($scope.user);
+            promise.then(success, error);
+        }
+    };
+
     var success = function(response){
+        if(response.status === 401){
+            console.log('yooooo' + respose);
+        }
         localStorage.setItem('satellizer_token', response.data.token);
         $location.path('/dashboard');
 
@@ -11,12 +21,6 @@ var login = function($scope, $location, auth){
         $scope.messageErrorServer = response.data.error;
     };
 
-    $scope.login = function(){
-        if($scope.loginForm.$valid){
-         var promise = auth.login($scope.user);
-            promise.then(success, error);
-        }
-    };
 };
 
 module.exports = function(app){

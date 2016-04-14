@@ -8,9 +8,12 @@
 </head>
 
 <body>
-    <div class="container">
-        <div ui-view></div>
-    </div>
+<div class="container">
+    <nav>
+        <nav-info></nav-info>
+    </nav>
+    <div ng-view></div>
+</div>
 <script src="js/main.min.js"></script>
 </body>
 </html>
