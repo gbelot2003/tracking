@@ -19,6 +19,7 @@ var login = function($scope, $location, auth){
     var error = function(response){
         $scope.wrongCredentials = true;
         $scope.messageErrorServer = response.data.error;
+        $scope.user.password = '';
     };
 
 };

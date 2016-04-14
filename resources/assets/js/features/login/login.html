@@ -3,10 +3,12 @@
         <h3>Login</h3>
         <form name="loginForm" ng-submit="login()" novalidate>
             <div class="alert alert-danger" ng-show="wrongCredentials">
-                <p>Error en el evento de login</p>
-                <p>El servidor dice "<em>{{messageErrorServer}}</em>"</p>
+                <p>Error al tratar hacer login</p>
+                <p>El servidor dice :"<em>{{messageErrorServer}}</em>",</p>
+                <p>revisa tu usuario o contraseña</p>
             </div>
-            <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$dirty, 'has-success':loginForm.$valid && loginForm.email.$dirty}">
+            <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$dirty,
+                                                'has-success':loginForm.$valid && loginForm.email.$dirty}">
                 <label class="control-label">E-mail</label>
                 <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required cu-focus/>
                 <p class="help-block" ng-show="loginForm.email.$invalid && loginForm.email.$dirty  && !loginForm.email.$focused">Wrong email</p>

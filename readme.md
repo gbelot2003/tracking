@@ -1,5 +1,5 @@
 #Trackhn
-refactory of trackhn with the agregation of react as main frontend developed library and laravel as REST-Api
+refactory of track packages mangnament system with the agregation of **angularjs** as main frontend developed for a SPA system and **laravel 5.2** as REST-Api on back-end
 
 # Laravel PHP Framework
 
