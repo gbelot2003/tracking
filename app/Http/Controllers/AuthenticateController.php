@@ -8,6 +8,7 @@ use App\Http\Requests;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
+use App\Role;
 
 
 class AuthenticateController extends Controller
@@ -61,8 +62,12 @@ class AuthenticateController extends Controller
         } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
             return response()->json(['token_absent'], $e->getStatusCode());
         }
+
+        $sroles = User::with('roles')->find(1);
+        $rol = $sroles->roles[0]->name;
+
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return response()->json(compact('user', 'rol'));
     }
 
 }

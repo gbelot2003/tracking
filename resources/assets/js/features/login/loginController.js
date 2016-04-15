@@ -13,7 +13,9 @@ var login = function($scope, $location, auth, credent){
         var promise = credent.getCredentials();
         promise.then(function success(response){
             var user = JSON.stringify(response.data.user);
+            var rol = response.data.rol;
             localStorage.setItem('user', user);
+            localStorage.setItem('rol', rol);
         })
     };
 

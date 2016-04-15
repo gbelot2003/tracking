@@ -1,4 +1,4 @@
 module.exports = function(app){
     require('./nav/nav-info')(app);
-    require('./forms/cu-focus')(app);
+    require('./forms/misc/cu-focus')(app);
 };
