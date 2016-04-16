@@ -1,5 +1,6 @@
 module.exports = function(app){
-    app.service('auth', function($http){
+    app.service('authentication', function($http){
+
         this.login = function(user){
             return $http.post('api/authenticate', {email: user.email, password: user.password});
         };

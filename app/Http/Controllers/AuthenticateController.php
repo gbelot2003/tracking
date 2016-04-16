@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
@@ -63,11 +64,14 @@ class AuthenticateController extends Controller
             return response()->json(['token_absent'], $e->getStatusCode());
         }
 
-        $sroles = User::with('roles')->find(1);
-        $rol = $sroles->roles[0]->name;
-
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user', 'rol'));
+        return response()->json(compact('user'));
     }
 
+    public function  getRolUser(){
+
+        $user = Auth::User();
+        $roles = $user->roles[0]->name;
+        return response()->json(compact('roles'));
+    }
 }

@@ -1,10 +1,10 @@
 module.exports = function(app){
-    app.directive('navInfo', function(menuList, $location, auth){
+    app.directive('navInfo', function(menuList, $location, authentication){
         return {
             template: require('raw!./nav.html'),
             restrict:'E',
             controller: function($scope){
-                $scope.isLoggedIn = auth.isLoggedIn;
+                $scope.isLoggedIn = authentication.isLoggedIn;
                 $scope.menus = menuList;
 
                 $scope.logout = function(){

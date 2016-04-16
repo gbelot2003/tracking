@@ -1,8 +1,8 @@
-var login = function($scope, $location, auth, credent){
+var login = function($scope, $location, authentication, credent){
 
     $scope.login = function(){
         if($scope.loginForm.$valid){
-         var promise = auth.login($scope.user);
+         var promise = authentication.login($scope.user);
             promise.then(success, error);
         }
     };
@@ -13,9 +13,7 @@ var login = function($scope, $location, auth, credent){
         var promise = credent.getCredentials();
         promise.then(function success(response){
             var user = JSON.stringify(response.data.user);
-            var rol = response.data.rol;
             localStorage.setItem('user', user);
-            localStorage.setItem('rol', rol);
         })
     };
 
@@ -28,7 +26,7 @@ var login = function($scope, $location, auth, credent){
 };
 
 module.exports = function(app){
-    app.controller('loginController', function($scope, $location, auth, credent){
-        return login($scope, $location, auth, credent);
+    app.controller('loginController', function($scope, $location, authentication, credent){
+        return login($scope, $location, authentication, credent);
     });
 };

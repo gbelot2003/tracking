@@ -1,4 +1,5 @@
 var config = function($routeProvider, $locationProvider){
+
     $routeProvider
         .when('/', {
             controller: 'indexController',
@@ -10,7 +11,13 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/dashboard', {
             controller: 'dashController',
-            template: require('raw!../features/admin/dashboard/dashboard.html')
+            template: require('raw!../features/admin/dashboard/dashboard.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner']);
+                }
+            }
+
         })
         .otherwise({
             redirectTo:'/'
