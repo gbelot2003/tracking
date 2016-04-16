@@ -7,12 +7,10 @@ module.exports = function(app){
             var getPerms = permService.permissionModel.permission;
             scope.show = false;
             angular.forEach(setPerms, function(e){
-                console.log(e);
                 if(e === getPerms){
                     scope.show = true;
                 }
             });
-            console.log(scope.show);
         }
     }
   });
