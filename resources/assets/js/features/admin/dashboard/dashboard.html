@@ -1,2 +1,2 @@
-<h2>{{ message }}</h2>
-<li ng-repeat="items in items">{{items.email}}</li>
+<h2 has-permission="['owner', 'admin']" ng-show="show">Siii</h2>
+<li has-permission="['admin']" ng-show="show" ng-repeat="items in items">{{items.email}}</li>

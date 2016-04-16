@@ -49,6 +49,7 @@ module.exports = function(app){
                          ifPermissionPassed = false;
                  }
              });
+
              if (!ifPermissionPassed) {
                  $location.path('/');
                  $rootScope.$on('$locationChangeSuccess', function (next, current) {
@@ -58,6 +59,32 @@ module.exports = function(app){
                  deferred.resolve();
              }
 
+         },
+
+         testPermissision: function(permissionModel, roleCollectuib){
+             angular.forEach(roleCollection, function (role) {
+                 switch (role) {
+                     case 'owner':
+                         if (permissionModel.permission === 'owner') {
+                             ifPermissionPassed = true;
+                         }
+                         break;
+
+                     case 'admin':
+                         if (permissionModel.permission === 'admin') {
+                             ifPermissionPassed = true;
+                         }
+                         break;
+
+                     case 'user':
+                         if (permissionModel.permission === 'user') {
+                             ifPermissionPassed = true;
+                         }
+                         break;
+                     default:
+                         ifPermissionPassed = false;
+                 }
+             });
          }
      }
   });
