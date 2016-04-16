@@ -18,7 +18,6 @@ module.exports = function(app){
                  //api/authenticate/rol
                  $resource('api/authenticate/rol').get().$promise.then(function (response){
                      parentPointer.permissionModel.permission = response.roles;
-                     console.log(parentPointer.permissionModel.permission);
                      parentPointer.permissionModel.isPermissionLoaded = true;
                      parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
                  });
@@ -28,7 +27,6 @@ module.exports = function(app){
 
          getPermission: function (permissionModel, roleCollection, deferred) {
              var ifPermissionPassed = false;
-             console.log(roleCollection);
              angular.forEach(roleCollection, function (role) {
                  switch (role) {
                      case 'owner':
