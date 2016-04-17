@@ -1,9 +1,8 @@
-var index = function($scope){
-  //$scope.message = "index page";
-  $scope.message = localStorage.getItem('rol')
-}
+var index = function($scope, permService){
+    $scope.message = permService.permissionModel.permission;
+};
 module.exports = function(app){
-    app.controller('indexController',function($scope){
-      return index($scope);
+    app.controller('indexController',function($scope, permService){
+      return index($scope, permService);
     })
 }

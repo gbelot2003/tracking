@@ -8,10 +8,8 @@
 </head>
 
 <body>
+<nav-info></nav-info>
 <div class="container">
-    <nav>
-        <nav-info></nav-info>
-    </nav>
     <div ng-view></div>
 </div>
 <script src="js/main.min.js"></script>

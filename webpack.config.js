@@ -1,9 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
-var LessPluginCleanCSS = require('less-plugin-clean-css');
-
 
 module.exports = {
+    cache: true,
     context: path.join(__dirname, "resources", "assets"),
 
     entry: "./js/main.js",
@@ -15,7 +14,7 @@ module.exports = {
     devServer: {
         contentBase: 'public'
     },
-
+    devtool: "source-map", // or "inline-source-map"
     module: {
         loader:[
             {
@@ -29,16 +28,12 @@ module.exports = {
                 loader: 'raw'
             },
             {
-                test: /\.less$/,
-                loader: "style!css!less"
+                test: /\.scss$/,
+                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
             }
         ]
     },
-    lessLoader:{
-        lessPlugins:[
-            new LessPluginCleanCSS({advanced: true})
-        ]
-    },
+
     resolve:{
         extensions: ['', '.js', '.es6']
     }

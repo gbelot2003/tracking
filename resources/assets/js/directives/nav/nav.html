@@ -1,6 +1,47 @@
-<ul class="nav nav-pills">
-    <li ng-repeat="menu in menus" role="presentation"><a href="{{ menu.url }}">{{ menu.title }}</a></li>
-    <li ng-show="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
-    <li ng-show="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
-    <li ng-show="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
-</ul>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/">Trackhn</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" collapse="navCollapsed">
+            <ul class="nav navbar-nav">
+                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
+                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/reportes">Reportes</a></li>
+                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/reportes">Busqueda Rapida</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li ng-show="isLoggedIn()" class="dropdown" dropdown="">
+                    <a href="#/" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown">Configuraciones Generales <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/establecimientos">Agencias y Establecimientos</a></li>
+                        <li><a href="#/secciones">Secciones Administrativas</a></li>
+                        <li><a href="#/clientes">Personal Cliente</a></li>
+                    </ul>
+                </li>
+
+                <li ng-show="isLoggedIn()" class="dropdown" dropdown="" hasPermission="['owner', 'admin']">
+                    <a href="#/" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown">Usuarios y permisos  <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/users">Usuarios</a></li>
+                        <li><a href="#/permisos">Permisos</a></li>
+                    </ul>
+                </li>
+                <li ng-show="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
+                <li ng-show="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>

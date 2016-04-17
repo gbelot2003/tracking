@@ -14,7 +14,7 @@ var login = function($scope, $location, authentication, credent){
         promise.then(function success(response){
             var user = JSON.stringify(response.data.user);
             localStorage.setItem('user', user);
-        })
+        });
     };
 
     var error = function(response){
