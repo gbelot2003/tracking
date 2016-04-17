@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var LessPluginCleanCSS = require('less-plugin-clean-css');
+
 
 module.exports = {
     context: path.join(__dirname, "resources", "assets"),
@@ -25,10 +27,18 @@ module.exports = {
                 test:/\.html$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'raw'
+            },
+            {
+                test: /\.less$/,
+                loader: "style!css!less"
             }
         ]
     },
-
+    lessLoader:{
+        lessPlugins:[
+            new LessPluginCleanCSS({advanced: true})
+        ]
+    },
     resolve:{
         extensions: ['', '.js', '.es6']
     }
