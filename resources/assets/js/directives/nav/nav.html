@@ -12,7 +12,9 @@
                 </h2>
 
                 <span flex></span>
-                <h3 ng-show="isLoggedIn()"><span><a href="#/dashboard">Dashboad</a></span></h3>
+                <md-button ng-show="isLoggedIn()" ng-href="#/dashboard">
+                    <span>Dashboad</span>
+                </md-button>
 
                 <md-button ng-href="#/login" class="md-icon-button" aria-label="Favorite" ng-show="!isLoggedIn()">
                     <md-icon md-svg-icon="images/icon/login.svg" style="color:white;"></md-icon>

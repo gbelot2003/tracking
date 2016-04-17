@@ -7,7 +7,7 @@
     <meta name="fragment" content="!">
     <base href="/"/>
 
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximun-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
@@ -19,11 +19,18 @@
 </head>
 
 <body>
-<div class="container">
-    <nav>
-        <nav-info></nav-info>
-    </nav>
-    <div ng-view></div>
+
+<div layout="row">
+    <div flex="100">
+        <nav>
+            <nav-info></nav-info>
+        </nav>
+    </div>
+</div>
+<div layout="layout-gt-md">
+    <div flex="80" flex-offset="10">
+        <div class=“ng-cloak” ng-view></div>
+    </div>
 </div>
 <script src="js/main.min.js"></script>
 </body>
