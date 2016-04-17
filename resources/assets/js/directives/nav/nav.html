@@ -21,7 +21,7 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li ng-show="isLoggedIn()" class="dropdown" dropdown="">
+                <li ng-show="isLoggedIn()" class="dropdown" dropdown="" hasPermission="['owner', 'admin', 'centro-acopio', 'currier']">
                     <a href="#/" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown">Configuraciones Generales <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
@@ -35,7 +35,7 @@
                     <a href="#/" dropdown-toggle="" class="dropdown-toggle" data-toggle="dropdown">Usuarios y permisos  <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/users">Usuarios</a></li>
+                        <li><a href="#/usuarios">Usuarios</a></li>
                         <li><a href="#/permisos">Permisos</a></li>
                     </ul>
                 </li>
