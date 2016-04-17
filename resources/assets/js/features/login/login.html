@@ -1,5 +1,14 @@
 
 <md-content layout-padding>
+  <h2>Login</h2>
+    <md-content layout-padding style="background: darkred; color: white;" ng-show="wrongCredentials">
+        <p>
+            <md-icon md-svg-src="images/icon/warning.svg" class="s48" aria-label="warning" style="color:white;"></md-icon>
+            Error al tratar hacer login, El servidor dice :"<em>{{messageErrorServer}}</em>" revisa tu usuario o contraseña
+        </p>
+    </md-content>
+
+
     <form name="loginForm" ng-submit="login()" novalidate>
         <md-input-container class="md-block">
             <label>Email</label>
