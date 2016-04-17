@@ -1,32 +1,26 @@
-
-<md-content layout-padding>
-  <h2>Login</h2>
-    <md-content layout-padding style="background: darkred; color: white;" ng-show="wrongCredentials">
-        <p>
-            <md-icon md-svg-src="images/icon/warning.svg" class="s48" aria-label="warning" style="color:white;"></md-icon>
-            Error al tratar hacer login, El servidor dice :"<em>{{messageErrorServer}}</em>" revisa tu usuario o contraseña
-        </p>
-    </md-content>
-
-
-    <form name="loginForm" ng-submit="login()" novalidate>
-        <md-input-container class="md-block">
-            <label>Email</label>
-            <input required type="email"  ng-model="user.email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/">
-            <div ng-messages="loginForm.user.email.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                    Your email must be between 10 and 100 characters long and look like an e-mail address.
-                </div>
+<div class="col-sm-4 col-sm-offset-4">
+    <div class="well">
+        <h3>Login</h3>
+        <form name="loginForm" ng-submit="login()" novalidate>
+            <div class="alert alert-danger" ng-show="wrongCredentials">
+                <p>Error al tratar hacer login</p>
+                <p>El servidor dice :"<em>{{messageErrorServer}}</em>",</p>
+                <p>revisa tu usuario o contraseña</p>
             </div>
-        </md-input-container>
-
-        <md-input-container class="md-block">
-            <label>Password</label>
-            <input type="password" required ng-model="user.password">
-            <div ng-messages="loginForm.user.password.$error">
-                <div ng-message="required">Este es un campo requerido</div>
+            <div class="form-group" ng-class="{'has-error' : loginForm.email.$invalid && loginForm.email.$dirty,
+                                                'has-success':loginForm.$valid && loginForm.email.$dirty}">
+                <label class="control-label">E-mail</label>
+                <input type="email" name="email" class="form-control" placeholder="Email" ng-model="user.email" required cu-focus/>
+                <p class="help-block" ng-show="loginForm.email.$invalid && loginForm.email.$dirty  && !loginForm.email.$focused">Wrong email</p>
             </div>
-        </md-input-container>
-        <md-button type="submit" class="md-raised md-primary" ng-disabled="loginForm.$invalid">Login</md-button>
-    </form>
-</md-content>
+
+            <div class="form-group" ng-class="{'has-error' : loginForm.password.$invalid && loginForm.password.$dirty, 'has-success':loginForm.$valid && loginForm.password.$dirty}">
+                <label class="control-label">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" ng-model="user.password" required cu-focus/>
+                <p class="help-block" ng-show="loginForm.password.$invalid && loginForm.password.$dirty  && !loginForm.password.$focused">password is require</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Submit</button>
+        </form>
+    </div>
+</div>

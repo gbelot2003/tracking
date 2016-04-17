@@ -1,31 +1,6 @@
-<div>
-    <md-content>
-        <md-toolbar class="md-hue-2">
-            <div class="md-toolbar-tools">
-
-                <md-button ng-href="#/" class="md-icon-button" aria-label="Settings">
-                    <md-icon md-svg-icon="images/icon/menu.svg"></md-icon>
-                </md-button>
-
-                <h2>
-                    <span><a href="#/">Trackhn</a></span>
-                </h2>
-
-                <span flex></span>
-                <md-button ng-show="isLoggedIn()" ng-href="#/dashboard">
-                    <span>Dashboad</span>
-                </md-button>
-
-                <md-button ng-href="#/login" class="md-icon-button" aria-label="Favorite" ng-show="!isLoggedIn()">
-                    <md-icon md-svg-icon="images/icon/login.svg" style="color:white;"></md-icon>
-                </md-button>
-
-                <md-button  ng-show="isLoggedIn()" ng-click="logout()" class="md-icon-button" aria-label="Favorite" ng-show="!isLoggedIn()">
-                    <md-icon md-svg-icon="images/icon/logout.svg" style="color:white;"></md-icon>
-                </md-button>
-
-            </div>
-        </md-toolbar>
-    </md-content>
-</div>
-
+<ul class="nav nav-pills">
+    <li ng-repeat="menu in menus" role="presentation"><a href="{{ menu.url }}">{{ menu.title }}</a></li>
+    <li ng-show="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
+    <li ng-show="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
+    <li ng-show="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
+</ul>
