@@ -40,8 +40,18 @@ module.exports = function(app){
                          }
                          break;
 
-                     case 'user':
-                         if (permissionModel.permission === 'user') {
+                     case 'centro-acopio':
+                         if (permissionModel.permission === 'centro-acopio') {
+                             ifPermissionPassed = true;
+                         }
+                         break;
+                     case 'currier':
+                         if (permissionModel.permission === 'currier') {
+                             ifPermissionPassed = true;
+                         }
+                         break;
+                     case 'cliente':
+                         if (permissionModel.permission === 'cliente') {
                              ifPermissionPassed = true;
                          }
                          break;
