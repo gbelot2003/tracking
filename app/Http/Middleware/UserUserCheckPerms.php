@@ -31,7 +31,7 @@ class UserUserCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])){
+		if(!$request->user()->hasRole(['owner', 'admin'])){
 			if($this->auth->id() != $request->segments()[1])
 			{
 				return redirect()->back();

@@ -23,7 +23,7 @@ class UserFormRequest extends Request {
 	{
 		$create = [
 			'email' => 'required|email',
-			'password' => 'required|confirmed',
+			'password' => 'confirmed',
 			'name' => 'required',
 			'establecimiento_id' => 'required|integer',
 			'empresa_id' => 'required|integer',

@@ -13,8 +13,8 @@ class UserCheckPerms {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if(!$request->user()->hasRole(['owner', 'admin', 'supervisor'])){
-			return redirect('home');
+		if(!$request->user()->hasRole(['owner', 'admin'])){
+			return response('Unauthorized.', 401);
 		}
 		return $next($request);
 	}

@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    cache: true,
     context: path.join(__dirname, "resources", "assets"),
 
     entry: "./js/main.js",
@@ -15,12 +14,21 @@ module.exports = {
         contentBase: 'public'
     },
     devtool: "source-map", // or "inline-source-map"
+
     module: {
         loader:[
-            {
-                test:/\.js$/,
-                exclude: "node_modules",
+            {   test: path.join(__dirname, 'resources', 'assets', 'js'),
                 loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.scss$/,
+                loader: 'style!css!sass'
             },
             {
                 test:/\.html$/,
@@ -28,11 +36,24 @@ module.exports = {
                 loader: 'raw'
             },
             {
-                test: /\.scss$/,
-                loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+                test: /\.css$/, loader: "style-loader!css-loader"
+            },
+            {
+                test: /\.png$/, loader: "url-loader?limit=200000"
+            },
+            {
+                test: /\.jpg$/, loader: "file-loader"
             }
         ]
     },
+
+    plugins: [
+        new webpack.ProvidePlugin({
+            '$': 'jquery',
+            'jQuery': 'jquery',
+            'window.jQuery': 'jquery',
+        })
+    ],
 
     resolve:{
         extensions: ['', '.js', '.es6']

@@ -25,5 +25,5 @@ Route::group(['prefix' => 'api'], function()
 
 Route::group(['prefix' => 'api/admin'], function()
 {
-    Route::resource('users', 'UserController',['only' => ['index']]);
+    Route::resource('users', 'UserController');
 });

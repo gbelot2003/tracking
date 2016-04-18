@@ -27,6 +27,15 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/usuarios/:id', {
+            controller: 'usuariosEditController',
+            template: require('raw!../features/admin/usuarios/usuarios/usuarios-edit.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin']);
+                }
+            }
+        })
         .when('/permisos', {
             controller: 'permisosController',
             template: require('raw!../features/admin/usuarios/permisos/permisos.html'),

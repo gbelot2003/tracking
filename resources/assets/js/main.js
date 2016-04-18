@@ -1,19 +1,26 @@
-var app = require('angular');
-var ngRoute = require('angular-route');
-var ngBootstrap = require('angular-bootstrap-npm');
-var ngAnimate = require('angular-animate');
-var ngTouch = require('angular-touch');
-var ngResource = require('angular-resource');
-var satellizer = require('satellizer');
+require('lodash');
+require('angular');
+require('angular-route');
+require('angular-bootstrap-npm');
+require('angular-animate');
+require('angular-touch');
+require('angular-resource');
+require('satellizer');
+require('angular-sanitize');
+require('ng-toast');
+require('jquery-chosen/chosen.jquery.js');
+require('angular-chosen-localytics/dist/angular-chosen.min.js');
 
 var app = angular.module('app',
     [
-        ngRoute,
-        satellizer,
-        ngResource,
-        ngBootstrap,
-        ngAnimate,
-        ngTouch
+        'ngRoute',
+        'satellizer',
+        'ngResource',
+        'ui.bootstrap',
+        'ngAnimate',
+        'ngTouch',
+        'ngToast',
+        'localytics.directives'
 ]);
 
 require('./config')(app);
