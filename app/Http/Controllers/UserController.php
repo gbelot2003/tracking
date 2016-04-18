@@ -15,8 +15,20 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('jwt.auth');
-        //$this->middleware('UserCheckPerms');
+        $this->middleware('jwt.auth');
+        $this->middleware('UserCheckPerms');
+    }
+
+    /**
+     * 
+     */
+    public function search($search = null){
+        $user = User::with('roles', 'empresa', 'establecimiento', 'estado')
+        ->where(function($query) use($search){
+            $query->where('name', 'LIKE', '%'. $search .'%')
+                    ->orWhere('email', 'LIKE', '%' .$search .'%')
+                    
+        });
     }
 
     /**
@@ -48,7 +60,11 @@ class UserController extends Controller
 
     }
 
-
+    /**
+     * @param  [type]
+     * @return [type]
+     * @route "/users/admin/{id}/edit"
+     */
     public function edit($id)
     {
 
@@ -68,7 +84,12 @@ class UserController extends Controller
         );
     }
 
-
+    /**
+     * @param  [type]
+     * @param  UserFormRequest
+     * @return [type]
+     * @route "/users/admin/{id}" "PUT"
+     */
     public function update($id, UserFormRequest $request)
     {
 
@@ -95,7 +116,12 @@ class UserController extends Controller
         return response()->json(['Usuario Actualizado'], 200);
     }
 
-
+    /**
+     * Destroy user
+     * @param  [type]
+     * @return [type]
+     * @route "users/admin/{id}" "destroy"
+     */
     public function destroy($id)
     {
 

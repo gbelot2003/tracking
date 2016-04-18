@@ -43,10 +43,12 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
             ngToast.success('El usuarios a sido actualizado correctamente');
 
         }, function error(response){
-            console.log(response)
+            ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText)
+    
         });
+    };
 
-    }
+    
 };
 
 module.exports = function(app){

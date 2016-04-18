@@ -49,10 +49,17 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control"
                                name="password"
+                               minlength="6"
                                id="password" ng-model="user.password"
                                cu-focus
                                pw-check="password"
                         >
+
+                        <div class="help-block" ng-show="editForm.password_conf.$error.minlength">
+                          <span class="has-error" style="color: red;">
+                            El password debe ser mayor a 6 caracteres!!
+                          </span>
+                        </div>
                     </div>
                 </div>
 
@@ -64,10 +71,11 @@
                         <input type="password" class="form-control"
                                id="password_confirmation"
                                name="password_conf"
-                               ng-model="user.password_conf"
+                               ng-model="user.password_confirmation"
+                               minlength="6"
                                pw-check="password"
                                cu-focus
-                        >
+                        >                        
                         <div class="help-block" ng-show="editForm.password_conf.$error.pwmatch">
                           <span class="has-error" style="color: red;">
                             El password no coicide.
