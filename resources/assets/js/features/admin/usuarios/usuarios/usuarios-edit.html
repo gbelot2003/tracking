@@ -1,0 +1,151 @@
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edición de usuarios</h2>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <form name="editForm" ng-submit="submitUser()">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : editForm.name.$invalid && editForm.name.$dirty,
+                                                'has-success':editForm.$valid && editForm.name.$dirty}" >
+
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control"
+                               id="name" placeholder="Nombre"
+                               name="name"
+                               ng-model="user.name"
+                               required
+                               cu-focus
+                        >
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : editForm.email.$invalid && editForm.email.$dirty,
+                                                'has-success':editForm.$valid && editForm.email.$dirty}">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control"
+                               id="email" placeholder="email"
+                               name="email"
+                               ng-model="user.email"
+                               required
+                               cu-focus
+                        >
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"
+                         ng-class="{'has-error' : editForm.password.$invalid && editForm.password.$dirty,
+                                    'has-success':editForm.$valid && editForm.password.$dirty}">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control"
+                               name="password"
+                               id="password" ng-model="user.password"
+                               cu-focus
+                               pw-check="password"
+                        >
+                    </div>
+                </div>
+
+                <div class="col-md-6"
+                     ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                    'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirmar Password</label>
+                        <input type="password" class="form-control"
+                               id="password_confirmation"
+                               name="password_conf"
+                               ng-model="user.password_conf"
+                               pw-check="password"
+                               cu-focus
+                        >
+                        <div class="help-block" ng-show="editForm.password_conf.$error.pwmatch">
+                          <span class="has-error" style="color: red;">
+                            El password no coicide.
+                          </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Rol de Usuarios</label>
+                        <select chosen
+                                multiple
+                                disable-search="true"
+                                ng-model="user.roles"
+                                ng-options="s.id as s.display_name for s in roles"
+                                ng-change="changeItem(user.roles)"
+                                allow-single-deselect="true" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Empresa que labora</label>
+                        <select chosen
+                                ng-model="user.empresa_id"
+                                ng-options="e.id as e.name for e in empresas"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                disable-search="true"
+                                required
+
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Establecimiento Asignado</label>
+                        <select chosen
+                                ng-model="user.establecimiento_id"
+                                ng-options="e.id as e.name for e in establecimientos"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select chosen
+                                ng-model="user.userstatus_id"
+                                ng-options="e.id as e.name for e in estado"
+                                disable-search="true"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>
