@@ -1,4 +1,4 @@
-usuariosCreate = function($scope, $http, ngToast){
+usuariosCreate = function($scope, $http, $location, ngToast){
 
 	function addErrors(data){
 		$scope.errors = data;
@@ -40,7 +40,7 @@ usuariosCreate = function($scope, $http, ngToast){
 
     	$http(req).then(function success(response){
             $location.path('/usuarios');
-            ngToast.success('El usuarios a sido actualizado correctamente');
+            ngToast.success('El usuarios a sido creado correctamente');
 
         }, function error(response){
         	var test = _.values(response.data);
@@ -52,7 +52,7 @@ usuariosCreate = function($scope, $http, ngToast){
 };
 
 module.exports = function(app){
-    app.controller('usuariosCreateController', function($scope, $http, ngToast){
-        return usuariosCreate($scope, $http, ngToast);
+    app.controller('usuariosCreateController', function($scope, $http, $location, ngToast){
+        return usuariosCreate($scope, $http, $location, ngToast);
     });
 }

@@ -1,4 +1,13 @@
 user = function ($scope, $http, $routeParams, $location, ngToast) {
+
+    function addErrors(data){
+        $scope.errors = data;
+    }
+
+    $scope.closeAlert = function(index) {
+        $scope.errors.splice(index, 1);
+    };
+
     $http.get('/api/admin/users/' + $routeParams.id + '/edit').then(function success(response) {
         $scope.user = response.data.user;
         $scope.roles = response.data.roles;
@@ -43,6 +52,8 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
             ngToast.success('El usuarios a sido actualizado correctamente');
 
         }, function error(response){
+            var test = _.values(response.data);
+            addErrors(test); 
             ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText)
     
         });

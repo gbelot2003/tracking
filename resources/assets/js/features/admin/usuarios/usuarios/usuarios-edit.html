@@ -5,6 +5,12 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+          <uib-alert ng-repeat="error in errors" type="danger" close="closeAlert($index)">{{error}}</uib-alert>
+    </div>
+</div>
+
+<div class="row">
 
     <div class="col-md-12">
         <form name="editForm" ng-submit="submitUser()">

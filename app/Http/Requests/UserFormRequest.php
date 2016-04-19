@@ -35,7 +35,7 @@ class UserFormRequest extends Request {
 			'name' => 'required',
 		];
 
-		if($this->method == 'PUT'){
+		if($this->method == 'PUT' || 'PATH'){
 			return $edit;
 		} else {
 			return $create;

@@ -64,7 +64,8 @@ class UserController extends Controller
 
     public function store(UserFormRequest $request)
     {
-        return $request;
+        $user = User::create($request->all());
+        return response()->json(['Usuario Actualizado'], 200);
     }
 
     /**
