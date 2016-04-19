@@ -9,7 +9,7 @@
                      <div class="form-group has-feedback">
                       <div class="input-group">
                         <span class="input-group-addon">Buscar</span>
-                        <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccess1Status">
+                        <input type="text" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status">
                       </div>
                       <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                       <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
@@ -53,6 +53,8 @@
                 </tbody>
             </table>
         </div>
+
         <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-click="nextPage(currentPage)"></uib-pagination>
+        
     </div>
 </div>

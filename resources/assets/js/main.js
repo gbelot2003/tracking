@@ -7,6 +7,7 @@ require('angular-touch');
 require('angular-resource');
 require('satellizer');
 require('angular-sanitize');
+require('angular-modal-service');
 require('ng-toast');
 require('jquery-chosen/chosen.jquery.js');
 require('angular-chosen-localytics/dist/angular-chosen.min.js');
@@ -20,7 +21,8 @@ var app = angular.module('app',
         'ngAnimate',
         'ngTouch',
         'ngToast',
-        'localytics.directives'
+        'angularModalService',
+        'localytics.directives',
 ]);
 
 require('./config')(app);

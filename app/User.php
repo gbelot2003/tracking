@@ -6,7 +6,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
-use NicolasLopezj\Searchable\SearchableTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
@@ -26,21 +25,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $fillable = ['userstatuses_id', 'name', 'establecimiento_id', 'empresa_id', 'email', 'password', 'userstatus_id'];
 
-
-	protected $searchable = [
-		'columns' => [
-			'users.name' => 10,
-			'users.email' => 10,
-			'roles.display_name' => 5,
-			'establecimiento.name' => 5,
-			'empresa.name' => 5,
-		],
-		'joins' => [
-			'roles' => ['users.id', 'roles.users.id'],
-			'establecimiento' => ['users.establecimiento_id', 'establecimiento.id'],
-			'empresa' => ['users.empresa_id', 'empresa.id']
-		]
-	];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

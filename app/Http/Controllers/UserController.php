@@ -19,13 +19,14 @@ class UserController extends Controller
         $this->middleware('UserCheckPerms');
     }
 
-    /**
-     * 
-     */
+
     public function search($search = null)
     {
-        $user = User::search(search)->with('roles', 'empresa', 'establecimiento', 'estado')->paginate(10);
-        return $user;
+        $query = User::with('roles', 'empresa', 'establecimiento', 'estado');
+        $query->where('name', 'LIKE', '%'.$search.'%');
+        $query->orWhere('email', 'LIKE', '%'.$search.'%');
+        $model = $query->paginate(10);
+        return $model;
     }
 
     /**

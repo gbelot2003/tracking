@@ -26,5 +26,5 @@ Route::group(['prefix' => 'api'], function()
 Route::group(['prefix' => 'api/admin'], function()
 {
     Route::resource('users', 'UserController');
-    Route::get('users/search/{var}', 'UserController@search');
+    Route::get('users/search/{search?}', 'UserController@search');
 });
