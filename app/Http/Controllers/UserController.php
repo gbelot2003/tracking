@@ -22,13 +22,10 @@ class UserController extends Controller
     /**
      * 
      */
-    public function search($search = null){
-        $user = User::with('roles', 'empresa', 'establecimiento', 'estado')
-        ->where(function($query) use($search){
-            $query->where('name', 'LIKE', '%'. $search .'%')
-                    ->orWhere('email', 'LIKE', '%' .$search .'%')
-                    
-        });
+    public function search($search = null)
+    {
+        $user = User::search(search)->with('roles', 'empresa', 'establecimiento', 'estado')->paginate(10);
+        return $user;
     }
 
     /**
@@ -72,9 +69,8 @@ class UserController extends Controller
         $establecimiento = Establecimiento::all('name', 'id');
         $empresas = Empresa::all('name', 'id');
         $roles = Role::all('display_name', 'id');
-
-
         $user = User::with('roles', 'empresa', 'establecimiento', 'estado')->findOrFail($id);
+        
         return $user = array(
             'user' => $user,
             'establecimientos' => $establecimiento,
@@ -126,6 +122,4 @@ class UserController extends Controller
     {
 
     }
-
-
 }
