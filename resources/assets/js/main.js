@@ -1,4 +1,3 @@
-require('lodash');
 require('angular');
 require('angular-route');
 require('angular-bootstrap-npm');

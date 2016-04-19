@@ -58,6 +58,7 @@ var user = function($scope, $http, ngToast){
             $scope.maxSize = response.data.per_page;
         });
     }
+
 };
 
 module.exports = function(app){

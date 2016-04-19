@@ -1,0 +1,174 @@
+  <script type="text/ng-template" id="alert.html">
+    <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+      <div ng-transclude></div>
+    </div>
+  </script>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Creación de usuarios</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+          <uib-alert ng-repeat="error in errors" type="danger" close="closeAlert($index)">{{error}}</uib-alert>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <form name="createForm" ng-submit="submitUser()">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : createForm.name.$invalid && createForm.name.$dirty,
+                                                'has-success':createForm.$valid && createForm.name.$dirty}" >
+
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control"
+                               id="name" placeholder="Nombre"
+                               name="name"
+                               ng-model="user.name"
+                               required
+                               cu-focus
+                        >
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group" ng-class="{'has-error' : createForm.email.$invalid && createForm.email.$dirty,
+                                                'has-success':createForm.$valid && createForm.email.$dirty}">
+                        <label for="email">E-mail</label>
+                        <input type="email" class="form-control"
+                               id="email" placeholder="email"
+                               name="email"
+                               ng-model="user.email"
+                               required
+                               cu-focus
+                        >
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group"
+                         ng-class="{'has-error' : createForm.password.$invalid && createForm.password.$dirty,
+                                    'has-success':createForm.$valid && createForm.password.$dirty}">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control"
+                               name="password"
+                               minlength="6"
+                               id="password" ng-model="user.password"
+                               cu-focus
+                               pw-check="password"
+                               required
+
+                        >
+
+                        <div class="help-block" ng-show="createForm.password_conf.$error.minlength">
+                          <span class="has-error" style="color: red;">
+                            El password debe ser mayor a 6 caracteres!!
+                          </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6"
+                     ng-class="{'has-error' : createForm.password_conf.$invalid && createForm.password_conf.$dirty,
+                                    'has-success':createForm.$valid && createForm.password_conf.$dirty}">
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirmar Password</label>
+                        <input type="password" class="form-control"
+                               id="password_confirmation"
+                               name="password_conf"
+                               ng-model="user.password_confirmation"
+                               minlength="6"
+                               pw-check="password"
+                               cu-focus
+                               required
+                        >                        
+                        <div class="help-block" ng-show="createForm.password_conf.$error.pwmatch">
+                          <span class="has-error" style="color: red;">
+                            El password no coicide.
+                          </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Rol de Usuarios</label>
+                        <select chosen
+                                multiple
+                                data-placeholder="Elige los roles del usuario"
+                                disable-search="true"
+                                ng-model="user.roles"
+                                ng-options="s.id as s.display_name for s in roles"
+                                allow-single-deselect="true" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Empresa que labora</label>
+                        <select chosen
+                                data-placeholder="Empresa que labora"
+                                ng-model="user.empresa_id"
+                                ng-options="e.id as e.name for e in empresas"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                disable-search="true"
+                                required
+
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Establecimiento Asignado</label>
+                        <select chosen
+                                data-placeholder="Establecimiento asignado"
+                                ng-model="user.establecimiento_id"
+                                ng-options="e.id as e.name for e in establecimientos"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-12">
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select chosen
+                                data-placeholder="Estado"
+                                ng-model="user.userstatus_id"
+                                ng-options="e.id as e.name for e in estado"
+                                disable-search="true"
+                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                required
+                        >
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="createForm.$invalid">
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>

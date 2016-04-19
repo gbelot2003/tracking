@@ -9,7 +9,6 @@ use App\Role;
 use App\User;
 use App\Userstatus;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 
 class UserController extends Controller
 {
@@ -50,12 +49,22 @@ class UserController extends Controller
 
     public function create()
     {
-
+        $estado = Userstatus::all('name', 'id');
+        $establecimiento = Establecimiento::all('name', 'id');
+        $empresas = Empresa::all('name', 'id');
+        $roles = Role::all('display_name', 'id');
+        
+        return $create = array(
+            'establecimientos' => $establecimiento,
+            'empresas' => $empresas,
+            'estado' => $estado,
+            'roles' => $roles
+        );
     }
 
-    public function store()
+    public function store(UserFormRequest $request)
     {
-
+        return $request;
     }
 
     /**

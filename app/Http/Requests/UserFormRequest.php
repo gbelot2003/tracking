@@ -22,9 +22,9 @@ class UserFormRequest extends Request {
 	public function rules()
 	{
 		$create = [
-			'email' => 'required|email',
-			'password' => 'confirmed',
-			'name' => 'required',
+			'email' => 'unique:users|required|email',
+			'password' => 'required|confirmed',
+			'name' => 'unique:users|required',
 			'establecimiento_id' => 'required|integer',
 			'empresa_id' => 'required|integer',
 			'userstatus_id' => 'required|integer'
