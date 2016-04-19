@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Empresa;
 use App\Establecimiento;
-use App\Http\Requests\UserFormRequest;
+use App\Http\Requests\UserFormEditRequest;
+use App\Http\Requests\UserFormCreateRequest;
 use App\Role;
 use App\User;
 use App\Userstatus;
@@ -62,7 +63,7 @@ class UserController extends Controller
         );
     }
 
-    public function store(UserFormRequest $request)
+    public function store(UserFormCreateRequest $request)
     {
         $user = User::create($request->all());
         return response()->json(['Usuario Actualizado'], 200);
@@ -97,7 +98,7 @@ class UserController extends Controller
      * @return [type]
      * @route "/users/admin/{id}" "PUT"
      */
-    public function update($id, UserFormRequest $request)
+    public function update($id, UserFormEditRequest $request)
     {
 
         $user = User::findOrFail($id);

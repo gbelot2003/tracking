@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class UserFormRequest extends Request {
+class UserFormCreateRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,7 +21,7 @@ class UserFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		$create = [
+		return $rules = [
 			'email' => 'unique:users|required|email',
 			'password' => 'required|confirmed',
 			'name' => 'unique:users|required',
@@ -29,17 +29,6 @@ class UserFormRequest extends Request {
 			'empresa_id' => 'required|integer',
 			'userstatus_id' => 'required|integer'
 		];
-
-		$edit = [
-			'email' => 'required|email',
-			'name' => 'required',
-		];
-
-		if($this->method == 'PUT' || 'PATH'){
-			return $edit;
-		} else {
-			return $create;
-		}
 	}
 
 }
