@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col-md-11">
+		<h2>{{ title }}</h2>
+	</div>
+	<div class="col-sm-1">
+    	<a href="#/permisos/create/" class="btn btn-warning">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+</div>    
+<div class="row">
+    <div class="col-md-12">
+    	<form>
+        	<div class="col-md-12">
+            	<div class="form-group has-feedback">
+            		<div class="input-group">
+            	   		<span class="input-group-addon">Buscar</span>
+                    	<input type="text" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status">
+                	</div>
+                	<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                      <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>email</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in users">
+                    <td></td>
+                    <td><a href="#/permisos/"></a></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--<uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-click="nextPage(currentPage)"></uib-pagination>-->
+        
+    </div>
+</div>

@@ -1,5 +1,5 @@
 module.exports = function(app){
-    require('./configuraciones')(app);
+    require('./configTab')(app);
     require('./dashboard/dashController')(app);
-    require('./usuarios')(app);
+    require('./usuariosTab')(app);
 };

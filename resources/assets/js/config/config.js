@@ -25,7 +25,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/permisos', {
             controller: 'permisosController',
-            template: require('raw!../features/admin/usuarios/permisos/permisos.html'),
+            template: require('raw!../features/admin/usuariosTab/permisos/permisos.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);
@@ -34,7 +34,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/usuarios', {
             controller: 'usuariosController',
-            template: require('raw!../features/admin/usuarios/usuarios/usuarios.html'),
+            template: require('raw!../features/admin/usuariosTab/usuarios/usuarios.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);
@@ -43,7 +43,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/usuarios/create', {
             controller: 'usuariosCreateController',
-            template: require('raw!../features/admin/usuarios/usuarios/usuarios-create.html'),
+            template: require('raw!../features/admin/usuariosTab/usuarios/usuarios-create.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);
@@ -52,7 +52,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/usuarios/:id', {
             controller: 'usuariosEditController',
-            template: require('raw!../features/admin/usuarios/usuarios/usuarios-edit.html'),
+            template: require('raw!../features/admin/usuariosTab/usuarios/usuarios-edit.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);
@@ -61,7 +61,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/establecimientos', {
             controller: 'agenciasController',
-            template: require('raw!../features/admin/configuraciones/agencias/agencias.html'),
+            template: require('raw!../features/admin/configTab/agencias/agencias.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
@@ -70,7 +70,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/clientes', {
             controller: 'clientesController',
-            template: require('raw!../features/admin/configuraciones/clientes/clientes.html'),
+            template: require('raw!../features/admin/configTab/clientes/clientes.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
@@ -79,7 +79,7 @@ var config = function($routeProvider, $locationProvider){
         })
         .when('/secciones', {
             controller: 'seccionesController',
-            template: require('raw!../features/admin/configuraciones/secciones/secciones.html'),
+            template: require('raw!../features/admin/configTab/secciones/secciones.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);

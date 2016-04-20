@@ -1,3 +1,4 @@
 module.exports = function(app){
-    require('./menuList/menuList')(app);
+	require('./factorys')(app)
+    require('./services')(app);
 };
