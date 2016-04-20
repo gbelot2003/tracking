@@ -14,31 +14,19 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="uib-collapse navbar-collapse" uib-collapse="navCollapsed">
             <ul class="nav navbar-nav">
-                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
-                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/reportes">Reportes</a></li>
-                <li ng-show="isLoggedIn()"  role="presentation"><a href="#/reportes">Busqueda Rapida</a></li>
+                <li ng-if="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
+                <li ng-if="isLoggedIn()"  role="presentation"><a href="#/reportes">Reportes</a></li>
+                <li ng-if="isLoggedIn()"  role="presentation"><a href="#/reportes">Busqueda Rapida</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li class="dropdown" uib-dropdown>
-                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown">Configuraciones Generales <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/establecimientos">Agencias y Establecimientos</a></li>
-                        <li><a href="#/secciones">Secciones Administrativas</a></li>
-                        <li><a href="#/clientes">Control de Clientes</a></li>
-                    </ul>
-                </li>
+                <li configura-mn class="dropdown" uib-dropdown has-permission="['owner', 'admin']" />
 
-                <li class="dropdown" uib-dropdown>
-                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown">Usuarios y Permisos <b class="caret"></b></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#/permisos">Permisos</a></li>
-                        <li><a href="#/usuarios">Usuarios</a></li>
-                    </ul>
-                </li>
-                <li ng-show="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
-                <li ng-show="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
+                <li usuarios-mn class="dropdown" uib-dropdown has-permission="['owner', 'admin']"  />
+                
+                <li ng-if="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
+                <li ng-if="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

@@ -1,4 +1,4 @@
-var login = function($scope, $location, authentication, credent){
+var login = function($scope, $location, authentication, credent, $window){
 
     $scope.login = function(){
         if($scope.loginForm.$valid){
@@ -15,6 +15,7 @@ var login = function($scope, $location, authentication, credent){
             var user = JSON.stringify(response.data.user);
             localStorage.setItem('user', user);
         });
+
     };
 
     var error = function(response){
@@ -26,7 +27,7 @@ var login = function($scope, $location, authentication, credent){
 };
 
 module.exports = function(app){
-    app.controller('loginController', function($scope, $location, authentication, credent){
-        return login($scope, $location, authentication, credent);
+    app.controller('loginController', function($scope, $location, authentication, credent, $window){
+        return login($scope, $location, authentication, credent, $window);
     });
 };

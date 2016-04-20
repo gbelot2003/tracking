@@ -1,18 +1,18 @@
 module.exports = function(app){
-    app.directive('navInfo', function(menuList, $location, authentication, permService){
+    app.directive('navInfo', function($location, authentication, permService){
         return {
             template: require('raw!./nav.html'),
-            restrict:'E',
+            restrict:'AE',
             controller: function($scope){
                 $scope.isLoggedIn = authentication.isLoggedIn;
-                $scope.menus = menuList;
 
                 $scope.logout = function(){
                     localStorage.removeItem('satellizer_token');
                     localStorage.removeItem('user');
+                    localStorage.removeItem('rol');
                     permService.permissionModel.isPermissionLoaded = false;
                     $location.path('/login');
-                }
+                }             
             }
         }
     })

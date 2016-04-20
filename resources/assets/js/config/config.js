@@ -3,7 +3,12 @@ var config = function($routeProvider, $locationProvider){
     $routeProvider
         .when('/', {
             controller: 'indexController',
-            template: require('raw!../features/index/index.html')
+            template: require('raw!../features/index/index.html'),
+             resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
         })
         .when('/login', {
             controller: 'loginController',

@@ -1,17 +1,16 @@
 module.exports = function(app){
-  app.directive('hasPermission', function(permService){
+  app.directive('hasPermission', function(permService, authentication){
     return {
-        restrict: 'A',
-        link: function (scope, element, attr){
-            var setPerms  = scope.$eval(attr.hasPermission);
-            var getPerms = permService.permissionModel.permission;
-            scope.show = false;
-            angular.forEach(setPerms, function(e){
-                if(e === getPerms){
-                    scope.show = true;
-                }
-            });
-        }
+        restrict: 'AE',
+        link: function(scope, elements, attrs){
+          var setPerms  = scope.$eval(attrs.hasPermission);
+          scope.isShowing = authentication.hasPerms(setPerms);
+          if(!scope.isShowing){
+            elements.css('display', 'none');
+          } else {
+             elements.css('display', 'inherence');
+          }  
+        },
     }
   });
 };

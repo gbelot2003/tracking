@@ -49,7 +49,7 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
 
         $http(req).then(function success(response){
             $location.path('/usuarios');
-            ngToast.success('El usuarios a sido actualizado correctamente');
+            ngToast.success('El usuarios a sido <strong>actualizado</strong> correctamente');
 
         }, function error(response){
             var test = _.values(response.data);

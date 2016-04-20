@@ -17,6 +17,7 @@ module.exports = function(app){
 
                  $resource('api/authenticate/rol').get().$promise.then(function (response){
                      parentPointer.permissionModel.permission = response.roles;
+                     localStorage.setItem('rol', response.roles);
                      parentPointer.permissionModel.isPermissionLoaded = true;
                      parentPointer.getPermission(parentPointer.permissionModel, roleCollection, deferred);
                  });

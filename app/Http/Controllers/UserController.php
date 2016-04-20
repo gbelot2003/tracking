@@ -104,7 +104,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         if($request->input('password')):
-            $userFormData['password'] = bcrypt($request->input('password'));
+            $request['password'] = bcrypt($request->input('password'));
             unset($request['password_confirmation']);
         else:
             unset($request['password']);

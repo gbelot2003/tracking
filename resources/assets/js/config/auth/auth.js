@@ -13,5 +13,13 @@ module.exports = function(app){
             return (localStorage.getItem('satellizer_token')) ? true : false;
         };
 
+        this.hasPerms = function(rolesConllection){
+            var roles = [];
+            roles = rolesConllection;
+            actualRol = localStorage.getItem('rol');
+            var perms = _.contains(roles, actualRol);
+            return perms;
+        }
+
     });
 };
