@@ -51,7 +51,7 @@ class RolesResourceController extends Controller
      */
     public function show($id)
     {
-        $rol = Role::findOrFail($id);
+        $rol = Role::with('users.estado', 'users.empresa', 'users.establecimiento')->findOrFail($id);
         return $rol;    
     }
 

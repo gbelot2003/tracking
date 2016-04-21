@@ -1,8 +1,6 @@
 var permisos = function($scope, $http, permisosFactory, $uibModal, ngToast){
     $scope.title = "Permisos";
 
-
-
     $scope.init = function(){
     	permisosFactory.get(function(response){
         	$scope.permisos = response.data;
@@ -11,10 +9,24 @@ var permisos = function($scope, $http, permisosFactory, $uibModal, ngToast){
     $scope.init();
 
 
+    $scope.showList = function(id){
+
+		var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./show-list.html'),
+            controller: 'showListController',
+            backdrop: 'static',
+            resolve: {
+                id: id
+            }
+        });
+
+    };
+
     $scope.editPermisos = function(id){
 
         var modalInstance = $uibModal.open({
-            animation: $scope.animationsEnabled,
+            animation: true,
             template: require('raw!./permisos-edit.html'),
             controller: 'editPermisosController',
             backdrop: 'static',
