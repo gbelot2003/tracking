@@ -1,3 +1,5 @@
 module.exports = function(app){
-	return ""
-}
+	app.service('permisosService', function(permisosFactory, $q){
+
+    });
+};

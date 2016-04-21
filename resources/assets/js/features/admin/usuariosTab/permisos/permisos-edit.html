@@ -1,0 +1,40 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <form name="formEdit" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.display.$invalid }">
+                                <label for="display_name">Alias</label>
+                                <input type="text" id="display_name" name="display" ng-model="permiso.display_name" class="form-control" ng-disabled="!isEdit" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group">
+                                <label for="description">Descripción</label>
+                                <textarea type="text" id="description" ng-model="permiso.description" class="form-control" ng-disabled="!isEdit"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="edit()" ng-if="!isEdit">Editar</button>
+        <button class="btn btn-success" type="button" ng-click="ok()" ng-if="isEdit" ng-disabled="formEdit.$invalid">Actualizar</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+        <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
+    </div>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
+

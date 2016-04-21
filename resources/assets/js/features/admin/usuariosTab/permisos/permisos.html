@@ -2,26 +2,8 @@
 	<div class="col-md-11">
 		<h2>{{ title }}</h2>
 	</div>
-	<div class="col-sm-1">
-    	<a href="#/permisos/create/" class="btn btn-warning">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
-    </div>
-</div>    
-<div class="row">
-    <div class="col-md-12">
-    	<form>
-        	<div class="col-md-12">
-            	<div class="form-group has-feedback">
-            		<div class="input-group">
-            	   		<span class="input-group-addon">Buscar</span>
-                    	<input type="text" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status">
-                	</div>
-                	<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-                      <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -30,21 +12,19 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>email</th>
-
+                    <th>Descripción</th>
+                    <th>Usuarios</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="user in users">
-                    <td></td>
-                    <td><a href="#/permisos/"></a></td>
-                    <td></td>
+                <tr ng-repeat="perms in permisos">
+                    <td>{{ perms.id }}</td>
+                    <td><a ng-click="editPermisos(perms.id)">{{ perms.display_name }}</a></td>
+                    <td>{{ perms.description }}</td>
+                    <td><a href="#">Listado</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-
-        <!--<uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-click="nextPage(currentPage)"></uib-pagination>-->
-        
     </div>
 </div>

@@ -15,4 +15,13 @@ class Role extends EntrustRole {
 	{
 		return $this->perms->lists('id');
 	}
+
+    /**
+     * return related data from users
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 }

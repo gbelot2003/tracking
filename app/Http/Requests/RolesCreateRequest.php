@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class RolesFormRequest extends Request {
+class RolesCreateRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,24 +21,11 @@ class RolesFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		$create = [
-			'name' 			=> 'required|unique:roles',
-			'display_name' 	=> 'required',
+		return $create = [
+			'name'			=> 'unique:role|required|string',
+			'display_name' 	=> 'required|string',
 			'description'	=> 'string'
 		];
-
-		$edit = [
-			'name' 			=> 'required',
-			'display_name' 	=> 'required',
-			'description'	=> 'string'
-		];
-
-		if($this->method == 'PUT'){
-			return $edit;
-		} else {
-			return $create;
-		}
-
 	}
 
 }

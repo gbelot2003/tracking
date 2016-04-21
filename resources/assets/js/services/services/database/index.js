@@ -1,3 +1,3 @@
 module.exports = function(app){
-	require('./permisos/permisosService');
+	require('./permisos/permisosService')(app);
 };

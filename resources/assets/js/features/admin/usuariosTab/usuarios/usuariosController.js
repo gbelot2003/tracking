@@ -13,7 +13,7 @@ var user = function($scope, $http, ngToast){
         }, function error(response){
             ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
         });
-    }
+    };
 
     $scope.search = function(val){
             $scope.searcher = true;
@@ -24,7 +24,7 @@ var user = function($scope, $http, ngToast){
             $scope.maxSize = response.data.per_page;
         });
         
-    }
+    };
 
     $scope.init();
 
