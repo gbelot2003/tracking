@@ -31,9 +31,9 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="edit()" ng-if="!isEdit">Editar</button>
-        <button class="btn btn-success" type="button" ng-click="ok()" ng-if="isEdit" ng-disabled="formEdit.$invalid">Actualizar</button>
-        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
         <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+        <button class="btn btn-success" type="button" ng-click="ok()" ng-if="isEdit" ng-disabled="formEdit.$invalid">Actualizar</button>
     </div>
     <div ng-show="selected">Selection from a modal: {{ selected }}</div>
 </div>

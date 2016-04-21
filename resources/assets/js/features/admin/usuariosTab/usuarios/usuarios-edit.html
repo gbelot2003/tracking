@@ -161,12 +161,13 @@
                     <button ng-if="!isEdit"type="submit" class="btn btn-success" ng-click="editing()">
                         Editar
                     </button>
+                    <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
                     
                     <button ng-if="isEdit"type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
                         Actualizar
                     </button>
+                    
                     <button class="btn btn-warning" type="button" ng-click="cancelar()" ng-if="!isEdit">Cancel</button>
-                    <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
                 </form>
             </div>
         </div>
