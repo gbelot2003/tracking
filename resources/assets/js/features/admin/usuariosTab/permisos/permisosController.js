@@ -1,9 +1,16 @@
 var permisos = function($scope, $http, permisosFactory, $uibModal, ngToast){
+    
+    $scope.loader = {
+        loading: false,
+    };
+
     $scope.title = "Permisos";
 
     $scope.init = function(){
+        $scope.loader.loading = true;
     	permisosFactory.get(function(response){
         	$scope.permisos = response.data;
+            $scope.loader.loading = false;
     	});	
     };
     $scope.init();

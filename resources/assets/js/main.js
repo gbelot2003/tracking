@@ -9,6 +9,8 @@ require('angular-bootstrap-npm');
 require('ng-toast');
 require('jquery-chosen/chosen.jquery.js');
 require('angular-chosen-localytics/dist/angular-chosen.min.js');
+require('spin/spin.js');
+require('angular-spinner/angular-spinner.js');
 
 var app = angular.module('app',
     [
@@ -19,7 +21,8 @@ var app = angular.module('app',
         'ngTouch',
         'ui.bootstrap',
         'ngToast',
-        'localytics.directives'
+        'localytics.directives',
+        'angularSpinner',
 ]);
 
 require('./config')(app);

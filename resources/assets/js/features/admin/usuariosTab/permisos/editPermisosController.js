@@ -1,10 +1,17 @@
-var edit = function($scope, $uibModalInstance, id, permisosFactory, ngToast){
+var edit = function($scope, $uibModalInstance, id, permisosFactory, ngToast, $timeout){
+    
+    $scope.loader = {
+        loading: false,
+    };
 
     $scope.title = "Edición de Permisos";
 
     $scope.isEdit = false;
 
-    $scope.permiso = permisosFactory.get({id:id})
+    $scope.loader.loading = true;
+    $scope.permiso = permisosFactory.get({id:id}, function(){
+        $scope.loader.loading = false;
+    });
 
     $scope.edit = function (){
         $scope.isEdit = true;
@@ -33,7 +40,7 @@ var edit = function($scope, $uibModalInstance, id, permisosFactory, ngToast){
 };
 
 module.exports = function(app){
-    app.controller('editPermisosController', function($scope, $uibModalInstance, id, permisosFactory, ngToast){
-        return edit($scope, $uibModalInstance, id, permisosFactory, ngToast);
+    app.controller('editPermisosController', function($scope, $uibModalInstance, id, permisosFactory, ngToast, $timeout){
+        return edit($scope, $uibModalInstance, id, permisosFactory, ngToast, $timeout);
     });
 };

@@ -1,5 +1,25 @@
 user = function ($scope, $http, $routeParams, $location, ngToast) {
 
+    $scope.loader = {
+        loading: false,
+    };
+
+    $scope.editing = function(){
+        $scope.isEdit = true;        
+    }
+
+    $scope.unEdit = function (){
+        $scope.isEdit = false;
+    };
+
+    $scope.cancelar = function(){
+        $location.path('/usuarios');
+    }
+
+    $scope.isEdit = false;
+
+    $scope.loader.loading = true;
+
     function addErrors(data){
         $scope.errors = data;
     }
@@ -7,6 +27,7 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
     $scope.closeAlert = function(index) {
         $scope.errors.splice(index, 1);
     };
+
 
     $http.get('/api/admin/users/' + $routeParams.id + '/edit').then(function success(response) {
         $scope.user = response.data.user;
@@ -18,6 +39,7 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
         angular.forEach($scope.user.roles, function(e){
             this.push(e.id );
         }, $scope.user.roles);
+        $scope.loader.loading = false;
     });
 
     $scope.changeItem = function(roles){

@@ -1,5 +1,9 @@
 var listado = function($scope, permisosFactory, $uibModalInstance, id){
 
+    $scope.loader = {
+        loading: false,
+    };
+    $scope.loader.loading = true;
 	permisosFactory.get({id:id}, function (response){
 
 		$scope.perm = response;
@@ -28,6 +32,7 @@ var listado = function($scope, permisosFactory, $uibModalInstance, id){
 			$scope.itemsPerPage = num;
 			$scope.currentPage = 1; //reset to first paghe
 		};
+		$scope.loader.loading = false;
 
 	});
 

@@ -1,30 +1,36 @@
 <div class="row">
-	<div class="col-md-11">
-		<h2>{{ title }}</h2>
-	</div>
-</div>
-
-<div class="row">
     <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Usuarios</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="perms in permisos">
-                    <td>{{ perms.id }}</td>
-                    <td><a ng-click="editPermisos(perms.id)">{{ perms.display_name }}</a></td>
-                    <td>{{ perms.description }}</td>
-                    <td><a ng-click="showList(perms.id)">Listado</a></td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+
+        <div class="row">
+        	<div class="col-md-11">
+        		<h2>{{ title }}</h2>
+        	</div>
         </div>
-    </div>
-</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Usuarios</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="perms in permisos">
+                            <td>{{ perms.id }}</td>
+                            <td><a ng-click="editPermisos(perms.id)">{{ perms.display_name }}</a></td>
+                            <td>{{ perms.description }}</td>
+                            <td><a ng-click="showList(perms.id)">Listado</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>        
+</div>    

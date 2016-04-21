@@ -11,6 +11,7 @@
     "angular-chosen-localytics": "^1.4.0",
     "angular-modal-service": "^0.6.10",
     "angular-route": "^1.5.3",
+    "angular-spinner": "^0.8.1",
     "angular-touch": "^1.5.3",
     "angular-ui-select": "^0.12.100",
     "babel-loader": "^6.2.0",
@@ -23,7 +24,8 @@
     "history": "^1.17.0",
     "lodash": "^4.11.1",
     "ng-toast": "^2.0.0",
-    "satellizer": "^0.14.0"
+    "satellizer": "^0.14.0",
+    "spin": "0.0.1"
   },
   "scripts": {
     "dev": "webpack-dev-server --content-base src --inline --hot"
