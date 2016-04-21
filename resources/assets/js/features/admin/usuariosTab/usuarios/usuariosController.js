@@ -1,9 +1,10 @@
-var user = function($scope, $http, ngToast){
+var user = function($scope, $http, ngToast, usuariosFactory){
     
     $scope.loader = {
         loading: false,
         loading2: false,
     };
+
     $scope.loader.loading = true;
     $scope.title = "Usuarios";
     $scope.searcher = false;
@@ -12,28 +13,32 @@ var user = function($scope, $http, ngToast){
     $scope.init = function(){
 
         $scope.searcher = false;
-        $http.get('/api/admin/users').then(function success(response){
-        $scope.users = response.data.data;
-        $scope.totalItems = response.data.total;
-        $scope.currentPage = response.data.current_page;
-        $scope.maxSize = response.data.per_page;
-        $scope.loader.loading = false;
-        }, function error(response){
-            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+        usuariosFactory.get(function(response){
+            $scope.users = response.data;
+            $scope.totalItems = response.total;
+            $scope.currentPage = response.current_page;
+            $scope.maxSize = response.per_page;
             $scope.loader.loading = false;
-        });
+        }, function error(response){
+                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+                $scope.loader.loading = false;
+         });  
     };
 
     $scope.search = function(val){
             $scope.searcher = true;
             $scope.loader.loading2 = true;
-            $http.get('api/admin/users/search/' + val).then(function success(response){
-                $scope.users = response.data.data;
-                $scope.totalItems = response.data.total;
-                $scope.currentPage = response.data.current_page;
-                $scope.maxSize = response.data.per_page;
+
+            usuariosFactory.query({query:val}, function(response){
+                $scope.users = response.data;
+                $scope.totalItems = response.total;
+                $scope.currentPage = response.current_page;
+                $scope.maxSize = response.per_page;
                 $scope.loader.loading2 = false;
-        });
+            }, function error(response){
+                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+                $scope.loader.loading = false;
+            });
         
     };
 
@@ -55,27 +60,31 @@ var user = function($scope, $http, ngToast){
     };
     
     $scope.nextPage = function(pageNo){
+
         $scope.loader.loading2 = true;
         $scope.currentPage = pageNo;
-        var user1 = '/api/admin/users?page=' + $scope.currentPage; 
-        
-        if($scope.searcher == true){
-            user1 = '/api/admin/users/search/'+ $scope.newVal +'?page=' + $scope.currentPage;
-        } 
-                
-        $http.get(user1).then(function success(response){
-            $scope.users = response.data.data;
-            $scope.totalItems = response.data.total;
-            $scope.currentPage = response.data.current_page;
-            $scope.maxSize = response.data.per_page;
-            $scope.loader.loading2 = false;
-        });
-    }
 
+        var query = usuariosFactory.get({page:$scope.currentPage});
+
+        if($scope.searcher == true){
+            var query = usuariosFactory.query({query:$scope.newVal, page:$scope.currentPage});
+        } 
+         
+        query.$promise.then(function success(response){
+            $scope.users = response.data;
+            $scope.totalItems = response.total;
+            $scope.currentPage = response.current_page;
+            $scope.maxSize = response.per_page;
+            $scope.loader.loading2 = false;
+        }, function error(response){
+            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+            $scope.loader.loading = false;
+        });       
+    }
 };
 
 module.exports = function(app){
-    app.controller('usuariosController', function($scope, $http, ngToast){
-        return user($scope, $http, ngToast);
+    app.controller('usuariosController', function($scope, $http, ngToast, usuariosFactory){
+        return user($scope, $http, ngToast, usuariosFactory);
     });
 }
