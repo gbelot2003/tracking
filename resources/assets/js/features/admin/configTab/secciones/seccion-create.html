@@ -1,0 +1,28 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                <form name="formEdit" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.name.$invalid }">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" ng-model="seccion.name" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success" type="button" ng-click="ok()" ng-disabled="formEdit.$invalid">Crear</button>
+    </div>
+</div>
+
