@@ -47,14 +47,15 @@ var user = function($scope, $http, ngToast, usuariosFactory){
     $scope.$watch('searchable', function(newVal, oldVal){
 
         if(oldVal === newVal) return;
-        if(newVal == ""){
+        if(newVal === ""){
             $scope.init();
-            $scope.search = false;
+            $scope.searcher = false;
 
-        }    
-        $scope.newVal = newVal;
-        $scope.search(newVal);
-        
+        } else {
+            $scope.newVal = newVal;
+            $scope.search(newVal);
+        }
+
     });
 
     $scope.setPage = function (pageNo) {
@@ -70,18 +71,19 @@ var user = function($scope, $http, ngToast, usuariosFactory){
 
         if($scope.searcher == true){
             var query = usuariosFactory.query({query:$scope.newVal, page:$scope.currentPage});
-        } 
-         
-        query.$promise.then(function success(response){
-            $scope.users = response.data;
-            $scope.totalItems = response.total;
-            $scope.currentPage = response.current_page;
-            $scope.maxSize = response.per_page;
-            $scope.loader.loading2 = false;
-        }, function error(response){
-            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
-            $scope.loader.loading = false;
-        });       
+        } else {
+            query.$promise.then(function success(response){
+                $scope.users = response.data;
+                $scope.totalItems = response.total;
+                $scope.currentPage = response.current_page;
+                $scope.maxSize = response.per_page;
+                $scope.loader.loading2 = false;
+            }, function error(response){
+                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
+                $scope.loader.loading = false;
+                $scope.loader.loading2 = false;
+            });
+        }
     }
 };
 
