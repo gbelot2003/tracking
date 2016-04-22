@@ -6,6 +6,9 @@ module.exports = function(app){
                 params:{ query:"@query", page:"@page"},    
             	url:'/api/admin/agencias/search/:query'
             },
+            'create': {
+                url:'/api/admin/agencias/create'
+            }
         });
     });
 };

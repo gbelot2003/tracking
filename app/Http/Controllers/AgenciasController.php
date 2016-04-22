@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Departamento;
+use App\Empresa;
 use App\Establecimiento;
+use App\Http\Requests\EstablecimientosCreateRequest;
+use App\Http\Requests\EstablecimientosEditRequest;
+use App\Municipio;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,7 +32,6 @@ class AgenciasController extends Controller
         $query->orWhere('address', 'LIKE', '%'.$search.'%');
         $model = $query->paginate(10);
         return $model;
-        return $search;
     }
 
     /**
@@ -48,18 +52,27 @@ class AgenciasController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::all();
+        $departamento = Departamento::all();
+        $municipios = Municipio::all();
+
+        return $agencias = array(
+            'departameto' => $departamento,
+            'municipios'    => $municipios,
+            'empresas'  => $empresas
+        );
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param EstablecimientosCreateRequest $request
+     * @return EstablecimientosCreateRequest
      */
-    public function store(Request $request)
+    public function store(EstablecimientosCreateRequest $request)
     {
-        //
+        $agencias = Establecimiento::create($request->all());
+        return $request;
     }
 
     /**
@@ -70,32 +83,35 @@ class AgenciasController extends Controller
      */
     public function show($id)
     {
+        $empresas = Empresa::all();
+        $departamento = Departamento::all();
+        $municipios = Municipio::all();
 
-        $agencias = Establecimiento::with('municipio', 'departamento', 'empresa')->findOrFail(10);
-        return $agencias;
+        $agencias = Establecimiento::with('municipio', 'departamento', 'empresa')->findOrFail($id);
+        return $agencias = array(
+            'agencias' => $agencias,
+            'departameto' => $departamento,
+            'municipios'    => $municipios,
+            'empresas'  => $empresas
+        );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param EstablecimientosEditRequest $request
+     * @param $id
+     * @return EstablecimientosEditRequest
      */
-    public function update(Request $request, $id)
+    public function update(EstablecimientosEditRequest $request, $id)
     {
-        //
+
+        unset($request['departamento']);
+        unset($request['empresa']);
+        unset($request['municipio']);
+        $agencias = Establecimiento::findOrFail($id);
+        $agencias->update($request->all());
+        return $request;
     }
 
     /**

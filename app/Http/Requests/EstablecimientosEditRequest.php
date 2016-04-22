@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class EstablecimientosFormRequest extends Request {
+class EstablecimientosEditRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -21,14 +21,6 @@ class EstablecimientosFormRequest extends Request {
 	 */
 	public function rules()
 	{
-		$create = [
-			'name' 				=> 'required|unique:establecimientos',
-			'departamento_id' 	=> 'required',
-			'municipio_id'		=> 'required',
-			'empresa_id'		=> 'required|integer',
-			'address'			=> 'string'
-		];
-
 		$edit = [
 			'name' 				=> 'required',
 			'departamento_id' 	=> 'required',
@@ -37,11 +29,7 @@ class EstablecimientosFormRequest extends Request {
 			'address'			=> 'string'
 		];
 
-		if($this->method == 'PUT'){
-			return $edit;
-		} else {
-			return $create;
-		}
+        return $edit;
 	}
 
 }

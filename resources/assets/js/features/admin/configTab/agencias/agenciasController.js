@@ -17,6 +17,7 @@ var dash = function($scope, agenciasFactory, ngToast,  $uibModal){
             $scope.maxSize = response.per_page;
 
             $scope.loader.loading = false;
+            $scope.loader.loading2 = false;
 
         }, function error(response){
             ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
@@ -40,7 +41,6 @@ var dash = function($scope, agenciasFactory, ngToast,  $uibModal){
 
     });
 
-
     $scope.search = function(val){
         $scope.searcher = true;
         $scope.loader.loading2 = true;
@@ -58,11 +58,9 @@ var dash = function($scope, agenciasFactory, ngToast,  $uibModal){
 
     };
 
-
     $scope.setPage = function (pageNo) {
         $scope.currentPage = pageNo;
     };
-
 
     $scope.nextPage = function(pageNo){
 
@@ -96,7 +94,6 @@ var dash = function($scope, agenciasFactory, ngToast,  $uibModal){
         });
     };
 
-
     $scope.editModal = function(id){
 
         var modalInstance = $uibModal.open({
@@ -113,14 +110,34 @@ var dash = function($scope, agenciasFactory, ngToast,  $uibModal){
             $scope.message = message;
             if($scope.message == true){
                 ngToast.success('Se a actualizado correctamente el rol');
+                $scope.loader.loading2 = true;
                 $scope.init();
             } else {
-                ngToast.danger('A ocurrido un error en el envio, revise los datos de la actualizacion');
+                ngToast.danger('A ocurrido un error en el envío, revise los datos de la actualización.');
             }
         });
-
     };
 
+    $scope.createModal = function(){
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./agencias-create.html'),
+            controller: 'agenciasCreateController',
+            backdrop: 'static'
+        });
+
+        modalInstance.result.then(function(message){
+            $scope.message = message;
+            if($scope.message == true){
+                ngToast.success('Se a creado correctamente el rol.');
+                $scope.loader.loading2 = true;
+                $scope.init();
+            } else {
+                ngToast.danger('A ocurrido un error en el envío, revise los datos.');
+            }
+        });
+    };
 
     $scope.loader.loading = true;
     $scope.init();
