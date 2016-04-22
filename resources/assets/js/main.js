@@ -22,7 +22,7 @@ var app = angular.module('app',
         'ui.bootstrap',
         'ngToast',
         'localytics.directives',
-        'angularSpinner',
+        'angularSpinner'
 ]);
 
 require('./config')(app);

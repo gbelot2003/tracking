@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var PROD = JSON.parse(process.env.PROD_ENV || '0');
 
 module.exports = {
     cache: true,
@@ -47,7 +48,14 @@ module.exports = {
         ]
     },
 
-    plugins: [
+    plugins: PROD ? [
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: false,
+            mangle: false,
+            compress: { warnings: false }
+
+        })
+    ] : [
         new webpack.ProvidePlugin({
             '$': 'jquery',
             'jQuery': 'jquery',
@@ -60,3 +68,4 @@ module.exports = {
     }
 
 };
+

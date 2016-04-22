@@ -14,8 +14,7 @@
 <div class="container">
     <div ng-view></div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="js/all.js"></script>
 <script src="js/main.min.js"></script>
 </body>
 </html>
