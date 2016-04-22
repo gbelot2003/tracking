@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Establecimiento;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Requests\RolesEditRequest;
-use App\Http\Requests\RolesCreateRequest;
 
-class RolesResourceController extends Controller
+class AgenciasController extends Controller
 {
 
-
-    /**
-     * RolesResourceController constructor
-     */
-    public function __construct()
+/*    public function __construct()
     {
         $this->middleware('jwt.auth');
         $this->middleware('UserCheckPerms');
-    }
+    }*/
 
+    /**
+     * @param null $search
+     * @return mixed
+     */
+    public function search($search = null)
+    {
+        $query = Establecimiento::with('municipio', 'departamento', 'empresa');
+        $query->where('name', 'LIKE', '%'.$search.'%');
+        $query->orWhere('address', 'LIKE', '%'.$search.'%');
+        $model = $query->paginate(10);
+        return $model;
+        return $search;
+    }
 
     /**
      * Display a listing of the resource.
@@ -30,8 +37,8 @@ class RolesResourceController extends Controller
      */
     public function index()
     {
-        $roles = Role::with('users')->paginate(10);
-        return $roles;
+        $agencias = Establecimiento::with('municipio', 'departamento', 'empresa')->paginate(10);
+        return $agencias;
     }
 
     /**
@@ -63,8 +70,9 @@ class RolesResourceController extends Controller
      */
     public function show($id)
     {
-        $rol = Role::with('users.estado', 'users.empresa', 'users.establecimiento')->findOrFail($id);
-        return $rol;    
+
+        $agencias = Establecimiento::with('municipio', 'departamento', 'empresa')->findOrFail(10);
+        return $agencias;
     }
 
     /**
@@ -75,8 +83,7 @@ class RolesResourceController extends Controller
      */
     public function edit($id)
     {
-        $rol = Role::findOrFail($id);
-        return $rol;
+        //
     }
 
     /**
@@ -86,14 +93,9 @@ class RolesResourceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RolesEditRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        if($request->input('name')){
-            unset($request['name']);
-        }
-        $rol = Role::findOrFail($id);
-        $rol->update($request->all());
-        return $rol;
+        //
     }
 
     /**

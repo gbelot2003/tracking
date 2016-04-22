@@ -6,7 +6,7 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
 
     $scope.editing = function(){
         $scope.isEdit = true;        
-    }
+    };
 
     $scope.unEdit = function (){
         $scope.isEdit = false;
@@ -14,7 +14,7 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
 
     $scope.cancelar = function(){
         $location.path('/usuarios');
-    }
+    };
 
     $scope.isEdit = false;
 

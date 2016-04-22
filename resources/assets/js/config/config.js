@@ -59,7 +59,7 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
-        .when('/establecimientos', {
+        .when('/agencias', {
             controller: 'agenciasController',
             template: require('raw!../features/admin/configTab/agencias/agencias.html'),
             resolve:{

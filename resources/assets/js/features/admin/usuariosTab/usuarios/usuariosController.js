@@ -2,7 +2,7 @@ var user = function($scope, $http, ngToast, usuariosFactory){
     
     $scope.loader = {
         loading: false,
-        loading2: false,
+        loading2: false
     };
 
     $scope.loader.loading = true;
@@ -20,7 +20,7 @@ var user = function($scope, $http, ngToast, usuariosFactory){
             $scope.maxSize = response.per_page;
             $scope.loader.loading = false;
         }, function error(response){
-                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
                 $scope.loader.loading = false;
          });  
     };
@@ -36,7 +36,7 @@ var user = function($scope, $http, ngToast, usuariosFactory){
                 $scope.maxSize = response.per_page;
                 $scope.loader.loading2 = false;
             }, function error(response){
-                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+                ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
                 $scope.loader.loading = false;
             });
         
@@ -49,6 +49,8 @@ var user = function($scope, $http, ngToast, usuariosFactory){
         if(oldVal === newVal) return;
         if(newVal == ""){
             $scope.init();
+            $scope.search = false;
+
         }    
         $scope.newVal = newVal;
         $scope.search(newVal);
@@ -77,7 +79,7 @@ var user = function($scope, $http, ngToast, usuariosFactory){
             $scope.maxSize = response.per_page;
             $scope.loader.loading2 = false;
         }, function error(response){
-            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText)
+            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
             $scope.loader.loading = false;
         });       
     }

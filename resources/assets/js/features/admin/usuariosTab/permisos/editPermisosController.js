@@ -1,7 +1,7 @@
 var edit = function($scope, $uibModalInstance, id, permisosFactory, ngToast, $timeout){
     
     $scope.loader = {
-        loading: false,
+        loading: false
     };
 
     $scope.title = "Edición de Permisos";
@@ -24,7 +24,7 @@ var edit = function($scope, $uibModalInstance, id, permisosFactory, ngToast, $ti
     $scope.ok = function () {
         permisosFactory.update({ id: id }, $scope.permiso).$promise
             .then(function success(response){
-            $scope.message = true
+            $scope.message = true;
             $uibModalInstance.close($scope.message);    
         }, function(error){
             $scope.message = false;

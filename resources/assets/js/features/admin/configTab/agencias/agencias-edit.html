@@ -1,0 +1,68 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                <form name="formEdit" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.name.$invalid }">
+                                <label for="name">Nombre</label>
+                                <input type="text" id="name" name="name" ng-model="agencia.name" class="form-control" ng-disabled="!isEdit" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.departamento.$invalid }">
+                                <label for="departamento">Departamento</label>
+                                <input type="text" id="departamento" name="departamento" ng-model="agencia.departamento.departamento" class="form-control" ng-disabled="!isEdit" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.municipio.$invalid }">
+                                <label for="municipio">Municipio</label>
+                                <input type="text" id="municipio" name="municipio" ng-model="agencia.municipio.municipio" class="form-control" ng-disabled="!isEdit" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group" ng-class="{'has-error': formEdit.empresa.$invalid }">
+                                <label for="empresa">Municipio</label>
+                                <input type="text" id="empresa" name="empresa" ng-model="agencia.empresa.name" class="form-control" ng-disabled="!isEdit" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="field-group">
+                                <label for="address">Dirección</label>
+                                <textarea type="text" id="address" ng-model="agencia.address" class="form-control" ng-disabled="!isEdit"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="edit()" ng-if="!isEdit">Editar</button>
+        <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+        <button class="btn btn-success" type="button" ng-click="ok()" ng-if="isEdit" ng-disabled="formEdit.$invalid">Actualizar</button>
+    </div>
+    <div ng-show="selected">Selection from a modal: {{ selected }}</div>
+</div>
+
