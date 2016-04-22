@@ -59,12 +59,16 @@ module.exports = {
         new webpack.ProvidePlugin({
             '$': 'jquery',
             'jQuery': 'jquery',
-            'window.jQuery': 'jquery',
-        })
+            'window.jQuery': 'jquery'
+        }),
+/*        new webpack.ResolverPlugin(
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin(".bower.json", ["main"])
+        )*/
     ],
 
     resolve:{
-        extensions: ['', '.js', '.es6']
+        extensions: ['', '.js', '.es6'],
+        modulesDirectories: ["node_modules", "bower_components"]
     }
 
 };

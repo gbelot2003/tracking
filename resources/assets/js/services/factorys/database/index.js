@@ -3,4 +3,5 @@ module.exports = function(app){
 	require('./usuarios/usuariosFactory')(app);
 	require('./agencias/agenciasFactory')(app);
 	require('./secciones/seccionesFactory')(app);
+	require('./clientes/clientesFactory')(app);
 };

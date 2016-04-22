@@ -1,0 +1,17 @@
+{
+  "name": "trackhn",
+  "description": "System of mail packages administration",
+  "main": "webpack.config.js",
+  "license": "ISC",
+  "homepage": "https://github.com/gbelot2003/tracking",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ngMorph": "angular-morph#^0.1.0"
+  }
+}
