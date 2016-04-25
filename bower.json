@@ -10,8 +10,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "ngMorph": "angular-morph#^0.1.0"
-  }
+  ]
 }

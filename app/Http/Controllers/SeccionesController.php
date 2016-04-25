@@ -32,6 +32,25 @@ class SeccionesController extends Controller
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function idSeach($id){
+        $query = Seccion::select('id', 'name')->findOrFail($id);
+        return $query;
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public function listado($name){
+        $query = Seccion::where('name', '=', $name)->get();
+        return $query;
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

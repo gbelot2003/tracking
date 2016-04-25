@@ -77,6 +77,15 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/clientes/:id', {
+            controller: 'clientesEditController',
+            template: require('raw!../features/admin/configTab/clientes/clientes-edit.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .when('/secciones', {
             controller: 'seccionesController',
             template: require('raw!../features/admin/configTab/secciones/secciones.html'),

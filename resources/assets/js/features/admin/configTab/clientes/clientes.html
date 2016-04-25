@@ -42,7 +42,7 @@
                     <tbody>
                     <tr ng-repeat="item in clientes">
                         <td>{{ item.id }}</td>
-                        <td><a ng-click="editModal(item.id)">{{ item.name }}</a></td>
+                        <td><a href="#/clientes/{{ item.id }}">{{ item.name }}</a></td>
                         <td>{{ item.establecimiento.name }}</td>
                         <td>{{ item.seccion.name }}</td>
                         <td>{{ item.estado.name }}</td>

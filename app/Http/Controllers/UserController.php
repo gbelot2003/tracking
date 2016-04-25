@@ -19,7 +19,10 @@ class UserController extends Controller
         $this->middleware('UserCheckPerms');
     }
 
-
+    /**
+     * @param null $search
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
     public function search($search = null)
     {
         $query = User::with('roles', 'empresa', 'establecimiento', 'estado');

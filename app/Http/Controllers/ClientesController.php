@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Establecimiento;
+use App\Seccion;
 use App\Trader;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class ClientesController extends Controller
@@ -16,6 +17,19 @@ class ClientesController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth');
+    }
+
+    /**
+     * @param null $search
+     * @return \Illuminate\Database\Eloquent\Builder|static
+     */
+    public function search($search = null)
+    {
+        $query = Trader::with('seccion', 'establecimiento', 'estado');
+        $query->where('name', 'LIKE', '%'.$search.'%');
+        $model = $query->paginate(10);
+        return $model;
+
     }
 
     /**
@@ -58,7 +72,15 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        //
+        $agencias = Establecimiento::limit(10)->get();
+        $seccion = Seccion::limit(10)->get();
+
+        $cliente = Trader::with('seccion', 'establecimiento', 'estado')->findOrFail($id);
+        return $cliente = array(
+            'cliente' => $cliente,
+            'agencias' => $agencias,
+            'secciones' => $seccion
+        );
     }
 
     /**

@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-12 ">
+        <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+        <div class="row">
+            <span class="glyphicon glyphicon-remove close pull-right"></span>
+        </div>
+        <div class="row">
+            <h2>{{ title }}</h2>
+        </div>
+        <div class="row">
+            <form name="editForm" class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group"
+                             ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                    'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                            <label for="name">Nombre</label>
+                            <input name="name"
+                                   ng-model="clientes.name"
+                                   class="form-control"
+                                   ng-disabled="!isEdit"
+                                   id="name"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                            'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+
+                            <label for="agencia">Agencia</label>
+
+                            <!--<ui-select-match placeholder="Search for Locations">{{$select.selected.name}}</ui-select-match>-->
+                            <!--<ui-select-choices refresh="searchMedia($select)" refresh-delay="300" repeat="searchRes in searchRes">-->
+                                <!--<span ng-bind-html="searchRes.formatted_address | highlight: $select.search"></span>-->
+                            <!--</ui-select-choices>-->
+                            <!--</ui-select>-->
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                                'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                            <label for="departamento">Departamento o Sección</label>
+                            <input type="text" id="departamento" name="name"
+                                   ng-model="clientes.name"
+                                   class="form-control"
+                                   ng-disabled="!isEdit"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group"
+                             ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                                'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                            <label for="estado">Estado del perfil</label>
+                            <input type="text" id="estado" name="name"
+                                   ng-model="clientes.name"
+                                   class="form-control"
+                                   ng-disabled="!isEdit"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+                <button ng-if="!isEdit"type="submit" class="btn btn-success" ng-click="editing()">
+                    Editar
+                </button>
+                <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Editar</button>
+
+                <button ng-if="isEdit"type="submit" class="btn btn-primary" ng-disabled="editForm.$invalid">
+                    Actualizar
+                </button>
+
+                <button class="btn btn-warning" type="button" ng-click="cancelar()" ng-if="!isEdit">Cancel</button>
+
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <hr />
+            </div>
+        </div>
+    </div> <!-- /end containing element -->
+  </div>
