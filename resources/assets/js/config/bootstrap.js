@@ -7,6 +7,5 @@ require('angular-animate');
 require('angular-touch');
 require('angular-bootstrap-npm');
 require('ng-toast');
-require('angular-chosen-localytics/dist/angular-chosen.min.js');
 require('spin/spin.js');
 require('angular-spinner/angular-spinner.js');

@@ -9,7 +9,6 @@ var app = angular.module('app', [
         'ngTouch',
         'ui.bootstrap',
         'ngToast',
-        'localytics.directives',
         'angularSpinner'
 ]);
 
