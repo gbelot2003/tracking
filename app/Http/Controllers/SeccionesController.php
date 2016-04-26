@@ -44,8 +44,13 @@ class SeccionesController extends Controller
      * @param $name
      * @return mixed
      */
-    public function listado($name){
-        $query = Seccion::where('name', 'LIKE', '%' . $name . '%')->get();
+    public function listado($name = null){
+
+        if($name = null){
+            $query = Seccion::all()->take(10)->get();
+        } else {
+            $query = Seccion::where('name', 'LIKE', '%' . $name . '%')->get();
+        }
         return $query;
     }
 

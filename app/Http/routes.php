@@ -25,18 +25,21 @@ Route::group(['prefix' => 'api'], function()
 
 Route::group(['prefix' => 'api/admin'], function()
 {
+
+    Route::get('users/search/{search?}', 'UserController@search');
+    Route::get('agencias/search/{seach?}', 'AgenciasController@search');
+    Route::get('secciones/search/{seach?}', 'SeccionesController@search');
+    Route::get('secciones/id-search/{id}', 'SeccionesController@idSeach');
+    Route::get('clientes/search/{seach?}', 'ClientesController@search');
+    Route::get('secciones/listado-search/{name?}', 'SeccionesController@listado');
+
+    Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
+
+
     Route::resource('users', 'UserController');
     Route::resource('permisos', 'RolesResourceController');
     Route::resource('agencias', 'AgenciasController');
     Route::resource('secciones', 'SeccionesController');
     Route::resource('clientes', 'ClientesController');
 
-    Route::get('users/search/{search?}', 'UserController@search');
-    Route::get('agencias/search/{seach?}', 'AgenciasController@search');
-    Route::get('secciones/search/{seach?}', 'SeccionesController@search');
-    Route::get('secciones/id-search/{id}', 'SeccionesController@idSeach');
-    Route::get('secciones/listado-search/{name?}', 'SeccionesController@listado');
-    Route::get('clientes/search/{seach?}', 'ClientesController@search');
-
-    Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 });

@@ -22,20 +22,27 @@ var clientes = function($scope, clientesFactory, seccionesFactory, $routeParams,
 
     $scope.title = "Edición de Clientes";
 
-    $scope.clientes = clientesFactory.get({id:$routeParams.id}).$promise.then(function success(response){
-        $scope.clientes = response.cliente;
-        $scope.agencias = response.agencias;
-        $scope.loader.loading = false;
-    });
+    $scope.clientes = clientesFactory.get({id:$routeParams.id})
+        .$promise
+            .then(function success(response){
+                $scope.clientes = response.cliente;
+                $scope.agencias = response.agencias;
+                $scope.loader.loading = false;
 
-    $scope.searchRes = [];
+                $scope.seccion = {};
+                $scope.seccion.selected = $scope.clientes.seccion;
+            });
 
     $scope.searchMedia = function($select) {
         return $http.get('/api/admin/secciones/listado-search/' + $select.search).then(function(response){
-            $scope.searchRes = response.data;
+            $scope.secciones = response.data;
         });
     };
 
+    $scope.sourceChanged = function(){
+        $scope.clientes.seccion_id = $scope.seccion.selected.id;
+    }
+      
 
 };
 

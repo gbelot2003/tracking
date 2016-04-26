@@ -30,11 +30,10 @@
 
                             <label for="agencia">Agencia</label>
 
-                            <ui-select ng-model="selectionModel"
-                                    data-ng-disabled="" style="min-width: 300px;">
+                            <ui-select ng-model="seccion.selected" ng-change="sourceChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;">
                                 <ui-select-match class="ui-select-match" placeholder="Search for Locations">{{$select.selected.name}}</ui-select-match>
-                                <ui-select-choices class="ui-select-choices"  refresh="searchMedia($select)" refresh-delay="300" repeat="searchRes in searchRes">
-                                    <span ng-bind-html="searchRes.id | highlight: $select.search"></span>
+                                <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchMedia($select)" refresh-delay="300" repeat="secciones in secciones">
+                                    <span ng-bind-html="secciones.name | highlight: $select.search"></span>
                                 </ui-select-choices>
                             </ui-select>
                         </div>
@@ -80,6 +79,9 @@
         <div class="row">
             <div class="col-md-12">
                 <hr />
+                <pre>
+                    {{ clientes | json }}
+                </pre>
                 <hr />
             </div>
         </div>

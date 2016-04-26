@@ -6,7 +6,7 @@ require('angular-sanitize');
 require('angular-ui-select/select');
 require('angular-animate');
 require('angular-touch');
-require('angular-bootstrap-npm');
+require('angular-ui-bootstrap');
 require('ng-toast');
 require('spin/spin.js');
 require('angular-spinner/angular-spinner.js');
