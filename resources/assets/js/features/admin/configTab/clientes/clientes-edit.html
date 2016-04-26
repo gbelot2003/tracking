@@ -28,7 +28,7 @@
                              ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
                                                             'has-success':editForm.$valid && editForm.password_conf.$dirty}">
                             <label for="agencia">Agencia</label>
-                            <ui-select ng-model="agencia.selected" ng-change="sourceAgenciasChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;">
+                            <ui-select ng-model="agencia.selected" ng-change="sourceAgenciasChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;" required>
                                 <ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
                                 <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchAgencia($select)" refresh-delay="300" repeat="agencias in agencias">
                                     <span ng-bind-html="agencias.name | highlight: $select.search"></span>
@@ -43,7 +43,7 @@
                                                                 'has-success':editForm.$valid && editForm.password_conf.$dirty}">
                             <label for="departamento">Departamento o Sección</label>
 
-                            <ui-select ng-model="seccion.selected" ng-change="sourceSeccionesChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;">
+                            <ui-select ng-model="seccion.selected" ng-change="sourceSeccionesChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;" required>
                                 <ui-select-match class="ui-select-match" placeholder="Secciones">{{$select.selected.name}}</ui-select-match>
                                 <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchSeccion($select)" refresh-delay="300" repeat="secciones in secciones">
                                     <span ng-bind-html="secciones.name | highlight: $select.search"></span>
@@ -62,7 +62,8 @@
                                     ng-model="clientes.userstatus_id"
                                     ng-options="s.id as s.name for s in states"
                                     class="form-control"
-                                    ng-disabled="!isEdit">
+                                    ng-disabled="!isEdit"
+                                    required>
                             </select>
                         </div>
                     </div>
