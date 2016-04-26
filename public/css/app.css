@@ -11743,4 +11743,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .selectize-control > .selectize-dropdown {
   top: 36px; }
 
+.ui-select-bootstrap > .ui-select-match > .btn {
+  color: #000; }
+
 /*# sourceMappingURL=app.css.map */

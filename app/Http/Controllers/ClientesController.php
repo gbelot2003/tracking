@@ -33,6 +33,20 @@ class ClientesController extends Controller
     }
 
     /**
+     * @param $name
+     * @return mixed
+     */
+    public function listado($name = null){
+
+        if($name = null){
+            $query = Trader::all()->take(10)->get();
+        } else {
+            $query = Trader::where('name', 'LIKE', '%' . $name . '%')->get();
+        }
+        return $query;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

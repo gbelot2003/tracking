@@ -27,11 +27,16 @@ Route::group(['prefix' => 'api/admin'], function()
 {
 
     Route::get('users/search/{search?}', 'UserController@search');
+
     Route::get('agencias/search/{seach?}', 'AgenciasController@search');
-    Route::get('secciones/search/{seach?}', 'SeccionesController@search');
+    Route::get('agencias/listado-search/{name?}', 'AgenciasController@listado');
+
     Route::get('secciones/id-search/{id}', 'SeccionesController@idSeach');
-    Route::get('clientes/search/{seach?}', 'ClientesController@search');
+    Route::get('secciones/search/{seach?}', 'SeccionesController@search');
     Route::get('secciones/listado-search/{name?}', 'SeccionesController@listado');
+
+    Route::get('clientes/search/{seach?}', 'ClientesController@search');
+    Route::get('clientes/listado-search/{name?}', 'ClientesController@listados');
 
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 

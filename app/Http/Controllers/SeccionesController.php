@@ -46,8 +46,8 @@ class SeccionesController extends Controller
      */
     public function listado($name = null){
 
-        if($name = null){
-            $query = Seccion::all()->take(10)->get();
+        if($name == null){
+            $query = Seccion::take(10)->get();
         } else {
             $query = Seccion::where('name', 'LIKE', '%' . $name . '%')->get();
         }
