@@ -14,10 +14,10 @@ class ClientesController extends Controller
     /**
      * SeccionesController constructor.
      */
-    public function __construct()
+/*    public function __construct()
     {
         $this->middleware('jwt.auth');
-    }
+    }*/
 
     /**
      * @param null $search

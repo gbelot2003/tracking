@@ -5,6 +5,7 @@ var app = angular.module('app', [
         'satellizer',
         'ngResource',
         'ngSanitize',
+        'ui.select',
         'ngAnimate',
         'ngTouch',
         'ui.bootstrap',

@@ -30,11 +30,13 @@
 
                             <label for="agencia">Agencia</label>
 
-                            <!--<ui-select-match placeholder="Search for Locations">{{$select.selected.name}}</ui-select-match>-->
-                            <!--<ui-select-choices refresh="searchMedia($select)" refresh-delay="300" repeat="searchRes in searchRes">-->
-                                <!--<span ng-bind-html="searchRes.formatted_address | highlight: $select.search"></span>-->
-                            <!--</ui-select-choices>-->
-                            <!--</ui-select>-->
+                            <ui-select ng-model="selectionModel"
+                                    data-ng-disabled="" style="min-width: 300px;">
+                                <ui-select-match class="ui-select-match" placeholder="Search for Locations">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices class="ui-select-choices"  refresh="searchMedia($select)" refresh-delay="300" repeat="searchRes in searchRes">
+                                    <span ng-bind-html="searchRes.id | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
                         </div>
                     </div>
                     <div class="col-md-4">

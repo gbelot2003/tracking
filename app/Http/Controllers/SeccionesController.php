@@ -14,11 +14,11 @@ class SeccionesController extends Controller
     /**
      * SeccionesController constructor.
      */
-    public function __construct()
-    {
-        $this->middleware('jwt.auth');
-        $this->middleware('UserCheckPerms');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('jwt.auth');
+//        $this->middleware('UserCheckPerms');
+//    }
 
     /**
      * @param null $search
@@ -45,7 +45,7 @@ class SeccionesController extends Controller
      * @return mixed
      */
     public function listado($name){
-        $query = Seccion::where('name', '=', $name)->get();
+        $query = Seccion::where('name', 'LIKE', '%' . $name . '%')->get();
         return $query;
     }
 

@@ -3,6 +3,7 @@ require('angular-route');
 require('satellizer');
 require('angular-resource');
 require('angular-sanitize');
+require('angular-ui-select/select');
 require('angular-animate');
 require('angular-touch');
 require('angular-bootstrap-npm');
