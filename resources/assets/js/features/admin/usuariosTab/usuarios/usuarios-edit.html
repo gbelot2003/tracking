@@ -95,62 +95,61 @@
 
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label>Rol de Usuarios</label>
-<!--                                <select                                         multiple
+                                <select multiple
                                         disable-search="true"
                                         ng-model="user.roles"
                                         ng-options="s.id as s.display_name for s in roles"
                                         ng-change="changeItem(user.roles)"
                                         allow-single-deselect="true" style="width: 100%; height: 4rem"
                                         required
-                                        ng-disabled="!isEdit">
+                                        ng-disabled="!isEdit"
+                                        class="form-control">
                                     <option value=""></option>
-                                </select>-->
+                                </select>
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-2 col-sm-12">
                             <div class="form-group">
                                 <label>Empresa que labora</label>
-<!--                                <select chosen
+                                <select  
                                         ng-model="user.empresa_id"
                                         ng-options="e.id as e.name for e in empresas"
                                         allow-single-deselect="false" style="width: 100%; height: 4rem"
                                         disable-search="true"
                                         required
-                                        ng-disabled="!isEdit">
-                                    <option value=""></option>
-                                </select>-->
+                                        ng-disabled="!isEdit"
+                                        class="cselect form-control">
+                                </select>
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
-                                <label>Establecimiento Asignado</label>
-<!--                                <select chosen
-                                        ng-model="user.establecimiento_id"
-                                        ng-options="e.id as e.name for e in establecimientos"
-                                        allow-single-deselect="false" style="width: 100%; height: 4rem"
-                                        required
-                                        ng-disabled="!isEdit">
-                                    <option value=""></option>
-                                </select>-->
+                                <label for="agencia">Agencia Asignada</label>
+                                <ui-select ng-model="user.establecimiento" ng-change="sourceAgenciasChanged()"  theme="bootstrap" ng-disabled="!isEdit" style="min-width: 300px;" required>
+                                    <ui-select-match class="ui-select-match" placeholder="Agencias Asignada">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchAgencia($select)" refresh-delay="300" repeat="agencias in agencias">
+                                        <span ng-bind-html="agencias.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
                             </div>
                         </div>
 
-                        <div class="col-md-3 col-sm-12">
+                        <div class="col-md-2 col-sm-12">
                             <div class="form-group">
                                 <label>Estado</label>
-<!--                                <select chosen
+                                <select chosen
                                         ng-model="user.userstatus_id"
                                         ng-options="e.id as e.name for e in estado"
                                         disable-search="true"
                                         allow-single-deselect="false" style="width: 100%; height: 4rem"
                                         required
+                                        class="cselect form-control"
                                         ng-disabled="!isEdit">
-                                    <option value=""></option>-->
                                 </select>
                             </div>
                         </div>
@@ -171,4 +170,5 @@
             </div>
         </div>
     </div>
+
 </div>

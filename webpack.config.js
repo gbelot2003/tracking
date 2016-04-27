@@ -48,14 +48,7 @@ module.exports = {
         ]
     },
 
-    plugins: PROD ? [
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
-            mangle: false,
-            compress: { warnings: false }
-
-        })
-    ] : [
+    plugins: [
         new webpack.ProvidePlugin({
             '$': 'jquery',
             'jQuery': 'jquery',

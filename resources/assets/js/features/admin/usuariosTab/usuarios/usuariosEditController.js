@@ -33,14 +33,31 @@ user = function ($scope, $http, $routeParams, $location, ngToast) {
         $scope.user = response.data.user;
         $scope.roles = response.data.roles;
         $scope.empresas = response.data.empresas;
-        $scope.establecimientos = response.data.establecimientos;
         $scope.estado = response.data.estado;
-
+        $scope.agencia = $scope.user.establecimiento_id;
         angular.forEach($scope.user.roles, function(e){
             this.push(e.id );
         }, $scope.user.roles);
+
         $scope.loader.loading = false;
+
     });
+
+    /**
+     * Agencias
+     * @param $select
+     * @returns {*}
+     */
+    $scope.searchAgencia = function($select){
+        return $http.get('/api/admin/agencias/listado-search/' + $select.search).then(function(response){
+            $scope.agencias = response.data;
+        });
+
+    };
+
+    $scope.sourceAgenciasChanged = function(){
+        $scope.user.establecimiento_id = $scope.agencia.selected.id;
+    };
 
     $scope.changeItem = function(roles){
         $scope.role = roles;

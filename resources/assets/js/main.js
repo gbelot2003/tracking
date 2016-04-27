@@ -10,7 +10,8 @@ var app = angular.module('app', [
         'ngTouch',
         'ui.bootstrap',
         'ngToast',
-        'angularSpinner'
+        'angularSpinner',
+
 ]);
 
 require('./config')(app);

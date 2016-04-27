@@ -100,68 +100,61 @@
 
             <div class="row">
 
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Rol de Usuarios</label>
-<!--                        <select chosen
-                                multiple
-                                data-placeholder="Elige los roles del usuario"
-                                disable-search="true"
-                                ng-model="user.roles"
-                                ng-options="s.id as s.display_name for s in roles"
-                                allow-single-deselect="true" style="width: 100%; height: 4rem"
-                                required
-                        >
-                            <option value=""></option>
-                        </select>-->
+                            <select multiple
+                                    data-placeholder="Elige los roles del usuario"
+                                    disable-search="true"
+                                    ng-model="user.roles"
+                                    ng-options="s.id as s.display_name for s in roles"
+                                    allow-single-deselect="true" style="width: 100%; height: 4rem"
+                                    required
+                                    class="form-control"
+                            >
+                        </select>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-2 col-sm-12">
                     <div class="form-group">
                         <label>Empresa que labora</label>
-<!--                        <select chosen
-                                data-placeholder="Empresa que labora"
-                                ng-model="user.empresa_id"
-                                ng-options="e.id as e.name for e in empresas"
-                                allow-single-deselect="false" style="width: 100%; height: 4rem"
-                                disable-search="true"
-                                required
+                            <select data-placeholder="Empresa que labora"
+                                    ng-model="user.empresa_id"
+                                    ng-options="e.id as e.name for e in empresas"
+                                    allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                    disable-search="true"
+                                    required
+                                    class="form-control"
 
-                        >
-                            <option value=""></option>
-                        </select>-->
+                            >
+                            </select>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-4 col-sm-12">
                     <div class="form-group">
                         <label>Establecimiento Asignado</label>
-<!--                        <select chosen
-                                data-placeholder="Establecimiento asignado"
-                                ng-model="user.establecimiento_id"
-                                ng-options="e.id as e.name for e in establecimientos"
-                                allow-single-deselect="false" style="width: 100%; height: 4rem"
-                                required
-                        >
-                            <option value=""></option>
-                        </select>-->
+                        <ui-select ng-model="agencia" ng-change="sourceAgenciasChanged($select)"  theme="bootstrap" required>
+                            <ui-select-match class="ui-select-match" placeholder="Agencias Asignada">{{$select.selected.name}}</ui-select-match>
+                            <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchAgencia($select)" refresh-delay="300" repeat="agencias in agencias">
+                                <span ng-bind-html="agencias.name | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
                     </div>
                 </div>
 
-                <div class="col-md-3 col-sm-12">
+                <div class="col-md-2 col-sm-12">
                     <div class="form-group">
                         <label>Estado</label>
-<!--                        <select chosen
-                                data-placeholder="Estado"
+                        <select data-placeholder="Estado"
                                 ng-model="user.userstatus_id"
                                 ng-options="e.id as e.name for e in estado"
                                 disable-search="true"
-                                allow-single-deselect="false" style="width: 100%; height: 4rem"
+                                allow-single-deselect="false"
                                 required
-                        >
-                            <option value=""></option>
-                        </select>-->
+                                class="form-control">
+                        </select>
                     </div>
                 </div>
 
@@ -169,6 +162,7 @@
             <button type="submit" class="btn btn-primary" ng-disabled="createForm.$invalid">
                 Guardar
             </button>
+            <button class="btn btn-warning" type="button" ng-click="cancelar()">Cancel</button>
         </form>
     </div>
 </div>

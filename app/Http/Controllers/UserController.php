@@ -81,14 +81,12 @@ class UserController extends Controller
     {
 
         $estado = Userstatus::all('name', 'id');
-        $establecimiento = Establecimiento::all('name', 'id');
         $empresas = Empresa::all('name', 'id');
         $roles = Role::all('display_name', 'id');
         $user = User::with('roles', 'empresa', 'establecimiento', 'estado')->findOrFail($id);
         
         return $user = array(
             'user' => $user,
-            'establecimientos' => $establecimiento,
             'empresas' => $empresas,
             'estado' => $estado,
             'roles' => $roles

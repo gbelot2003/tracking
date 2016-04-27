@@ -1,6 +1,6 @@
 require('angular');
-require('angular-route');
 require('satellizer');
+require('angular-route');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-ui-select/select');
