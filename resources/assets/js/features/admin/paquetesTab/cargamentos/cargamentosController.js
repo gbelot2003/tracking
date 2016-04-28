@@ -11,6 +11,6 @@ var cargamentos = function($scope){
 
 module.exports = function(app){
     app.controller('cargamentosController', function($scope){
-        cargamentos($scope);
+        return cargamentos($scope);
     });
 };

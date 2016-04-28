@@ -11,6 +11,6 @@ var bolsas = function($scope){
 
 module.exports = function(app){
     app.controller('bolsasController', function($scope){
-        bolsas($scope);
+        return bolsas($scope);
     });
 };

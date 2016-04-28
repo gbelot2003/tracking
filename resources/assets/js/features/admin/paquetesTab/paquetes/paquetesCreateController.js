@@ -5,6 +5,6 @@ var paquetes = function($scope){
 
 module.exports = function(app){
     app.controller('paquetesCreateController', function($scope){
-        paquetes($scope);
+        return paquetes($scope);
     })
 };
