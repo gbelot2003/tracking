@@ -104,6 +104,42 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/paquetes', {
+            controller: 'paquetesController',
+            template: require('raw!../features/admin/paquetesTab/paquetes/paquetes.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
+        .when('/paquetes/create', {
+            controller: 'paquetesCreateController',
+            template: require('raw!../features/admin/paquetesTab/paquetes/paquetes-create.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
+        .when('/bolsas', {
+            controller: 'bolsasController',
+            template: require('raw!../features/admin/paquetesTab/bolsas/bolsas.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
+        .when('/cargamentos', {
+            controller: 'cargamentosController',
+            template: require('raw!../features/admin/paquetesTab/cargamentos/cargamentos.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .otherwise({
             redirectTo:'/'
         });

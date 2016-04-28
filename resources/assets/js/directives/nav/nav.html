@@ -14,13 +14,21 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="uib-collapse navbar-collapse" uib-collapse="navCollapsed">
             <ul class="nav navbar-nav">
-                <li ng-if="isLoggedIn()"  role="presentation"><a href="#/dashboard">Dashboard</a></li>
                 <li ng-if="isLoggedIn()"  role="presentation"><a href="#/reportes">Reportes</a></li>
                 <li ng-if="isLoggedIn()"  role="presentation"><a href="#/reportes">Busqueda Rapida</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-
+                <li ng-if="isLoggedIn()"  class="dropdown" uib-dropdown>
+                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" >
+                        Encomiendas<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/paquetes">Paquetes</a></li>
+                        <li><a href="#/bolsas">Bolsas</a></li>
+                        <li><a href="#/bolsas">Cargamentos</a></li>
+                    </ul>
+                </li>
                 <li configura-mn class="dropdown" uib-dropdown has-permission="['owner', 'admin']" />
 
                 <li usuarios-mn class="dropdown" uib-dropdown has-permission="['owner', 'admin']"  />
