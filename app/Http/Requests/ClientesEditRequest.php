@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class TradersFormRequest extends Request {
+class ClientesEditRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -24,22 +24,11 @@ class TradersFormRequest extends Request {
 		$edit 	= [
 			'establecimiento_id'	=>	'required|Integer',
 			'seccion_id' 			=>	'required|Integer',
-			'name'					=> 	"required|String|unique_with:traders, id",
+			'name'					=> 	"required|String",
 			'user_id'				=> 	'integer'
 		];
 
-		$create = [
-			'establecimiento_id'	=>	'required|Integer',
-			'seccion_id' 			=>	'required|Integer',
-			'name'					=> 	"required|String|unique_with:traders",
-			'user_id'				=> 	'integer'
-		];
-
-		if($this->method == 'PUT'){
-			return $edit;
-		} else {
-			return $create;
-		}
+		return $edit;
 	}
 
 }

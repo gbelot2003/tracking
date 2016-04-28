@@ -71,7 +71,15 @@ var clientes = function($scope, clientesFactory, seccionesFactory, $routeParams,
      * Submit form
      */
     $scope.clienteSubmit = function(){
-        console.log($scope.clientes);
+        clientesFactory.save($scope.clientes).$promise
+            .then(function success(response){
+                $location.path('/clientes');
+                ngToast.success('El cliente a sido creado correctamente');
+            }, function error(response){
+                var test = _.values(response.data);
+                addErrors(test);
+                ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
+            });
     };
 
 };

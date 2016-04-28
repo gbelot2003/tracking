@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Establecimiento;
+use App\Http\Requests\ClientesCreateRequest;
+use App\Http\Requests\ClientesEditRequest;
 use App\Seccion;
 use App\Trader;
 use Illuminate\Http\Request;
@@ -14,10 +16,10 @@ class ClientesController extends Controller
     /**
      * SeccionesController constructor.
      */
-/*    public function __construct()
+    public function __construct()
     {
         $this->middleware('jwt.auth');
-    }*/
+    }
 
     /**
      * @param null $search
@@ -58,24 +60,15 @@ class ClientesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesCreateRequest $request)
     {
-        //
+        $clientes = Trader::create($request->all());
+        return $clientes;
     }
 
     /**
@@ -98,26 +91,17 @@ class ClientesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClientesEditRequest $request, $id)
     {
-        //
+        $clientes = Trader::findOrFail($id);
+        $clientes->update($request->all());
+        return $clientes;
     }
 
     /**

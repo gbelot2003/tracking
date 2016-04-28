@@ -91,6 +91,14 @@ var clientes = function($scope, clientesFactory, seccionesFactory, $routeParams,
             userstatus_id: $scope.clientes.userstatus_id
 
         };
+        clientesFactory.update(this.editedCliente).$promise
+            .then(function success(response){
+                $location.path('/clientes');
+                ngToast.success('El actiualizado a sido creado correctamente');
+            }, function error(response){
+                addErrors(test);
+                ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
+            });
         console.log(this.editedCliente)
     };
 
