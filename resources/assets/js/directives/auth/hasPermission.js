@@ -1,16 +1,12 @@
 module.exports = function(app){
-  app.directive('hasPermission', function(permService, authentication){
+  app.directive('hasPermission', function(){
     return {
-        restrict: 'AE',
+        restrict: 'A',
         link: function(scope, elements, attrs){
-          var setPerms  = scope.$eval(attrs.hasPermission);
-          scope.isShowing = authentication.hasPerms(setPerms);
-          if(!scope.isShowing){
-            elements.css('display', 'none');
-          } else {
-             elements.css('display', 'inherence');
-          }  
-        },
+            var setPerms  = scope.$eval(attrs.hasPermission);
+            var permission = localStorage.getItem('rol');
+            scope.showEl = _.contains(setPerms, permission);
+        }
     }
   });
 };

@@ -8,8 +8,10 @@ var login = function($scope, $location, authentication, credent, $window){
     };
 
     var success = function(response){
+
         localStorage.setItem('satellizer_token', response.data.token);
-        $location.path('/dashboard');
+        $location.path('/index');
+
         var promise = credent.getCredentials();
         promise.then(function success(response){
             var user = JSON.stringify(response.data.user);

@@ -11,6 +11,7 @@ module.exports = function(app){
                     localStorage.removeItem('user');
                     localStorage.removeItem('rol');
                     permService.permissionModel.isPermissionLoaded = false;
+
                     $location.path('/login');
                 }             
             }
