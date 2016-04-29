@@ -8,6 +8,68 @@
             <div class="col-sm-2">
                 <a class="btn btn-warning" href="#/paquetes/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form>
+                        <div class="col-md-8">
+                            <div class="form-group has-feedback">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Buscar</span>
+                                    <input type="text" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status">
+                                </div>
+                                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <div class="double-bounce1" ng-show="loader.loading2"><span us-spinner></span></div>
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Remitente</th>
+                                <th>Destinatario</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="item in shipments">
+                                <td>{{ item.code }}</td>
+                                <td>
+                                    {{ item.senders.name }}
+                                    <br />
+                                    <small style="font-size: 0.9rem">{{ item.senders.establecimiento.name }}</small>
+                                </td>
+                                <td>
+                                    {{ item.recivers.name }}
+                                    <br />
+                                    <small style="font-size: 0.9rem">{{ item.recivers.establecimiento.name }}</small>
+                                </td>
+                                <td>{{ item.transito.estados.name }}</td>
+                                <td>{{ item.created_at }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

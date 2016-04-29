@@ -3,8 +3,11 @@ module.exports = function(app){
         return $resource('/api/admin/paquetes/:id', { id: '@id', page:'@page'}, {
             'update':{method:'PUT'},
             'query': {method:'GET',
-                params:{ query:"@query", page:"@page"},
-                url:'/api/admin/paquetes/search/:query'
+                params:{
+                    query:"@query",
+                    date: "@date",
+                    page:"@page"},
+                url:'/api/admin/paquetes/search/:query/:date'
             }
         });
     });

@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Shipment extends Model {
@@ -81,7 +82,7 @@ class Shipment extends Model {
      * @param $query
      * @return mixed
      */
-    public function scopeShipment($query){
+    public function scopeShipmentindex($query, $user_id){
         return $query->with(
             'senders.establecimiento',
             'recivers.establecimiento',
@@ -90,8 +91,29 @@ class Shipment extends Model {
             'senders.estado',
             'recivers.estado',
             'transito.estados'
-        );
+        )
+            ->where('user_id', '=', $user_id)
+			->WhereRaw('date(created_at) = curdate()')
+            ;
     }
+
+	public function scopeShipmentsearch($query, $user_id, $date){
+
+		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
+
+		return $query->with(
+			'senders.establecimiento',
+			'recivers.establecimiento',
+			'senders.seccion',
+			'recivers.seccion',
+			'senders.estado',
+			'recivers.estado',
+			'transito.estados'
+		)
+			->where('user_id', '=', $user_id)
+			->whereBetween('created_at', [$bdate, $edate]);
+	}
 
 	/**
 	 * Un shipment fue creado por un usuario

@@ -20,6 +20,14 @@ class ShipmentsController extends Controller
         $this->middleware('jwt.auth');
     }
 
+
+    public function search($date = null, $search = null)
+    {
+        $query = Shipment::shipmentsearch(Auth::id(), $date)->paginate(10);
+        return $query;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +35,8 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-        //
+        $shipments = Shipment::shipmentindex(Auth::id())->paginate(10);
+        return $shipments;
     }
 
     /**
