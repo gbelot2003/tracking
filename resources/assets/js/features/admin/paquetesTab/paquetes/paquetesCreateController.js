@@ -17,6 +17,10 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     $scope.shipment.estado_id = 2;
 
+    $scope.sender = {};
+
+    $scope.reciber = {};
+
     $scope.loader.loading = true;
 
     $scope.title = "Crear paquete";
@@ -39,7 +43,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
      */
     $scope.searchSenders = function($select){
         return $http.get('/api/admin/clientes/listado-search/' + $select.search).then(function(response){
-            $scope.sender = {};
             $scope.senders = response.data;
             $scope.loader.loading = false;
         });
@@ -82,7 +85,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
      */
     $scope.searchReciber = function($select){
         return $http.get('/api/admin/clientes/listado-search/' + $select.search).then(function(response){
-            $scope.reciber = {};
             $scope.recibers = response.data;
         });
     };
