@@ -1,0 +1,67 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                <form name="formCreate" novalidate>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="name">Nombre</label>
+                            <input name="name"
+                                   ng-model="clientes.name"
+                                   class="form-control"
+                                   id="name"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                            'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                                <label for="agencia"><a ng-click="agenciaCreate()">Agencia</a></label>
+
+                                <ui-select ng-model="agencia.selected" ng-change="sourceAgenciasChanged()"  theme="bootstrap" ng-required="!showNewAgency" ng-if="!showNewAgency">
+                                    <ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchAgencia($select)" refresh-delay="300" repeat="agencias in agencias">
+                                        <span ng-bind-html="agencias.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+
+                                <input class="form-control" type="text" name="agencia" ng-model="establecimientoName" ng-if="showNewAgency" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group"
+                                 ng-class="{'has-error' : editForm.password_conf.$invalid && editForm.password_conf.$dirty,
+                                                                'has-success':editForm.$valid && editForm.password_conf.$dirty}">
+                                <label for="departamento"><a ng-click="seccionCreate()">Departamento o Sección</a></label>
+
+                                <ui-select ng-model="seccion.selected" ng-change="sourceSeccionesChanged()"  theme="bootstrap" ng-required="!showNewSeccion" ng-if="!showNewSeccion">
+                                    <ui-select-match class="ui-select-match" placeholder="Secciones">{{$select.selected.name}}</ui-select-match>
+                                    <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchSeccion($select)" refresh-delay="300" repeat="secciones in secciones">
+                                        <span ng-bind-html="secciones.name | highlight: $select.search"></span>
+                                    </ui-select-choices>
+                                </ui-select>
+
+                                <input class="form-control" type="text" name="seccion" ng-model="seccionName" ng-if="showNewSeccion" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <pre>{{ clientes | json }}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success" type="button" ng-click="ok()" ng-disabled="formCreate.$invalid">Actualizar</button>
+    </div>
+</div>

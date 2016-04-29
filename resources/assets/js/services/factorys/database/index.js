@@ -4,4 +4,5 @@ module.exports = function(app){
 	require('./agencias/agenciasFactory')(app);
 	require('./secciones/seccionesFactory')(app);
 	require('./clientes/clientesFactory')(app);
+	require('./shipments/shipmentFactory')(app);
 };

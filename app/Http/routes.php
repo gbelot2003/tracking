@@ -36,7 +36,7 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::get('secciones/listado-search/{name?}', 'SeccionesController@listado');
 
     Route::get('clientes/search/{seach?}', 'ClientesController@search');
-    Route::get('clientes/listado-search/{name?}', 'ClientesController@listados');
+    Route::get('clientes/listado-search/{name?}', 'ClientesController@listado');
 
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
@@ -46,5 +46,6 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::resource('agencias', 'AgenciasController');
     Route::resource('secciones', 'SeccionesController');
     Route::resource('clientes', 'ClientesController');
+    Route::resource('paquetes', 'ShipmentsController');
 
 });

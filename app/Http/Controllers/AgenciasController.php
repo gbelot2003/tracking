@@ -87,7 +87,7 @@ class AgenciasController extends Controller
     public function store(EstablecimientosCreateRequest $request)
     {
         $agencias = Establecimiento::create($request->all());
-        return $request;
+        return $agencias;
     }
 
     /**
@@ -126,7 +126,7 @@ class AgenciasController extends Controller
         unset($request['municipio']);
         $agencias = Establecimiento::findOrFail($id);
         $agencias->update($request->all());
-        return $request;
+        return $agencias;
     }
 
     /**

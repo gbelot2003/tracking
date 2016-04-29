@@ -111,7 +111,7 @@ class SeccionesController extends Controller
 
         $seccion = Seccion::findOrFail($id);
         $seccion->update($request->all());
-        return $request;
+        return $seccion;
     }
 
     /**

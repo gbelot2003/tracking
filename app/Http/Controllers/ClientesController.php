@@ -40,10 +40,11 @@ class ClientesController extends Controller
      */
     public function listado($name = null){
 
-        if($name = null){
-            $query = Trader::all()->take(10)->get();
+        if($name == null){
+            $query = Trader::with('establecimiento')->take(10)->get();
         } else {
-            $query = Trader::where('name', 'LIKE', '%' . $name . '%')->get();
+            $query = Trader::with('establecimiento')
+                ->where('name', 'LIKE', '%' . $name . '%')->get();
         }
         return $query;
     }
@@ -68,7 +69,8 @@ class ClientesController extends Controller
     public function store(ClientesCreateRequest $request)
     {
         $clientes = Trader::create($request->all());
-        return $clientes;
+        $model = Trader::with('seccion', 'establecimiento')->findOrFail($clientes->id);
+        return $model;
     }
 
     /**

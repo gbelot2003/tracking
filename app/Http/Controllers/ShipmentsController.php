@@ -2,12 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Shipment;
+use App\Transito;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class ShipmentsController extends Controller
 {
+
+    /**
+     * SeccionesController constructor.
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +48,19 @@ class ShipmentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request['user_id'] = Auth::id();
+
+        $shipment = Shipment::create($request->all());
+
+        $transito = Transito::create([
+            'shipment_id'	=> $shipment->id,
+            'estado_id'	 	=> $request->estado_id,
+            'establecimiento_id' => Auth::user()->establecimiento_id,
+            'user_id'	 	=> Auth::id(),
+            'details'		=> ''
+        ]);
+
+        return $shipment;
     }
 
     /**

@@ -20,7 +20,7 @@ class CreateShipmentsTable extends Migration {
 			$table->integer('reciber_id')->unsigned();
 			$table->integer('reciber_seccion')->unsigned();
 			$table->integer('user_id')->unsigned()->index();
-			$table->integer('estado_id')->unsigned();
+			$table->integer('estado_id')->unsigned()->nullable(); // Nullable posible cambio LIVE en Base de datos
 			$table->integer('transito_id')->unsigned()->nullable();
 			$table->text('description');
 			$table->string('firma')->nullable()->index();
