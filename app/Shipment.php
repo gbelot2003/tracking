@@ -48,6 +48,16 @@ class Shipment extends Model {
 		return $this->hasMany('App\Transito');
 	}
 
+    /**
+     * Retornar el ultimo registro relacionado en la tabla de transitos
+     * @return mixed
+     */
+    public function transito()
+    {
+        return $this->hasOne('App\Transito', 'shipment_id', 'id')->orderBy('id', 'desc')->latest();
+    }
+
+
 	/**
 	 * Seguda relacion de actualización de estados de transito en shipments
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -60,12 +70,28 @@ class Shipment extends Model {
 	/**
 	 * @return mixed
 	 */
-	public function scopeTest($query)
+	public function scopeTransitorel($query)
 	{
 		return $query->with(['transitos' => function($q){
-			$q->orderBy('id', 'desc')->latest()->get();
+			$q->with('estados')->orderBy('id', 'desc')->get();
 		}]);
 	}
+
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeShipment($query){
+        return $query->with(
+            'senders.establecimiento',
+            'recivers.establecimiento',
+            'senders.seccion',
+            'recivers.seccion',
+            'senders.estado',
+            'recivers.estado',
+            'transito.estados'
+        );
+    }
 
 	/**
 	 * Un shipment fue creado por un usuario
