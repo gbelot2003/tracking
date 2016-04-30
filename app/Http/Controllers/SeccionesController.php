@@ -14,11 +14,10 @@ class SeccionesController extends Controller
     /**
      * SeccionesController constructor.
      */
-//    public function __construct()
-//    {
-//        $this->middleware('jwt.auth');
-//        $this->middleware('UserCheckPerms');
-//    }
+    public function __construct()
+    {
+        $this->middleware('jwt.auth');
+    }
 
     /**
      * @param null $search
