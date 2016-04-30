@@ -39,7 +39,11 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
         shipmentFactory.get().$promise
             .then(function success(response){
                 $scope.shipments = response.data;
+                $scope.totalItems = response.total;
+                $scope.currentPage = response.current_page;
+                $scope.maxSize = response.per_page;
                 $scope.loader.loading = false;
+                $scope.loader.loading2 = false;
                 console.log(response);
             }, function error(response){
 
@@ -48,14 +52,20 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
     };
 
     // operación de busqueda
-    $scope.search = function(date, query, type){
+    $scope.search = function(date, query, type, page = null){
+        $scope.mSearch = true;
         if(query === ''){
-            query = null
+            query = null;
+            $scope.mSearch = false;
         }
+
         $scope.loader.loading2 = true;
-        shipmentFactory.query({date: date, query: query, type: type}).$promise
+        shipmentFactory.query({date: date, query: query, type: type, page: page}).$promise
             .then(function success(response){
                 $scope.shipments = response.data;
+                $scope.totalItems = response.total;
+                $scope.currentPage = response.current_page;
+                $scope.maxSize = response.per_page;
                 $scope.loader.loading2 = false;
                 console.log(response);
             });
@@ -66,6 +76,7 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
         if(oldD == newD){
             return;
         } else {
+            $scope.mSearch = true;
             var item = $filter('date')($scope.dt, "yyyy-MM-dd");
             $scope.search(item, $scope.searchable, $scope.searchType);
         }
@@ -90,7 +101,7 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
             return;
         } else {
             var item = $filter('date')($scope.dt, "yyyy-MM-dd");
-            if($scope.searchType == '1'){
+            if($scope.searchType == '1' || $scope.searchType == null){
                 $scope.searchable = "";
             }
 
@@ -98,10 +109,39 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
         }
     });
 
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
+
+    $scope.nextPage = function (pageNo) {
+
+        $scope.loader.loading2 = true;
+        $scope.currentPage = pageNo;
+
+        if($scope.mSearch == true){
+            var item = $filter('date')($scope.dt, "yyyy-MM-dd");
+            $scope.search(item, $scope.searchable, $scope.searchType, $scope.currentPage);
+        } else {
+            shipmentFactory.get({page:$scope.currentPage}).$promise
+                .then(function success(response){
+                    $scope.shipments = response.data;
+                    $scope.totalItems = response.total;
+                    $scope.currentPage = response.current_page;
+                    $scope.maxSize = response.per_page;
+                    $scope.loader.loading = false;
+                    $scope.loader.loading2 = false;
+                    console.log(response);
+                }, function error(response){
+
+                });
+        }
 
 
 
-    // Funcion today
+    };
+
+
+        // Funcion today
     $scope.today = function() {
         $scope.dt = new Date();
     };

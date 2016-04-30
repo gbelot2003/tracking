@@ -20,7 +20,6 @@
                                            aria-describedby="inputGroupSuccess1Status"
                                            ng-disabled="!searchType"
                                            ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
-                                           ng-change="searchBox()"
                                     >
                                 </div>
                                 <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
@@ -42,7 +41,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="form-group" ng-show="searchType != 1">
                                 <p class="input-group">
                                     <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
                                     <span class="input-group-btn">
@@ -87,7 +86,11 @@
                             </tbody>
                         </table>
                     </div>
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" force-ellipses="true" ng-click="nextPage(currentPage)"></uib-pagination>
                 </div>
             </div>
         </div>
