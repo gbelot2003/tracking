@@ -6,8 +6,9 @@ module.exports = function(app){
                 params:{
                     query:"@query",
                     date: "@date",
+                    type: "@type",
                     page:"@page"},
-                url:'/api/admin/paquetes/search/:query/:date'
+                url:'/api/admin/paquetes/search/:date/:query/:type'
             }
         });
     });

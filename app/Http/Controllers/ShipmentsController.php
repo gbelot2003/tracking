@@ -21,9 +21,9 @@ class ShipmentsController extends Controller
     }
 
 
-    public function search($date = null, $search = null)
+    public function search($date = null, $search = null, $type = null)
     {
-        $query = Shipment::shipmentsearch(Auth::id(), $date)->paginate(10);
+        $query = Shipment::shipmentsearch(Auth::Id(), $date, $search, $type)->paginate(10);
         return $query;
     }
 
@@ -35,7 +35,7 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::shipmentindex(Auth::id())->paginate(10);
+        $shipments = Shipment::shipmentindex(Auth::Id())->paginate(10);
         return $shipments;
     }
 

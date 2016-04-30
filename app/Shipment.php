@@ -40,6 +40,7 @@ class Shipment extends Model {
 		return $this->belongsTo('App\Trader', 'reciber_id', 'id');
 	}
 
+
 	/**
 	 * Un encargo puede tener muchos trancitos
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -83,36 +84,64 @@ class Shipment extends Model {
      * @return mixed
      */
     public function scopeShipmentindex($query, $user_id){
-        return $query->with(
+
+
+		$query->with(
             'senders.establecimiento',
             'recivers.establecimiento',
             'senders.seccion',
             'recivers.seccion',
-            'senders.estado',
-            'recivers.estado',
             'transito.estados'
-        )
-            ->where('user_id', '=', $user_id)
-			->WhereRaw('date(created_at) = curdate()')
-            ;
+        );
+
+		$query->whereRaw('Date(created_at) = CURDATE()');
+
+		$query->where('user_id', '=', $user_id);
+
+
+		return $query;
     }
 
-	public function scopeShipmentsearch($query, $user_id, $date){
+	public function scopeShipmentsearch($query, $user_id, $date = null, $search = null, $type = null){
 
 		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
-		return $query->with(
-			'senders.establecimiento',
-			'recivers.establecimiento',
-			'senders.seccion',
-			'recivers.seccion',
-			'senders.estado',
-			'recivers.estado',
-			'transito.estados'
-		)
-			->where('user_id', '=', $user_id)
-			->whereBetween('created_at', [$bdate, $edate]);
+		$query->where('user_id', '=', $user_id)
+			->with(
+				'senders.establecimiento',
+				'recivers.establecimiento',
+				'senders.seccion',
+				'recivers.seccion',
+				'transito.estados'
+			);
+
+		if($search != null){
+
+			if($type == 1){
+
+				$query->where('code', 'LIKE', $search);
+
+			} elseif($type == 2){
+
+				$query->whereHas('senders', function($q)use($search){
+					return $q->where('name', 'LIKE', '%' . $search . '%');
+				});
+
+			} elseif($type == 3){
+
+				$query->WhereHas('recivers', function($q)use($search){
+					return $q->where('name', 'LIKE', '%' . $search . '%');
+				});
+			}
+
+		}
+
+		if($type != 1){
+			$query->whereBetween('created_at', [$bdate, $edate]);
+		}
+
+		return $query;
 	}
 
 	/**
