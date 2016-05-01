@@ -11,7 +11,7 @@ class TransitosTableSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		factory(App\Transito::class, 4000)->create();
+		factory(App\Transito::class, 6000)->create();
 	}
 
 }

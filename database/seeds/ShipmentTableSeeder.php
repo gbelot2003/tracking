@@ -11,6 +11,6 @@ class ShipmentTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Shipment::class, 2000)->create();
+        factory(App\Shipment::class, 3000)->create();
     }
 }
