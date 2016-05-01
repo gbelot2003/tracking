@@ -26,6 +26,7 @@ $factory->define(App\Shipment::class, function (Faker\Generator $faker) {
         'sender_id' => $faker->numberBetween(1,202),
         'reciber_id' => $faker->numberBetween(1,202),
         'user_id'   => 1,
+        'description' => $faker->sentence(3),
         'created_at' => $faker->dateTimeThisMonth(),
         'updated_at' => $faker->dateTimeThisMonth()
     ];
