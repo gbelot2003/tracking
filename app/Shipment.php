@@ -47,7 +47,7 @@ class Shipment extends Model {
 	 */
 	public function transitos()
 	{
-		return $this->hasMany('App\Transito');
+		return $this->hasMany('App\Transito')->orderBy('id', 'desc')->latest();
 	}
 
     /**
@@ -142,6 +142,16 @@ class Shipment extends Model {
 		}
 
 		return $query;
+	}
+
+	/**
+	*
+	**/
+	public function scopeShipmentshow($query){
+		$query->with('senders.establecimiento', 'recivers.establecimiento',
+						'senders.seccion', 'recivers.seccion', 'transitos.estados',
+						'transitos.user', 'transitos.establecimiento'
+				);
 	}
 
 	/**
