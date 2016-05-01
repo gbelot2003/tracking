@@ -69,7 +69,7 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="item in shipments">
-                                <td>{{ item.code }}</td>
+                                <td><a href="#/paquetes/{{ item.id }}">{{ item.code }}</a></td>
                                 <td>
                                     {{ item.senders.name }}
                                     <br />

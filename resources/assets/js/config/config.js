@@ -122,6 +122,15 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/paquetes/:id', {
+            controller: 'paquetesEditController',
+            template: require('raw!../features/admin/paquetesTab/paquetes/paquetes-edit.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .when('/bolsas', {
             controller: 'bolsasController',
             template: require('raw!../features/admin/paquetesTab/bolsas/bolsas.html'),

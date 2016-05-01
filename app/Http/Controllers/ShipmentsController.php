@@ -80,7 +80,8 @@ class ShipmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $shipment = Shipment::shipmentshow()->findOrFail($id);
+        return $shipment;
     }
 
     /**
