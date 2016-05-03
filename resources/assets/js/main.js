@@ -1,6 +1,7 @@
 require('./config/bootstrap');
 
-var app = angular.module('app', [
+var app = angular.module('app',
+    [
         'ngRoute',
         'satellizer',
         'ngResource',
@@ -11,8 +12,9 @@ var app = angular.module('app', [
         'ui.bootstrap',
         'ngToast',
         'angularSpinner',
-
-]);
+        'ngFileUpload'
+    ]
+);
 
 require('./config')(app);
 require('./services')(app);

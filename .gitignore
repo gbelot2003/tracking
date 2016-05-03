@@ -5,4 +5,5 @@
 Homestead.yaml
 Homestead.json
 bower_components
+public/images/transitos/
 .env

@@ -1,6 +1,7 @@
 require('angular');
 require('satellizer');
 require('angular-route');
+require('ng-file-upload');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-ui-select/select');

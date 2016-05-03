@@ -11746,4 +11746,10 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 .ui-select-bootstrap > .ui-select-match > .btn {
   color: #000; }
 
+/**
+* Images
+*/
+.thumb {
+  width: 16rem; }
+
 /*# sourceMappingURL=app.css.map */

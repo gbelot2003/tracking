@@ -15,11 +15,13 @@ use App\Http\Requests;
 class AgenciasController extends Controller
 {
 
-/*    public function __construct()
+    /**
+     * [__construct description]
+     */
+    public function __construct()
     {
         $this->middleware('jwt.auth');
-        $this->middleware('UserCheckPerms');
-    }*/
+    }
 
     /**
      * @param null $search
