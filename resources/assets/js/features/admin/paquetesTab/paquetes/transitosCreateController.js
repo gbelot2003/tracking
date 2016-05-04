@@ -1,10 +1,10 @@
-var transitos = function($scope, $http, ngToast,  $uibModalInstance, shipmentFactory, $location, $routeParams){
-
+var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
+	
 };
 
 
 module.exports = function(app){
-    app.controller('transitosEditController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams){
-        return transitos($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams);
+    app.controller('transitosCreateController', function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
+        return transitos($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http);
     })
 };

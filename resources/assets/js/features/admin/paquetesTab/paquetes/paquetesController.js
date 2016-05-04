@@ -46,16 +46,16 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
                 $scope.loader.loading2 = false;
                 console.log(response);
             }, function error(response){
-
+                    console.log(response);     
             });
-
     };
 
-    // operación de busqueda
-    $scope.search = function(date, query, type, page = null){
+    $scope.search = function(date, query, type, page){
+        
         $scope.mSearch = true;
-        if(query === ''){
-            query = null;
+        
+        if(query == ''){
+            query = null
             $scope.mSearch = false;
         }
 

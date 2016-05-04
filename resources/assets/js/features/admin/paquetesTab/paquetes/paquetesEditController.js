@@ -27,6 +27,32 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
     		});
     };
 
+
+    $scope.createModal = function(){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./transitos-create.html'),
+            controller: 'transitosCreateController',
+            backdrop: 'static',
+            resolve:{
+                shipId: $scope.shipment.code
+            }
+        });
+
+        modalInstance.result.then(function(message){
+            $scope.message = message;
+            if($scope.message == true){
+                ngToast.success('Se a creado correctamente el transito');
+                $scope.loader.loading3 = true;
+                $scope.init();
+            } else {
+                ngToast.danger('A ocurrido un error en el envío, revise los datos de la actualización.');
+                $scope.loader.loading3 = false;
+            }
+        });
+
+    };
+
     $scope.editModal = function(id){
 
         var modalInstance = $uibModal.open({
