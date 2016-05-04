@@ -1,11 +1,6 @@
-var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
+var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
 
-    $scope.etransitos = [
-        {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
-        {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},
-        {id: 4, name:'Transito, en bolsa de transporte', description: 'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'},
-        {id: 5, name:'Transito, presenta daños ligeros', description: 'La encomienda presenta algun tipo de daños.'}
-    ];
+    $scope.etransitos = estadosService.estado_paquetes;
 
     $scope.loader = {
         loading: false,
@@ -40,7 +35,7 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
                 console.log(request);
             }
         );
-    }
+    };
 
     $scope.uploadPic = function(file) {
 
@@ -86,7 +81,7 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
                 ngToast.warning('Ha ocurrido un error');
             }
         );
-    }
+    };
 
     $scope.edit = function (){
         $scope.isEdit = true;
@@ -94,7 +89,7 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
 
     $scope.changeUpState = function(){
         $scope.untilUpload = false;
-    }
+    };
 
     $scope.unEdit = function (){
         $scope.isEdit = false;
@@ -118,13 +113,13 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
                 ngToast.warning('A ocurrido un error ' + response);
             }
         );
-    }
+    };
 
     $scope.init();
 };
 
 module.exports = function(app){
-    app.controller('transitosEditController', function($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http){
-        return transitos($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http);
+    app.controller('transitosEditController', function($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http, estadosService){
+        return transitos($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http, estadosService);
     })
 };

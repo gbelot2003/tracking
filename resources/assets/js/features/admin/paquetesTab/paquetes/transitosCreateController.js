@@ -1,15 +1,15 @@
-var transitos = function($scope, $uibModalInstance, shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
-	$scope.etransitos = [
-        {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
-        {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},
-        {id: 4, name:'Transito, en bolsa de transporte', description: 'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'},
-        {id: 5, name:'Transito, presenta daños ligeros', description: 'La encomienda presenta algun tipo de daños.'}
-    ];
+var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
+	
+    $scope.etransitos = estadosService.estado_paquetes;
 
     $scope.loader = {
         loading: false,
         loading2: false
     };
+
+    $scope.transitos = {};
+
+    $scope.transitos.shipment_id = id;
 
     $scope.showFoto = false;
 
@@ -22,6 +22,18 @@ var transitos = function($scope, $uibModalInstance, shipId, transitosFactory,  U
     $scope.isEdit = false;
 
     $scope.loader.loading = false;
+
+    $scope.edit = function (){
+        $scope.isEdit = true;
+    };
+
+    $scope.changeUpState = function(){
+        $scope.untilUpload = false;
+    }
+
+    $scope.unEdit = function (){
+        $scope.isEdit = false;
+    };
 
     $scope.uploadPic = function(file) {
 
@@ -73,12 +85,24 @@ var transitos = function($scope, $uibModalInstance, shipId, transitosFactory,  U
         $uibModalInstance.dismiss('cancel');
     };
 
+    $scope.ok = function(){
+       transitosFactory.save($scope.transitos).$promise.then(
+            function success(response){
+                $scope.message = true;
+                $uibModalInstance.close($scope.message);   
+            },
+            function error(response){
+                ngToast.warning('A ocurrido un error ' + response);
+            }
+        );
+    }
+
 
 };
 
 
 module.exports = function(app){
-    app.controller('transitosCreateController', function($scope, $uibModalInstance,  shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
-        return transitos($scope, $uibModalInstance, shipId, transitosFactory,  Upload, $timeout, ngToast, $http);
+    app.controller('transitosCreateController', function($scope, $uibModalInstance,  shipId,  id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
+        return transitos($scope, $uibModalInstance, shipId,  id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService);
     })
 };
