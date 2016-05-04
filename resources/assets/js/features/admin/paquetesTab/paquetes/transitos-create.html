@@ -2,7 +2,7 @@
     <div class="modal-header">
         <h3 class="modal-title">{{ title }}</h3>
     </div>
-    <form name="myForm" novalidate>
+    <form name="formEdit" novalidate>
     <div class="modal-body">
         <div class="row">
             <div class="col-md-12">
@@ -83,7 +83,7 @@
     <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
         <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
-        <button class="btn btn-success" ng-click="ok()" ng-disabled="formEdit.$invalid || !untilUpload" ng-if="isEdit">Actualizar</button>
+        <button class="btn btn-success" ng-click="ok()" ng-disabled="!formEdit.$valid || !untilUpload" ng-if="isEdit">Actualizar</button>
     </div>
 </div>
 

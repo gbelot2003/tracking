@@ -1,0 +1,84 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                <form name="formEdit" novalidate>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Registro de Estado</label>
+
+                                <select class="form-control"
+                                        ng-model="transitos.estado_id"
+                                        ng-options="e.id as e.name for e in etransitos"
+                                        required
+                                ></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea name="" class="form-control" rows="3" ng-model="transitos.details"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Foto</label>
+
+                                <div>
+                                    <image ng-src="{{ transitos.fotoPath }}" class="thumb" alt="image"/>
+                                </div>
+
+                                <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="2MB" required
+                                    ngf-model-invalid="errorFile">
+                                <i ng-show="myForm.file.$error.required">*required</i><br>
+                                <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                <button ng-click="picFile = null" ng-show="picFile">Remove</button>
+                                <br/>
+                                <br>
+                                <button ng-click="uploadPic(picFile)">Submit</button>
+                                  <span class="progress" ng-show="picFile.progress >= 0">
+                                    <div style="width:{{picFile.progress}}%"
+                                         ng-bind="picFile.progress + '%'"></div>
+                                  </span>
+                                <span ng-show="picFile.result">Upload Successful</span>
+                            </div>
+                        </div>
+
+                    <!-- <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Firma</label>
+                                <input type="file" ngf-select ng-model="firmFile" name="file" accept="image/*" ngf-max-size="2MB" required
+                                       ngf-model-invalid="errorFile">
+                                <i ng-show="myForm.file.$error.required">*required</i><br>
+                                <i ng-show="myForm.file.$error.maxSize">File too large  {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+                                <img ng-show="myForm.file.$valid" ngf-thumbnail="firmFile" class="img-thumbnail thumb"> <button ng-click="firmFile = null" ng-show="firmFile">Remove</button>
+                                <br/>
+                                <br>
+                                <button ng-click="uploadPic(firmFile)">Submit</button>
+                                  <span class="progress" ng-show="firmFile.progress >= 0">
+                                    <div style="width:{{firmFile.progress}}%"
+                                         ng-bind="firmFile.progress + '%'"></div>
+                                  </span>
+                                <span ng-show="firmFile.result">Upload Successful</span>
+                            </div>
+                        </div>-->
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <!--<button class="btn btn-success" type="button" ng-click="ok()" ng-disabled="formEdit.$invalid">Crear</button>-->
+    </div>
+</div>
+
