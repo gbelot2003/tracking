@@ -43,7 +43,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         modalInstance.result.then(function(message){
             $scope.message = message;
             if($scope.message == true){
-                ngToast.success('Se a actualizado correctamente el rol');
+                ngToast.success('Se a actualizado correctamente el transito');
                 $scope.loader.loading3 = true;
                 $scope.init();
             } else {

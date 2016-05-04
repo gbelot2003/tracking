@@ -11750,6 +11750,6 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 * Images
 */
 .thumb {
-  width: 16rem; }
+  width: 100%; }
 
 /*# sourceMappingURL=app.css.map */

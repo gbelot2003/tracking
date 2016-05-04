@@ -30,6 +30,8 @@
                         </div>
 
                         <div class="col-md-6">
+                            <div class="double-bounce1" ng-show="loader.loading2"><span us-spinner></span></div>
+
                             <div class="form-group">
                                 <label>Foto</label>
 
@@ -59,7 +61,7 @@
                                         <uib-progressbar max="max" value="dynamic"><span style="color:white; white-space:nowrap;">{{picFile.progress}}% / {{max}}</span></uib-progressbar>
                                     </span>
                                     
-                                    <br/>
+                                    <hr/>
                                     <div ng-if="!untilUpload">
                                         <button ng-click="picFile = null" ng-show="picFile" class="btn btn-default" ng-disabled="untilUpload">Quitar</button>
                                         <button ng-disabled="!isEdit" ng-if="picFile" ng-click="uploadPic(picFile)" class="btn btn-default">Subir Imagen</button>

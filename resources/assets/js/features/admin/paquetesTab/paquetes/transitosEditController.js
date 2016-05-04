@@ -9,7 +9,8 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
     ];
 
     $scope.loader = {
-        loading: false
+        loading: false,
+        loading2: false
     };
 
     $scope.showFoto = false;
@@ -56,9 +57,9 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
             file.upload.then(function (response) {
                 $timeout(function () {
                     file.result = response.data;
-                     $scope.untilUpload = true;
+                    $scope.untilUpload = true;
                     $scope.transitos.foto = response.data;; 
-                    console.log($scope.transitos.foto);
+                    
                 });
             }, function (response) {
                 if (response.status > 0)
@@ -72,12 +73,14 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
     };
 
     $scope.deleteFoto = function(name){
-        $scope.showFoto = false;
-        $scope.transitos.foto = '';
-        
+        $scope.loader.loading2 = true;
+
         $http.get('api/admin/transitos/delete-image/' + name).then(
             function success(response){
                 ngToast.success('Imagen Eliminada');
+                $scope.showFoto = false;
+                $scope.transitos.foto = '';
+                    $scope.loader.loading2 = false;
 
             }, 
             function error(response){
