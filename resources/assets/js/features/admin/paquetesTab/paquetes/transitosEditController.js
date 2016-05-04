@@ -1,6 +1,5 @@
 var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http){
 
-    console.log("ship " + shipId);
     $scope.etransitos = [
         {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
         {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},

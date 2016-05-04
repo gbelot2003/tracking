@@ -15,7 +15,9 @@ module.exports = {
         contentBase: 'public'
     },
     devtool: "source-map", // or "inline-source-map"
-
+    uglify: {
+        except: ["$super"]
+    },
     module: {
         loader:[
             {   test: path.join(__dirname, 'resources', 'assets', 'js'),

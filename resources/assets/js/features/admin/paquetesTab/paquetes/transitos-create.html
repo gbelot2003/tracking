@@ -1,1 +1,89 @@
-<h2>create</h2>
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">{{ title }}</h3>
+    </div>
+    <form name="myForm" novalidate>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Registro de Estado</label>
+
+                                <select class="form-control"
+                                        ng-model="transitos.estado_id"
+                                        ng-options="e.id as e.name for e in etransitos"
+                                        required
+                                        ng-disabled="!isEdit"
+                                ></select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Descripción</label>
+                                <textarea name="" class="form-control" rows="3" ng-model="transitos.details" ng-disabled="!isEdit"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="double-bounce1" ng-show="loader.loading2"><span us-spinner></span></div>
+
+                            <div class="form-group">
+                                <label>Foto</label>
+
+                                <div ng-if="showFoto">
+                                    <image ng-src="{{ transitos.fotoPath }}" class="thumb img-thumbnail" alt="image"/>
+                                    <hr/>
+                                    <button ng-disabled="!isEdit" class="btn btn-small" ng-click="deleteFoto(transitos.foto)">Quitar</button>
+                                </div>
+
+                                <div ng-if="!showFoto">
+                                    <input ng-disabled="!isEdit" 
+                                           type="file" 
+                                           ngf-select ng-model="picFile" 
+                                           name="file" accept="image/*" 
+                                           ngf-max-size="1MB" 
+                                           ngf-model-invalid="errorFile"
+                                           ng-click="changeUpState()"
+                                           >
+                                    <i ng-show="myForm.file.$error.required">*required</i><br>
+                                    
+                                    <i ng-show="myForm.file.$error.maxSize">File too large {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+
+                                    <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="img-thumbnail thumb">
+                                    <br />
+
+                                    <span class="progress" ng-show="picFile.progress >= 0">
+                                        <uib-progressbar max="max" value="dynamic"><span style="color:white; white-space:nowrap;">{{picFile.progress}}% / {{max}}</span></uib-progressbar>
+                                    </span>
+                                    
+                                    <hr/>
+                                    <div ng-if="!untilUpload">
+                                        <button ng-click="picFile = null" ng-show="picFile" class="btn btn-default" ng-disabled="untilUpload">Quitar</button>
+                                        <button ng-disabled="!isEdit" ng-if="picFile" ng-click="uploadPic(picFile)" class="btn btn-default">Subir Imagen</button>
+                                    </div>
+                                    
+                                    <br/>
+
+                                    <span ng-show="picFile.result">Imagen Correctamente cargada!!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+    </form>
+
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+        <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
+        <button class="btn btn-success" ng-click="ok()" ng-disabled="formEdit.$invalid || !untilUpload" ng-if="isEdit">Actualizar</button>
+    </div>
+</div>
+
