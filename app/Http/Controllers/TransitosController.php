@@ -6,6 +6,8 @@ use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Transito;
+use Illuminate\Support\Facades\Auth;
+
 
 class TransitosController extends Controller
 {
@@ -20,19 +22,16 @@ class TransitosController extends Controller
     }
 
     /**
-     * [imageRemove description]
-     * @param  [type] $name [description]
-     * @return [type]       [description]
+     * @param $name
      */
     public function imageRemove($name){
        @unlink(public_path('images/transitos/fotos/' . $name));
     }
 
     /**
-     * [imagePost description]
-     * @param  Request $request [description]
-     * @param  [type]  $id      [description]
-     * @return [type]           [description]
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|string|\Symfony\Component\HttpFoundation\Response
      */
     public function imagePost(Request $request, $id){
 
@@ -52,26 +51,6 @@ class TransitosController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -79,7 +58,15 @@ class TransitosController extends Controller
      */
     public function store(Request $request)
     {
-
+        $transito = Transito::create([
+                'shipment_id' => $request->shipment_id,
+                'estado_id' => $request->estado_id,
+                'establecimiento_id' => Auth::user()->establecimiento_id,
+                'user_id'   => Auth::Id(),
+                'details'       => $request->details,
+                'foto'  => $request->foto,
+            ]);
+        return $transito;
     }
 
     /**
@@ -92,17 +79,6 @@ class TransitosController extends Controller
     {
         $transito = Transito::findOrFail($id);
         return $transito;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
