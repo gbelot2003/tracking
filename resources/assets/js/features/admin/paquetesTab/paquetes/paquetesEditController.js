@@ -35,7 +35,8 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
             controller: 'transitosCreateController',
             backdrop: 'static',
             resolve:{
-                shipId: $scope.shipment.code
+                shipId: $scope.shipment.code,
+                id: $scope.shipment.id
             }
         });
 
