@@ -5,7 +5,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         loading2: false
     };
 
-
     $scope.showSenderName = false;
 
     $scope.showReciberName = false;
@@ -58,31 +57,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
     };
 
 
-    $scope.senderModal = function(num){
-        var modalInstance = $uibModal.open({
-            animation: true,
-            template: require('raw!./sender-create.html'),
-            controller: 'senderCreateController',
-            backdrop: 'static',
-            size: 'lg',
-            resolve:{
-                num: num
-            }
-        });
-
-        modalInstance.result.then(function success(response){
-            if(num === 1){
-                $scope.showSenderName = true;
-                $scope.senderName = response.name;
-                $scope.shipment.sender_id = response.id
-            } else {
-                $scope.showReciberName = true;
-                $scope.reciberName = response.name;
-                $scope.shipment.reciber_id = response.id
-            }
-        });
-    };
-
     /**
      * Reciber
      * @param $select
@@ -107,6 +81,30 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         );
     };
 
+    $scope.senderModal = function(num){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./sender-create.html'),
+            controller: 'senderCreateController',
+            backdrop: 'static',
+            size: 'lg',
+            resolve:{
+                num: num
+            }
+        });
+
+        modalInstance.result.then(function success(response){
+            if(num === 1){
+                $scope.showSenderName = true;
+                $scope.senderName = response.name;
+                $scope.shipment.sender_id = response.id
+            } else {
+                $scope.showReciberName = true;
+                $scope.reciberName = response.name;
+                $scope.shipment.reciber_id = response.id
+            }
+        });
+    };
 
     $scope.submitShipment = function(){
         shipmentFactory.save($scope.shipment).$promise

@@ -104,7 +104,9 @@ class ShipmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $shipment = Shipment::findOrFail($id);
+        $shipment->update($request->all());
+        return $shipment;
     }
 
     /**
