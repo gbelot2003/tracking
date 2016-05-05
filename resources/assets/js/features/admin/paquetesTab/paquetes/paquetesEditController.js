@@ -12,6 +12,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
     };
 
     $scope.loader.loading = true;
+
     $scope.init = function(){
     	shipmentFactory.get({id:$routeParams.id}).$promise
     		.then(function success(response){
@@ -79,7 +80,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
             }
         });
     };
-
 
     $scope.init();
 

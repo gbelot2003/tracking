@@ -1,9 +1,10 @@
-var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location){
+var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory){
 
     $scope.loader = {
         loading: false,
         loading2: false
     };
+
 
     $scope.showSenderName = false;
 
@@ -25,12 +26,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     $scope.title = "Crear paquete";
 
-    $scope.transitos = [
-        {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
-        {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},
-        {id: 4, name:'Transito, en bolsa de transporte', description: 'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'},
-        {id: 5, name:'Transito, presenta daños ligeros', description: 'La encomienda presenta algun tipo de daños.'}
-    ];
+    $scope.transitos = estadosService.estado_paquetes;
 
     $scope.generateCode = function(){
         $scope.shipment.code =  Math.floor(Math.random() * 900000000) + 100000000;
@@ -50,6 +46,15 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     $scope.sourceSenderChanged = function(){
         $scope.shipment.sender_id = $scope.sender.selected.id;
+        clientesFactory.get({id:$scope.sender.selected.id}).$promise.then(
+            function success(response){
+                $scope.remitente = response.cliente;
+            },
+            function error(response){
+                ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
+                console.log(response);
+            }
+        );
     };
 
 
@@ -91,6 +96,15 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     $scope.sourceReciberChanged = function(){
         $scope.shipment.reciber_id = $scope.reciber.selected.id;
+        clientesFactory.get({id:$scope.reciber.selected.id}).$promise.then(
+            function success(response){
+                $scope.destinatario = response.cliente;
+            },
+            function error(response){
+                ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
+                console.log(response);
+            }
+        );
     };
 
 
@@ -106,7 +120,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 };
 
 module.exports = function(app){
-    app.controller('paquetesCreateController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location){
-        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location);
+    app.controller('paquetesCreateController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory){
+        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory);
     })
 };

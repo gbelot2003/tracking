@@ -69,6 +69,27 @@
 
                                 </div>
                             </div>
+                            <div class="row" ng-show="remitente">
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div style="border-bottom: 1px solid black"><strong>Establecimiento</strong></div>
+                                            {{ remitente.establecimiento.name }}
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div style="border-bottom: 1px solid black">
+                                                <strong>Sección</strong>
+                                            </div>
+                                            {{ remitente.seccion.name }}
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div style="border-bottom: 1px solid black">Dirección</div>
+                                            {{ remitente.establecimiento.address }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -94,6 +115,27 @@
                                 </div>
                                 <div class="col-xs-1">
                                     <a class="btn btn-warning" ng-click="senderModal(2)"><i class="glyphicon glyphicon-plus"></i></a>
+                                </div>
+                            </div>
+                            <div class="row" ng-show="destinatario">
+                                <div class="col-xs-12">
+                                    <hr />
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div style="border-bottom: 1px solid black"><strong>Establecimiento</strong></div>
+                                            {{ destinatario.establecimiento.name }}
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div style="border-bottom: 1px solid black">
+                                                <strong>Sección</strong>
+                                            </div>
+                                            {{ destinatario.seccion.name }}
+                                        </div>
+                                        <div class="col-xs-12">
+                                            <div style="border-bottom: 1px solid black">Dirección</div>
+                                            {{ destinatario.establecimiento.address }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
