@@ -95,10 +95,6 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
         $scope.isEdit = false;
     };
 
-    $scope.SendForm = function(){
-
-    };
-
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
