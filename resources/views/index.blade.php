@@ -8,7 +8,7 @@
     <link href="css/app.css" type="text/css" rel="stylesheet"/>
 </head>
 
-<bod
+<body>
 <toast></toast>
 <nav-info></nav-info>
 <div class="container">

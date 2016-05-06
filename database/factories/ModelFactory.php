@@ -42,3 +42,26 @@ $factory->define(App\Transito::class, function (Faker\Generator $faker) {
         'details' => $faker->sentence(2),
     ];
 });
+
+$factory->define(App\Bolsa::class, function(Faker\Generator $faker){
+    return[
+        'code' => $faker->randomNumber(8),
+        'establecimiento_envio_id' => $faker->numberBetween(1, 229),
+        'establecimiento_recive_id' => $faker->numberBetween(1, 229),
+        'estado_id' => $faker->numberBetween(1,5),
+        'user_id' => 1,
+        'created_at' => $faker->dateTimeThisMonth(),
+        'updated_at' => $faker->dateTimeThisMonth(),
+    ];
+});
+
+$factory->define(App\TransitoBolsa::class, function (Faker\Generator $faker) {
+
+    return [
+        'bolsa_id' => $faker->numberBetween(1,1000),
+        'estado_id' => $faker->numberBetween(1,5),
+        'establecimiento_id' => $faker->numberBetween(1, 229),
+        'user_id' => 1,
+        'details' => $faker->sentence(2),
+    ];
+});

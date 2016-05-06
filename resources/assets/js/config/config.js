@@ -140,6 +140,24 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/bolsas/create', {
+            controller: 'bolsasCreateController',
+            template: require('raw!../features/admin/paquetesTab/bolsas/bolsas-create.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
+        .when('/bolsas:id', {
+            controller: 'bolsasEditController',
+            template: require('raw!../features/admin/paquetesTab/bolsas/bolsas-edit.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .when('/cargamentos', {
             controller: 'cargamentosController',
             template: require('raw!../features/admin/paquetesTab/cargamentos/cargamentos.html'),

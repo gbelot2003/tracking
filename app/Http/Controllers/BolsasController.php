@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Shipment;
-use App\Transito;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
+use App\Bolsa;
 
-class ShipmentsController extends Controller
+
+class BolsasController extends Controller
 {
 
     /**
@@ -20,11 +19,17 @@ class ShipmentsController extends Controller
         $this->middleware('jwt.auth');
     }
 
-
+    /**
+     * [search description]
+     * @param  [type] $date   [description]
+     * @param  [type] $search [description]
+     * @param  [type] $type   [description]
+     * @return [type]         [description]
+     */
     public function search($date = null, $search = null, $type = null)
     {
-        $query = Shipment::shipmentsearch(Auth::Id(), $date, $search, $type)->paginate(10);
-        return $query;
+        $bolsas = Bolsa::bolsasearch($date, $search, $type)->paginate(10);
+        return $bolsas;
     }
 
     /**
@@ -34,8 +39,8 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::shipmentindex(Auth::Id())->paginate(10);
-        return $shipments;
+        $bolsas = Bolsa::bolsasindex()->paginate(10);
+        return $bolsas;
     }
 
     /**
@@ -56,19 +61,7 @@ class ShipmentsController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = Auth::id();
-
-        $shipment = Shipment::create($request->all());
-
-        $transito = Transito::create([
-            'shipment_id'	=> $shipment->id,
-            'estado_id'	 	=> $request->estado_id,
-            'establecimiento_id' => Auth::user()->establecimiento_id,
-            'user_id'	 	=> Auth::id(),
-            'details'		=> ''
-        ]);
-
-        return $shipment;
+        //
     }
 
     /**
@@ -79,8 +72,7 @@ class ShipmentsController extends Controller
      */
     public function show($id)
     {
-        $shipment = Shipment::shipmentshow()->findOrFail($id);
-        return $shipment;
+        //
     }
 
     /**
@@ -103,9 +95,7 @@ class ShipmentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $shipment = Shipment::findOrFail($id);
-        $shipment->update($request->all());
-        return $shipment;
+        //
     }
 
     /**

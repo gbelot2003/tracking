@@ -43,6 +43,8 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::post('transitos/image-post/{id}', 'TransitosController@imagePost');
     Route::get('transitos/delete-image/{name}', 'TransitosController@imageRemove');
 
+    Route::get('bolsas/search/{date?}/{search?}/{type?}', 'BolsasController@search');
+
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
     Route::resource('users', 'UserController');
@@ -52,5 +54,6 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::resource('clientes', 'ClientesController');
     Route::resource('paquetes', 'ShipmentsController');
     Route::resource('transitos', 'TransitosController');
+    Route::resource('bolsas', 'BolsasController');
 
 });

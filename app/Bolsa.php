@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Bolsa extends Model {
@@ -59,8 +60,69 @@ class Bolsa extends Model {
 		return $this->belongsTo('App\User', 'user_id', 'id');
 	}
 
-	public function bolsastransito()
+	/**
+	 * [transitos description]
+	 * @return [type] [description]
+	 */
+	public function transitos()
 	{
 		return $this->hasMany('\App\TransitoBolsa');
 	}
+
+	/**
+	 * [transito description]
+	 * @return [type] [description]
+	 */
+	public function transito()
+	{
+		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->latest();
+	}
+
+
+	public function scopeBolsasindex($query)
+	{
+		 $query->with('sender.municipio.departamento', 'reciber.municipio.departamento',
+		              'user', 'transito.estados');
+		 $query->whereRaw('Date(created_at) = CURDATE()');
+		 return $query;
+	}
+
+	public function scopeBolsasearch($query, $date = null, $search = null, $type = null){
+
+		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
+		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
+
+		$query->with(
+				'sender',
+				'reciber',
+				'transito.estados',
+				'user'
+			);
+
+		$query->whereBetween('created_at', [$bdate, $edate]);
+		
+		if($search != null){
+
+			if($type == 1){
+
+				$query->where('code', 'LIKE', $search);
+
+			} elseif($type == 2){
+
+				$query->whereHas('sender', function($q)use($search){
+					return $q->where('name', 'LIKE', '%' . $search . '%');
+				});
+
+			} elseif($type == 3){
+
+				$query->WhereHas('reciber', function($q)use($search){
+					return $q->where('name', 'LIKE', '%' . $search . '%');
+				});
+			}
+
+		}
+
+		return $query;
+	}
+
 }

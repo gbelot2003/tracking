@@ -181,7 +181,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         shipmentFactory.update($scope.shipment).$promise.then(
             function success(response){
                 ngToast.success('El paquete a sido actualizado correctamente!!');
-                $location.path('/paquetes');
+                $scope.unEdit();
             },
             function error(response){
                 ngToast.danger('A ocurrido un error en el envío, revise los datos de la actualización. el servidor responde ' + response);
