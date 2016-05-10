@@ -57,7 +57,7 @@ class Bolsa extends Model {
 	 */
 	public function user()
 	{
-		return $this->belongsTo('App\User', 'user_id', 'id');
+		return $this->belongsTo('App\User');
 	}
 
 	/**
@@ -85,6 +85,12 @@ class Bolsa extends Model {
 		              'user', 'transito.estados');
 		 $query->whereRaw('Date(created_at) = CURDATE()');
 		 return $query;
+	}
+
+	public function scopeBolsasShow($query)
+	{
+		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user');
+		return $query;
 	}
 
 	public function scopeBolsasearch($query, $date = null, $search = null, $type = null){

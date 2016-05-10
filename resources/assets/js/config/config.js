@@ -149,7 +149,7 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
-        .when('/bolsas:id', {
+        .when('/bolsas/:id', {
             controller: 'bolsasEditController',
             template: require('raw!../features/admin/paquetesTab/bolsas/bolsas-edit.html'),
             resolve:{

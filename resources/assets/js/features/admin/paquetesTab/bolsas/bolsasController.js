@@ -38,14 +38,14 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
     	function error(response){
     		console.log(response)
     	});
-    }
+    };
 
     $scope.search = function(date, query, type, page){
         
         $scope.mSearch = true;
         
         if(query == ''){
-            query = null
+            query = null;
             $scope.mSearch = false;
         }
 
@@ -128,7 +128,7 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
                 }
             );
         }
-    }
+    };
 
     // Funcion today
     $scope.today = function() {

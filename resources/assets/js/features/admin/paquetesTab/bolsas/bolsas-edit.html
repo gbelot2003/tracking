@@ -1,0 +1,132 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+        <div class="row">
+            <div class="col-md-10"><h2>{{ title }}</h2></div>
+
+            <div class="col-sm-2">
+                <a class="btn btn-warning" href="#/bolsas/"><span class="glyphicon glyphicon-arrow-left"> Cancelar</span></a>
+            </div>
+
+			<div class="row">
+				<form name="editForm" class="col-md-12">
+
+					<div class="col-md-6">
+
+						<div class="panel panel-info">
+							<div class="panel-heading">Agencia Remintente</div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group">
+											<label for="agencia">Remitente</label>
+											<ui-select ng-model="sender.selected" ng-change="sourceSenderChanged()"  theme="bootstrap" style="min-width: 300px;">
+												<ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
+												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchSender($select)" refresh-delay="300" repeat="agencia in agencias">
+													<span ng-bind-html="agencia.name | highlight: $select.search"></span>
+												</ui-select-choices>
+											</ui-select>
+										</div>
+									</div>
+									<div class="col-xs-1">
+										<a class="btn btn-warning" ng-click="senderModal(1)" ng-if="isEdit"><i class="glyphicon glyphicon-plus"></i></a>
+									</div>
+								</div>
+								<div class="row" ng-show="remitente">
+									<div class="col-xs-12">
+										<hr />
+										<div class="row">
+											<div class="col-xs-6">
+												<div style="border-bottom: 1px solid black"><strong>Departamento</strong></div>
+												{{ remitente.departamento.departamento }}
+											</div>
+											<div class="col-xs-6">
+												<div style="border-bottom: 1px solid black">
+													<strong>Municipio</strong>
+												</div>
+												{{ remitente.municipio.municipio }}
+											</div>
+											<div class="col-xs-12">
+												<div style="border-bottom: 1px solid black"><strong>Dirección</strong></div>
+												{{ remitente.address }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">Agencia Destino </div>
+							<div class="panel-body">
+								<div class="row">
+									<div class="col-xs-10">
+										<div class="form-group">
+											<label for="agencia">Destino</label>
+											<ui-select ng-model="reciber.selected" ng-change="sourceReciberChanged()"  theme="bootstrap" style="min-width: 300px;">
+												<ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
+												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchReciber($select)" refresh-delay="300" repeat="agencia in agencias">
+													<span ng-bind-html="agencia.name | highlight: $select.search"></span>
+												</ui-select-choices>
+											</ui-select>
+										</div>
+									</div>
+									<div class="col-xs-1">
+										<a class="btn btn-warning" ng-click="senderModal(1)" ng-if="isEdit"><i class="glyphicon glyphicon-plus"></i></a>
+									</div>
+								</div>
+								<div class="row" ng-show="destinatario">
+									<div class="col-xs-12">
+										<hr />
+										<div class="row">
+											<div class="col-xs-6">
+												<div style="border-bottom: 1px solid black"><strong>Departamento</strong></div>
+												{{ destinatario.departamento.departamento }}
+											</div>
+											<div class="col-xs-6">
+												<div style="border-bottom: 1px solid black">
+													<strong>Municipio</strong>
+												</div>
+												{{ destinatario.municipio.municipio }}
+											</div>
+											<div class="col-xs-12">
+												<div style="border-bottom: 1px solid black"><strong>Dirección</strong></div>
+												{{ destinatario.address }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<hr />
+			<div class="row">
+				<div class="col-md-12">
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>Code</th>
+								<th>Estado</th>
+								<th>Encargado</th>
+								<th>Fecha y hora</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="transito in bolsa.transitos">
+								<td><a>{{ transito.id }}</a></td>
+								<td>{{ transito.estados.name }}</td>
+								<td>{{ transito.user.name }}</td>
+								<td>{{ transito.created_at }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	

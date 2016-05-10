@@ -72,7 +72,8 @@ class BolsasController extends Controller
      */
     public function show($id)
     {
-        //
+        $bolsa = Bolsa::bolsasShow()->findOrFail($id);
+        return $bolsa;
     }
 
     /**

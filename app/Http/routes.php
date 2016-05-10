@@ -30,6 +30,7 @@ Route::group(['prefix' => 'api/admin'], function()
 
     Route::get('agencias/search/{seach?}', 'AgenciasController@search');
     Route::get('agencias/listado-search/{name?}', 'AgenciasController@listado');
+    Route::get('agencias/single-search/{id}', 'AgenciasController@agencia');
 
     Route::get('secciones/id-search/{id}', 'SeccionesController@idSeach');
     Route::get('secciones/search/{seach?}', 'SeccionesController@search');

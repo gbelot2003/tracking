@@ -8,6 +8,11 @@ module.exports = function(app){
             },
             'create': {
                 url:'/api/admin/agencias/create'
+            },
+            'single':{
+                method: 'GET',
+                params:{id:"@id"},
+                url:'/api/admin/agencias/single-search/:id'
             }
         });
     });

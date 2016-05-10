@@ -23,6 +23,13 @@ class AgenciasController extends Controller
         $this->middleware('jwt.auth');
     }
 
+
+    public function agencia($id)
+    {
+        $agencias = Establecimiento::with('municipio', 'departamento', 'empresa')->findOrFail($id);
+        return $agencias;
+    }
+
     /**
      * @param null $search
      * @return mixed
