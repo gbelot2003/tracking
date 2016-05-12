@@ -46,6 +46,7 @@ Route::group(['prefix' => 'api/admin'], function()
 
     Route::get('bolsas/search/{date?}/{search?}/{type?}', 'BolsasController@search');
 
+
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
     Route::resource('users', 'UserController');
@@ -56,5 +57,6 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::resource('paquetes', 'ShipmentsController');
     Route::resource('transitos', 'TransitosController');
     Route::resource('bolsas', 'BolsasController');
+    Route::resource('bolsas-transitos', 'TransitosBolsasController');
 
 });

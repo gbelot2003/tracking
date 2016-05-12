@@ -7,4 +7,5 @@ module.exports = function(app){
 	require('./shipments/shipmentFactory')(app);
 	require('./shipments/transitosFactory')(app);
 	require('./bolsas/bolsasFactory')(app);
+	require('./bolsas/transitosBolsasFactory')(app);
 };
