@@ -2,6 +2,7 @@ module.exports = function(app){
 	app.service('estadosService', function(){
 		return {
 			estado_paquetes:[
+		        {id: 1, name:'En Espera', description: 'La encomienda aun no entra a la cadena del sistema.'},
 		        {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
 		        {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},
 		        {id: 4, name:'Transito, en bolsa de transporte', description: 'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'},
