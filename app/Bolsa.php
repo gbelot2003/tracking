@@ -66,7 +66,7 @@ class Bolsa extends Model {
 	 */
 	public function transitos()
 	{
-		return $this->hasMany('\App\TransitoBolsa');
+		return $this->hasMany('\App\TransitoBolsa')->orderBy('id', 'desc');
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Bolsa extends Model {
 	 */
 	public function transito()
 	{
-		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->latest();
+		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->orderBy('id', 'desc');
 	}
 
 
@@ -89,7 +89,7 @@ class Bolsa extends Model {
 
 	public function scopeBolsasShow($query)
 	{
-		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user');
+		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user')->orderBy('id', 'desc')->get();
 		return $query;
 	}
 

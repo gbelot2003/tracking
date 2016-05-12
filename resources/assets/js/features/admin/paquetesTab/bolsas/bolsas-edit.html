@@ -19,10 +19,9 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<div class="form-group">
-											<label for="agencia">Remitente</label>
-											<ui-select ng-model="sender.selected" ng-change="sourceSenderChanged()"  theme="bootstrap" style="min-width: 300px;">
+											<ui-select ng-model="sender.selected" ng-change="sourceSenderChanged()"  theme="bootstrap" style="min-width: 300px;" ng-disabled="!isEdit">
 												<ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
-												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchSender($select)" refresh-delay="300" repeat="agencia in agencias">
+												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchSender($select)" refresh-delay="300" repeat="agencia in senders">
 													<span ng-bind-html="agencia.name | highlight: $select.search"></span>
 												</ui-select-choices>
 											</ui-select>
@@ -65,10 +64,9 @@
 								<div class="row">
 									<div class="col-xs-10">
 										<div class="form-group">
-											<label for="agencia">Destino</label>
-											<ui-select ng-model="reciber.selected" ng-change="sourceReciberChanged()"  theme="bootstrap" style="min-width: 300px;">
+											<ui-select ng-model="reciber.selected" ng-change="sourceReciberChanged()"  theme="bootstrap" style="min-width: 300px;" ng-disabled="!isEdit">
 												<ui-select-match class="ui-select-match" placeholder="Agencias o Establecimiento">{{$select.selected.name}}</ui-select-match>
-												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchReciber($select)" refresh-delay="300" repeat="agencia in agencias">
+												<ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchReciber($select)" refresh-delay="300" repeat="agencia in recibers">
 													<span ng-bind-html="agencia.name | highlight: $select.search"></span>
 												</ui-select-choices>
 											</ui-select>
@@ -102,29 +100,45 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<textarea name="details" rows="5" ng-model="bolsa.details" class="form-control" ng-disabled="!isEdit"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12" style="text-align: right !important;">
+							<button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
+							<button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
+							<button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
+						</div>
+					</div>
 				</form>
 			</div>
 			<hr />
-			<div class="row">
+			<div class="row" ng-if="!isEdit">
 				<div class="col-md-12">
-					<table class="table table-bordered">
-						<thead>
+					<div class="table-responsive">
+						<div class="double-bounce1" ng-show="loader.loading3"><span us-spinner></span></div>
+						<table class="table table-bordered">
+							<thead>
 							<tr>
 								<th>Code</th>
 								<th>Estado</th>
 								<th>Encargado</th>
 								<th>Fecha y hora</th>
 							</tr>
-						</thead>
-						<tbody>
+							</thead>
+							<tbody>
 							<tr data-ng-repeat="transito in bolsa.transitos">
-								<td><a>{{ transito.id }}</a></td>
+								<td><a data-ng-click="showModal(transito.id)">{{ transito.id }}</a></td>
 								<td>{{ transito.estados.name }}</td>
 								<td>{{ transito.user.name }}</td>
 								<td>{{ transito.created_at }}</td>
 							</tr>
-						</tbody>
-					</table>
+							</tbody>
+						</table>
+					</div>
+					<button ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
 				</div>
 			</div>
 		</div>

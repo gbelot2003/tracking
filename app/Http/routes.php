@@ -46,6 +46,8 @@ Route::group(['prefix' => 'api/admin'], function()
 
     Route::get('bolsas/search/{date?}/{search?}/{type?}', 'BolsasController@search');
 
+    Route::post('bolsas-transitos/image-post/{id}', 'TransitosBolsasController@imagePost');
+    Route::get('bolsas-transitos/delete-image/{name}', 'TransitosBolsasController@imageRemove');
 
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
