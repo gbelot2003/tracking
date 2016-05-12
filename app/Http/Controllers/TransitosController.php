@@ -58,14 +58,8 @@ class TransitosController extends Controller
      */
     public function store(Request $request)
     {
-        $transito = Transito::create([
-                'shipment_id' => $request->shipment_id,
-                'estado_id' => $request->estado_id,
-                'establecimiento_id' => Auth::user()->establecimiento_id,
-                'user_id'   => Auth::Id(),
-                'details'       => $request->details,
-                'foto'  => $request->foto,
-            ]);
+        $request['user_id'] = Auth::Id();
+        $transito = Transito::create($request->all());
         return $transito;
     }
 
