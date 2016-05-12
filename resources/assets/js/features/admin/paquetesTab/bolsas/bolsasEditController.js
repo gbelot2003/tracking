@@ -78,6 +78,39 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 		);
 	};
 
+	$scope.agenciaModal = function(num){
+		var modalInstance = $uibModal.open({
+			animation: true,
+			template: require('raw!./agencias-create.html'),
+			controller: 'agenciasBolsasCreateController',
+			backdrop: 'static'
+		});
+
+		modalInstance.result.then(function(response){
+			if(num === 1){
+				$scope.bolsa.establecimiento_envio_id = response.id;
+				agenciasFactory.single({id: $scope.bolsa.establecimiento_envio_id}).$promise.then(
+					function success(response){
+						$scope.remitente = response;
+						$scope.sender.selected.name = response.name;
+						$scope.loader.loading = false;
+					}
+				);
+
+			} else {
+				$scope.bolsa.establecimiento_recive_id = response.id;
+				agenciasFactory.single({id:  $scope.bolsa.establecimiento_recive_id}).$promise.then(
+					function success(response){
+						$scope.destinatario = response;
+						$scope.reciber.selected.name = response.name;
+						$scope.loader.loading = false;
+					}
+				);
+			}
+
+		});
+	};
+
 	$scope.showModal = function(id){
 
 		var modalInstance = $uibModal.open({
@@ -134,6 +167,7 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 		bolsasFactory.update($scope.bolsa).$promise.then(
 			function success(response){
 				ngToast.success('El paquete a sido actualizado correctamente!!');
+				console.log(response);
 				$scope.unEdit();
 			},
 			function error(response){

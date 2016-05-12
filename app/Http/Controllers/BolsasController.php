@@ -96,7 +96,9 @@ class BolsasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bolsas = Bolsa::findOrFail($id);
+        $bolsas->update($request->all());
+        return $bolsas;
     }
 
     /**

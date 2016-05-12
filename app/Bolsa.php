@@ -14,7 +14,7 @@ class Bolsa extends Model {
 	 * Mass assingment protection
 	 * @var array
 	 */
-	protected $fillable = ['code', 'establecimiento_envio_id', 'establecimiento_recive_id', 'estado_id', 'user_id'];
+	protected $fillable = ['code', 'establecimiento_envio_id', 'establecimiento_recive_id', 'estado_id', 'details', 'user_id'];
 
 	/**
 	 * Una Bolsa tiene varios Shipmentes
