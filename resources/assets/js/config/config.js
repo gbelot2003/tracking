@@ -158,6 +158,15 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/bolsas-listado/:id', {
+            controller: 'bolsasListadoController',
+            template: require('raw!../features/admin/paquetesTab/bolsas/bolsas-list.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .when('/cargamentos', {
             controller: 'cargamentosController',
             template: require('raw!../features/admin/paquetesTab/cargamentos/cargamentos.html'),
