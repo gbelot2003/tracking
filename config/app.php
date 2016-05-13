@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Vinkla\Pusher\PusherServiceProvider::class,
 
     ],
 
@@ -205,6 +206,7 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'Pusher' => Vinkla\Pusher\Facades\Pusher::class,
 
     ],
 
