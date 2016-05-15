@@ -4,5 +4,6 @@ module.exports = function(app){
     require('./transitosBolsasCreateController')(app);
 	require('./bolsasEditController')(app);
 	require('./bolsasCreateController')(app);
+	require('./bolsasListadoController')(app);
     require('./bolsasController')(app);
 };
