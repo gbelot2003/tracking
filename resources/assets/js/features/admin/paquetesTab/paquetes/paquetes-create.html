@@ -173,8 +173,8 @@
                     <hr/>
                     <div class="text-right">
                         <a class="btn btn-warning" href="#/paquetes/" ng-if="formShipment.$invalid || !shipment.codes.length"><span class="glyphicon glyphicon-arrow-left"></span> Cancelar</a>
-                        <button type="submit" data-ng-click="submitShipment()" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-arrow-left"></i> Registrar y Listado</button>
-                        <button type="submit" data-ng-click="submitShipment()" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Registrar y Nuevo</button>
+                        <button type="submit" data-ng-click="submitShipment(1)" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-arrow-left"></i> Registrar y Listado</button>
+                        <button type="submit" data-ng-click="submitShipment(2)" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Registrar y Nuevo</button>
                     </div>
                 </div>
             </div>

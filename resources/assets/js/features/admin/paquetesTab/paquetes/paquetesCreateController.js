@@ -1,4 +1,4 @@
-var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory){
+var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory, $window){
 
     $scope.loader = {
         loading: false,
@@ -140,20 +140,27 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         });
     };
 
-    $scope.submitShipment = function(){
-        shipmentFactory.save($scope.shipment).$promise
-            .then(function success(response){
-                console.log(response);
-                //$location.path('/paquetes');
+    $scope.submitShipment = function(num){
+        $scope.loader.loading = true;
+        shipmentFactory.save($scope.shipment).$promise.then(
+            function success(response){
+                $scope.loader.loading = false;
+                if(num === 1){
+                    $location.path('/paquetes');
+                } else if(num === 2){
+                    $window.location.reload()
+                }
                 ngToast.success('El cliente a sido creado correctamente');
-            }, function error(){
+            }, function error(response){
+                $scope.loader.loading = false;
                 ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
-            });
+            }
+        );
     };
 };
 
 module.exports = function(app){
-    app.controller('paquetesCreateController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory){
-        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory);
-    })
+    app.controller('paquetesCreateController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory, $window){
+        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, estadosService, clientesFactory, $window);
+    });
 };

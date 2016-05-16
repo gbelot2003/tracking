@@ -112,7 +112,7 @@ class ShipmentsController extends Controller
         $request['user_id'] = Auth::id();
 
 
-        foreach($request->code as $codes){
+        foreach($request->codes as $codes){
             $request['code'] = $codes;
             $shipment = Shipment::create($request->all());
 

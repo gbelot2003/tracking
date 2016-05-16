@@ -14,16 +14,6 @@ class ShipmentsFormRequest extends Request {
 		return true;
 	}
 
-	/**
-	 * rewritte all function
-	 * @return array
-	 */
-	public function all()
-	{
-		$request = parent::all();
-		$request['code'] = ltrim($request['code'], '0');
-		return $request;
-	}
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -40,10 +30,6 @@ class ShipmentsFormRequest extends Request {
 			'estado' => 'Integer'
 		];
 
-		foreach($this->request->get('code') as $key => $val)
-		{
-			$rules['code.'.$key] = 'required|Integer|unique:shipments';
-		}
 		return $rules;
 
 	}
