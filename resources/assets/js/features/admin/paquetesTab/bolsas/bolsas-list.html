@@ -43,14 +43,14 @@
                     </thead>
                     <tbody>
                         <tr data-ng-repeat="paquete in shipments">
-                            <td><a href="#/paquetes/{{ paquete.id}}">{{ paquete.code }}</a></td>
+                            <td><a data-ng-click="showShipments(paquete.id)">{{ paquete.code }}</a></td>
                             <td>{{ paquete.senders.name }}</td>
                             <td>{{ paquete.recivers.name }}</td>
                             <td>{{ paquete.created_at }}</td>
                             <td>x</td>
                         </tr>
                         <tr data-ng-repeat="paquetes in bolsa.shipments">
-                            <td><a href="#/paquetes/{{ paquetes.id}}">{{ paquetes.code }}</a></td>
+                            <td><a data-ng-click="showShipments(paquetes.id)">{{ paquetes.code }}</a></td>
                             <td>{{ paquetes.senders.name }}</td>
                             <td>{{ paquetes.recivers.name }}</td>
                             <td>{{ paquetes.created_at }}</td>

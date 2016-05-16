@@ -1,0 +1,89 @@
+<div>
+    <div class="modal-header">
+        <h3 class="modal-title">Paquetes No. <span style="color:red">{{ title }}</span></h3>
+    </div>
+
+    <div class="modal-body" ng-if="!paquetes.length">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-if="loader.loading"><span us-spinner></span></div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="#/paquetes/{{paquete.id}}" data-ng-click="cancel()">Ir a paquete</a>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">Remitente </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        cliente: <br/>
+                                        <strong>{{ paquete.senders.name}}</strong>
+                                    </div>
+                                    <div class="col-md-4">
+                                        Establecimiento: <br/>
+                                        <strong>{{ paquete.senders.establecimiento.name }}</strong>
+                                    </div>
+                                    <div class="col-md-4">
+                                        Sección: <br/>
+                                        <strong>{{ paquete.senders.seccion.name}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Destinatario </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        cliente: <br/>
+                                        <strong>{{ paquete.recivers.name}}</strong>
+                                    </div>
+                                    <div class="col-md-4">
+                                        Establecimiento: <br/>
+                                        <strong>{{ paquete.recivers.establecimiento.name }}</strong>
+                                    </div>
+                                    <div class="col-md-4">
+                                        Sección: <br/>
+                                        <strong>{{ paquete.recivers.seccion.name}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <hr />
+                            <table class="table table-bordered">
+                                <thead>
+                                <th>No.</th>
+                                <th>Estado</th>
+                                <th>Usuario</th>
+                                <th>Ubicación de evento</th>
+                                <th>Fecha y Hora</th>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="transito in paquete.transitos">
+                                    <td>{{ transito.id }}</td>
+                                    <td>{{ transito.estados.name }}</td>
+                                    <td>{{ transito.user.name  }}</td>
+                                    <td>{{ transito.establecimiento.name }}</td>
+                                    <td>{{ transito.created_at }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+    </div>
+</div>

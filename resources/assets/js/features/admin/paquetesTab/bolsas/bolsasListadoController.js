@@ -1,4 +1,4 @@
-var listados = function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast){
+var listados = function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal){
 
     $scope.shipments = [];
     $scope.listaCodigos = [];
@@ -66,12 +66,24 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
 
     };
 
+    $scope.showShipments = function(id){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./bolsa-paquete-view.html'),
+            controller: 'bolsaPaqueteViewController',
+            backdrop: 'static',
+            resolve: {
+                id: id
+            }
+        });
+    };
+
     $scope.init();
 
 };
 
 module.exports = function(app){
-    app.controller('bolsasListadoController', function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast){
-        return listados($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast)
+    app.controller('bolsasListadoController', function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal){
+        return listados($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal)
     });
 };

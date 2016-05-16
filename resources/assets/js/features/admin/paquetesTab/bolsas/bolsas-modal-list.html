@@ -31,7 +31,7 @@
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="paquete in paquetes.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: searchable">
-                                <td>{{ paquete.code }}</td>
+                                <td><a data-ng-click="showShipments(paquete.id)">{{ paquete.code }}</a></td>
                                 <td>
                                     <div style="border-bottom: 1px solid lightslategray;">
                                         <strong>{{ paquete.senders.name}}</strong>

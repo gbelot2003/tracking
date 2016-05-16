@@ -1,4 +1,4 @@
-var lista = function($scope, $uibModalInstance, id, bolsasFactory, ngToast){
+var lista = function($scope, $uibModalInstance, id, $uibModal, bolsasFactory, ngToast){
 
     $scope.loader = {
         loading: false
@@ -45,6 +45,18 @@ var lista = function($scope, $uibModalInstance, id, bolsasFactory, ngToast){
         );
     };
 
+    $scope.showShipments = function(id){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./bolsa-paquete-view.html'),
+            controller: 'bolsaPaqueteViewController',
+            backdrop: 'static',
+            resolve: {
+                id: id
+            }
+        });
+    };
+
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
@@ -53,7 +65,7 @@ var lista = function($scope, $uibModalInstance, id, bolsasFactory, ngToast){
 };
 
 module.exports = function(app){
-    app.controller('bolsasModalListController', function($scope, $uibModalInstance, id, bolsasFactory, ngToast){
-        return lista($scope, $uibModalInstance, id, bolsasFactory, ngToast);
+    app.controller('bolsasModalListController', function($scope, $uibModalInstance, id, $uibModal, bolsasFactory, ngToast){
+        return lista($scope, $uibModalInstance, id, $uibModal, bolsasFactory, ngToast);
     })
-}
+};
