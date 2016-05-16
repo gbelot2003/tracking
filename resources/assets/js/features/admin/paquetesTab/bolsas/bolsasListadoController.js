@@ -2,6 +2,7 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
 
     $scope.shipments = [];
     $scope.listaCodigos = [];
+    $scope.showTable = false;
 
     $scope.loader = {
         loading: false,
@@ -15,6 +16,9 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
         bolsasFactory.get({id: $routeParams.id}).$promise.then(
             function success(response){
                 $scope.bolsa = response;
+                if($scope.bolsa.shipments.length >= 1){
+                    $scope.showTable = true;
+                }
                 $scope.title = response.code;
                 $scope.loader.loading = false;
                 angular.forEach($scope.bolsa.shipments, function(e){
@@ -37,6 +41,7 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
     channel.bind('event', function(data) {
         $scope.shipments.push(data.paquete);
         $scope.listaCodigos.push(data.paquete.code);
+        $scope.showTable = true;
         $scope.$apply();
     });
 

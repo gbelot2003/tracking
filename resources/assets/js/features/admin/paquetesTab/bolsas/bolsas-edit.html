@@ -2,11 +2,16 @@
     <div class="col-md-12">
         <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
         <div class="row">
-            <div class="col-md-9"><h2>{{ title }}</h2></div>
+            <div class="col-md-6"><h2>{{ title }}</h2></div>
 
-            <div class="col-sm-3">
-				<a class="btn btn-warning" href="#/bolsas/"><span class="glyphicon glyphicon-arrow-left"> Cancelar</span></a>
-                <a class="btn btn-info" href="#/bolsas-listado/{{ bolsa.id }}">Listado &nbsp;  <span class="glyphicon glyphicon-list"></span></a>
+            <div class="col-sm-6">
+				<div class="text-right">
+					<a class="btn btn-warning" href="#/bolsas/" ng-if="!isEdit"><i class="glyphicon glyphicon-arrow-left"></i> Regresar</a>
+					<button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar <i class="glyphicon glyphicon-edit"></i></button>
+					<button class="btn btn-danger" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
+					<button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
+					<a class="btn btn-info" href="#/bolsas-listado/{{ bolsa.id }}">Listado &nbsp;  <span class="glyphicon glyphicon-list"></span></a>
+				</div>
             </div>
 
 			<div class="row">
@@ -108,9 +113,7 @@
 					</div>
 					<div class="row">
 						<div class="col-sm-12" style="text-align: right !important;">
-							<button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
-							<button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
-							<button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
+
 						</div>
 					</div>
 				</form>
@@ -118,6 +121,8 @@
 			<hr />
 			<div class="row" ng-if="!isEdit">
 				<div class="col-md-12">
+                    <button ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
+                    <hr />
 					<div class="table-responsive">
 						<div class="double-bounce1" ng-show="loader.loading3"><span us-spinner></span></div>
 						<table class="table table-bordered">
@@ -139,7 +144,6 @@
 							</tbody>
 						</table>
 					</div>
-					<button ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
 				</div>
 			</div>
 		</div>
