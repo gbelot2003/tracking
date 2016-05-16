@@ -25,11 +25,45 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     $scope.title = "Crear paquete";
 
+    $scope.shipment.codes = [];
+
+    $scope.newCod = '';
+
     $scope.transitos = estadosService.estado_paquetes;
 
     $scope.generateCode = function(){
-        $scope.shipment.code =  Math.floor(Math.random() * 900000000) + 100000000;
+        $scope.newCod =  Math.floor(Math.random() * 900000000) + 100000000;
     };
+
+    $scope.removeItem = function(item){
+        $scope.shipment.codes.splice(item, 1);
+    };
+
+    $scope.$watch('newCod', function(newVal, oldVal){
+        if(oldVal === newVal) return;
+        if(newVal == '') return;
+        if(oldVal != newVal){
+            shipmentFactory.checkCode({code: newVal}).$promise.then(
+                function success(response){
+                    console.log(response);
+                    if(response.value === 2){
+                        $scope.shipment.codes.push($scope.newCod);
+                        $scope.newCod = '';
+                        angular.element('#code').trigger('focus');
+                    } else {
+                        ngToast.warning('El codigo que ingreso ya existe!!!');
+                        $scope.newCod = '';
+                        angular.element('#code').trigger('focus');
+                    }
+                },
+                function error(response){
+
+                }
+            );
+
+        }
+    });
+
 
     /**
      * Sender
@@ -109,7 +143,8 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
     $scope.submitShipment = function(){
         shipmentFactory.save($scope.shipment).$promise
             .then(function success(response){
-                $location.path('/paquetes');
+                console.log(response);
+                //$location.path('/paquetes');
                 ngToast.success('El cliente a sido creado correctamente');
             }, function error(){
                 ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bolsa;
+use App\Http\Requests\ShipmentsFormRequest;
 use App\Shipment;
 use App\Transito;
 use Illuminate\Http\Request;
@@ -22,7 +23,29 @@ class ShipmentsController extends Controller
         $this->middleware('jwt.auth');
     }
 
+    /**
+     * @param $code
+     * @return bool
+     **/
+    public function checkCode($code)
+    {
 
+        if (Shipment::where('code', '=', $code)->count() > 0) {
+            return $response = array(
+                'value' => 1
+            );
+        } else {
+            return $response = array(
+                'value' => 2
+            );
+        }
+    }
+
+    /**
+     * @param $code
+     * @param $bag
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getByCode($code, $bag)
     {
         $state = [4, 7, 8, 9, 10, 11, 12, 13];
@@ -81,24 +104,28 @@ class ShipmentsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ShipmentsFormRequest $request
+     * @return ShipmentsFormRequest
      */
-    public function store(Request $request)
+    public function store(ShipmentsFormRequest $request)
     {
         $request['user_id'] = Auth::id();
 
-        $shipment = Shipment::create($request->all());
 
-        $transito = Transito::create([
-            'shipment_id'	=> $shipment->id,
-            'estado_id'	 	=> $request->estado_id,
-            'establecimiento_id' => Auth::user()->establecimiento_id,
-            'user_id'	 	=> Auth::id(),
-            'details'		=> ''
-        ]);
+        foreach($request->code as $codes){
+            $request['code'] = $codes;
+            $shipment = Shipment::create($request->all());
 
-        return $shipment;
+            $transito = Transito::create([
+                'shipment_id'	=> $shipment->id,
+                'estado_id'	 	=> $request->estado_id,
+                'establecimiento_id' => Auth::user()->establecimiento_id,
+                'user_id'	 	=> Auth::id(),
+                'details'		=> ''
+            ]);
+        }
+
+        return $request->all();
     }
 
     /**

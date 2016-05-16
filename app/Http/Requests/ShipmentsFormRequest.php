@@ -34,13 +34,16 @@ class ShipmentsFormRequest extends Request {
 	{
 
 		$rules = [
-			'code' => 'required|Integer|unique:shipments',
 			'sender_id' => 'required|Integer',
 			'reciber_id' => 'required|Integer|different:sender_id',
 			'description' => 'String',
 			'estado' => 'Integer'
 		];
 
+		foreach($this->request->get('code') as $key => $val)
+		{
+			$rules['code.'.$key] = 'required|Integer|unique:shipments';
+		}
 		return $rules;
 
 	}

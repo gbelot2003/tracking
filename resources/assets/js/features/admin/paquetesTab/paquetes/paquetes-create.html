@@ -3,44 +3,17 @@
         <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
 
         <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <h2>{{ title }}</h2>
             </div>
 
-            <div class="col-sm-2">
-                <a class="btn btn-warning" href="#/paquetes/"><span class="glyphicon glyphicon-arrow-left"> Cancelar</span></a>
+            <div class="col-sm-3">
+
             </div>
 
         </div>
         <hr />
-        <form name="formShipment" ng-submit="submitShipment()">
-
-            <div class="row">
-
-                <div class="col-md-12">
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">No. Guia</h3>
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <!-- code Form Input -->
-                                    <div class="form-group">
-                                        <input class="select form-control" id="code" name="code" type="text" ng-model="shipment.code" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <a id="generate" class="btn btn-primary" ng-click="generateCode()">Generar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+        <form name="formShipment">
 
             <div class="row">
 
@@ -164,9 +137,44 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <hr />
-                    <div class="btn-group">
-                        <button type="submit" ng-disabled="formShipment.$invalid" class="btn btn-primary">Registrar</button>
+
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">No. Guia</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <!-- code Form Input -->
+                                    <div class="form-group">
+                                        <input class="select form-control" id="code" name="code" type="text" ng-model="newCod" ng-model-options="{debounce: 2500}">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <a id="generate" class="btn btn-primary" ng-click="generateCode()">Generar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-group">
+                        <li data-ng-repeat="cod in shipment.codes track by $index" class="list-group-item">
+                            <span class="badge"><a data-ng-click="removeItem($index)"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            {{ cod }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <hr/>
+                    <div class="text-right">
+                        <a class="btn btn-warning" href="#/paquetes/" ng-if="formShipment.$invalid || !shipment.codes.length"><span class="glyphicon glyphicon-arrow-left"></span> Cancelar</a>
+                        <button type="submit" data-ng-click="submitShipment()" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-arrow-left"></i> Registrar y Listado</button>
+                        <button type="submit" data-ng-click="submitShipment()" ng-disabled="shipment.sender_id === shipment.reciber_id" ng-if="formShipment.$valid && shipment.codes.length" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-disk"></i> Registrar y Nuevo</button>
                     </div>
                 </div>
             </div>
