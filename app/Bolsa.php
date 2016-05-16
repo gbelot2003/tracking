@@ -78,7 +78,10 @@ class Bolsa extends Model {
 		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->orderBy('id', 'desc');
 	}
 
-
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
 	public function scopeBolsasindex($query)
 	{
 		 $query->with('sender.municipio.departamento', 'reciber.municipio.departamento',
@@ -87,23 +90,37 @@ class Bolsa extends Model {
 		 return $query;
 	}
 
+	/**
+	 * @param $query
+	 * @return mixed
+	 */
 	public function scopeBolsasShow($query)
 	{
-		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user')->orderBy('id', 'desc')->get();
+		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user',
+            'shipments.senders', 'shipments.recivers')->orderBy('id', 'desc')->get();
 		return $query;
 	}
 
+	/**
+	 * @param $quer
+	 */
+	public function scopeBolsasShowList($quer){
+        return;
+	}
+
+	/**
+	 * @param $query
+	 * @param null $date
+	 * @param null $search
+	 * @param null $type
+	 * @return mixed
+	 */
 	public function scopeBolsasearch($query, $date = null, $search = null, $type = null){
 
 		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
-		$query->with(
-				'sender',
-				'reciber',
-				'transito.estados',
-				'user'
-			);
+		$query->with('sender', 'reciber', 'transito.estados', 'user');
 
 		$query->whereBetween('created_at', [$bdate, $edate]);
 		

@@ -79,6 +79,25 @@ class Shipment extends Model {
 		}]);
 	}
 
+
+	public function scopeGetByCode($query, $code)
+	{
+
+        try {
+            return $query->with(
+                'senders.establecimiento',
+                'recivers.establecimiento',
+                'senders.seccion',
+                'recivers.seccion',
+                'transito'
+            )->where('code', '=', $code);
+        } catch(\Illuminate\Database\QueryException $ex){
+            return ($ex->getMessage());
+        }
+
+	}
+
+
     /**
      * @param $query
      * @return mixed

@@ -9,6 +9,13 @@ module.exports = function(app){
                     type: "@type",
                     page:"@page"},
                 url:'/api/admin/paquetes/search/:date/:query/:type'
+            },
+            'byCode':{method:'GET',
+                params:{
+                    code:"@code",
+                    bag:"@bag"
+                },
+                url:'/api/admin/paquetes/find-by-code/:code/:bag'
             }
         });
     });

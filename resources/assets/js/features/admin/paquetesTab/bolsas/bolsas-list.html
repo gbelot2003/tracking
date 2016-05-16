@@ -1,5 +1,60 @@
 <div class="row">
     <div class="col-md-12">
-        <h2>{{ title }}</h2>
+        <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>{{ title }}</h2>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a href="#/bolsas/{{ bolsa.id }}" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp; Regresar</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <input type="number" name="code" class="form-control col-sm-10" placeholder="código de paquetes" data-ng-model="codigos">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-info col-sm-10" data-ng-click="getShipment()" ng-disabled="!codigos">Ingresar</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <hr />
+                <table class="table-bordered table">
+                    <thead>
+                        <tr>
+                            <th>Código</th>
+                            <th>Remitente</th>
+                            <th>Destinatario</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="paquete in shipments">
+                            <td><a href="#/paquetes/{{ paquete.id}}">{{ paquete.code }}</a></td>
+                            <td>{{ paquete.senders.name }}</td>
+                            <td>{{ paquete.recivers.name }}</td>
+                            <td>{{ paquete.created_at }}</td>
+                            <td>x</td>
+                        </tr>
+                        <tr data-ng-repeat="paquetes in bolsa.shipments">
+                            <td><a href="#/paquetes/{{ paquetes.id}}">{{ paquetes.code }}</a></td>
+                            <td>{{ paquetes.senders.name }}</td>
+                            <td>{{ paquetes.recivers.name }}</td>
+                            <td>{{ paquetes.created_at }}</td>
+                            <td>x</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

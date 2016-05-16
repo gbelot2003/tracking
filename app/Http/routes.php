@@ -40,6 +40,7 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::get('clientes/listado-search/{name?}', 'ClientesController@listado');
 
     Route::get('paquetes/search/{date?}/{search?}/{type?}', 'ShipmentsController@search');
+    Route::get('paquetes/find-by-code/{code}/{bag}', 'ShipmentsController@getByCode');
 
     Route::post('transitos/image-post/{id}', 'TransitosController@imagePost');
     Route::get('transitos/delete-image/{name}', 'TransitosController@imageRemove');
