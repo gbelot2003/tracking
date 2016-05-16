@@ -1,4 +1,4 @@
-var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
+var bolsas = function($scope, bolsasFactory,  ngToast,  $uibModal, $filter,  $timeout){
     $scope.loader = {
         loading: false,
         loading2: false
@@ -33,10 +33,9 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
             $scope.maxSize = response.per_page;
             $scope.loader.loading = false;
             $scope.loader.loading2 = false;    
-    		console.log(response);
-    	}, 
+    	},
     	function error(response){
-    		console.log(response)
+            ngToast.danger("Hay un problema de conexión con el servidor");
     	});
     };
 
@@ -50,15 +49,17 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
         }
 
         $scope.loader.loading2 = true;
-        bolsasFactory.query({date: date, query: query, type: type, page: page}).$promise
-            .then(function success(response){
+        bolsasFactory.query({date: date, query: query, type: type, page: page}).$promise.then(
+            function success(response){
                 $scope.bolsas = response.data;
                 $scope.totalItems = response.total;
                 $scope.currentPage = response.current_page;
                 $scope.maxSize = response.per_page;
                 $scope.loader.loading2 = false;
-                console.log(response);
-            });
+            }, function error(response){
+                ngToast.danger("Hay un problema de conexión de busqueda con el servidor");
+            }
+        );
     };
 
 
@@ -122,12 +123,23 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
                     $scope.maxSize = response.per_page;
                     $scope.loader.loading = false;
                     $scope.loader.loading2 = false;
-                    console.log(response);
                 }, function error(response){
-
+                    ngToast.danger("Hay un problema de conexión con el servidor");
                 }
             );
         }
+    };
+
+    $scope.showList = function(id){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./bolsas-modal-list.html'),
+            controller: 'bolsasModalListController',
+            backdrop: 'static',
+            resolve: {
+                id: id
+            }
+        });
     };
 
     // Funcion today
@@ -144,7 +156,7 @@ var bolsas = function($scope, bolsasFactory, $filter,  $timeout){
 };
 
 module.exports = function(app){
-    app.controller('bolsasController', function($scope, bolsasFactory, $filter,  $timeout){
-        return bolsas($scope, bolsasFactory, $filter,  $timeout);
+    app.controller('bolsasController', function($scope, bolsasFactory,  ngToast,  $uibModal, $filter,  $timeout){
+        return bolsas($scope, bolsasFactory,  ngToast,  $uibModal, $filter,  $timeout);
     });
 };

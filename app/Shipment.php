@@ -87,9 +87,9 @@ class Shipment extends Model {
             return $query->with(
                 'senders.establecimiento',
                 'recivers.establecimiento',
-                'senders.seccion',
-                'recivers.seccion',
-                'transito'
+                'senders.establecimiento',
+                'recivers.establecimiento',
+                'transito.establecimiento'
             )->where('code', '=', $code);
         } catch(\Illuminate\Database\QueryException $ex){
             return ($ex->getMessage());

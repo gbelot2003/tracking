@@ -79,7 +79,7 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 	};
 
 	$scope.agenciaModal = function(num){
-		var modalInstance = $uibModal.open({
+			var modalInstance = $uibModal.open({
 			animation: true,
 			template: require('raw!./agencias-create.html'),
 			controller: 'agenciasBolsasCreateController',

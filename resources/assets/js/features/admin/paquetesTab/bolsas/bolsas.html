@@ -65,6 +65,8 @@
                             <th>Usuario</th>
                             <th>Estado</th>
                             <th>Fecha</th>
+                            <th>Ver Paq.</th>
+                            <th>Listado</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +77,8 @@
                             <td>{{ bolsa.user.name }}</td>
                             <td>{{ bolsa.transito.estados.name }}</td>
                             <td>{{ bolsa.created_at }}</td>
+                            <td><a data-ng-click="showList(bolsa.id)"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                            <td><a href="#/bolsas-listado/{{ bolsa.id }}"><i class="glyphicon glyphicon-list"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
