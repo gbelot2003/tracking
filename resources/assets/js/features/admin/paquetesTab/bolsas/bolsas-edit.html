@@ -10,7 +10,8 @@
 					<button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar <i class="glyphicon glyphicon-edit"></i></button>
 					<button class="btn btn-danger" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
 					<button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
-					<a class="btn btn-info" href="#/bolsas-listado/{{ bolsa.id }}">Listado &nbsp;  <span class="glyphicon glyphicon-list"></span></a>
+                    <a class="btn btn-info" data-ng-click="showList(bolsa.id)" ng-if="!isEdit">Ver paquetes &nbsp;  <span class="glyphicon glyphicon-eye-open"></span></a>
+                    <a class="btn btn-info" href="#/bolsas-listado/{{ bolsa.id }}" ng-if="!isEdit">Listado &nbsp;  <span class="glyphicon glyphicon-list"></span></a>
 				</div>
             </div>
 

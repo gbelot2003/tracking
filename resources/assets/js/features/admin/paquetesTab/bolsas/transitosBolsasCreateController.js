@@ -17,7 +17,7 @@ var transito = function($scope, $uibModalInstance, id, codeId, transitosBolsasFa
 
     $scope.agencia = {};
 
-    $scope.title = "Edición de Trancitos";
+    $scope.title = "Nuevo Trancitos";
 
     $scope.isEdit = false;
 

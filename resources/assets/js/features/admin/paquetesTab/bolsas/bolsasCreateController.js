@@ -1,4 +1,4 @@
-var bolsas = function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast){
+var bolsas = function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast, $location){
     $scope.title = "Crear Bolsa de Paquetes";
     $scope.sender = {};
     $scope.reciber = {};
@@ -133,12 +133,17 @@ var bolsas = function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, 
         });
     };
 
-    $scope.ok = function(){
+    $scope.ok = function(num){
         bolsasFactory.save($scope.bolsa).$promise.then(
             function success(response){
                 ngToast.success('El paquete a sido actualizado correctamente!!');
+                if(num == 1){
+                    $location.path('/bolsas');
+                } else if(num == 2) {
+                    $location.path('/bolsas-listado/' + response.id);
+                    console.log(response);
 
-                console.log(response);
+                }
             },
             function error(response){
                 ngToast.danger('A ocurrido un error en el envío, revise los datos de la actualización. el servidor responde ' + response);
@@ -148,7 +153,7 @@ var bolsas = function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, 
 };
 
 module.exports = function(app){
-  app.controller('bolsasCreateController', function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast){
-      return bolsas($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast);
+  app.controller('bolsasCreateController', function($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast, $location){
+      return bolsas($scope, agenciasFactory, $http, $uibModal, bolsasFactory, ngToast, $location);
   });
 };

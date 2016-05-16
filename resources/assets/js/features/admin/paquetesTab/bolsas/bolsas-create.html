@@ -7,7 +7,8 @@
             <div class="col-md-6">
                 <div class="text-right">
                     <a class="btn btn-warning" href="#/bolsas/" ng-if="editForm.$invalid"><i class="glyphicon glyphicon-arrow-left"></i> &nbsp; Regresar</a>
-                    <button class="btn btn-success" ng-click="ok()" ng-disabled="editForm.$invalid"><i class="glyphicon glyphicon-plus"></i>&nbsp; Crear</button>
+                    <button class="btn btn-success" ng-click="ok(1)" ng-if="!editForm.$invalid"><i class="glyphicon glyphicon-plus"></i>&nbsp; Crear y regresar</button>
+                    <button class="btn btn-success" ng-click="ok(2)" ng-if="!editForm.$invalid"><i class="glyphicon glyphicon-plus"></i>&nbsp; Crear y agregar paquetes</button>
                 </div>
             </div>
 

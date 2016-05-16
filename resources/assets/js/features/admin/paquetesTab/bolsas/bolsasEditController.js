@@ -163,6 +163,18 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 		});
 	};
 
+	$scope.showList = function(id){
+		var modalInstance = $uibModal.open({
+			animation: true,
+			template: require('raw!./bolsas-modal-list.html'),
+			controller: 'bolsasModalListController',
+			backdrop: 'static',
+			resolve: {
+				id: id
+			}
+		});
+	};
+
 	$scope.ok = function(){
 		bolsasFactory.update($scope.bolsa).$promise.then(
 			function success(response){
