@@ -144,13 +144,12 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         $scope.loader.loading = true;
         shipmentFactory.save($scope.shipment).$promise.then(
             function success(response){
-                $scope.loader.loading = false;
                 if(num === 1){
                     $location.path('/paquetes');
                 } else if(num === 2){
-                    $window.location.reload()
+                    $window.location.reload();
+                    ngToast.success('El cliente a sido creado correctamente');
                 }
-                ngToast.success('El cliente a sido creado correctamente');
             }, function error(response){
                 $scope.loader.loading = false;
                 ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
