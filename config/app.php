@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'Honduras/Tegucigalpa',
+    'timezone' => 'America/Tegucigalpa',
 
     /*
     |--------------------------------------------------------------------------
