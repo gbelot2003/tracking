@@ -26,8 +26,7 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
                 });
             },
             function error(response){
-
-                console.log(response)
+                ngToast.danger('Hay problemas de comunicación con el servidor');
             }
         )
     };
@@ -46,7 +45,6 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
     });
 
     $scope.getShipment = function(){
-        console.log($scope.listaCodigos);
         var isNoInBag = _.contains($scope.listaCodigos, $scope.codigos);
         if(isNoInBag === false){
             shipmentFactory.byCode({code: $scope.codigos, bag: $routeParams.id}).$promise.then(

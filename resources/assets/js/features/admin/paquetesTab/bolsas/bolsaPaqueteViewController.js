@@ -12,7 +12,6 @@ var view = function($scope, $uibModalInstance, id, shipmentFactory, ngToast){
                 $scope.paquete = response;
                 $scope.title = response.code;
                 $scope.loader.loading = false;
-                console.log($scope.paquete)
             },
             function error(response){
                 ngToast.danger("Ha ocurrido un problema con esta con sulta en el servidor");

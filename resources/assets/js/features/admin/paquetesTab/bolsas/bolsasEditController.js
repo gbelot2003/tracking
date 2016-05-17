@@ -20,7 +20,6 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 				$scope.title = $scope.bolsa.code;
 				$scope.sender.selected = response.sender;
 				$scope.reciber.selected = response.reciber;
-				console.log(response);
 
 				agenciasFactory.single({id: $scope.bolsa.establecimiento_envio_id}).$promise.then(
 					function success(response){
@@ -40,8 +39,7 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 			},
 			function error(response){
 				ngToast.danger('A ocurrido un error, el servidor responde ' + response.statusText);
-				console.log(response);		
-			}                                    
+			}
 		);
 
 	};
@@ -179,7 +177,6 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 		bolsasFactory.update($scope.bolsa).$promise.then(
 			function success(response){
 				ngToast.success('El paquete a sido actualizado correctamente!!');
-				console.log(response);
 				$scope.unEdit();
 			},
 			function error(response){
