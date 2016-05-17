@@ -1,6 +1,6 @@
 var transito = function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
 
-    $scope.etransitos = estadosService.estado_paquetes;
+    $scope.etransitos = estadosService.estados_bolsas;
 
     $scope.loader = {
         loading: false,
