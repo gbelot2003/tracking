@@ -5,7 +5,6 @@ module.exports = function(app){
 		        {id: 1, name:'En Espera', description: 'La encomienda aun no entra a la cadena del sistema.'},
 		        {id: 2, name:'Transito, regular', description: 'La encomienda a ingresado a la linea de entragas y esta en manos de la empresa de mensajeria.'},
 		        {id: 3, name:'Transito, Centro de acopio', description: 'La encomienda a ingresado a el centro de acopio descrito.'},
-		        {id: 4, name:'Transito, en bolsa de transporte', description: 'El paquete a ingresado a una bolsa para su traslado a destinos posteriores o su entrega.'},
 		        {id: 5, name:'Transito, presenta daños ligeros', description: 'La encomienda presenta algun tipo de daños.'},
 		        {id: 6, name:'Transito, presenta daños graves', description:'La encomienda presenta daños severos, sellos violentados, ruturas, contenido roto etc.'},
 		        {id: 8, name:'Extraviado', description:'La encomienda se a extraviado en algun punto en la linea de transito'},
