@@ -25,6 +25,12 @@ module.exports = function(app){
                     code:"@code"
                 },
                 url:'/api/admin/paquetes/check-by-code/:code'
+            },
+            'checkStateByCode':{method:'GET',
+                params:{
+                    code:"@code"
+                },
+                url:'/api/admin/paquetes/check-state-by-code/:code'
             }
         });
     });

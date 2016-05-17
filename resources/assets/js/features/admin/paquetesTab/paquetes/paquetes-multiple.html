@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-10">
+        <h2>Manejo de multiples paquetes</h2>
+    </div>
+    <div class="col-md-2">
+        <div class="text-right">
+            <a class="btn btn-warning" href="#/paquetes/"><i class="glyphicon glyphicon-arrow-left"></i> Cancelar</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">No. Guia</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- code Form Input -->
+                        <div class="form-group">
+                            <input class="select form-control" id="code" name="code" type="number" ng-model="newCod" ng-model-options="{debounce: 2500}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <ul class="list-group">
+            <li data-ng-repeat="cod in shipments.codes track by $index" class="list-group-item">
+                <span class="badge"><a data-ng-click="removeItem($index)"><i class="glyphicon glyphicon-trash"></i></a></span>
+                {{ cod }}
+            </li>
+        </ul>
+        <hr/>
+    </div>
+</div>
+<form name="editForm">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <textarea name="details" class="form-control" data-ng-model="shipments.details"></textarea>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Departamento</label>
+                <select ng-model="shipments.estado_id"
+                        ng-options="d.id as d.name for d in estados"
+                        allow-single-deselect="false" style="width: 100%; height: 4rem"
+                        disable-search="true"
+                        required>
+                </select>
+                <hr/>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-right">
+                <button class="btn btn-primary" data-ng-click="sendShipments()" ng-disabled="editForm.$invalid || !shipments.codes.length"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Guardar</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <pre>{{ shipments | json }}</pre>
+    </div>
+</div>

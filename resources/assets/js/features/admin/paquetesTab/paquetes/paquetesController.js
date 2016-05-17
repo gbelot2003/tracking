@@ -44,7 +44,6 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
                 $scope.maxSize = response.per_page;
                 $scope.loader.loading = false;
                 $scope.loader.loading2 = false;
-                console.log(response);
             }, function error(response){
                     console.log(response);     
             });

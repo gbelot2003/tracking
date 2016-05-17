@@ -131,6 +131,15 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+        .when('/paquetes-multiple', {
+            controller: 'paquetesMultipleController',
+            template: require('raw!../features/admin/paquetesTab/paquetes/paquetes-multiple.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin', 'centro-acopio', 'currier']);
+                }
+            }
+        })
         .when('/bolsas', {
             controller: 'bolsasController',
             template: require('raw!../features/admin/paquetesTab/bolsas/bolsas.html'),

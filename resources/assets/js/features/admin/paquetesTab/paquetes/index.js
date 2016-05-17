@@ -7,4 +7,5 @@ module.exports = function(app){
     require('./paquetesEditController')(app);
     require('./paquetesSeccionesController')(app);
     require('./paquetesAgenciasController')(app);
+    require('./paquetesMultipleController')(app);
 };

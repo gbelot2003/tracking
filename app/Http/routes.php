@@ -42,6 +42,8 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::get('paquetes/search/{date?}/{search?}/{type?}', 'ShipmentsController@search');
     Route::get('paquetes/find-by-code/{code}/{bag}', 'ShipmentsController@getByCode');
     Route::get('paquetes/check-by-code/{code}', 'ShipmentsController@checkCode');
+    Route::get('paquetes/check-state-by-code/{code}', 'ShipmentsController@checkStateByCode');
+    Route::post('paquetes/updateBulks', 'ShipmentsController@updateBulks');
 
     Route::post('transitos/image-post/{id}', 'TransitosController@imagePost');
     Route::get('transitos/delete-image/{name}', 'TransitosController@imageRemove');
