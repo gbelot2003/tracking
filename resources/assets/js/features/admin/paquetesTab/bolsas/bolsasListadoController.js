@@ -1,4 +1,4 @@
-var listados = function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal){
+var listados = function($scope, bolsasFactory, shipmentFactory, transitosFactory, $location, $routeParams, ngToast, $uibModal){
 
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
@@ -28,6 +28,8 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
                 angular.forEach($scope.bolsa.shipments, function(e){
                     $scope.listaCodigos.push(e.code);
                 });
+                console.log($scope.listaCodigos);
+
             },
             function error(response){
                 ngToast.danger('Hay problemas de comunicación con el servidor');
@@ -46,6 +48,21 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
         $scope.listaCodigos.push(data.paquete.code);
         $scope.showTable = true;
         $scope.$apply();
+    });
+
+    channel.bind('event2', function(data) {
+        console.log(data);
+        if(data.type == 1){
+            $scope.shipments.splice(data.index, 1);
+            $scope.listaCodigos.splice(data.code, 1);
+            $scope.$apply();
+        } else if(data.type == 2){
+            $scope.bolsa.shipments.splice(data.index, 1);
+            $scope.listaCodigos.splice(data.code, 1);
+            $scope.$apply();
+            console.log($scope.listaCodigos);
+        }
+
     });
 
     $scope.$watch('newCod', function(newVal, oldVal){
@@ -80,6 +97,18 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
         }
     });
 
+    $scope.removeItem = function(index, id, type){
+
+        shipmentFactory.removeByCode({code: id, bag:$routeParams.id ,index: index, type: type}).$promise.then(
+            function success(response){
+                ngToast.success("Se ha retirado el paquete de la bolsa y se a creado un nuevo transito para la misma");
+                console.log(response);
+            },
+            function error(response){
+                ngToast.danger('Hay algun problema de <strong>comunicación</strong>, el servidor, el paquete no fue retirado!!');
+            }
+        )
+    };
 
     $scope.showShipments = function(id){
         var modalInstance = $uibModal.open({
@@ -98,7 +127,7 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
 };
 
 module.exports = function(app){
-    app.controller('bolsasListadoController', function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal){
-        return listados($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal)
+    app.controller('bolsasListadoController', function($scope, bolsasFactory, shipmentFactory, transitosFactory, $location, $routeParams, ngToast, $uibModal){
+        return listados($scope, bolsasFactory, shipmentFactory, transitosFactory, $location, $routeParams, ngToast, $uibModal)
     });
 };

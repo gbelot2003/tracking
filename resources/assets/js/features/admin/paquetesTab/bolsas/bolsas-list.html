@@ -39,19 +39,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr data-ng-repeat="paquete in shipments">
+                        <tr data-ng-repeat="paquete in shipments track by $index">
                             <td><a data-ng-click="showShipments(paquete.id)">{{ paquete.code }}</a></td>
                             <td>{{ paquete.senders.name }}</td>
                             <td>{{ paquete.recivers.name }}</td>
                             <td>{{ paquete.created_at }}</td>
-                            <td>x</td>
+                            <td><a data-ng-click="removeItem($index, paquete.code, 1)"><i class="glyphicon glyphicon-trash"></i></a></td>
                         </tr>
-                        <tr data-ng-repeat="paquetes in bolsa.shipments">
+                        <tr data-ng-repeat="paquetes in bolsa.shipments track by $index">
                             <td><a data-ng-click="showShipments(paquetes.id)">{{ paquetes.code }}</a></td>
                             <td>{{ paquetes.senders.name }}</td>
                             <td>{{ paquetes.recivers.name }}</td>
                             <td>{{ paquetes.created_at }}</td>
-                            <td>x</td>
+                            <td><a data-ng-click="removeItem($index, paquetes.code, 2)"><i class="glyphicon glyphicon-trash"></i></a></td>
                         </tr>
                     </tbody>
                 </table>

@@ -41,6 +41,7 @@ Route::group(['prefix' => 'api/admin'], function()
 
     Route::get('paquetes/search/{date?}/{search?}/{type?}', 'ShipmentsController@search');
     Route::get('paquetes/find-by-code/{code}/{bag}', 'ShipmentsController@getByCode');
+    Route::get('paquetes/remove-by-code/{code}/{bag}/{index}/{type}', 'ShipmentsController@removeByCode');
     Route::get('paquetes/check-by-code/{code}', 'ShipmentsController@checkCode');
     Route::get('paquetes/check-state-by-code/{code}', 'ShipmentsController@checkStateByCode');
     Route::post('paquetes/updateBulks', 'ShipmentsController@updateBulks');

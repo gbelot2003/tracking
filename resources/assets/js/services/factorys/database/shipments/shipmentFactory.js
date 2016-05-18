@@ -19,6 +19,15 @@ module.exports = function(app){
                 },
                 url:'/api/admin/paquetes/find-by-code/:code/:bag'
             },
+            'removeByCode':{method: 'GET',
+                params:{
+                    code:'@code',
+                    bag:'@bag',
+                    index:'@index',
+                    type:'@type'
+                },
+                url:'/api/admin/paquetes/remove-by-code/:code/:bag/:index/:type'
+            },
 
             'checkCode':{method:'GET',
                 params:{

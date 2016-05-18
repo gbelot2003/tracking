@@ -117,6 +117,28 @@ class ShipmentsController extends Controller
         }
     }
 
+    public function removeByCode($code, $bag, $index, $type)
+    {
+        $paquete = Shipment::getByCode($code)->first();
+        $paquete->bolsas()->detach($bag);
+
+        $transito = Transito::create([
+            'shipment_id'	=> $paquete->id,
+            'estado_id'	 	=> 2,
+            'establecimiento_id' => Auth::user()->establecimiento_id,
+            'user_id'	 	=> Auth::id(),
+            'details'		=> 'Paquete removido en bolsa Codigo '
+        ]);
+
+        $this->pusher->trigger('channel-' . $bag, 'event2', [
+            'type' => $type,
+            'index' => $index,
+            'code'  => $code
+        ]);
+
+        return $paquete;
+    }
+
     /**
      * Performs Search opetation
      *
