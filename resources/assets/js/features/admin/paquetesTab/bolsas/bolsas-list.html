@@ -18,13 +18,10 @@
             <div class="col-md-12">
                 <hr/>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-12">
                 <div class="form-group">
-                    <input type="number" name="code" class="form-control col-sm-10" placeholder="código de paquetes" data-ng-model="codigos">
+                    <input type="number" name="code" class="form-control col-sm-10" placeholder="código de paquetes" data-ng-model="newCod" ng-model-options="{debounce: 1500}">
                 </div>
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-info col-sm-10" data-ng-click="getShipment()" ng-disabled="!codigos">Ingresar</button>
             </div>
         </div>
         <div class="row" ng-if="showTable == true">

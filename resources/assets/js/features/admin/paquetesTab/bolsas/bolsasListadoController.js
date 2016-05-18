@@ -1,5 +1,9 @@
 var listados = function($scope, bolsasFactory, shipmentFactory, $location, $routeParams, ngToast, $uibModal){
 
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
     $scope.shipments = [];
     $scope.listaCodigos = [];
     $scope.showTable = false;
@@ -44,25 +48,38 @@ var listados = function($scope, bolsasFactory, shipmentFactory, $location, $rout
         $scope.$apply();
     });
 
-    $scope.getShipment = function(){
-        var isNoInBag = _.contains($scope.listaCodigos, $scope.codigos);
-        if(isNoInBag === false){
-            shipmentFactory.byCode({code: $scope.codigos, bag: $routeParams.id}).$promise.then(
-                function success(response){
-                    $scope.codigos = '';
-                },
-                function error(response){
-                    ngToast.danger('Se a probocado un error, la respuesta del server es ' + response.status + " - " + response.statusText + '<br/>'
-                                    + "Posiblemente el numero de paquete esta mal ingresado, reviselo de nuevo");
-                    $scope.codigos = '';
-                }
-            );
-        } else {
-            ngToast.warning('Ese paquete ya a sido registrado en la bolsa');
+    $scope.$watch('newCod', function(newVal, oldVal){
+        if(oldVal === newVal) return;
+        if(newVal == '') return;
+        if(oldVal != newVal){
+            var isNumber = isNumeric(newVal);
+            if(isNumber === false){
+                ngToast.warning('Debes ingresar valores numericos solamente!!!');
+                $scope.newCod = '';
+                angular.element('#code').trigger('focus');
+                return;
+            }
+            var isNoInBag = _.contains($scope.listaCodigos, $scope.newCod);
+            if(isNoInBag === false){
+                shipmentFactory.byCode({code: $scope.newCod, bag: $routeParams.id}).$promise.then(
+                    function success(response){
+                        $scope.newCod = '';
+                    },
+                    function error(response){
+                        if(response.status === 404){
+                            ngToast.danger('Este <strong>CÓDIGO</strong> es invalido, el estado del paquete es :<br/><strong>' + response.data + '</strong>');
+                        } else {
+                            ngToast.danger('Hay algun problema de <strong>comunicación</strong>, el servidor!!');
+                        }
+                        $scope.newCod = '';
+                    }
+                );
+            } else {
+                ngToast.warning('Ese paquete ya a sido registrado en la bolsa');
+            }
         }
+    });
 
-
-    };
 
     $scope.showShipments = function(id){
         var modalInstance = $uibModal.open({

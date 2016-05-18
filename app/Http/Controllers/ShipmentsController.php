@@ -99,7 +99,8 @@ class ShipmentsController extends Controller
         $bolsa = Bolsa::findOrFail($bag)->first();
 
         if(in_array($paquete->transito->estado_id, $state)){
-            return response()->json("EL Paquete existe en otra bolsa o se ha entregado", 500);
+            $estado = $paquete->transito->estados->name;
+            return response()->json($estado, 404);
         } else {
             $this->pusher->trigger('channel-' . $bag, 'event', ['paquete' => $paquete]);
 
