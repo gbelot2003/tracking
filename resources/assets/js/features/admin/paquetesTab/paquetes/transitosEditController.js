@@ -1,6 +1,12 @@
-var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
+var transitos = function($scope, $uibModalInstance, id, shipId, state, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
 
     $scope.etransitos = estadosService.estado_paquetes;
+
+    $scope.isBlocked = false;
+
+    if(state == 2){
+        $scope.isBlocked = true;
+    }
 
     $scope.loader = {
         loading: false,
@@ -23,6 +29,14 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
             transitosFactory.get({id: id}).$promise.then(
             function success(request){
                 $scope.transitos = request;
+
+                var block  = estadosService.setBlock($scope.transitos.estado_id);
+
+                if(block === true){
+                    $scope.isBlocked = true;
+                }
+
+                console.log($scope.isBlocked);
 
                 if($scope.transitos.foto){
                     $scope.transitos.fotoPath = '/images/transitos/fotos/' + $scope.transitos.foto;
@@ -115,7 +129,7 @@ var transitos = function($scope, $uibModalInstance, id, shipId, transitosFactory
 };
 
 module.exports = function(app){
-    app.controller('transitosEditController', function($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http, estadosService){
-        return transitos($scope, $uibModalInstance, id,  shipId, transitosFactory, Upload, $timeout, ngToast, $http, estadosService);
+    app.controller('transitosEditController', function($scope, $uibModalInstance, id,  shipId, state, transitosFactory, Upload, $timeout, ngToast, $http, estadosService){
+        return transitos($scope, $uibModalInstance, id,  shipId, state, transitosFactory, Upload, $timeout, ngToast, $http, estadosService);
     })
 };

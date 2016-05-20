@@ -9,7 +9,7 @@
             </div>
 
             <div class="col-sm-2">
-                <a class="btn btn-warning" href="#/paquetes/"><span class="glyphicon glyphicon-arrow-left"> Cancelar</span></a>
+                <a class="btn btn-warning" href="#/paquetes/"><i class="glyphicon glyphicon-arrow-left"></i>&nbsp;Cancelar</a>
             </div>
 
         </div>
@@ -129,9 +129,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-12" style="text-align: right !important;">
-                    <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
-                    <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
-                    <button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
+                    <button ng-show="isBlocked == false" class="btn btn-success" ng-click="edit()" ng-if="!isEdit"><i class="glyphicon glyphicon-pencil"></i>&nbsp;Editar</button>
+                    <button class="btn btn-warning" type="button" ng-click="unEdit()" ng-if="isEdit"><i class="glyphicon glyphicon-arrow-left"></i> &nbsp;Cancel Edición</button>
+                    <span ng-show="isBlocked == false"><button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit"><i class="glyphicon glyphicon-floppy-saved"></i> &nbsp;Actualizar</button> </span>
                 </div>
             </div>
         </form>
@@ -150,8 +150,15 @@
                         <th>Fecha y Hora</th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="transito in shipment.transitos">
-                            <td><a ng-click="editModal(transito.id)">{{ transito.id }}</a></td>
+                        <tr>
+                            <td><a ng-click="editModal(shipment.transito.id, 1)">{{ shipment.transito.id }}</a></td>
+                            <td>{{ shipment.transito.estados.name }}</td>
+                            <td>{{ shipment.transito.user.name  }}</td>
+                            <td>{{ shipment.transito.establecimiento.name }}</td>
+                            <td>{{ shipment.transito.created_at }}</td>
+                        </tr>
+                        <tr ng-repeat="transito in shipment.transitos" ng-if="!$first">
+                            <td><a ng-click="editModal(transito.id, 2)">{{ transito.id }}</a></td>
                             <td>{{ transito.estados.name }}</td>
                             <td>{{ transito.user.name  }}</td>
                             <td>{{ transito.establecimiento.name }}</td>
@@ -161,7 +168,7 @@
                     </table>
                 </div>
             </div>
-            <button ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
+            <button ng-show="isBlocked == false" ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
         </div>
     </div>
 </div>

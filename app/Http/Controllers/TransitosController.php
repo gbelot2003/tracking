@@ -72,7 +72,7 @@ class TransitosController extends Controller
      */
     public function show($id)
     {
-        $transito = Transito::findOrFail($id);
+        $transito = Transito::with('estados')->findOrFail($id);
         return $transito;
     }
 

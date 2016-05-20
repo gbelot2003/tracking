@@ -12,12 +12,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Registro de Estado</label>
-
+                                <input type="text" disabled data-ng-show="!isEdit" class="form-control" data-ng-model="transitos.estados.name">
                                 <select class="form-control"
                                         ng-model="transitos.estado_id"
-                                        ng-options="e.id as e.name for e in etransitos"
+                                        ng-options="e.id as e.name for e in etransitos | filter: myFilter"
                                         required
-                                        ng-disabled="!isEdit"
+                                        data-ng-show="isEdit"
                                 ></select>
                             </div>
                         </div>
@@ -81,9 +81,9 @@
     </form>
 
     <div class="modal-footer">
-        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
-        <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
-        <button class="btn btn-success" ng-click="ok()" ng-disabled="formEdit.$invalid || !untilUpload" ng-if="isEdit">Actualizar</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()" data-ng-disabled="!untilUpload"><i class="glyphicon glyphicon-arrow-left"></i> &nbsp; Cancel</button>
+        <button class="btn btn-success" ng-click="edit()" ng-show="isBlocked === false" ng-if="!isEdit"><i class="glyphicon glyphicon-pencil"></i> &nbsp; Editar</button>
+        <button class="btn btn-success" ng-click="ok()" ng-disabled="formEdit.$invalid || !untilUpload" ng-if="isEdit"><i class="glyphicon glyphicon-floppy-saved"></i> &nbsp; Actualizar</button>
     </div>
 </div>
 

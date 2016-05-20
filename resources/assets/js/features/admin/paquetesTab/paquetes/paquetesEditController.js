@@ -1,10 +1,12 @@
-var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory){
+var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory, estadosService){
 
     $scope.sender = {};
     $scope.reciber = {};
     $scope.sender.selected = '';
     $scope.reciber.selected = '';
     $scope.isEdit = false;
+    $scope.isBlocked = false;
+
 
     // Inicio de loaders
     $scope.loader = {
@@ -22,8 +24,12 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
                 $scope.title = response.code;
                 $scope.sender.selected = response.senders;
                 $scope.reciber.selected = response.recivers;
-                console.log(response.senders);
-    		
+
+                var test  = estadosService.setBlock($scope.shipment.transito.estado_id);
+                if(test === true){
+                    $scope.isBlocked = true;
+                }
+
                 clientesFactory.get({id:$scope.shipment.sender_id}).$promise.then(
                     function success(response){
                         $scope.remitente = response.cliente;
@@ -151,7 +157,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 
     };
 
-    $scope.editModal = function(id){
+    $scope.editModal = function(id, state){
 
         var modalInstance = $uibModal.open({
             animation: true,
@@ -160,7 +166,8 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
             backdrop: 'static',
                 resolve: {
                     id: id,
-                    shipId : $scope.shipment.code
+                    shipId : $scope.shipment.code,
+                    state: state
                 }
         });
 
@@ -202,7 +209,7 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
 };
 
 module.exports = function(app){
-    app.controller('paquetesEditController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory){
-        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory);
+    app.controller('paquetesEditController', function($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory, estadosService){
+        return paquetes($scope, $http, ngToast,  $uibModal, shipmentFactory, $location, $routeParams, clientesFactory, estadosService);
     })
 };

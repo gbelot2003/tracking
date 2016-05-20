@@ -169,7 +169,8 @@ class Shipment extends Model {
 	public function scopeShipmentshow($query){
 		$query->with('senders.establecimiento', 'recivers.establecimiento',
 						'senders.seccion', 'recivers.seccion', 'transitos.estados',
-						'transitos.user', 'transitos.establecimiento'
+						'transitos.user', 'transitos.establecimiento', 'transito.estados',
+						'transito.user', 'transito.establecimiento'
 				);
 	}
 
