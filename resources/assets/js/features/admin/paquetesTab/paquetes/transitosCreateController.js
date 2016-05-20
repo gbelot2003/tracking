@@ -1,6 +1,15 @@
-var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
-	
-    $scope.etransitos = estadosService.estado_paquetes;
+var transitos = function($scope, $uibModalInstance, shipId, id, type, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
+
+    $scope.isClosing = false;
+
+    if(type === 2){
+        $scope.etransitos = estadosService.estado_paquetes;
+        $scope.title = "Creación de trancito";
+    } else if(type === 1){
+        $scope.etransitos = estadosService.estado_cierres;
+        $scope.title = "Transitos de cierre";
+        $scope.isClosing = true;
+    }
 
     $scope.loader = {
         loading: false,
@@ -17,8 +26,6 @@ var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory
 
     $scope.agencia = {};
 
-    $scope.title = "Edición de Trancitos";
-
     $scope.isEdit = false;
 
     $scope.loader.loading = false;
@@ -29,7 +36,7 @@ var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory
 
     $scope.changeUpState = function(){
         $scope.untilUpload = false;
-    }
+    };
 
     $scope.unEdit = function (){
         $scope.isEdit = false;
@@ -79,7 +86,7 @@ var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory
                 ngToast.warning('Ha ocurrido un error');
             }
         );
-    }
+    };
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
@@ -102,7 +109,7 @@ var transitos = function($scope, $uibModalInstance, shipId, id, transitosFactory
 
 
 module.exports = function(app){
-    app.controller('transitosCreateController', function($scope, $uibModalInstance,  shipId,  id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
-        return transitos($scope, $uibModalInstance, shipId,  id, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService);
+    app.controller('transitosCreateController', function($scope, $uibModalInstance,  shipId,  id, type, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService){
+        return transitos($scope, $uibModalInstance, shipId,  id, type, transitosFactory,  Upload, $timeout, ngToast, $http, estadosService);
     })
 };

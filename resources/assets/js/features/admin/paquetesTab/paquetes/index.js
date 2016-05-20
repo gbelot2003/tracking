@@ -2,6 +2,7 @@ module.exports = function(app){
     require('./transitosCreateController')(app);
     require('./transitosEditController')(app);
     require('./senderCreateController')(app);
+    require('./transitoWarningController')(app);
     require('./paquetesController')(app);
     require('./paquetesCreateController')(app);
     require('./paquetesEditController')(app);

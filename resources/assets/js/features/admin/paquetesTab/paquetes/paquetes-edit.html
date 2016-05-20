@@ -139,7 +139,9 @@
             <div class="col-md-12">
                 <div class="table-responsive">
                 <div class="double-bounce1" ng-show="loader.loading3"><span us-spinner></span></div>
-
+                    <hr />
+                    <button ng-show="isBlocked == false" ng-click="warningModal(1)" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> Transito de cierre</button>
+                    <button ng-show="isBlocked == false" ng-click="createModal(2)" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Transito</button>
                     <hr />
                     <table class="table table-bordered">
                         <thead>
@@ -168,7 +170,6 @@
                     </table>
                 </div>
             </div>
-            <button ng-show="isBlocked == false" ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
         </div>
     </div>
 </div>

@@ -1,6 +1,7 @@
 <div>
     <div class="modal-header">
-        <h3 class="modal-title">{{ title }}</h3>
+        <h3 class="modal-title" ng-if="isClosing == false">{{ title }}</h3>
+        <h3 class="modal-title" style="color: red" ng-if="isClosing == true">{{ title }}</h3>
     </div>
     <form name="formEdit" novalidate>
     <div class="modal-body">
@@ -81,7 +82,7 @@
     </form>
 
     <div class="modal-footer">
-        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
         <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
         <button class="btn btn-success" ng-click="ok()" ng-disabled="!formEdit.$valid || !untilUpload" ng-if="isEdit">Actualizar</button>
     </div>

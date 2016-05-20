@@ -57,11 +57,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
     		});
     };
 
-    /**
-     * Sender
-     * @param $select
-     * @returns {*}
-     */
     $scope.searchSenders = function($select){
         return $http.get('/api/admin/clientes/listado-search/' + $select.search).then(function(response){
             $scope.senders = response.data;
@@ -82,11 +77,6 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         );
     };
 
-    /**
-     * Reciber
-     * @param $select
-     * @returns {*}
-     */
     $scope.searchReciber = function($select){
         return $http.get('/api/admin/clientes/listado-search/' + $select.search).then(function(response){
             $scope.recibers = response.data;
@@ -131,7 +121,22 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
         });
     };
 
-    $scope.createModal = function(){
+    $scope.warningModal = function(){
+        var modalInstance = $uibModal.open({
+            animation: true,
+            template: require('raw!./transito-warning.html'),
+            controller: 'transitoWarningController',
+        });
+
+        modalInstance.result.then(function(num){
+            if(num == 1){
+                $scope.createModal(1);
+            }
+        });
+    };
+
+    $scope.createModal = function(type){
+
         var modalInstance = $uibModal.open({
             animation: true,
             template: require('raw!./transitos-create.html'),
@@ -139,7 +144,8 @@ var paquetes = function($scope, $http, ngToast,  $uibModal, shipmentFactory, $lo
             backdrop: 'static',
             resolve:{
                 shipId: $scope.shipment.code,
-                id: $scope.shipment.id
+                id: $scope.shipment.id,
+                type: type
             }
         });
 
