@@ -7,6 +7,7 @@ var listados = function($scope, bolsasFactory, shipmentFactory, transitosFactory
     $scope.shipments = [];
     $scope.listaCodigos = [];
     $scope.showTable = false;
+    $scope.showEntryForm = true;
 
     $scope.loader = {
         loading: false,
@@ -20,6 +21,12 @@ var listados = function($scope, bolsasFactory, shipmentFactory, transitosFactory
         bolsasFactory.get({id: $routeParams.id}).$promise.then(
             function success(response){
                 $scope.bolsa = response;
+                //console.log($scope.bolsa.transito.estado_id);
+
+                if($scope.bolsa.transito.estado_id != 1){
+                    $scope.showEntryForm = false;
+                }
+
                 if($scope.bolsa.shipments.length >= 1){
                     $scope.showTable = true;
                 }
