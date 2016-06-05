@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-group">
-                    <input type="number" name="code" class="form-control col-sm-10" placeholder="código de paquetes" data-ng-model="newCod" ng-model-options="{debounce: 1500}" ng-if="showEntryForm">
+                    <input type="number" name="code" class="form-control col-sm-10" placeholder="código de paquetes" data-ng-model="newCod" ng-model-options="{debounce: 1500}" data-ng-show="showEntryForm">
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
                             <th>Remitente</th>
                             <th>Destinatario</th>
                             <th>Fecha</th>
-                            <th>Acciones</th>
+                            <th ng-if="showEntryForm">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +51,7 @@
                             <td>{{ paquetes.senders.name }}</td>
                             <td>{{ paquetes.recivers.name }}</td>
                             <td>{{ paquetes.created_at }}</td>
-                            <td><a data-ng-click="removeItem($index, paquetes.code, 2)"><i class="glyphicon glyphicon-trash"></i></a></td>
+                            <td ng-if="showEntryForm"><a data-ng-click="removeItem($index, paquetes.code, 2)"><i class="glyphicon glyphicon-trash"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
