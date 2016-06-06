@@ -44,17 +44,7 @@ class BolsasController extends Controller
         $bolsas = Bolsa::bolsasindex()->paginate(10);
         return $bolsas;
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -85,17 +75,6 @@ class BolsasController extends Controller
     {
         $bolsa = Bolsa::bolsasShow()->findOrFail($id);
         return $bolsa;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
