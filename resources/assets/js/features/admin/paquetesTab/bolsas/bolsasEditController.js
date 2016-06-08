@@ -11,12 +11,19 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 		loading3: false
 	};
 
+	$scope.haveShipments = false;
+
 	$scope.loader.loading = true;
 
 	$scope.init = function(){
 		bolsasFactory.get({id:$routeParams.id}).$promise.then(
 			function success(response){
 				$scope.bolsa = response;
+				if($scope.bolsa.shipments.length >= 1){
+					$scope.haveShipments = true;
+				}
+				console.log($scope.haveShipments);
+
 				$scope.title = $scope.bolsa.code;
 				$scope.sender.selected = response.sender;
 				$scope.reciber.selected = response.reciber;
