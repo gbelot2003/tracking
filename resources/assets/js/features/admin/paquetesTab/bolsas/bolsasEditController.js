@@ -1,10 +1,10 @@
-bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory){
+bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory, estadosService){
 
 	$scope.sender = {};
 	$scope.reciber = {};
 	$scope.sender.selected = '';
 	$scope.reciber.selected = '';
-
+	$scope.isBlocked = false;
 	$scope.loader = {
 		loading: false,
 		loading2: false,
@@ -20,6 +20,12 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 				$scope.title = $scope.bolsa.code;
 				$scope.sender.selected = response.sender;
 				$scope.reciber.selected = response.reciber;
+
+
+				var test  = estadosService.setBlock($scope.bolsa.transito.estado_id);
+				if(test === true){
+					$scope.isBlocked = true;
+				}
 
 				agenciasFactory.single({id: $scope.bolsa.establecimiento_envio_id}).$promise.then(
 					function success(response){
@@ -109,7 +115,7 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 		});
 	};
 
-	$scope.showModal = function(id){
+	$scope.showModal = function(id, state){
 
 		var modalInstance = $uibModal.open({
 			animation: true,
@@ -118,7 +124,8 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 			backdrop: 'static',
 			resolve: {
 				id: id,
-				codeId : $scope.bolsa.code
+				codeId : $scope.bolsa.code,
+				state: state
 			}
 		});
 
@@ -214,7 +221,7 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 };
 
 module.exports = function(app){
-    app.controller('bolsasEditController', function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory){
-        return bolsas($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory);
+    app.controller('bolsasEditController', function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory, estadosService){
+        return bolsas($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory, estadosService);
     })
 };

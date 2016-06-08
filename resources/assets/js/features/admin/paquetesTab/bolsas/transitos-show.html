@@ -12,12 +12,11 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Registro de Estado</label>
-
                                 <select class="form-control"
                                         ng-model="transitos.estado_id"
                                         ng-options="e.id as e.name for e in etransitos"
-                                        required
                                         ng-disabled="!isEdit"
+                                        required
                                 ></select>
                             </div>
                         </div>
@@ -81,9 +80,9 @@
     </form>
 
     <div class="modal-footer">
-        <button class="btn btn-warning" type="button" ng-click="cancel()" ng-if="!isEdit">Cancel</button>
-        <button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar</button>
-        <button class="btn btn-success" ng-click="ok()" ng-disabled="formEdit.$invalid || !untilUpload" ng-if="isEdit">Actualizar</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-success" ng-click="edit()" ng-show="isBlocked === false" ng-if="!isEdit">Editar</button>
+        <button class="btn btn-success" ng-click="ok()" ng-disabled="myForm.$invalid || !untilUpload" ng-if="isEdit">Actualizar</button>
     </div>
 </div>
 

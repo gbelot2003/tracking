@@ -26,7 +26,7 @@ var transito = function($scope, $uibModalInstance, id, codeId, type, transitosBo
         $scope.isClosing = true;
     }
 
-    $scope.isEdit = false;
+    $scope.isEdit = true;
 
     $scope.loader.loading = false;
 

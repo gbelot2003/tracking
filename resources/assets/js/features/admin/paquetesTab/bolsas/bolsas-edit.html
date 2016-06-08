@@ -7,7 +7,7 @@
             <div class="col-sm-6">
 				<div class="text-right">
 					<a class="btn btn-warning" href="#/bolsas/" ng-if="!isEdit"><i class="glyphicon glyphicon-arrow-left"></i> Regresar</a>
-					<button class="btn btn-success" ng-click="edit()" ng-if="!isEdit">Editar <i class="glyphicon glyphicon-edit"></i></button>
+					<button class="btn btn-success" ng-click="edit()" ng-show="isBlocked === false" ng-if="!isEdit">Editar <i class="glyphicon glyphicon-edit"></i></button>
 					<button class="btn btn-danger" type="button" ng-click="unEdit()" ng-if="isEdit">Cancel Edición</button>
 					<button class="btn btn-success" ng-click="ok()" ng-disabled="formShipment.$invalid" ng-if="isEdit">Actualizar</button>
                     <a class="btn btn-info" data-ng-click="showList(bolsa.id)" ng-if="!isEdit">Ver paquetes &nbsp;  <span class="glyphicon glyphicon-eye-open"></span></a>
@@ -122,9 +122,11 @@
 			<hr />
 			<div class="row" ng-if="!isEdit">
 				<div class="col-md-12">
-                    <button ng-click="warningModal()" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> Transito de cierre</button>
-                    <button ng-click="createModal(2)" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Transito</button>
-                    <hr />
+					<div ng-show="isBlocked === false">
+						<button ng-click="warningModal()" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> Transito de cierre</button>
+						<button ng-click="createModal(2)" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Transito</button>
+					</div>
+					<hr />
 					<div class="table-responsive">
 						<div class="double-bounce1" ng-show="loader.loading3"><span us-spinner></span></div>
 						<table class="table table-bordered">
@@ -137,12 +139,19 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr data-ng-repeat="transito in bolsa.transitos">
-								<td><a data-ng-click="showModal(transito.id)">{{ transito.id }}</a></td>
+							<tr>
+								<td><a ng-click="showModal(bolsa.transito.id, 1)">{{ bolsa.transito.id }}</a></td>
+								<td>{{ bolsa.transito.estados.name }}</td>
+								<td>{{ bolsa.transito.user.name  }}</td>
+								<td>{{ bolsa.transito.created_at }}</td>
+							</tr>
+							<tr ng-repeat="transito in bolsa.transitos" ng-if="!$first">
+								<td><a data-ng-click="showModal(transito.id, 2)">{{ transito.id }}</a></td>
 								<td>{{ transito.estados.name }}</td>
 								<td>{{ transito.user.name }}</td>
 								<td>{{ transito.created_at }}</td>
 							</tr>
+
 							</tbody>
 						</table>
 					</div>

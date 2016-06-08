@@ -97,7 +97,7 @@ class Bolsa extends Model {
 	public function scopeBolsasShow($query)
 	{
 		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento', 'transitos.estados','transitos.user', 'user',
-            'shipments.senders.establecimiento', 'shipments.recivers.establecimiento', 'transito')->orderBy('id', 'desc')->get();
+            'shipments.senders.establecimiento', 'shipments.recivers.establecimiento', 'transito', 'transito.estados', 'transito.user')->orderBy('id', 'desc')->get();
 		return $query;
 	}
 

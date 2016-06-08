@@ -1,10 +1,17 @@
-var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
+var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService, state){
+
+    $scope.etransitos = estadosService.estado_paquetes;
+
+    $scope.isBlocked = false;
+
+    if(state == 2){
+        $scope.isBlocked = true;
+    }
 
     $scope.loader = {
         loading: false,
         loading2: false
     };
-
 
     $scope.showFoto = false;
 
@@ -14,14 +21,19 @@ var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasF
 
     $scope.loader.loading = true;
 
-    $scope.etransitos = estadosService.estado_paquetes;
-
     $scope.title = "Edición de Trancitos";
 
     $scope.init = function(){
         transitosBolsasFactory.get({id: id}).$promise.then(
             function success(request){
                 $scope.transitos = request;
+                console.log($scope.transitos);
+                var block  = estadosService.setBlock($scope.transitos.estado_id);
+                if(block === true){
+                    $scope.isBlocked = true;
+                }
+
+                console.log($scope.isBlocked);
 
                 if($scope.transitos.foto){
                     $scope.transitos.fotoPath = '/images/transitos/fotos/' + $scope.transitos.foto;
@@ -115,7 +127,7 @@ var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasF
 };
 
 module.exports = function(app){
-    app.controller('transitosBolsasShowController', function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
-        transitos($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService);
+    app.controller('transitosBolsasShowController', function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService, state){
+        transitos($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService, state);
     });
 };
