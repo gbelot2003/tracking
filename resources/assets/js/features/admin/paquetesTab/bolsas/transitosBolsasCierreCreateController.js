@@ -1,4 +1,6 @@
-var transito = function($scope, $uibModalInstance, id, codeId, type, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
+var transito = function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
+
+    $scope.etransitos = estadosService.estados_general;
 
     $scope.loader = {
         loading: false,
@@ -15,16 +17,7 @@ var transito = function($scope, $uibModalInstance, id, codeId, type, transitosBo
 
     $scope.agencia = {};
 
-    $scope.isClosing = false;
-
-    if(type === 2){
-        $scope.etransitos = estadosService.estados_bolsas;
-        $scope.title = "Creación de trancito";
-    } else if(type === 1){
-        $scope.etransitos = estadosService.estado_cierres;
-        $scope.title = "Transitos de cierre";
-        $scope.isClosing = true;
-    }
+    $scope.title = "Nuevo Trancitos";
 
     $scope.isEdit = false;
 
@@ -123,7 +116,7 @@ var transito = function($scope, $uibModalInstance, id, codeId, type, transitosBo
 };
 
 module.exports = function(app){
-    app.controller('transitosBolsasCreateController', function($scope, $uibModalInstance, id, codeId, type, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
-        return transito($scope, $uibModalInstance, id, codeId, type, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService);
+    app.controller('transitosBolsasCreateController', function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService){
+        return transito($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService);
     });
 };

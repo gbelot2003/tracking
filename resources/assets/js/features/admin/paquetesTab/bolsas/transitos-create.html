@@ -2,7 +2,7 @@
     <div class="modal-header">
         <h3 class="modal-title">{{ title }}</h3>
     </div>
-    <form name="myForm" novalidate>
+    <form name="myForm" role="form" novalidate>
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-12">
@@ -29,9 +29,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="double-bounce1" ng-show="loader.loading2"><span us-spinner></span></div>
-
                             <div class="form-group">
                                 <label>Foto</label>
 

@@ -1,4 +1,4 @@
-bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory){
+bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $routeParams, agenciasFactory){
 
 	$scope.sender = {};
 	$scope.reciber = {};
@@ -135,7 +135,7 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 		});
 	};
 
-	$scope.createModal = function(id){
+	$scope.createModal = function(type){
 
 		var modalInstance = $uibModal.open({
 			animation: true,
@@ -144,7 +144,8 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 			backdrop: 'static',
 			resolve: {
 				id: $scope.bolsa.id,
-				codeId : $scope.bolsa.code
+				codeId : $scope.bolsa.code,
+				type: type
 			}
 		});
 
@@ -160,6 +161,21 @@ bolsas = function($scope, $http, ngToast,  $uibModal, bolsasFactory, $location, 
 			}
 		});
 	};
+
+	$scope.warningModal = function(){
+		var modalInstance = $uibModal.open({
+			animation: true,
+			template: require('raw!./transito-warning.html'),
+			controller: 'transitoBolsaWarningController',
+		});
+
+		modalInstance.result.then(function(num){
+			if(num == 1){
+				$scope.createModal(1);
+			}
+		});
+	};
+
 
 	$scope.showList = function(id){
 		var modalInstance = $uibModal.open({

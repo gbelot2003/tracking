@@ -1,8 +1,8 @@
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox";
-@import "awesome-bootstrap-checkbox";
 @import "selectize.default";
 @import "bootstrap-flatly.min";
+@import "awesome-bootstrap-checkbox";
 @import "ngToast.min";
 @import "ngToast-animations.min";
 
@@ -57,4 +57,13 @@
 */
 .thumb {
        width:100%;
+}
+
+/**
+* Form fixes
+*/
+
+.check-update {
+  padding-left: 5rem;
+  border: 1px dashed;
 }

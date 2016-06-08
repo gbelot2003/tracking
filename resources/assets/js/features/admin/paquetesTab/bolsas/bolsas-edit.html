@@ -122,7 +122,8 @@
 			<hr />
 			<div class="row" ng-if="!isEdit">
 				<div class="col-md-12">
-                    <button ng-click="createModal()" class="btn"><i class="glyphicon glyphicon-plus"></i> Transito</button>
+                    <button ng-click="warningModal()" class="btn btn-danger"><i class="glyphicon glyphicon-plus"></i> Transito de cierre</button>
+                    <button ng-click="createModal(2)" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Transito</button>
                     <hr />
 					<div class="table-responsive">
 						<div class="double-bounce1" ng-show="loader.loading3"><span us-spinner></span></div>
