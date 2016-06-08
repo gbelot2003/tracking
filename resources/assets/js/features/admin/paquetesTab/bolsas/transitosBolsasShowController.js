@@ -1,6 +1,6 @@
 var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasFactory, Upload, $timeout, ngToast, $http, estadosService, state){
 
-    $scope.etransitos = estadosService.estado_paquetes;
+    $scope.etransitos = estadosService.estados_bolsas;
 
     $scope.isBlocked = false;
 
@@ -27,18 +27,14 @@ var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasF
         transitosBolsasFactory.get({id: id}).$promise.then(
             function success(request){
                 $scope.transitos = request;
-                console.log($scope.transitos);
                 var block  = estadosService.setBlock($scope.transitos.estado_id);
                 if(block === true){
                     $scope.isBlocked = true;
                 }
 
-                console.log($scope.isBlocked);
-
                 if($scope.transitos.foto){
                     $scope.transitos.fotoPath = '/images/transitos/fotos/' + $scope.transitos.foto;
                     $scope.showFoto = true;
-                    console.log(request)
                 }
 
                 $scope.loader.loading = false;

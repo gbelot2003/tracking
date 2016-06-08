@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Bolsa;
+use App\Shipment;
 use App\Transito;
 use App\TransitoBolsa;
 use Illuminate\Http\Request;
@@ -60,16 +62,6 @@ class TransitosBolsasController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -78,8 +70,37 @@ class TransitosBolsasController extends Controller
     public function store(Request $request)
     {
         $request['user_id'] = Auth::Id();
+
+        $estado = $request['estado_id'];
+        $cierres = [8, 9, 11, 12, 13];
+
         $transito = TransitoBolsa::create($request->all());
-        return $transito;
+
+        if(in_array($estado, $cierres)){
+
+            if ($estado == 8 || $estado == 9 || $estado == 13){
+                $pstado = $estado;
+            } else if($estado == 11 || $estado == 12){
+                $pstado = 3;
+            }
+
+            $bolsa = Bolsa::findOrFail($request['bolsa_id']);
+            $paquetes = $bolsa->shipments;
+            foreach($paquetes as $paquete){
+                Transito::create([
+                    'shipment_id' => $paquete->id,
+                    'estado_id' => $pstado,
+                    'establecimiento_id' => Auth::user()->establecimiento_id,
+                    'user_id'   => $request['user_id'],
+                    'details'   => 'Registro agregado desde transto de bolsa No.' . $bolsa->code . " - " . $request['details']
+                ]);
+            }
+            return $transito;
+        } else {
+            $transito = TransitoBolsa::create($request->all());
+            return $transito;
+        }
+
     }
 
     /**
@@ -92,17 +113,6 @@ class TransitosBolsasController extends Controller
     {
         $transitos = TransitoBolsa::findOrFail($id);
         return $transitos;
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**

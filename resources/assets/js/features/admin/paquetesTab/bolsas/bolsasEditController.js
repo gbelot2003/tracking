@@ -22,7 +22,6 @@ bolsas = function($scope, $http, ngToast, $uibModal, bolsasFactory, $location, $
 				if($scope.bolsa.shipments.length >= 1){
 					$scope.haveShipments = true;
 				}
-				console.log($scope.haveShipments);
 
 				$scope.title = $scope.bolsa.code;
 				$scope.sender.selected = response.sender;
