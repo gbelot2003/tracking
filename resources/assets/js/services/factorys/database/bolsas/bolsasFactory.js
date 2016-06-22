@@ -9,6 +9,12 @@ module.exports = function(app){
                     type: "@type",
                     page:"@page"},
                 url:'/api/admin/bolsas/search/:date/:query/:type'
+            },
+            'byCode': {method: 'GET',
+                params:{
+                    code: "@code"
+                },
+                url:'/api/admin/bolsas/find-by-code/:code'
             }
         });
     });

@@ -22,6 +22,22 @@ class BolsasController extends Controller
     }
 
     /**
+     * [findByCode description]
+     * @param  [type] $code [description]
+     * @return [type]       [description]
+     */
+    public function findByCode($code)
+    {
+        $bolsa = Bolsa::bolsasShow()->where('code', '=', $code)->first();
+        if(empty($bolsa)){
+            return response()->json([
+                'message' => 'Record not found',
+            ], 404);
+        }
+        return $bolsa;
+    }
+
+    /**
      * [search description]
      * @param  [type] $date   [description]
      * @param  [type] $search [description]

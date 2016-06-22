@@ -1,13 +1,51 @@
 <div class="row">
-    <div class="col-md-12">
-        <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
-        <div class="row">
-            <div class="col-md-10">
-                <h2>{{ title }}</h2>
-            </div>
-            <div class="col-sm-2">
-                <a class="btn btn-warning" href="#/cargamentos/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
-            </div>
-        </div>
+  <div class="col-md-12">
+    <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+    <div class="row">
+      <div class="col-md-8">
+        <h2>{{ title }}</h2>
+      </div>
+      <div class="col-sm-4 text-rigth">
+          <a class="btn btn-warning" href="#/cargamentos/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
+	  <a href="#" class="btn btn-danger"ng-click="limpiar()" >Limpiar</a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group has-feedback">
+          <div class="input-group">
+            <span class="input-group-addon">Buscar</span>
+            <input type="number" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status" ng-model-options="{debounce: 1500}">
+          </div>
+          <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+          <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" ng-if="!showTable">
+        <div class="responsive-table">
+          <table class="table table-hovered table-bordered">
+            <thead>
+              <tr>
+                <th>Código</th>
+                <th>Remitente</th>
+                <th>Destinatario</th>
+                <th>Usuario</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+		<tr data-ng-repeate="bolsa in bolsas" >
+		   <td>{{ bolsa.code }}</td>
+		   <td>{{ bolsa.sender.name }}</td>
+		   <td>{{ bolsa.reciber.name }}</td>
+		   <td>{{ bolsa.user.name }}</td>
+		</tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

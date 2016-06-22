@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Bolsa;
-use App\Shipment;
-use App\Transito;
+use App\Events\TransitosBolsasStore;
 use App\TransitoBolsa;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\Auth;
 
 class TransitosBolsasController extends Controller
 {
@@ -42,12 +39,6 @@ class TransitosBolsasController extends Controller
             return $foto;
         }
 
-        if ($request->hasFile('firma')) {
-            $firma = $id . "-" .$request['foto']->getClientOriginalname() . "--" . date('Y-m-d') . '.' . $request['foto']->getClientOriginalExtension();
-            $request['firma']->move(base_path() . '/public/images/transitos/firmas/', $firma);
-            return $firma;
-        }
-
         return response(402);
     }
 
@@ -64,43 +55,11 @@ class TransitosBolsasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
      */
     public function store(Request $request)
     {
-        $request['user_id'] = Auth::Id();
-
-        $estado = $request['estado_id'];
-        $cierres = [8, 9, 11, 12, 13];
-
-        $transito = TransitoBolsa::create($request->all());
-
-        if(in_array($estado, $cierres)){
-
-            if ($estado == 8 || $estado == 9 || $estado == 13){
-                $pstado = $estado;
-            } else if($estado == 11 || $estado == 12){
-                $pstado = 3;
-            }
-
-            $bolsa = Bolsa::findOrFail($request['bolsa_id']);
-            $paquetes = $bolsa->shipments;
-            foreach($paquetes as $paquete){
-                Transito::create([
-                    'shipment_id' => $paquete->id,
-                    'estado_id' => $pstado,
-                    'establecimiento_id' => Auth::user()->establecimiento_id,
-                    'user_id'   => $request['user_id'],
-                    'details'   => 'Registro agregado desde transto de bolsa No.' . $bolsa->code . " - " . $request['details']
-                ]);
-            }
-            return $transito;
-        } else {
-            $transito = TransitoBolsa::create($request->all());
-            return $transito;
-        }
-
+        event(new TransitosBolsasStore($request));
     }
 
     /**

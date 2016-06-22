@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\BagStatusSave' => [
-            'App\Listeners\BagStatusSave\packageStatusSave',
+        'App\Events\TransitosBolsasStore' => [
+            'App\Listeners\TransitosBolsasStore\TransitosStore'
         ],
     ];
 
