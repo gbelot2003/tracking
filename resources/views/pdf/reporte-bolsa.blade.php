@@ -79,6 +79,7 @@
 				<td>Remitente</td>
 				<td>Destinatario</td>
 				<td>Fecha</td>
+				<td>Descripción</td>
 			</tr>
 			@foreach($bolsas->shipments as $shipments)
 				<tr style="page-break-inside: avoid;">
@@ -97,6 +98,7 @@
 					</td>
 
 					<td><b>{{ $shipments->created_at }}</b></td>
+					<td>{{ $shipments->description }}</td>
 				</tr>
 			@endforeach
 		</table>
