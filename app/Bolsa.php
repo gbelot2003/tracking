@@ -22,7 +22,7 @@ class Bolsa extends Model {
 	 */
 	public function shipments()
 	{
-		return $this->belongsToMany('App\Shipment');
+		return $this->belongsToMany('App\Shipment', 'bolsa_shipment');
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Bolsa extends Model {
 	 */
 	public function transitos()
 	{
-		return $this->hasMany('\App\TransitoBolsa')->orderBy('id', 'desc');
+		return $this->hasMany('\App\TransitoBolsa')->orderBy('id', 'desc')->latest();
 	}
 
 	/**
@@ -75,7 +75,7 @@ class Bolsa extends Model {
 	 */
 	public function transito()
 	{
-		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->orderBy('id', 'desc');
+		return $this->hasOne('App\TransitoBolsa')->orderBy('id', 'desc')->latest();
 	}
 
 	/**
@@ -94,18 +94,34 @@ class Bolsa extends Model {
 	 * @param $query
 	 * @return mixed
 	 */
-	public function scopeBolsasShow($query)
+	public function scopeBolsasShowByCode($query)
 	{
 		$query->with('sender.municipio.departamento', 'reciber.municipio.departamento')->orderBy('id', 'desc')->get();
 		return $query;
 	}
 
 	/**
+	 * @param $query
+	 * @return mixed
+	 */
+	public function scopeBolsasShow($query)
+	{
+		$query->with(
+			'sender.municipio.departamento', 'reciber.municipio.departamento',
+			'transitos.estados','transitos.user', 'user',
+			'shipments.senders.establecimiento', 'shipments.recivers.establecimiento',
+			'transito', 'transito.estados', 'transito.user'
+		)->orderBy('id', 'desc');
+
+		return $query;
+	}
+
+	/**
 	 * @param $quer
 	 */
-	public function scopeBolsasShowList($quer){
+/*	public function scopeBolsasShowList($quer){
         return;
-	}
+	}*/
 
 	/**
 	 * @param $query

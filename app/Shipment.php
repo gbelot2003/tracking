@@ -124,12 +124,12 @@ class Shipment extends Model {
 		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
 		$query->with(
-		      		'senders.establecimiento',
-				'recivers.establecimiento',
-				'senders.seccion',
-				'recivers.seccion',
-				'transito.estados'
-			);
+			'senders.establecimiento',
+			'recivers.establecimiento',
+			'senders.seccion',
+			'recivers.seccion',
+			'transito.estados'
+		);
 
 		if($search != null){
 
@@ -163,11 +163,11 @@ class Shipment extends Model {
 	*
 	**/
 	public function scopeShipmentshow($query){
-		$query->with('senders.establecimiento', 'recivers.establecimiento',
-						'senders.seccion', 'recivers.seccion', 'transitos.estados',
-						'transitos.user', 'transitos.establecimiento', 'transito.estados',
-						'transito.user', 'transito.establecimiento'
-				);
+		$query->with(
+			'senders.establecimiento', 'recivers.establecimiento', 'senders.seccion',
+			'recivers.seccion', 'transitos.estados', 'transitos.user', 'transitos.establecimiento',
+			'transito.estados', 'transito.user', 'transito.establecimiento'
+		);
 	}
 
 	/**
@@ -185,7 +185,7 @@ class Shipment extends Model {
 	 */
 	public function bolsas()
 	{
-		return $this->belongsToMany('App\Bolsa');
+		return $this->belongsToMany('App\Bolsa', 'bolsa_shipment');
 	}
 
 	/**

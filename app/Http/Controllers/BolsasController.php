@@ -22,7 +22,7 @@ class BolsasController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt.auth');
+        //$this->middleware('jwt.auth');
     }
 
     /**
@@ -45,7 +45,7 @@ class BolsasController extends Controller
      */
     public function findByCode($code)
     {
-        $bolsa = Bolsa::bolsasShow()->where('code', '=', $code)->first();
+        $bolsa = Bolsa::bolsasShowByCode()->where('code', '=', $code)->first();
         if(empty($bolsa)){
             return response()->json([
                 'message' => 'Record not found',
