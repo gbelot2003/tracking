@@ -15,6 +15,9 @@ module.exports = function(app){
                     code: "@code"
                 },
                 url:'/api/admin/bolsas/find-by-code/:code'
+            },
+            'cargamentos': {method: 'POST',
+                url:'/api/admin/bolsas/cargamentos'
             }
         });
     });

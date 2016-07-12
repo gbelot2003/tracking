@@ -13,13 +13,26 @@ use Illuminate\Support\Facades\Auth;
 class BolsasController extends Controller
 {
 
+
     /**
      * SeccionesController constructor.
+     *
+     * TODO: agregar permisos respectivos de middlewares
      */
     public function __construct()
     {
         $this->middleware('jwt.auth');
     }
+
+    /**
+     * @param Requests $requests
+     */
+    public function cargamentos(Requests $requests)
+    {
+        // Esta funcion procesa varias bolsas al mismo tiempo
+        return $requests;
+    }
+
 
     /**
      * [findByCode description]
