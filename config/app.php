@@ -158,7 +158,8 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Vinkla\Pusher\PusherServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class
+        Orangehill\Iseed\IseedServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -207,6 +208,7 @@ return [
         'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
