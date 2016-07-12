@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\TransitosBolsasStore' => [
             'App\Listeners\TransitosBolsasStore\TransitosStore'
         ],
+        'App\Events\BolsasStore' => [
+            'App\Listeners\Bolsas\BolsasStoreEvent'
+        ],
     ];
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\BolsasStore;
 use App\TransitoBolsa;
 use Illuminate\Http\Request;
 
@@ -85,16 +86,7 @@ class BolsasController extends Controller
      */
     public function store(Request $request)
     {
-        $request['user_id'] = Auth::id();
-        $bolsas = Bolsa::create($request->all());
-        $transito = TransitoBolsa::create([
-            'bolsa_id' => $bolsas->id,
-            'estado_id' => 1,
-            'establecimiento_id' => Auth::user()->establecimiento_id,
-            'user_id'	 	=> Auth::id(),
-            'details' => 'Bolsa Creada'
-        ]);
-        return $bolsas;
+        event(new BolsasStore($request));
     }
 
     /**
