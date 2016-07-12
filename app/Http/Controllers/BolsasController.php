@@ -25,19 +25,22 @@ class BolsasController extends Controller
     }
 
     /**
+     * function cargamentos
      * @param Requests $requests
+     * @return Requests
      */
     public function cargamentos(Requests $requests)
     {
         // Esta funcion procesa varias bolsas al mismo tiempo
+
         return $requests;
     }
 
 
     /**
-     * [findByCode description]
-     * @param  [type] $code [description]
-     * @return [type]       [description]
+     * Function findByCode
+     * @param $code
+     * @return \Illuminate\Http\JsonResponse
      */
     public function findByCode($code)
     {
@@ -51,11 +54,11 @@ class BolsasController extends Controller
     }
 
     /**
-     * [search description]
-     * @param  [type] $date   [description]
-     * @param  [type] $search [description]
-     * @param  [type] $type   [description]
-     * @return [type]         [description]
+     * function search
+     * @param null $date
+     * @param null $search
+     * @param null $type
+     * @return mixed
      */
     public function search($date = null, $search = null, $type = null)
     {
