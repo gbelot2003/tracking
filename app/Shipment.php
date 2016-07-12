@@ -14,7 +14,7 @@ class Shipment extends Model {
 	 * Proteccion para MassAssigments
 	 * @var array
 	 */
-	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'completed', 'estado_id', 'firma', 'user_id'];
+	protected $fillable = ['code', 'sender_id', 'reciber_id', 'reciber_seccion', 'description', 'estado_id', 'firma', 'user_id'];
 
 	/**
 	 * protected dates
@@ -102,7 +102,7 @@ class Shipment extends Model {
      * @param $query
      * @return mixed
      */
-    public function scopeShipmentindex($query, $user_id){
+    public function scopeShipmentindex($query){
 
 
 		$query->with(
@@ -115,20 +115,16 @@ class Shipment extends Model {
 
 		$query->whereRaw('Date(created_at) = CURDATE()');
 
-		$query->where('user_id', '=', $user_id);
-
-
 		return $query;
     }
 
-	public function scopeShipmentsearch($query, $user_id, $date = null, $search = null, $type = null){
+	public function scopeShipmentsearch($query, $date = null, $search = null, $type = null){
 
 		$bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
 		$edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
-		$query->where('user_id', '=', $user_id)
-			->with(
-				'senders.establecimiento',
+		$query->with(
+		      		'senders.establecimiento',
 				'recivers.establecimiento',
 				'senders.seccion',
 				'recivers.seccion',

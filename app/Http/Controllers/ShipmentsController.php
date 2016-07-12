@@ -149,7 +149,7 @@ class ShipmentsController extends Controller
      */
     public function search($date = null, $search = null, $type = null)
     {
-        $query = Shipment::shipmentsearch(Auth::Id(), $date, $search, $type)->paginate(10);
+        $query = Shipment::shipmentsearch($date, $search, $type)->paginate(10);
         return $query;
     }
 
