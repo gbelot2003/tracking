@@ -23,7 +23,7 @@ var bolsas = function($scope, bolsasFactory,  ngToast,  $uibModal, $filter,  $ti
         $scope.popup1.opened = true;
     };
 
-    $scope.title = "BolsasStore";
+    $scope.title = "Bolsas";
 
     $scope.init = function(){
     	bolsasFactory.get().$promise.then(function success(response){

@@ -5,7 +5,7 @@ var cargamentos = function($scope, bolsasFactory, estadosService, $timeout, ngTo
     };
     $scope.bolsas = [];
     $scope.loader.loading = false;
-    $scope.title = "Cargamentos";
+    $scope.title = "Cargamentos (Bolsas multiples)";
     $scope.estados = estadosService.estado_paquetes;
     $scope.showTable = false;
     $scope.estado_id = '';
