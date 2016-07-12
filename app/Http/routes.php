@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('reportes/pdf/{id}', 'BolsasController@pdfreturn');
+
 Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);

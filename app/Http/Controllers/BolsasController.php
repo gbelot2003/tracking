@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\BolsasStore;
 use App\TransitoBolsa;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -23,6 +24,14 @@ class BolsasController extends Controller
     public function __construct()
     {
         //$this->middleware('jwt.auth');
+    }
+
+
+    public function pdfreturn($id)
+    {
+        $bolsa = Bolsa::bolsasShow()->findOrFail($id);
+        $pdf = PDF::loadView('pdf.bolsas.listado', compact('bolsa'));
+        return $pdf->download('listado.pdf');
     }
 
     /**
