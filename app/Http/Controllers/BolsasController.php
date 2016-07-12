@@ -31,7 +31,7 @@ class BolsasController extends Controller
     {
         $bolsa = Bolsa::bolsasShow()->findOrFail($id);
         $pdf = PDF::loadView('pdf.bolsas.listado', compact('bolsa'));
-        return $pdf->download('listado.pdf');
+        return $pdf->download($bolsa->code . '-listado.pdf');
     }
 
     /**

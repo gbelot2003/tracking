@@ -9,6 +9,7 @@ var lista = function($scope, $uibModalInstance, id, $uibModal, bolsasFactory, ng
     $scope.init = function(){
         bolsasFactory.get({id: id}).$promise.then(
             function success(response){
+                $scope.bolsaId = id;
                 $scope.title = response.code;
                 $scope.paquetes = response.shipments;
 

@@ -108,7 +108,7 @@ class Bolsa extends Model {
 	{
 		$query->with(
 			'sender.municipio.departamento', 'reciber.municipio.departamento',
-			'transitos.estados','transitos.user', 'user',
+			'transitos.estados','transitos.user', 'user', 'shipments.transito.estados',
 			'shipments.senders.establecimiento', 'shipments.recivers.establecimiento',
 			'transito', 'transito.estados', 'transito.user'
 		)->orderBy('id', 'desc');
