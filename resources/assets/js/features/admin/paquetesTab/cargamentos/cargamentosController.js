@@ -6,25 +6,37 @@ var cargamentos = function($scope, bolsasFactory, estadosService, $timeout, ngTo
     $scope.bolsas = [];
     $scope.loader.loading = false;
     $scope.title = "Cargamentos";
+    $scope.estados = estadosService.estado_paquetes;
     $scope.showTable = false;
+    $scope.estado_id = '';
+    $scope.details = '';
 
+    $scope.addBolsa = function(object){
+        $scope.bolsas.push(object);
+        $scope.searchable = '';
+    };
+
+    $scope.limpiar = function(){
+        $scope.showTable = false;
+        $scope.bolsas = [];
+        $scope.estado_id = '';
+        $scope.details = '';
+    };
 
     $scope.$watch('searchable', function(newVal){
-
         if(newVal){
             $timeout(function(){
                 bolsasFactory.byCode({code: $scope.searchable}).$promise.then(
                     function success(response){
-                        $scope.bolsas.push(response);
-                        console.log($scope.bolsas);
-                        $scope.searchable = '';
+                        $scope.addBolsa(response);
+                        $scope.showTable = true;
                     },
                     function error(response){
                         ngToast.warning("El codigo no existe, el servidor dice : " + response.statusText);
                         $scope.searchable = '';
                     }
                 )
-            }, 1000);
+            }, 500);
         }
     });
 };

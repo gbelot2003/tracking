@@ -1,13 +1,15 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+    <div class="double-bounce1" ng-show="loader.loading" data-ng-disabled=""><span us-spinner></span></div>
     <div class="row">
       <div class="col-md-8">
         <h2>{{ title }}</h2>
       </div>
-      <div class="col-sm-4 text-rigth">
-          <a class="btn btn-warning" href="#/cargamentos/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>
-	  <a href="#" class="btn btn-danger"ng-click="limpiar()" >Limpiar</a>
+      <div class="col-sm-4">
+        <div class="text-right">
+          <a class="btn btn-primary" ng-if="estado_id >= 1">Enviar</a>
+          <a class="btn btn-danger" ng-click="limpiar()" >Limpiar</a>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -15,15 +17,15 @@
         <div class="form-group has-feedback">
           <div class="input-group">
             <span class="input-group-addon">Buscar</span>
-            <input type="number" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status" ng-model-options="{debounce: 1500}">
+            <input type="number" class="form-control" id="search" ng-model='searchable' aria-describedby="inputGroupSuccess1Status" ng-model-options="{debounce: 1000}">
           </div>
           <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
           <span id="inputGroupSuccess1Status" class="sr-only">(success)</span>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12" ng-if="!showTable">
+    <div class="row" ng-show="showTable">
+      <div class="col-md-12">
         <div class="responsive-table">
           <table class="table table-hovered table-bordered">
             <thead>
@@ -31,20 +33,42 @@
                 <th>Código</th>
                 <th>Remitente</th>
                 <th>Destinatario</th>
-                <th>Usuario</th>
-                <th>Estado</th>
               </tr>
             </thead>
             <tbody>
-		<tr data-ng-repeate="bolsa in bolsas" >
-		   <td>{{ bolsa.code }}</td>
-		   <td>{{ bolsa.sender.name }}</td>
-		   <td>{{ bolsa.reciber.name }}</td>
-		   <td>{{ bolsa.user.name }}</td>
-		</tr>
+            <tr ng-repeat="bolsa in bolsas" >
+               <td>{{ bolsa.code }}</td>
+               <td>{{ bolsa.sender.name }}</td>
+               <td>{{ bolsa.reciber.name }}</td>
+            </tr>
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Registro de Estado</label>
+
+          <select class="form-control"
+                  ng-model="estado_id"
+                  ng-options="e.id as e.name for e in estados"
+                  required
+          ></select>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea name="" class="form-control" rows="3" ng-model="details"></textarea>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <pre>{{ estado_id | json}}</pre>
+        <pre>{{ details | json}}</pre>
+        <pre>{{ bolsas | json}}</pre>
       </div>
     </div>
   </div>
