@@ -6,8 +6,6 @@ use App\Events\BolsasStore;
 use App\TransitoBolsa;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Bolsa;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,11 +37,11 @@ class BolsasController extends Controller
      * @param Requests $requests
      * @return Requests
      */
-    public function cargamentos(Requests $requests)
+    public function cargamentos(Request $requests)
     {
         // Esta funcion procesa varias bolsas al mismo tiempo
 
-        return $requests;
+        return $requests->All();
     }
 
 

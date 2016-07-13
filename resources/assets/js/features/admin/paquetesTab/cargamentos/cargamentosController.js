@@ -10,6 +10,7 @@ var cargamentos = function($scope, bolsasFactory, estadosService, $timeout, ngTo
     $scope.showTable = false;
     $scope.estado_id = '';
     $scope.details = '';
+    $scope.request = {};
 
     $scope.addBolsa = function(object){
         $scope.bolsas.push(object);
@@ -21,6 +22,21 @@ var cargamentos = function($scope, bolsasFactory, estadosService, $timeout, ngTo
         $scope.bolsas = [];
         $scope.estado_id = '';
         $scope.details = '';
+    };
+
+    $scope.SubmitBolsas = function () {
+        $scope.request.bolsas = $scope.bolsas;
+        $scope.request.estado_id = $scope.estado_id;
+        $scope.request.details = $scope.details;
+        bolsasFactory.cargamentos($scope.request).$promise.then(
+            function success(response){
+                ngToast.success('Los cambios en las bolsas se han registrado correctamente');
+                console.log(response);
+            }, function error(response){
+                ngToast.danger("Se a presentado un problema con el ingreso de datos");
+            }
+        );
+
     };
 
     $scope.$watch('searchable', function(newVal){
