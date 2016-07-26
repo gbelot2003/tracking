@@ -34,6 +34,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $hidden = ['password', 'remember_token'];
 
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    public function getEstablecimiento()
+    {
+        return $this->establecimiento_id;
+    }
+
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */

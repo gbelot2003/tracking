@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\BolsasStore;
-use App\TransitoBolsa;
-use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Bolsa;
-use Illuminate\Support\Facades\Auth;
-
+use App\TransitoBolsa;
+use App\Events\BolsasStore;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\Http\Requests;
 
 class BolsasController extends Controller
 {
@@ -21,7 +21,7 @@ class BolsasController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('jwt.auth');
+        $this->middleware('jwt.auth');
     }
 
 
@@ -84,7 +84,7 @@ class BolsasController extends Controller
         $bolsas = Bolsa::bolsasindex()->paginate(10);
         return $bolsas;
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -93,7 +93,10 @@ class BolsasController extends Controller
      */
     public function store(Request $request)
     {
+        $request['user_id'] = Auth::id();
+        $request['establecimiento_id'] = Auth::user()->establecimiento_id;
         event(new BolsasStore($request));
+        return $request->all();
     }
 
     /**
