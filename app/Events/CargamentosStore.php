@@ -10,23 +10,16 @@ class CargamentosStore extends Event
 {
     use SerializesModels;
 
+    public $request;
+
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($request)
     {
-        //
-    }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
+        $this->request = $request;
     }
 }

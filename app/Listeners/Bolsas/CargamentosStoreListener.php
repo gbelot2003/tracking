@@ -3,8 +3,10 @@
 namespace App\Listeners\Bolsas;
 
 use App\Events\CargamentosStore;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use App\Bolsa;
+use App\Transito;
+use App\TransitoBolsa;
+use Illuminate\Support\Facades\Auth;
 
 class CargamentosStoreListener
 {

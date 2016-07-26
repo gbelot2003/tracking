@@ -9,6 +9,7 @@ use App\TransitoBolsa;
 use App\Events\BolsasStore;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests;
+use App\Events\TransitosBolsasStore;
 
 class BolsasController extends Controller
 {
@@ -39,9 +40,17 @@ class BolsasController extends Controller
      */
     public function cargamentos(Request $requests)
     {
-        // Esta funcion procesa varias bolsas al mismo tiempo
-
-        return $requests->All();
+        foreach($requests->bolsas as $bolsa)
+        {
+            $bolsas = new Request();
+            $bolsas['estado_id'] = $requests['estado_id'];
+            $bolsas['details'] = $requests['details'];
+            $bolsas['bolsa_id'] = $bolsa['id'];
+            $bolsas['code'] = $bolsa['code'];
+            $bolsas['user_id'] = Auth::Id();
+            $bolsas['establecimiento_id'] = Auth::user()->establecimiento_id;
+            event(new TransitosBolsasStore($bolsas));
+        }
     }
 
 
