@@ -197,4 +197,15 @@ class Shipment extends Model {
 		return $this->belongsTo('App\Estado', 'estado_id');
 	}
 
+
+    /**
+     * Test Class
+     * Contar cuantos transitos hay por cada shipment
+     * @return mixed
+     */
+    public function transitCount()
+    {
+        return $this->transitos()->count();
+    }
+
 }
