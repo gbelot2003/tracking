@@ -28,8 +28,8 @@ class AddForeingKeyToMunicipiosFromEstablecimientosTable extends Migration
     public function down()
     {
         Schema::table('establecimientos', function (Blueprint $table) {
-            $table->dropForeign('departamento_id');
-            $table->dropIndex('departamento_id');
+           /* $table->dropForeign('departamento_id');
+            $table->dropIndex('departamento_id');*/
         });
     }
 }

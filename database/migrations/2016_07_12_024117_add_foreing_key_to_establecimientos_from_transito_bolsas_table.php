@@ -27,7 +27,7 @@ class AddForeingKeyToEstablecimientosFromTransitoBolsasTable extends Migration
     public function down()
     {
         Schema::table('transito_bolsas', function (Blueprint $table) {
-            $table->dropForeign('establecimiento_id');
+            //$table->dropForeign('establecimiento_id');
         });
     }
 }

@@ -28,8 +28,8 @@ class AddForeingKeyToUsersFromTransitosTable extends Migration
     public function down()
     {
         Schema::table('transitos', function (Blueprint $table) {
-            $table->dropForeign('user_id');
-            $table->dropIndex('user_id');
+/*            $table->dropForeign('user_id');
+            $table->dropIndex('user_id');*/
         });
     }
 }

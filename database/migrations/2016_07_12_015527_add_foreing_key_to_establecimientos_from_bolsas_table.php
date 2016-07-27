@@ -36,11 +36,11 @@ class AddForeingKeyToEstablecimientosFromBolsasTable extends Migration
     {
         Schema::table('bolsas', function (Blueprint $table) {
 
-            $table->dropForeign('establecimiento_envio_id');
+/*            $table->dropForeign('establecimiento_envio_id');
             $table->dropForeign('establecimiento_recive_id');
 
             $table->dropIndex('establecimiento_envio_id');
-            $table->dropIndex('establecimiento_recive_id');
+            $table->dropIndex('establecimiento_recive_id');*/
 
         });
     }
