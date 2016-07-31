@@ -1,11 +1,10 @@
 <?php
 
 use App\Transito;
+use App\Shipment;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Shipment;
-
 class ReportControllerTest extends TestCase
 {
     use DatabaseTransactions;
@@ -18,43 +17,130 @@ class ReportControllerTest extends TestCase
      *
      */
 
-    /** @test */
-    public function shipment_have_registers()
+    protected function create_many_shipments()
     {
+        $ship = factory(Shipment::class)->create([
+            'created_at' => '2016-05-29 00:34:21',
+            'updated_at' => '2016-05-29 00:34:21'
+        ]);
 
-        //$shipment = factory(Shipment::class, 20)->create();
+        $ship2 = factory(Shipment::class)->create([
+            'created_at' => '2016-06-29 00:34:21',
+            'updated_at' => '2016-06-29 00:34:21'
+        ]);
+
+        $ship3 = factory(Shipment::class)->create([
+            'user_id' => 2,
+            'created_at' => '2016-07-29 00:34:21',
+            'updated_at' => '2016-07-29 00:34:21'
+        ]);
 
 
-        /*foreach($shipment as $shipment){
-            $transito1 = factory(Transito::class)->create(['estado_id' => 1, 'shipment_id' => $shipment->id]);
-            $transito2 = factory(Transito::class)->create(['estado_id' => 3, 'shipment_id' => $shipment->id]);
-        }*/
+        $transito1 = factory(App\Transito::class)->create(
+            ['estado_id' => 1, 'shipment_id' => $ship->id]
+        );
 
-        /** hay 20 registros en shipment*/
-        //$this->assertEquals(20, count($shipment->all()));
+        $transito2 = factory(App\Transito::class)->create(
+            ['estado_id' => 3, 'shipment_id' => $ship->id]
+        );
 
-        /** hay 2 transitos por registro */
-        //$this->assertEquals(2, $shipment->count());
 
-        // Trabajaremos con datos persistentes de aqui en adelante
-        // llenamos desde seeders Shipements
 
-        $shipment = Shipment::all();
-        $this->assertEquals(20, count($shipment->all())); //ok
+        $transito3 = factory(App\Transito::class)->create(
+            ['estado_id' => 1, 'shipment_id' => $ship2->id]
+        );
+
+        $transito4 = factory(App\Transito::class)->create(
+            ['estado_id' => 2, 'shipment_id' => $ship2->id]
+        );
+
+        $transito5 = factory(App\Transito::class)->create(
+            ['estado_id' => 3, 'shipment_id' => $ship2->id]
+        );
+
+
+
+        $transito6 = factory(App\Transito::class)->create(
+            ['estado_id' => 1, 'shipment_id' => $ship3->id]
+        );
+
+        $transito7 = factory(App\Transito::class)->create(
+            ['estado_id' => 2, 'shipment_id' => $ship3->id]
+        );
+
+        $transito8 = factory(App\Transito::class)->create(
+            ['estado_id' => 3, 'shipment_id' => $ship3->id]
+        );
+
+        $transito9 = factory(App\Transito::class)->create(
+            ['estado_id' => 11, 'shipment_id' => $ship3->id]
+        );
 
     }
 
+
     /** @test */
-    public function shipments_have_related_transitos()
+    public function shipments_are_created_and_count()
     {
-        /** Encontramos un Shipment */
-        $shipment = Shipment::findOrFail(1);
 
-        /** El Shipment debe tener 2 transitos */
-        $this->assertEquals(2, $shipment->transitCount());
+        $this->create_many_shipments();
 
-        /** El Ultimo estado de transito debe ser 3 */
-        $this->assertEquals(3, $shipment->transito->estados->id);
+        //Asertts
+        $shipments = Shipment::all();
+
+
+        $this->assertEquals(3, $shipments->count());
     }
+
+    /** @test */
+    public function shipment_filter_by_dates()
+    {
+        $this->create_many_shipments();
+
+        $shipments = Shipment::whereBet;
+    }
+
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

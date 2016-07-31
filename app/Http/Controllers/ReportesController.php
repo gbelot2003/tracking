@@ -8,5 +8,10 @@ use App\Http\Requests;
 
 class ReportesController extends Controller
 {
-    //
+    public function search($bdate = null, $edate = null)
+    {
+
+    }
+
+
 }

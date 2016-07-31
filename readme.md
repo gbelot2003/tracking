@@ -1,6 +1,10 @@
 #Trackhn
 refactory of track packages mangnament system with the agregation of **angularjs** as main frontend developed for a SPA system and **laravel 5.2** as REST-Api on back-end
 
+##TODO:
+- En Agencias, Listas clientes por agencias
+- EN Control de Clientes, filtrar clientes por Agencia
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

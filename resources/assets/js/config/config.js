@@ -188,11 +188,11 @@ var config = function($routeProvider, $locationProvider){
         .when('/reportes', {
             controller: 'reportesController',
             template: require('raw!../features/admin/reportes/reportes.html'),
-            resolve:{
+            /*resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);
                 }
-            }
+            }*/
         })
         .otherwise({
             redirectTo:'/'

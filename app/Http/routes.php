@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('reportes/pdf/{id}', 'BolsasController@pdfreturn');
 
+
 Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
@@ -59,6 +60,8 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::get('bolsas-transitos/delete-image/{name}', 'TransitosBolsasController@imageRemove');
 
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
+
+    Route::get('reportes', 'ReportesController@index');
 
     Route::resource('users', 'UserController');
     Route::resource('permisos', 'RolesResourceController');
