@@ -9,5 +9,144 @@
                 <!--<a class="btn btn-warning" href="#/bolsas/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>-->
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form" ng-submit="sendData()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <span style="font-weight: bold">Desde: </span>
+                                    <div class="form-group">
+
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   ng-model="date1"
+                                                   is-open="popup1.opened"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats"
+                                            />
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                    class="btn btn-default"
+                                                    ng-click="open1()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <div class="form-group">
+                                        <span style="font-weight: bold">Hasta: </span>
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   data-ng-model="date2"
+                                                   is-open="popup2.opened"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats"
+                                            />
+                                            <span class="input-group-btn">
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-default"
+                                                    ng-click="open2()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <hr>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <th>Fecha</th>
+                        <th>En Espera</th>
+                        <th>Regular</th>
+                        <th>Centro de acopio</th>
+                        <th>Bolsa</th>
+                        <th>Daños ligeros</th>
+                        <th>Daños graves</th>
+                        <th>Extraviado</th>
+                        <th>Robado</th>
+                        <th>Dañado completo</th>
+                        <th>Entregado</th>
+                        <th>Entregado observacio</th>
+                        <th>Entregado Terceros (continua)</th>
+                        <th>Entregado Terceros (Final)</th>
+                        <th>Totales</th>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="row in results.shipments">
+                            <td>
+                                {{ row.mes }}/{{row.year}}
+                            </td>
+                            <td>{{ row.espera }}</td>
+                            <td>{{ row.regular }}</td>
+                            <td>{{ row.acopio }}</td>
+                            <td>{{ row.transporte }}</td>
+                            <td>{{ row.dligero }}</td>
+                            <td>{{ row.dgrave }}</td>
+                            <td>{{ row.eterceroscontinua }}</td>
+                            <td>{{ row.extrabiado }}</td>
+                            <td>{{ row.robados }}</td>
+                            <td>{{ row.danocompleto }}</td>
+                            <td>{{ row.entregadocerrado }}</td>
+                            <td>{{ row.entregadobs }}</td>
+                            <td>{{ row.entregadocerradofinal }}</td>
+                            <td>{{ row.subtotal }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>Totales</td>
+                            <th>{{ results.espera }}</th>
+                            <th>{{ results.regular }}</th>
+                            <th>{{ results.acopio }}</th>
+                            <th>{{ results.transporte }}</th>
+                            <th>{{ results.dligero }}</th>
+                            <th>{{ results.dgrave }} </th>
+                            <th>{{ results.eterceroscontinua }}</th>
+                            <th>{{ results.extrabiado }}</th>
+                            <th>{{ results.robados }}</th>
+                            <th>{{ results.danocompleto }}</th>
+                            <th>{{ results.entregadocerrado }}</th>
+                            <th>{{ results.entregadobs }}</th>
+                            <th>{{ results.entregadocerradofinal }}</th>
+                            <th>{{ results.gtotal}}</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+

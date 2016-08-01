@@ -203,9 +203,16 @@ class Shipment extends Model {
      * Contar cuantos transitos hay por cada shipment
      * @return mixed
      */
-    public function transitCount()
+    public function transitosCount($estado_id)
     {
-        return $this->transitos()->count();
+        return $this->hasMany(Transito::class)->selectRaw('SUM(IF(estado_id ='. $estado_id .',1,0))');
+		/*
+		 *
+		return $this->hasOne('Price')
+      		->selectRaw('product_id, max(price) as aggregate')
+      		->groupBy('product_id');
+		 * */
     }
+
 
 }
