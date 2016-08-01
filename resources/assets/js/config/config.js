@@ -187,8 +187,8 @@ var config = function($routeProvider, $locationProvider){
         })
 
         .when('/reportes/general-por-estados', {
-            controller: 'reportesController',
-            template: require('raw!../features/admin/reportes/reportes.html'),
+            controller: 'reportesGralEstadoController',
+            template: require('raw!../features/admin/reportes/reportes-gral-por-estado.html'),
             resolve:{
                 permission: function(permService){
                     return permService.permissionCheck(['owner', 'admin']);

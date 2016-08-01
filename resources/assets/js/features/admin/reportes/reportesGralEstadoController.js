@@ -125,7 +125,7 @@ var reportes = function($scope, $filter, $timeout, $http){
 };
 
 module.exports = function(app){
-  app.controller('reportesController', function($scope, $filter, $timeout, $http){
+  app.controller('reportesGralEstadoController', function($scope, $filter, $timeout, $http){
       return reportes($scope, $filter, $timeout, $http);
   });
 };

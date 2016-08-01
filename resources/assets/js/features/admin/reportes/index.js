@@ -1,3 +1,3 @@
 module.exports = function(app){
-    require('./reportesController.js')(app);
+    require('./reportesGralEstadoController.js')(app);
 };
