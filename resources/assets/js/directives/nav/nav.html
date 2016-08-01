@@ -13,8 +13,16 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="uib-collapse navbar-collapse" uib-collapse="navCollapsed">
+
             <ul class="nav navbar-nav">
-                <li ng-if="isLoggedIn()"  role="presentation"><a href="#/reportes">Reportes</a></li>
+                <li ng-if="isLoggedIn()"  class="dropdown" uib-dropdown>
+                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" >
+                        Reportes<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#/reportes/general-por-estados">General por estados</a></li>
+                    </ul>
+                </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

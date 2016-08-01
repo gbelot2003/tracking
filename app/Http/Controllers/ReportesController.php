@@ -11,7 +11,7 @@ class ReportesController extends Controller
 {
 
 
-    public function search(Request $request)
+    public function generalPorEstado(Request $request)
     {
         $bDate = $request->input('bDate');
         $eDate = $request->input('eDate');

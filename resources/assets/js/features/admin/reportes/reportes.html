@@ -11,6 +11,10 @@
         </div>
         <div class="row">
             <div class="col-md-12">
+                <p>Este reporte refleja el ultimo estado registrado en el sistema de cada paquete entre las fechas filtradas, no la fecha de creación de los mismos.</p>
+                <p>Tambien debe tomarse en cuenta que los totales que se muestran mensualmente comienzan y terminan en los dias indicados es decir, si tomas el 27 de agosto y el 1 septiembre, mostrara
+                    <strong>08/201x</strong>  y <strong>09/201x</strong> con los totales desde los días especificados desde el 27 de agosto hasta el 1 de septiembre.</p>
+                <hr>
                 <form class="form" ng-submit="sendData()">
                     <div class="row">
                         <div class="col-md-6">
@@ -87,7 +91,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover"">
                     <thead>
                         <th>Fecha</th>
                         <th>En Espera</th>
@@ -126,7 +130,7 @@
                             <td>{{ row.subtotal }}</td>
 
                         </tr>
-                        <tr>
+                        <tr style="border-top: 2px solid dimgrey;border-bottom: 2px solid dimgrey; ">
                             <td>Totales</td>
                             <th>{{ results.espera }}</th>
                             <th>{{ results.regular }}</th>

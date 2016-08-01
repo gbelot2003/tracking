@@ -9,7 +9,7 @@ var reportes = function($scope, $filter, $timeout, $http){
     var month = datef.getMonth();
     var year = datef.getFullYear();
 
-    $scope.title = "Reportes";
+    $scope.title = "Reportes General por Estados";
     $scope.date1 = new Date(year, month, 1);
     $scope.date2 = new Date();
     $scope.bDate = $filter('date')($scope.date1, "yyyy-MM-dd");
@@ -67,7 +67,7 @@ var reportes = function($scope, $filter, $timeout, $http){
     $scope.sendData = function(){
         $scope.rec.bDate = $scope.bDate;
         $scope.rec.eDate = $scope.eDate;
-        $http.post('api/admin/reportes', $scope.rec).then(
+        $http.post('api/admin/reportes-general-por-estados', $scope.rec).then(
             function success(res){
                 console.log(res.data);
                 $scope.results = res.data;
