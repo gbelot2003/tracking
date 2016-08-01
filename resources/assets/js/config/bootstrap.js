@@ -11,3 +11,4 @@ require('angular-ui-bootstrap');
 require('ng-toast');
 require('spin/spin.js');
 require('angular-spinner/angular-spinner.js');
+require('highcharts-ng');

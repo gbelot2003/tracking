@@ -63,14 +63,57 @@ var reportes = function($scope, $filter, $timeout, $http){
         $scope.popup2.opened = true;
     };
 
+    $scope.chartConfig = {
+        options: {
+            chart: {
+                type: 'bar'
+            },
+
+            tooltip: {
+                style: {
+                    padding: 10,
+                    fontWeight: 'bold'
+                }
+            }
+        }
+    };
 
     $scope.sendData = function(){
         $scope.rec.bDate = $scope.bDate;
         $scope.rec.eDate = $scope.eDate;
         $http.post('api/admin/reportes-general-por-estados', $scope.rec).then(
             function success(res){
-                console.log(res.data);
                 $scope.results = res.data;
+
+                var resultsados = res.data.datos;
+                var values = [];
+
+                for(var key in resultsados) {
+                    var properties = resultsados[key];
+
+                    if(typeof properties === "object") {
+                        var array = [];
+
+                        for(var propKey in properties) {
+                            array.push([propKey, properties[propKey]])
+                        }
+
+                        values.push(array);
+                    }
+                }
+
+                console.log(values);
+
+
+
+                $scope.chartConfig = {
+                    title: {
+                        text: "Reportes General por Estados"
+                    },
+
+                    series: [{ data: values}]
+                }
+
             },
             function errorCallback(res){
                 console.log("error" + res);

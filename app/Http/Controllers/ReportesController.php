@@ -19,6 +19,32 @@ class ReportesController extends Controller
         $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
         $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
 
+
+        $datas = Shipment::Join('transitos as t', function($q){
+            $q->on('shipments.id', '=', 't.shipment_id');
+            $q->on('t.estado_id', '=',
+                DB::Raw('(select max(estado_id) from transitos where shipment_id = t.shipment_id)')
+            );
+        })
+            ->selectRaw(
+                "
+                SUM(IF(t.estado_id = 1,1,0)) espera, SUM(IF(t.estado_id = 2,1,0)) regular,
+                SUM(IF(t.estado_id = 3,1,0)) acopio, SUM(IF(t.estado_id = 4,1,0)) transporte,
+                SUM(IF(t.estado_id = 5,1,0)) dligero, SUM(IF(t.estado_id = 6,1,0)) dgrave,
+                SUM(IF(t.estado_id = 7,1,0)) eterceroscontinua, SUM(IF(t.estado_id = 8,1,0)) extrabiado,
+                SUM(IF(t.estado_id = 9,1,0)) robados, SUM(IF(t.estado_id = 10,1,0)) danocompleto,
+                SUM(IF(t.estado_id = 11,1,0)) entregadocerrado, SUM(IF(t.estado_id = 12,1,0)) entregadobs,
+                SUM(IF(t.estado_id = 13,1,0)) entregadocerradofinal
+                "
+            )
+            ->whereBetween('shipments.created_at', [$bdate, $edate])
+            ->groupBy(DB::raw("t.updated_at"))
+            ->orderBy("t.updated_at", "desc")
+            ->get();
+
+
+
+
         $shipments = Shipment::Join('transitos as t', function($q){
                 $q->on('shipments.id', '=', 't.shipment_id');
                 $q->on('t.estado_id', '=',
@@ -44,6 +70,7 @@ class ReportesController extends Controller
             ->groupBy(DB::raw("MONTH(updated_at)"))
             ->orderBy("t.updated_at", "desc")
             ->get();
+
 
         $total = $shipments->count();
 
@@ -76,7 +103,8 @@ class ReportesController extends Controller
             'danocompleto'          => $danocompleto,
             'entregadocerrado'      => $entregadocerrado,
             'entregadobs'           => $entregadobs,
-            'entregadocerradofinal' => $entregadocerradofinal
+            'entregadocerradofinal' => $entregadocerradofinal,
+            'datos'                  => $datas
 
         );
     }

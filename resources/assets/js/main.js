@@ -12,7 +12,8 @@ var app = angular.module('app',
         'ui.bootstrap',
         'ngToast',
         'angularSpinner',
-        'ngFileUpload'
+        'ngFileUpload',
+        'highcharts-ng'
     ]
 );
 

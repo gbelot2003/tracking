@@ -16,5 +16,6 @@
 </div>
 <script src="js/all.js"></script>
 <script src="js/main.min.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.src.js"></script>
 </body>
 </html>
