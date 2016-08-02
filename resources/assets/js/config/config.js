@@ -195,6 +195,37 @@ var config = function($routeProvider, $locationProvider){
                 }
             }
         })
+
+        .when('/reportes/reporte-general-por-establecimientos', {
+            controller: 'reporteGralPorEstablecimientos',
+            template: require('raw!../features/admin/reportes/reporte-gral-por-establecimiento.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin']);
+                }
+            }
+        })
+
+        .when('/reportes/reporte-general-por-empresa', {
+            controller: 'reportesGralPorEmpresas',
+            template: require('raw!../features/admin/reportes/reporte-gral-por-empresas.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin']);
+                }
+            }
+        })
+
+        .when('/reportes/reporte-general-por-usuarios', {
+            controller: 'reporteGralPorUsuarios',
+            template: require('raw!../features/admin/reportes/reportes-gral-por-usuarios.html'),
+            resolve:{
+                permission: function(permService){
+                    return permService.permissionCheck(['owner', 'admin']);
+                }
+            }
+        })
+
         .otherwise({
             redirectTo:'/'
         });
