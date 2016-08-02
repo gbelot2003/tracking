@@ -32,6 +32,7 @@
                                                 ng-model="search.estados_id"
                                                 ng-options="e.id as e.name for e in estados"
                                                 disable-search="false"
+                                                ng-change="changeItem(search.estados_id)"
                                                 allow-single-deselect="true"
                                                 class="form-control">
                                             <option value="" style="display: none;">-- select --</option>
@@ -130,18 +131,16 @@
                             </tr>
                             </tbody>
                         </table>
+                    <uib-pagination
+                            total-items="pagination.totalItems"
+                            ng-model="pagination.currentPage"
+                            max-size="pagination.maxSize"
+                            class="pagination-sm"
+                            boundary-links="true"
+                            num-pages="numPages"
+                            ng-change="nextPage(pagination.currentPage)">
+                    </uib-pagination>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <uib-pagination
-                        total-items="pagination.totalItems"
-                        ng-model="pagination.currentPage"
-                        max-size="pagination.maxSize"
-                        class="pagination-sm"
-                        boundary-links="true"
-                        num-pages="numPages"
-                        ng-change="nextPage(pagination.currentPage)">
-                </uib-pagination>
             </div>
         </div>
     </div>

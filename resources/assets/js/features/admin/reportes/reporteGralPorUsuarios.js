@@ -23,7 +23,10 @@ var reportes = function($scope, $filter, $http, ngToast, estadosService, reporte
         $scope.search.id = $select.selected.id;
     };
 
-    $scope.currentPage = 1;
+    $scope.changeItem = function(estado)
+    {
+        $scope.estado_id = estado;
+    };
 
 
     var datef = new Date();
@@ -101,7 +104,7 @@ var reportes = function($scope, $filter, $http, ngToast, estadosService, reporte
         $scope.search.bDate = $scope.bDate;
         $scope.search.eDate = $scope.eDate;
 
-        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id})
+        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id, estado_id: $scope.estado_id})
             .$promise.then(
             function success(response){
                 console.log(response);
@@ -109,11 +112,10 @@ var reportes = function($scope, $filter, $http, ngToast, estadosService, reporte
 
                 $scope.pagination = {
                     currentPage: response.current_page,
-                    maxSize: 5,
+                    maxSize : response.per_page,
                     totalItems : response.total,
                     numPages: response.last_page
                 };
-                console.log($scope.pagination);
                 $scope.showTable =true;
                 $scope.loader.loading2 = false
 
@@ -131,7 +133,7 @@ var reportes = function($scope, $filter, $http, ngToast, estadosService, reporte
     $scope.nextPage = function(pageNo){
         $scope.loader.loading2 = true;
         $scope.currentPage = pageNo;
-        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id, page: $scope.currentPage})
+        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id, page: $scope.currentPage, estado_id: $scope.estado_id})
             .$promise.then(
             function success(response){
                 $scope.results = response;
