@@ -23,8 +23,6 @@ class BolsasController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth', ['except' => 'pdfreturn']);
-        $this->middleware('UserCheckPerms');
-
     }
 
 

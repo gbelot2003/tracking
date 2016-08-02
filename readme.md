@@ -3,7 +3,8 @@ refactory of track packages mangnament system with the agregation of **angularjs
 
 ##TODO:
 - En Agencias, Listas clientes por agencias
-- EN Control de Clientes, filtrar clientes por Agencia
+- En Control de Clientes, filtrar clientes por Agencia
+- En Controller, revisar firma de permisos con nuevos middlewares
 
 # Laravel PHP Framework
 

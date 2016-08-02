@@ -56,5 +56,7 @@ class Kernel extends HttpKernel
         'permission' => \Zizaco\Entrust\Middleware\EntrustPermission::class,
         'TraderCheckPerms' => \App\Http\Middleware\TraderCheckPerms::class,
         'UserCheckPerms' => \App\Http\Middleware\UserCheckPerms::class,
+        'CurrierCheckPerms' => \App\Http\Middleware\CurrierCheckPerms::class,
+        'AdminCheckPerms' => \App\Http\Middleware\AdminCheckPerms::class,
     ];
 }

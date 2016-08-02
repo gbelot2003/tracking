@@ -16,7 +16,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth');
-        $this->middleware('UserCheckPerms');
+        $this->middleware('');
     }
 
 
