@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Shipment;
+use App\Transito;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -10,6 +11,29 @@ use Illuminate\Support\Facades\DB;
 class ReportesController extends Controller
 {
 
+
+    public function generalPorUsuario(Request $request)
+    {
+        $bDate = $request->input('bDate');
+        $eDate = $request->input('eDate');
+        $id = $request->input('id');
+        $estado_id = $request->input('estados_id');
+
+        $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
+        $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
+
+        $transitos = Transito::with('shipments', 'estados')
+            ->where('user_id', '=', $id)
+            ->whereBetween('created_at', [$bdate, $edate]);
+
+        if($estado_id != null)
+        {
+            $transitos->where('estado_id', '=', $estado_id);
+        }
+
+
+        return $transitos->get();
+    }
 
     public function generalPorEstado(Request $request)
     {

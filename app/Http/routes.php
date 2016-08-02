@@ -30,6 +30,7 @@ Route::group(['prefix' => 'api/admin'], function()
 {
 
     Route::get('users/search/{search?}', 'UserController@search');
+    Route::get('users/searchbox/{search?}', 'UserController@searchBox');
 
     Route::get('agencias/search/{seach?}', 'AgenciasController@search');
     Route::get('agencias/listado-search/{name?}', 'AgenciasController@listado');
@@ -62,6 +63,7 @@ Route::group(['prefix' => 'api/admin'], function()
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
     Route::post('reportes-general-por-estados', 'ReportesController@generalPorEstado');
+    Route::post('reportes-general-por-usuario', 'ReportesController@generalPorUsuario');
 
     Route::resource('users', 'UserController');
     Route::resource('permisos', 'RolesResourceController');

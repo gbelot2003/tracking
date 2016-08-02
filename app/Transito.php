@@ -27,6 +27,11 @@ class Transito extends Model {
 		return $this->belongsTo('App\Shipment', 'shipment_id');
 	}
 
+	public function shipments()
+	{
+		return $this->belongsTo(Shipment::class, 'shipment_id');
+	}
+
 	/**
 	 * Un trancito pertenece a un usuario
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

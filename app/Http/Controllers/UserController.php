@@ -19,6 +19,17 @@ class UserController extends Controller
         $this->middleware('UserCheckPerms');
     }
 
+
+    public function searchBox($search = null)
+    {
+        if ($search == null){
+            $query = User::all()->take(5);
+        } else {
+            $query = User::where('name', 'LIKE', "%" . $search ."%")->get();
+        }
+        return $query;
+    }
+
     /**
      * @param null $search
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator

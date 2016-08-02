@@ -1,0 +1,135 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="double-bounce1" ng-show="loader.loading"><span us-spinner></span></div>
+        <div class="row">
+            <div class="col-md-10">
+                <h2>{{ title }}</h2>
+            </div>
+            <div class="col-sm-2">
+                <!--<a class="btn btn-warning" href="#/bolsas/create">Nuevo <span class="glyphicon glyphicon-plus"></span></a>-->
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-12">
+        		<form class="form" ng-submit="sendData()">
+        			 <div class="row">
+                         <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <span style="font-weight: bold">Usuarios: </span>
+                                    <div class="form-group">
+                                        <ui-select ng-model="search" ng-change="sourceUsuarioChanged($select)"  theme="bootstrap" style="min-width: 300px;" required>
+                                            <ui-select-match class="ui-select-match" placeholder="Usuario">{{$select.selected.name}}</ui-select-match>
+                                            <ui-select-choices class="ui-select-choices"  data-id="$index"  refresh="searchUser($select)" refresh-delay="300" repeat="users in users">
+                                                <span ng-bind-html="users.name | highlight: $select.search"></span>
+                                            </ui-select-choices>
+                                        </ui-select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <span style="font-weight: bold">Estados: </span>
+                                    <div class="form-group">
+                                        <select data-placeholder="Transitos"
+                                                ng-model="search.estados_id"
+                                                ng-options="e.id as e.name for e in estados"
+                                                disable-search="false"
+                                                allow-single-deselect="true"
+                                                class="form-control">
+                                            <option value="" style="display: none;">-- select --</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                         </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span style="font-weight: bold">Desde: </span>
+                                    <div class="form-group">
+
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   ng-model="date1"
+                                                   is-open="popup1.opened"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats"
+                                            />
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                        class="btn btn-default"
+                                                        ng-click="open1()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <span style="font-weight: bold">Hasta: </span>
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   data-ng-model="date2"
+                                                   is-open="popup2.opened"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats"
+                                            />
+                                            <span class="input-group-btn">
+                                                <button
+                                                        type="button"
+                                                        class="btn btn-default"
+                                                        ng-click="open2()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button type="button"  ng-click="clear()" class="btn btn-info">Limpiar</button>
+                            <hr>
+                        </div>
+                    </div>
+        		</form>
+        	</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Transitos Registrados</h3>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <th>Codigo de Paquete</th>
+                        <th>Estado registrado</th>
+                        <th>Fecha del transito</th>
+                        <th>detalles</th>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="row in results">
+                            <td>{{ row.shipments.code }}</td>
+                            <td>{{ row.estados.name }}</td>
+                            <td>{{ row.updated_at }}</td>
+                            <td>{{ row.details }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>    
