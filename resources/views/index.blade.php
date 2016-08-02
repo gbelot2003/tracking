@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
     <meta charset="utf-8">
-    <title>Anguilar & webpack</title>
+    <title>Trackhn Alpha 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="css/app.css" type="text/css" rel="stylesheet"/>
