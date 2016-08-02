@@ -2,6 +2,8 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
 
     $scope.search = {};
 
+    $scope.showTable = false;
+
     $scope.loader = {
         loading: false,
         loading2: false
@@ -83,10 +85,13 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
         $scope.bDate = $filter('date')($scope.date1, "yyyy-MM-dd");
         $scope.eDate = $filter('date')($scope.date2, "yyyy-MM-dd");
         $scope.search = {};
-    }
+        $scope.showTable = false;
+        $scope.users.selected = undefined;
+    };
 
     $scope.sendData = function()
     {
+        $scope.loader.loading2 = true;
         $scope.search.bDate = $scope.bDate;
         $scope.search.eDate = $scope.eDate;
 
@@ -94,6 +99,8 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
             function success(res){
                 console.log(res);
                 $scope.results = res.data;
+                $scope.showTable =true;
+                $scope.loader.loading2 = false
 
             },
             function error(res){
