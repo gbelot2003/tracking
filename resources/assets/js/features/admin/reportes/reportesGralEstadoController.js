@@ -4,6 +4,7 @@ var reportes = function($scope, $filter, $timeout, $http){
         loading: false,
         loading2: false
     };
+    $scope.showTable = false;
 
     var datef = new Date();
     var month = datef.getMonth();
@@ -81,13 +82,16 @@ var reportes = function($scope, $filter, $timeout, $http){
     $scope.sendData = function(){
         $scope.rec.bDate = $scope.bDate;
         $scope.rec.eDate = $scope.eDate;
+        $scope.loader.loading2 = true;
+        $scope.showTable = true;
+
         $http.post('api/admin/reportes-general-por-estados', $scope.rec).then(
             function success(res){
                 $scope.results = res.data;
 
                 var resultsados = res.data.datos;
                 var values = [];
-
+                $scope.loader.loading2 = false
                 for(var key in resultsados) {
                     var properties = resultsados[key];
 
