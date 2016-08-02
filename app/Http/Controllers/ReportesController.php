@@ -11,13 +11,8 @@ use Illuminate\Support\Facades\DB;
 class ReportesController extends Controller
 {
 
-
-    public function generalPorUsuario(Request $request)
+    public function generalPorUsuario($bDate, $eDate, $id = null, $estado_id = null)
     {
-        $bDate = $request->input('bDate');
-        $eDate = $request->input('eDate');
-        $id = $request->input('id');
-        $estado_id = $request->input('estados_id');
 
         $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
         $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
@@ -31,8 +26,10 @@ class ReportesController extends Controller
             $transitos->where('estado_id', '=', $estado_id);
         }
 
+        $query = $transitos->paginate(5);
+        return $query;
 
-        return $transitos->get();
+
     }
 
     public function generalPorEstado(Request $request)

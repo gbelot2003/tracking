@@ -1,4 +1,4 @@
-var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast, estadosService){
+var reportes = function($scope, $filter, $http, ngToast, estadosService, reportesFactory){
 
     $scope.search = {};
 
@@ -20,9 +20,10 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
     };
 
     $scope.sourceUsuarioChanged = function($select){
-        console.log($select.selected);
         $scope.search.id = $select.selected.id;
     };
+
+    $scope.currentPage = 1;
 
 
     var datef = new Date();
@@ -78,8 +79,7 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
         $scope.popup2.opened = true;
     };
 
-    $scope.clear = function()
-    {
+    $scope.clear = function() {
         $scope.date1 = new Date(year, month, 1);
         $scope.date2 = new Date();
         $scope.bDate = $filter('date')($scope.date1, "yyyy-MM-dd");
@@ -89,31 +89,72 @@ var reportes = function($scope, $filter, $http, $routeParams, $location, ngToast
         $scope.users.selected = undefined;
     };
 
-    $scope.sendData = function()
-    {
+    $scope.pagination = {
+        currentPage: 1,
+        maxSize: 5,
+        totalItems : 20
+    };
+
+
+    $scope.sendData = function() {
         $scope.loader.loading2 = true;
         $scope.search.bDate = $scope.bDate;
         $scope.search.eDate = $scope.eDate;
 
-        $http.post('api/admin/reportes-general-por-usuario', $scope.search).then(
-            function success(res){
-                console.log(res);
-                $scope.results = res.data;
+        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id})
+            .$promise.then(
+            function success(response){
+                console.log(response);
+                $scope.results = response;
+
+                $scope.pagination = {
+                    currentPage: response.current_page,
+                    maxSize: 5,
+                    totalItems : response.total,
+                    numPages: response.last_page
+                };
+                console.log($scope.pagination);
                 $scope.showTable =true;
                 $scope.loader.loading2 = false
 
             },
-            function error(res){
-                consolo.log(res.error)
+            function error(response){
+                consolo.log(response.error)
             }
         )
-    }
+    };
 
+    $scope.setPage = function (pageNo) {
+        $scope.currentPage = pageNo;
+    };
+
+    $scope.nextPage = function(pageNo){
+        $scope.loader.loading2 = true;
+        $scope.currentPage = pageNo;
+        reportesFactory.query({bDate:$scope.search.bDate, eDate: $scope.search.eDate, id:$scope.search.id, page: $scope.currentPage})
+            .$promise.then(
+            function success(response){
+                $scope.results = response;
+
+                $scope.totalItems = response.total;
+                $scope.currentPage = response.current_page;
+                $scope.maxSize = response.per_page;
+
+                $scope.showTable =true;
+                $scope.loader.loading2 = false;
+
+            },
+            function error(response){
+                consolo.log(response.error)
+            }
+        );
+
+    }
 
 };
 
 module.exports = function(app){
-    app.controller('reporteGralPorUsuarios', function($scope, $filter, $http, $routeParams, $location, ngToast, estadosService){
-        return reportes($scope, $filter, $http, $routeParams, $location, ngToast, estadosService);
+    app.controller('reporteGralPorUsuarios', function($scope, $filter, $http, ngToast, estadosService, reportesFactory){
+        return reportes($scope, $filter, $http, ngToast, estadosService, reportesFactory);
     });
 };
