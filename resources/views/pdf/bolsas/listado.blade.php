@@ -31,14 +31,14 @@
             <th>No</th>
             <th>Remitente</th>
             <th>Destinatario</th>
-            <th>Estado</th>
+            <th>Descripción</th>
         </tr>
         @foreach($bolsa->shipments as $shipment)
         <tr class="windowbg">
             <td>{{ $shipment->code }}</td>
             <td>{{ $shipment->senders->name }}</td>
             <td>{{ $shipment->recivers->name }}</td>
-            <td>{{ $shipment->transito->estados->name }}</td>
+            <td>{{ $shipment->description }}</td>
         </tr>
         @endforeach
     </table>
