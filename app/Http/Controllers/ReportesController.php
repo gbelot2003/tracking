@@ -26,7 +26,7 @@ class ReportesController extends Controller
             $transitos->where('estado_id', '=', $estado_id);
         }
 
-        $query = $transitos->paginate(5);
+        $query = $transitos->paginate(10);
         return $query;
 
 
