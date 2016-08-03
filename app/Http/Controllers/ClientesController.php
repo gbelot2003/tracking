@@ -29,6 +29,12 @@ class ClientesController extends Controller
     {
         $query = Trader::with('seccion', 'establecimiento', 'estado');
         $query->where('name', 'LIKE', '%'.$search.'%');
+        $query->orWhereHas('seccion', function($q) use($search){
+            $q->where('name', 'LIKE', '%' . $search . "%");
+        });
+        $query->orWhereHas('establecimiento', function($q) use($search){
+            $q->where('name', 'LIKE', '%' . $search . "%");
+        });
         $model = $query->paginate(10);
         return $model;
 
