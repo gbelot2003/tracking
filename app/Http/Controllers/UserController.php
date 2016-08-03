@@ -16,7 +16,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('jwt.auth');
-        $this->middleware('');
     }
 
 
@@ -25,6 +24,7 @@ class UserController extends Controller
         if ($search == null){
             $query = User::all()->take(5);
         } else {
+
             $query = User::where('name', 'LIKE', "%" . $search ."%")->get();
         }
         return $query;
