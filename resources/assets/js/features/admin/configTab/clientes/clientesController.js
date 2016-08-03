@@ -48,7 +48,7 @@ var dash = function($scope, clientesFactory, ngToast,  $uibModal) {
         $scope.searcher = true;
         $scope.loader.loading2 = true;
 
-        clientesFactory.search({query: val}, function (response) {
+        clientesFactory.search({query: val, page: $scope.currentPage}, function (response) {
             $scope.clientes = response.data;
             $scope.totalItems = response.total;
             $scope.currentPage = response.current_page;
@@ -70,12 +70,15 @@ var dash = function($scope, clientesFactory, ngToast,  $uibModal) {
         $scope.loader.loading2 = true;
         $scope.currentPage = pageNo;
 
-        var query = clientesFactory.get({page: $scope.currentPage});
+        var query = clientesFactory.get({query: $scope.newVal, page: $scope.currentPage});
 
         if ($scope.searcher === true) {
             var query = clientesFactory.query({query: $scope.newVal, page: $scope.currentPage});
 
         } else {
+            /**
+             * TODO: Aquí me esta invirtiendo los valores de envio de paginación y string de busqueda
+             */
             query.$promise.then(function success(response) {
                 $scope.clientes = response.data;
                 $scope.totalItems = response.total;
@@ -92,7 +95,7 @@ var dash = function($scope, clientesFactory, ngToast,  $uibModal) {
             $scope.maxSize = response.per_page;
             $scope.loader.loading2 = false;
         }, function error(response) {
-            ngToast.danger('A habido algun error, el servidor responde ' + response.sendText);
+            ngToast.danger('A habido algun error, el servidor responde o valores invertidos' + response.sendText);
             $scope.loader.loading = false;
         });
     };
