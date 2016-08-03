@@ -68,7 +68,7 @@ class ReportesController extends Controller
             ->get();
 
 
-        $total = $shipments->count();
+        $total = $shipments->sum('subtotal');
 
         $espera = $shipments->sum("espera");
         $regular = $shipments->sum("regular");
