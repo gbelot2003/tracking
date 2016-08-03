@@ -39,6 +39,9 @@ class UserController extends Controller
         $query = User::with('roles', 'empresa', 'establecimiento', 'estado');
         $query->where('name', 'LIKE', '%'.$search.'%');
         $query->orWhere('email', 'LIKE', '%'.$search.'%');
+        $query->orWhereHas('empresa', function($query) use ($search){
+            $query->where('name', 'LIKE', '%' . $search . "%");
+        });
         $model = $query->paginate(10);
         return $model;
     }
