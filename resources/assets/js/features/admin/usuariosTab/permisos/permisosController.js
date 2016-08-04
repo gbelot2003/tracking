@@ -45,10 +45,10 @@ var permisos = function($scope, $http, permisosFactory, $uibModal, ngToast){
     	modalInstance.result.then(function(message){
     		$scope.message = message;
     		if($scope.message == true){
-    			ngToast.success('Se a actualizado correctamente el rol');
+    			ngToast.success('El permiso se a actualizado correctamente!!');
     			$scope.init();
     		} else {
-    			ngToast.danger('A ocurrido un error en el envio, revise los datos de la actualizacion');
+    			ngToast.danger('A ocurrido un error en la actualización del permiso');
     		}
     	});
 
