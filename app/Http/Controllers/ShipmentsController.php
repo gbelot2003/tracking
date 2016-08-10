@@ -160,7 +160,7 @@ class ShipmentsController extends Controller
      */
     public function index()
     {
-        $shipments = Shipment::shipmentindex(Auth::Id())->order('id', 'ASC')->paginate(10);
+        $shipments = Shipment::shipmentindex(Auth::Id())->orderBy('id', 'DESC')->paginate(10);
         return $shipments;
     }
 

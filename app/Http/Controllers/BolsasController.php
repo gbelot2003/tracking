@@ -90,7 +90,7 @@ class BolsasController extends Controller
      */
     public function index()
     {
-        $bolsas = Bolsa::bolsasindex()->paginate(10);
+        $bolsas = Bolsa::bolsasindex()->orderBy('id', 'DESC')->paginate(10);
         return $bolsas;
     }
 
