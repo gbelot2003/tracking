@@ -3356,7 +3356,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "zizaco/entrust": 20,
-        "dinesh/barcode": 20,
         "orangehill/iseed": 20
     },
     "prefer-stable": false,
