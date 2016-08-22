@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-10">
+                <h2>{{ title }}</h2>
+            </div>
+            <div class="col-md-2">
+                <!-- any button -->
+            </div>
+        </div>
+
+        <div class="row">
+            <form class="form" ng-submit="sendData()">
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <span style="font-weight: bold">Desde: </span>
+                            <div class="form-group">
+
+                                <p class="input-group">
+                                    <input type="text"
+                                           class="form-control"
+                                           uib-datepicker-popup="{{format}}"
+                                           ng-model="date1"
+                                           is-open="popup1.opened"
+                                           ng-required="true"
+                                           close-text="Close"
+                                           alt-input-formats="altInputFormats"
+                                    />
+                                            <span class="input-group-btn">
+                                                <button type="button"
+                                                        class="btn btn-default"
+                                                        ng-click="open1()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+                                <span style="font-weight: bold">Hasta: </span>
+                                <p class="input-group">
+                                    <input type="text"
+                                           class="form-control"
+                                           uib-datepicker-popup="{{format}}"
+                                           data-ng-model="date2"
+                                           is-open="popup2.opened"
+                                           ng-required="true"
+                                           close-text="Close"
+                                           alt-input-formats="altInputFormats"
+                                    />
+                                            <span class="input-group-btn">
+                                                <button
+                                                        type="button"
+                                                        class="btn btn-default"
+                                                        ng-click="open2()"
+                                                >
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </button>
+                                            </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <hr>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <!-- código/fecha/remitente/destinatario/estado -->
+            <div class="col-md-12">
+                <div class="double-bounce1" ng-show="loader.loading2"><span us-spinner></span></div>
+                <div class="table-responsive" ng-if="showTable">
+                    <h3>Paquetes Registrados <span ng-if="results">| Total de registros <span class="danger">{{ results.total }}</span></span></h3>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <th>Codigo de Paquete</th>
+                            <th>Fecha</th>
+                            <th>Remitente</th>
+                            <th>Destinatario</th>
+                            <th>Estado</th>
+                            </thead>
+                        <tbody>
+                            <tr data-ng-repeat="row in results.data">
+                                <td>{{ row.code }}</td>
+                                <td>{{ row.created_at }}</td>
+                                <td>{{ row.senders.name }}</td>
+                                <td>{{ row.recivers.name }}</td>
+                                <td>{{ row.transito.estados.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination
+                            total-items="pagination.totalItems"
+                            ng-model="pagination.currentPage"
+                            max-size="pagination.maxSize"
+                            class="pagination-sm"
+                            boundary-links="true"
+                            num-pages="numPages"
+                            ng-change="nextPage(pagination.currentPage)">
+                    </uib-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

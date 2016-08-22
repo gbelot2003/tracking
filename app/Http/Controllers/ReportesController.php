@@ -11,27 +11,6 @@ use Illuminate\Support\Facades\DB;
 class ReportesController extends Controller
 {
 
-    public function generalPorUsuario($bDate, $eDate, $id = null, $estado_id = null)
-    {
-
-        $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
-        $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
-
-        $transitos = Transito::with('shipments', 'estados')
-            ->where('user_id', '=', $id)
-            ->whereBetween('created_at', [$bdate, $edate]);
-
-        if($estado_id != null)
-        {
-            $transitos->where('estado_id', '=', $estado_id);
-        }
-
-        $query = $transitos->paginate(10);
-        return $query;
-
-
-    }
-
     public function generalPorEstado(Request $request)
     {
         $bDate = $request->input('bDate');
@@ -103,9 +82,36 @@ class ReportesController extends Controller
         );
     }
 
-    public function listadoPorEstados(Request $request)
+    public function generalPorUsuario($bDate, $eDate, $id = null, $estado_id = null)
     {
 
-        return $request;
+        $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
+        $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
+
+        $transitos = Transito::with('shipments', 'estados')
+            ->where('user_id', '=', $id)
+            ->whereBetween('created_at', [$bdate, $edate]);
+
+        if($estado_id != null)
+        {
+            $transitos->where('estado_id', '=', $estado_id);
+        }
+
+        $query = $transitos->paginate(10);
+        return $query;
+
+
+    }
+
+    public function listadoPorEstados($bDate, $eDate)
+    {
+        $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
+        $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
+
+        $shipment = Shipment::with('transito.estados', 'senders', 'recivers');
+
+
+        $query = $shipment->paginate(10);
+        return $query;
     }
 }

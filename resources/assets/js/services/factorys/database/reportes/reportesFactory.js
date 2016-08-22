@@ -11,6 +11,14 @@ module.exports = function(app){
                     page:"@page"
                 },
                 url:'/api/admin/reportes-general-por-usuario/:bDate/:eDate/:id/:estado_id'
+            },
+            'listadoPorPaquete' : {
+                params:{
+                    bDate:"@bDate",
+                    eDate: "@eDate",
+                    page: "@page"
+                },
+                url:'/api/admin/listado-por-estados/:bDate/:eDate'
             }
         });
     });
