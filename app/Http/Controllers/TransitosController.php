@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Event;
 use Storage;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Transito;
 use Illuminate\Support\Facades\Auth;
+use App\Events\TransitosShipments;
 
 
 class TransitosController extends Controller
@@ -61,6 +63,7 @@ class TransitosController extends Controller
         $request['user_id'] = Auth::Id();
         $request['establecimiento_id'] = Auth::user()->establecimiento_id;
         $transito = Transito::create($request->all());
+        event(new TransitosShipments($transito->shipment_id, $transito->estado_id));
         return $transito;
     }
 
@@ -87,6 +90,7 @@ class TransitosController extends Controller
     {
         $transito = Transito::findOrFail($id);
         $transito->update($request->all());
+        event(new TransitosShipments($transito->shipment_id, $transito->estado_id));
     }
 
     /**

@@ -15,18 +15,21 @@ class ShipmentTableSeeder extends Seeder
 
         $ship = factory(Shipment::class)->create([
             'created_at' => '2016-05-29 00:34:21',
-            'updated_at' => '2016-05-29 00:34:21'
+            'updated_at' => '2016-05-29 00:34:21',
+            'estado_id' => 2,
         ]);
 
         $ship2 = factory(Shipment::class)->create([
             'created_at' => '2016-06-29 00:34:21',
-            'updated_at' => '2016-06-29 00:34:21'
+            'updated_at' => '2016-06-29 00:34:21',
+            'estado_id' => 11,
         ]);
 
         $ship3 = factory(Shipment::class)->create([
             'user_id' => 2,
             'created_at' => '2016-07-29 00:34:21',
-            'updated_at' => '2016-07-29 00:34:21'
+            'updated_at' => '2016-07-29 00:34:21',
+            'estado_id' => 11,
         ]);
 
 
