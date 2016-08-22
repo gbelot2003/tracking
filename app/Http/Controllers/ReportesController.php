@@ -102,4 +102,10 @@ class ReportesController extends Controller
             'entregadocerradofinal' => $entregadocerradofinal,
         );
     }
+
+    public function listadoPorEstados(Request $request)
+    {
+
+        return $request;
+    }
 }

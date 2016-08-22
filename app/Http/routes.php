@@ -62,8 +62,10 @@ Route::group(['prefix' => 'api/admin'], function()
 
     Route::get('municipios/relacionados/{id}', 'MunicipiosController@relacionados');
 
+    /** Reportes */
     Route::post('reportes-general-por-estados', 'ReportesController@generalPorEstado');
     Route::get('reportes-general-por-usuario/{bDate}/{eDate}/{id}/{estatus_id?}', 'ReportesController@generalPorUsuario');
+    Route::post('listado-por-estados', 'ReportesController@listadoPorEstado');
 
 
     Route::resource('users', 'UserController');
