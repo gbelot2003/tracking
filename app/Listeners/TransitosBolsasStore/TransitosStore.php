@@ -4,6 +4,7 @@ namespace App\Listeners\TransitosBolsasStore;
 
 use App\Events\TransitosBolsasStore;
 use App\Bolsa;
+use App\Shipment;
 use App\Transito;
 use App\TransitoBolsa;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,7 @@ class TransitosStore
 
             $bolsa = Bolsa::findOrFail($event->request['bolsa_id']);
             $paquetes = $bolsa->shipments;
+
             foreach($paquetes as $paquete){
                 Transito::create([
                     'shipment_id' => $paquete->id,
@@ -41,6 +43,11 @@ class TransitosStore
                     'establecimiento_id' => Auth::user()->establecimiento_id,
                     'user_id'   => $event->request['user_id'],
                     'details'   => 'Registro agregado desde transto de bolsa No.' . $bolsa->code . " - " . $event->request['details']
+                ]);
+
+                Shipment::findOrFail($paquete->id)
+                ->update([
+                    'estado_id' => $pstado,
                 ]);
             }
         } else {

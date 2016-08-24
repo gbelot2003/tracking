@@ -16,9 +16,10 @@ module.exports = function(app){
                 params:{
                     bDate:"@bDate",
                     eDate: "@eDate",
+                    estado: "@estado",
                     page: "@page"
                 },
-                url:'/api/admin/listado-por-estados/:bDate/:eDate'
+                url:'/api/admin/listado-por-estados/:bDate/:eDate/:estado'
             }
         });
     });

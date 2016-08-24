@@ -99,8 +99,10 @@ class ShipmentsController extends Controller
         $bolsa = Bolsa::findOrFail($bag)->first();
 
         if(in_array($paquete->transito->estado_id, $state)){
+
             $estado = $paquete->transito->estados->name;
             return response()->json($estado, 404);
+
         } else {
             $this->pusher->trigger('channel-' . $bag, 'event', ['paquete' => $paquete]);
 
@@ -110,6 +112,10 @@ class ShipmentsController extends Controller
                 'establecimiento_id' => Auth::user()->establecimiento_id,
                 'user_id'	 	=> Auth::id(),
                 'details'		=> 'Paquete en bolsa Codigo ' . $bolsa->code
+            ]);
+
+            $paquete->update([
+                'estado_id' => $transito->estado_id
             ]);
 
             $paquete->bolsas()->attach($bag);
@@ -134,6 +140,9 @@ class ShipmentsController extends Controller
             'type' => $type,
             'index' => $index,
             'code'  => $code
+        ]);
+        $paquete->update([
+            'estado_id' => $transito->estado_id
         ]);
 
         return $paquete;

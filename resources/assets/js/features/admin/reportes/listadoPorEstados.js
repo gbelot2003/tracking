@@ -11,6 +11,14 @@ var listadoPorEstados = function($scope, $filter, $timeout, reportesFactory, est
 
     $scope.showTable = false;
 
+
+    $scope.estados = estadosService.estados_general;
+
+    $scope.changeItem = function(estado)
+    {
+        $scope.estados_id = estado;
+    };
+
     var datef = new Date();
     var month = datef.getMonth();
     var year = datef.getFullYear();
@@ -110,7 +118,7 @@ var listadoPorEstados = function($scope, $filter, $timeout, reportesFactory, est
         $scope.search.bDate = $scope.bDate;
         $scope.search.eDate = $scope.eDate;
 
-        reportesFactory.listadoPorPaquete({bDate:$scope.search.bDate, eDate: $scope.search.eDate})
+        reportesFactory.listadoPorPaquete({bDate:$scope.search.bDate, eDate: $scope.search.eDate, estado: $scope.estados_id})
             .$promise.then(
             function success(response){
                 $scope.results = response;

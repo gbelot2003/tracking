@@ -103,15 +103,21 @@ class ReportesController extends Controller
 
     }
 
-    public function listadoPorEstados($bDate, $eDate)
+    public function listadoPorEstados($bDate, $eDate, $estado = null)
     {
         $bdate =  Carbon::createFromFormat('Y-m-d', $bDate)->startOfDay();
         $edate =  Carbon::createFromFormat('Y-m-d', $eDate)->endOfDay();
 
-        $shipment = Shipment::with('transito.estados', 'senders', 'recivers');
+        $shipment = Shipment::with('transito.estados', 'senders.establecimiento', 'recivers.establecimiento');
 
+        $shipment->whereBetween('created_at', [$bdate, $edate]);
+
+        if($estado != null){
+            $shipment->where('estado_id', '=', $estado);
+        }
 
         $query = $shipment->paginate(10);
+
         return $query;
     }
 }
