@@ -156,6 +156,8 @@ class Shipment extends Model {
 			$query->whereBetween('created_at', [$bdate, $edate]);
 		}
 
+		$query->orderBy('id', 'DESC');
+
 		return $query;
 	}
 
