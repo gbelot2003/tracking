@@ -113,8 +113,8 @@ class Shipment extends Model {
             'transito.estados'
         );
 
-		$query->whereRaw('Date(created_at) = CURDATE()');
-
+		//$query->whereRaw('Date(created_at) = CURDATE()');
+        $query->take(1500);
 		return $query;
     }
 

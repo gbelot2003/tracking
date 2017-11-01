@@ -79,7 +79,7 @@ class BolsasController extends Controller
      */
     public function search($date = null, $search = null, $type = null)
     {
-        $bolsas = Bolsa::bolsasearch($date, $search, $type)->paginate(10);
+        $bolsas = Bolsa::bolsasearch($date, $search, $type)->take(1500)->paginate(10);
         return $bolsas;
     }
 
