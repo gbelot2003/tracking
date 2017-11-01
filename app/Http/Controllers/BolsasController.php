@@ -104,8 +104,18 @@ class BolsasController extends Controller
     {
         $request['user_id'] = Auth::id();
         $request['establecimiento_id'] = Auth::user()->establecimiento_id;
-        event(new BolsasStore($request));
-        return $request->all();
+
+        $bolsas = Bolsa::create($request->all());
+        TransitoBolsa::create([
+            'bolsa_id' => $bolsas->id,
+            'estado_id' => 1,
+            'establecimiento_id' => $request['establecimiento_id'],
+            'user_id'	 	=> 1,
+            'details' => 'Bolsa Creada'
+        ]);
+
+        return $bolsas;
+
     }
 
     /**

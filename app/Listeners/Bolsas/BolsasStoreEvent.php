@@ -25,6 +25,7 @@ class BolsasStoreEvent
             'user_id'	 	=> 1,
             'details' => 'Bolsa Creada'
         ]);
+
         return $bolsas;
     }
 }
