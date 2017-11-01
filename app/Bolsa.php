@@ -100,7 +100,7 @@ class Bolsa extends Model
      */
     public function scopeBolsasShowByCode($query)
     {
-        $query->with('sender.municipio.departamento', 'reciber.municipio.departamento')->take(1500)->orderBy('id', 'desc')->get();
+        $query->with('sender.municipio.departamento', 'reciber.municipio.departamento')->orderBy('id', 'desc')->first();
         return $query;
     }
 
@@ -142,7 +142,7 @@ class Bolsa extends Model
 
         $query->with('sender', 'reciber', 'transito.estados', 'user');
 
-        $query->whereBetween('created_at', [$bdate, $edate]);
+
 
         if ($search != null) {
 
@@ -161,6 +161,8 @@ class Bolsa extends Model
                 $query->WhereHas('reciber', function ($q) use ($search) {
                     return $q->where('name', 'LIKE', '%' . $search . '%');
                 });
+            } else {
+                $query->whereBetween('created_at', [$bdate, $edate]);
             }
 
         }
