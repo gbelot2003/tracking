@@ -1,8 +1,18 @@
 @extends('pdf.pdf')
 @section('content')
     <h2>TrackHn - Matriz de bolsa No. {{ $bolsa->code }}</h2>
-    <span style="width: 300px">{!! DNS2D::getBarcodeHTML($bolsa->code, "QRCODE") !!}</span>
+
+
     <table class="windowbg">
+        <tr>
+            <td colspan="2">Fecha de Impresión</td>
+            <td colspan="2">Fecha de Creación</td>
+        </tr>
+        <tr>
+            <td colspan="2">{{ $hoy }}</td>
+            <td colspan="2">{{ $bolsa->created_at->format('d-m-Y h:m:s') }}</td>
+        </tr>
+
         <tr>
             <td colspan="4">
                 descripcion:<br>

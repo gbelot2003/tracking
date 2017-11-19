@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Bolsa;
@@ -10,6 +11,7 @@ use App\Events\BolsasStore;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Http\Requests;
 use App\Events\TransitosBolsasStore;
+
 
 class BolsasController extends Controller
 {
@@ -29,13 +31,18 @@ class BolsasController extends Controller
     public function pdfreturn($id)
     {
         $bolsa = Bolsa::bolsasShow()->findOrFail($id);
-        $pdf = PDF::loadView('pdf.bolsas.listado', compact('bolsa'));
+
+        $hoy = date("d-m-Y h:m:s");
+        //$date = Carbon::createFromFormat('Y-m-d', '0000-00-00')
+
+        $pdf = PDF::loadView('pdf.bolsas.listado', compact('bolsa', 'hoy'));
+
         return $pdf->download($bolsa->code . '-listado.pdf');
     }
 
     /**
      * function cargamentos
-     * @param Requests $requests
+     * @param Requests|Request $requests
      * @return Requests
      */
     public function cargamentos(Request $requests)
