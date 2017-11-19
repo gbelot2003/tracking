@@ -33,11 +33,12 @@ class BolsasController extends Controller
         $bolsa = Bolsa::bolsasShow()->findOrFail($id);
 
         $hoy = date("d-m-Y h:m:s");
+        $imp = date("d-m-Y");
         //$date = Carbon::createFromFormat('Y-m-d', '0000-00-00')
 
         $pdf = PDF::loadView('pdf.bolsas.listado', compact('bolsa', 'hoy'));
 
-        return $pdf->download($bolsa->code . '-listado.pdf');
+        return $pdf->download($bolsa->code . ' - ' . $imp . ' -listado.pdf');
     }
 
     /**
