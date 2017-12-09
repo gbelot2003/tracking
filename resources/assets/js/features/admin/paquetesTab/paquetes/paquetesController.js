@@ -75,9 +75,12 @@ var paquetes = function($scope, shipmentFactory, $filter, $timeout){
         if(oldD == newD){
             return;
         } else {
-            $scope.mSearch = true;
-            var item = $filter('date')($scope.dt, "yyyy-MM-dd");
-            $scope.search(item, $scope.searchable, $scope.searchType);
+            $timeout(function(){
+                $scope.mSearch = true;
+                var item = $filter('date')($scope.dt, "yyyy-MM-dd");
+                $scope.search(item, $scope.searchable, $scope.searchType);
+            }, 4000);
+
         }
     });
 
