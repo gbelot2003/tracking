@@ -50,7 +50,7 @@ class ClientesController extends Controller
             $query = Trader::with('establecimiento')->take(10)->get();
         } else {
             $query = Trader::with('establecimiento')
-                ->where('name', 'LIKE', '%' . $name . '%')->get();
+                ->where('name', 'LIKE', '%' . $name . '%')->take(20)->get();
         }
         return $query;
     }
