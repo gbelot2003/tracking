@@ -4,7 +4,7 @@ var transitos = function($scope, $uibModalInstance, shipId, id, type, transitosF
 
     if(type === 2){
         $scope.etransitos = estadosService.estado_paquetes;
-        $scope.title = "Creación de trancito";
+        $scope.title = "Creación de transito";
     } else if(type === 1){
         $scope.etransitos = estadosService.estado_cierres;
         $scope.title = "Transitos de cierre";

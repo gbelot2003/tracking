@@ -19,10 +19,10 @@ var transito = function($scope, $uibModalInstance, id, codeId, type, transitosBo
 
     if(type === 2){
         $scope.etransitos = estadosService.estados_bolsas;
-        $scope.title = "Creación de trancito";
+        $scope.title = "Creación de tránsito";
     } else if(type === 1){
         $scope.etransitos = estadosService.estado_cierres;
-        $scope.title = "Transitos de cierre";
+        $scope.title = "Tránsitos de cierre";
         $scope.isClosing = true;
     }
 
