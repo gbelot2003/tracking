@@ -45,7 +45,15 @@
                 <li usuarios-mn class="dropdown" uib-dropdown has-permission="['owner', 'admin']"  />
                 
                 <li ng-if="!isLoggedIn()"  role="presentation"><a href="#/login">Login</a></li>
-                <li ng-if="isLoggedIn()"  role="presentation"><a ng-click="logout()">Logout</a></li>
+                <!--<li ng-if="isLoggedIn()"  role="presentation"><a ng-click="logout()">Log </a></li>-->
+                <li ng-if="isLoggedIn()"  class="dropdown" uib-dropdown>
+                    <a href="#" class="dropdown-toggle" uib-dropdown-toggle data-toggle="dropdown" >
+                        {{ usuario }} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a ng-click="logout()">Logout </a></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

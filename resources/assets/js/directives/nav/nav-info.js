@@ -5,6 +5,9 @@ module.exports = function(app){
             restrict:'AE',
             controller: function($scope){
                 $scope.isLoggedIn = authentication.isLoggedIn;
+                var name = localStorage.getItem('user');
+                obj = JSON.parse(name);
+                $scope.usuario = obj.name;
 
                 $scope.logout = function(){
                     localStorage.removeItem('satellizer_token');
