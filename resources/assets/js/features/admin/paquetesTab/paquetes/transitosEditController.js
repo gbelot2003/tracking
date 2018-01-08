@@ -19,7 +19,7 @@ var transitos = function($scope, $uibModalInstance, id, shipId, state, transitos
 
     $scope.agencia = {};
 
-    $scope.title = "Edición de Transitos";
+    $scope.title = "Edición de Tránsitos";
 
     $scope.isEdit = false;
 

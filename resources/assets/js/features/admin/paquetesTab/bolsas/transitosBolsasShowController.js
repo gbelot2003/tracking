@@ -21,7 +21,7 @@ var transitos = function($scope, $uibModalInstance, id, codeId, transitosBolsasF
 
     $scope.loader.loading = true;
 
-    $scope.title = "Edición de Trancitos";
+    $scope.title = "Edición de Tránsitos";
 
     $scope.init = function(){
         transitosBolsasFactory.get({id: id}).$promise.then(
