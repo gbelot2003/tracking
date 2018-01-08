@@ -118,7 +118,7 @@ class BolsasController extends Controller
             'bolsa_id' => $bolsas->id,
             'estado_id' => 1,
             'establecimiento_id' => $request['establecimiento_id'],
-            'user_id'	 	=> 1,
+            'user_id'	 	=> Auth::id(),
             'details' => 'Bolsa Creada'
         ]);
 

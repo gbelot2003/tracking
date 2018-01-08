@@ -22,7 +22,7 @@ class BolsasStoreEvent
             'bolsa_id' => $bolsas->id,
             'estado_id' => 1,
             'establecimiento_id' => $event->request['establecimiento_id'],
-            'user_id'	 	=> 1,
+            'user_id'   => $event->request['user_id'],
             'details' => 'Bolsa Creada'
         ]);
 
