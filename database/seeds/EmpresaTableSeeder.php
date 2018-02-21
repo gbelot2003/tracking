@@ -15,17 +15,17 @@ class EmpresaTableSeeder extends Seeder
 			0 =>
 				array (
 					'id' => 1,
-					'name' => 'Unidos Express',
+					'name' => 'Empresa 1',
 				),
 			1 =>
 				array (
 					'id' => 2,
-					'name' => 'Establecimientos externos',
+					'name' => 'Empresa 2',
 				),
 			3 =>
 				array(
 					'id' => 3,
-					'name' => 'Ficohsa'
+					'name' => 'Empresa 3'
 				)
 		));
 

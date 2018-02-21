@@ -140,9 +140,8 @@ class Bolsa extends Model
         $bdate = Carbon::createFromFormat('Y-m-d', $date)->startOfDay();
         $edate = Carbon::createFromFormat('Y-m-d', $date)->endOfDay();
 
+
         $query->with('sender', 'reciber', 'transito.estados', 'user');
-
-
 
         if ($search != null) {
 
@@ -161,7 +160,9 @@ class Bolsa extends Model
                 $query->WhereHas('reciber', function ($q) use ($search) {
                     return $q->where('name', 'LIKE', '%' . $search . '%');
                 });
+
             } else {
+
                 $query->whereBetween('created_at', [$bdate, $edate]);
             }
 
