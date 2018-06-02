@@ -11,6 +11,8 @@ var login = function($scope, $location, authentication, credent, $window){
 
         localStorage.setItem('satellizer_token', response.data.token);
         $location.path('/index');
+        location.reload();
+
 
         var promise = credent.getCredentials();
         promise.then(function success(response){
