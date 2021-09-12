@@ -158,7 +158,6 @@ return [
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Vinkla\Pusher\PusherServiceProvider::class,
-        Orangehill\Iseed\IseedServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Milon\Barcode\BarcodeServiceProvider::class,
 
